@@ -152,6 +152,11 @@
   function branchPath(it, start) {
     const p = it.pos.slice(), s = Math.sign(p[2] || -1), [x, y, z] = start;
     const t = CAT.byId[it.type];
+    if (it.type === 'columnUpDown') {
+      const fy = buriedY([start, [p[0], 0, z], p]);
+      return { ...proposal([start, [x, fy, z], [p[0], fy, z], [p[0], fy, p[2]], p], 'review-local',
+        'Proposed underfloor approach and removable column-face raceway. The column base crossing, timber fixings, appearance, fire boundary and maintenance access require coordinated design; no concealed chase is assumed.'), reviewRequired: true };
+    }
     if (eventPoint(it)) return proposal([start, [p[0], p[1], s * EVENT.wallZ], p], 'underfloor-event',
       'Buried duct below the entrance-hall floor and tower plinth, rising inside the solid tower pier to the cabinet. Duct size, depth, draw pits, water sealing and separation pending; no chase through the arch mouldings.');
     if (t.mic) {
@@ -179,9 +184,9 @@
       return proposal([start, [48.5, y, cz], [48.5, cy, cz], [p[0], cy, cz], [p[0], p[1], cz], p], 'chamber-lining',
         'Back-wall band to service space behind chamber lining; local termination behind the fitting / cornice. Removable lining and cable-entry detail pending.');
     }
-    const main = SIM.GEO.mainBeams.find(b => Math.abs(p[0]-b.x)<0.19 && Math.abs(p[2]) <= b.zHalf &&
+    const main = SIM.GEO.mainBeams.find(b => Math.abs(p[0]-b.x)<b.w/2+0.04 && Math.abs(p[2]) <= b.zHalf &&
       (Math.abs((it.anchorY ?? p[1])-b.y0)<0.08 || it.type === 'uplight' && Math.abs(p[1]-b.y1)<0.08));
-    const side = SIM.GEO.sideBeams.find(b => Math.abs(p[0]-b.x)<0.15 && Math.sign(p[2])===b.side && Math.abs(p[2]) >= b.zIn && Math.abs(p[2]) <= b.zOut && Math.abs((it.anchorY ?? p[1])-b.y0)<0.08);
+    const side = SIM.GEO.sideBeams.find(b => Math.abs(p[0]-b.x)<b.w/2+0.04 && Math.sign(p[2])===b.side && Math.abs(p[2]) >= b.zIn && Math.abs(p[2]) <= b.zOut && Math.abs((it.anchorY ?? p[1])-b.y0)<0.08);
     if (main || side) {
       const b = main || side, sx = b.x, upper = b.y1 + 0.055;
       let points, cp = [];
@@ -243,7 +248,8 @@
     // header and the local clip. Never draw a drop through the coloured glass.
     if(it.type==='exitSign'&&window.CHURCH_DOORHEAD_REVIEW){
       const g=window.CHURCH_DOORHEAD_REVIEW.geometry(SIM);
-      if(it.name==='Exit sign · main doors'&&g.main&&Math.abs(p[0]-g.main.max.x-.08)<.01&&Math.abs(p[1]-g.main.min.y+.095)<.02&&Math.abs(p[2])<.01){
+      const mainInside=(window.CHURCH_FACADE?.spec.entrance.wall[1]??g.main?.max.x)+.08;
+      if(it.name==='Exit sign · main doors'&&g.main&&Math.abs(p[0]-mainInside)<.01&&Math.abs(p[1]-g.main.min.y+.095)<.02&&Math.abs(p[2])<.01){
         const jz=g.main.max.z+.15,fy=(g.main.min.y+g.main.max.y)/2,px=g.main.max.x-.008;
         return proposal([start,[px,y,z],[px,y,jz],[px,fy,jz],[px,fy,0],[p[0],fy,0],p],'door-head',
           'Entrance wall band to solid jamb outside coloured fanlight, fixed transom and local inside-face sign clip. Removable frame cover, fixing and emergency design pending.');
@@ -299,6 +305,13 @@
     if (p[0] < 5.8 && p[1] > 8.39) {
       const path=roofConnection(start,[5.32,0,p[2]]);
       return proposal([...path,[5.32,p[1],p[2]],p], 'entrance-gable', 'Above roof lining to solid front gable above terrace; local fan connection.');
+    }
+    // Fittings on the outer face of a wing gable (cornice ledge, aedicule niche; owner, 7 Nov 2026):
+    // under the wing roof to the gable wall, up or down inside it, then a short lead out to the fitting.
+    if (Math.abs(p[2]) > WING && Math.abs(p[0]-40.575) < 3.9) {
+      const q=[p[0],0,s*WING], path=roofConnection(start,q);
+      return proposal([...path,[p[0],p[1],s*WING],p], 'outer-wall',
+        'Covered roof-soffit crossing into the wing-gable wall, concealed rise or drop inside it, then a short lead through the face to the fitting; weatherproof entry pending.', [cover(path,'soffit')]);
     }
     if (it.mount === 'floor' && p[1] > 5.9) {
       const path=roofConnection(start,p);

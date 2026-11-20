@@ -13,7 +13,7 @@
     evening: { horizon: '#17283c', stops: [[0, '#070f1d'], [0.3, '#0d1a2e'], [0.46, '#152538'], [0.5, '#17283c'], [1, '#17283c']] }
   };
   const doorGroups = {};
-  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass };
+  const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass, stainedTimber, paintTimber };
   let doorBatches, lastMode, openings = 'auto', glassKind = 'stained', lightMode = 'day';
   function bindBatches(batches) {
     doorBatches = {closed:batches.get(doorGroups.closed), open:batches.get(doorGroups.open)};
@@ -56,10 +56,9 @@
       const n = ST.risers.filter(r => x >= r).length;
       return n === ST.risers.length ? 0 : ST.landing + ST.rise * n;
     }
-    if (x >= -13.219 && x <= 0.99 && Math.abs(z) <= 13.35) {
-      if (x < -8.099) return -2.08 + Math.min(16, Math.max(1, Math.floor((x + 13.219) / .32) + 1)) * .1;
-      return -.48;
-    }
+    const approach = window.CHURCH_ENTRANCE_APPROACH?.floorHeight(x, z);
+    if (approach !== null && approach !== undefined) return approach;
+    if (x >= -9.219 && x <= 0.99 && Math.abs(z) <= 10.392) return -.48;
     const height = stairHeight(x, z);
     if (height !== null) return height;
     for (const zone of stairs) {
@@ -84,16 +83,21 @@
     // 9–10 side bays are closed to the porches on axes 9 and 10.
     if(Math.abs(x-46.425)<=1.2 && az>=7.0 && az<=7.75)return false;
     if([36.975,44.175].some(e=>Math.abs(x-e)<=.2) && az>=7.3 && az<=10.6)return false;
+    // Outer porch wall on B/H (owner, 8 Nov 2026; porches.js): through the stair-bay arches only.
+    const PO=window.CHURCH_PORCHES?.spec;
+    if(PO?.outer && az>=PO.lineZ-.3 && az<=PO.lineZ+.3 && ((x>=5.3&&x<=36.98)||(x>=44.1&&x<=53.1)))return PO.stairBays.some(c=>Math.abs(x-c)<=.85);
     // Lacquered chamber walls on the D/E lines, from the axis-10 columns back to axis 11.
     if(x>=44.4 && x<=48.6 && az>=3.2 && az<=3.85)return false;
     // Sanctuary fit-out: the open service room is bounded by the C/G walls and the
     // rear gable (its doors are closed); side benches, furniture.
-    if (x >= 48.7 && x <= 53.4 && az > 7.1 && az < 7.6) return false;
+    // Owner, 7 Nov 2026: one doorway on each side of the service room (bay 11–12) to the porch.
+    if (x >= 48.7 && x <= 53.4 && az > 7.1 && az < 7.6 && Math.abs(x - 50.8455) >= .85) return false;
     if (x >= 52.7 && x <= 53.4 && az < 7.6) return false;
     if (x >= 37.7 && x <= 43.45 && Math.abs(x - 40.575) > .42 && [8.35,9.25,10.15,11.05,11.95].some(r => Math.abs(az - r) < .33)) return false;
     if (x >= 52.1 && x <= 53.1 && az < 3.1) return false;
     if (x >= 48.7 && x <= 49.8 && z >= 1.0 && z <= 1.8) return false;
-    if (x >= -13.219 && x <= -.38 && Math.abs(z) <= 13.05) return true;
+    if (window.CHURCH_ENTRANCE_APPROACH?.floorHeight(x,z) != null) return true;
+    if (x >= -9.219 && x <= -.38 && Math.abs(z) <= 10.392) return true;
     if (stairAllowed(x,z)) return true;
     return null;
   }
@@ -124,6 +128,9 @@
 
   function prepare(ctx) {
     context = ctx;
+    ctx.woodGrain = new Map();
+    // Contact shading and highlight roll-off for the display (display-finish.js).
+    window.CHURCH_DISPLAY_FINISH?.attach(ctx);
     const { THREE: T, building, scene, roofs, structure, plinth, floors, exterior, mat, interior, renderer, data, sun } = ctx;
     const lightGraphics = new URLSearchParams(location.search).get('graphics') === 'light';
     let seed = 4012026;
@@ -231,8 +238,8 @@
       materialScale.set(m,{kind,scale}); return m;
     }
     surface(mat.wall,'plaster',3,'#faf3e1',.83,.012);
-    surface(mat.trim,'plaster',2,'#efe2c8',.67,.008);
-    surface(mat.darkTrim,'plaster',2,'#b69b73',.65,.008);
+    surface(mat.trim,'plaster',2,'#ead7b8',.67,.008);
+    surface(mat.darkTrim,'plaster',2,'#b89768',.65,.008);
     surface(mat.roof,'roof',2.8,'#ffffff',.84,.055);
     surface(mat.cap,'plaster',2,'#efdfbd',.64,.01);
     surface(mat.foundation,'ashlar',2.4,'#dadcdd',.85,.028);
@@ -252,7 +259,9 @@
     mat.glass=new T.MeshPhysicalMaterial({name:'Clear float glass · window bodies',side:T.DoubleSide,
       metalness:0,roughness:.045,ior:1.52,clearcoat:.35,clearcoatRoughness:.08,
       transparent:true,opacity:.14,depthWrite:false,envMapIntensity:.85});
-    const artGlass=[{m:mat.glass,map:null}];
+    const sashGlass=mat.glass.clone();
+    sashGlass.name='Clear float glass · panelled timber windows';
+    const artGlass=[{m:mat.glass,map:null},{m:sashGlass,map:null,clearOpacity:.006,clearReflection:.18}];
     function artMaterial(canvas,name){
       const m=mat.glass.clone(),maps=art.surfaceMaps(canvas);m.name=name;
       const bump=glassTexture(maps.bump,`${name} · rolled surface`),rough=glassTexture(maps.roughness,`${name} · lead and glass roughness`);
@@ -372,6 +381,26 @@
       for(let i=0;i<pos.count;i++)uv.setXY(i,(pos.getX(i)-(x-width/2))/width,(pos.getY(i)-bottom)/height);
       uv.needsUpdate=true;
     }
+    // Marian art (owner, 8 Nov 2026; marian-art.js): reliefs over the nine outside doors and the
+    // silver M lunette over the inner windows.
+    const marian=window.CHURCH_MARIAN_ART?.create(T);
+    function reliefScene(o,front){
+      if(!marian)return null;
+      const D=window.CHURCH_MARIAN_ART.DOORS;
+      if(front){const b=new T.Box3().setFromObject(o),z=(b.min.z+b.max.z)/2;return D[Math.abs(z)<3?'front main':z>0?'front H':'front B'];}
+      let g=o.parent;while(g&&!/^Inner wall [CG] /.test(g.name))g=g.parent;
+      return g?D[g.name.replace('Inner wall ','')]:null;
+    }
+    // The same picture seen from the other side: a copy with reversed winding and mirrored u, so it
+    // reads the right way round (not a mirror image) from inside.
+    function backFace(o,dz,name){
+      const g=o.geometry.clone(),uv=g.attributes.uv,n=g.attributes.normal;
+      for(let i=0;i<uv.count;i++)uv.setX(i,1-uv.getX(i));
+      if(n)for(let i=0;i<n.count;i++)n.setXYZ(i,-n.getX(i),-n.getY(i),-n.getZ(i));
+      if(g.index){const a=g.index.array;for(let i=0;i<a.length;i+=3){const t=a[i+1];a[i+1]=a[i+2];a[i+2]=t;}g.index.needsUpdate=true;}
+      const m=new T.Mesh(g,o.material);m.name=name;m.position.copy(o.position);m.rotation.copy(o.rotation);m.scale.copy(o.scale);
+      m.translateZ(dz);m.castShadow=false;m.receiveShadow=true;m.userData={...o.userData};o.parent.add(m);return m;
+    }
     // Split the traced C/G windows at the spring line, retaining source sizes.
     for(const o of existingGlass){
       if(o.name==='Opening infill'&&Math.abs(Math.abs(o.parent.position.z)-7.36)<.001){
@@ -384,9 +413,21 @@
         box(width,.045,.045,0,spring,o.position.z,mat.metal,o.parent,'Inner window transom');
       }else if(o.name.startsWith('Side doorway fixed fanlight')||o.name.startsWith('Upper entrance fanlight')){
         o.geometry.computeBoundingBox();const b=o.geometry.boundingBox,width=b.max.x-b.min.x,rise=b.max.y-b.min.y,x=(b.min.x+b.max.x)/2,spring=b.min.y;
+        const front=o.name.startsWith('Upper entrance'),scene=reliefScene(o,front);
+        if(scene){
+          // Owner, 8 Nov 2026: a carved relief from the life of Our Lady fills the head of each of the
+          // nine outside doors (church concept pictures, marian-art.js), seen from outside and inside.
+          o.material=marian.relief(scene);artworkUV(o,x,spring,width,rise);o.castShadow=false;
+          o.userData={...o.userData,status:window.CHURCH_MARIAN_ART.STATUS,source:window.CHURCH_MARIAN_ART.SOURCE,relief:scene};
+          backFace(o,front?-.012:-.25,front?'Entrance door relief lunette · inside face':`Door relief ${scene} · inside face`);
+          // A relief is not glazing: the glazing bars of a front fanlight go with the glass.
+          if(front){const r=new T.Box3().setFromObject(o).expandByVector(new T.Vector3(.25,.05,.25));for(const m of o.parent.children.slice())if(/^Fanlight (radial|spring) bar$/.test(m.name)&&r.containsBox(new T.Box3().setFromObject(m)))m.removeFromParent();}
+          o.name=front?'Entrance door relief lunette':'Inner doorway relief lunette';
+          continue;
+        }
         o.material=fanMaterial(fanIndex++,{width,bottom:spring,spring,rise,sectors:8});
         artworkUV(o,x,spring,width,rise);o.castShadow=false;
-        o.name=o.name.startsWith('Upper entrance')?'Entrance door coloured oval':'Inner doorway coloured oval';
+        o.name=front?'Entrance door coloured oval':'Inner doorway coloured oval';
       }
     }
     function panels(leaf,width,height) {
@@ -415,8 +456,107 @@
       const shape=new T.Shape();shape.moveTo(x+r0,spring);shape.absarc(x,spring,r0,0,Math.PI,false);
       shape.lineTo(x-r1,spring);shape.absarc(x,spring,r1,Math.PI,0,true);shape.closePath();return shape;
     }
-    function rebuildSideOpening(bay,profile,centres){
-      const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening');
+    const K=window.CHURCH_CARVING.create(T);
+    const trimCache=new Map();
+    function carvedWindowBand() {
+      const {TR,SC,RZ,place,merge}=K;
+      const bloom=K.bloom({r:.052,petals:8,rings:1,seg:4});
+      const leaf=K.leaf({len:.088,wid:.034,thick:.010,curl:.85,lobes:2,seg:5,fine:false});
+      const vine=K.stem([[.044,-.011,0],[.22,-.035,.003],[.39,.016,.005],[.52,.019,.006],
+        [.64,-.016,.004],[.81,-.026,.004],[.97,.012,.002]],.009,.004,18,6);
+      const curl=K.stem(K.scroll(.932,.013,.045,1.12,-Math.PI/2,1,12),.005,.002,12,5);
+      const parts=[[bloom,SC(1,1,.46)]];
+      for(const sign of [-1,1]){
+        const mirror=SC(sign,1,1);
+        parts.push([vine,mirror],[curl,mirror]);
+        parts.push([bloom,place(SC(.48,.48,.32),TR(.49,.028,.004),mirror)]);
+        for(const [x,y,turn] of [[.16,-.027,-.89],[.30,-.025,-2.07],[.40,.018,-.95],[.57,.011,-2.10],[.68,-.023,-.94],[.78,-.027,-2.0]]){
+          parts.push([leaf,place(SC(1,1,.63),RZ(turn),TR(x,y,.005),mirror)]);
+        }
+      }
+      return merge(parts);
+    }
+    const windowVine=carvedWindowBand();
+    function dressWindowFrame(bay,profile) {
+      const inner=profile.width/2;
+      const bandY=(profile.spring+profile.leafTop)/2;
+      for(const face of [-1,1]){
+        box(2*inner+.016,.196,.024,0,bandY,face*.111,im.woodInset,bay,'Inner window timber transom field');
+        for(const y of [bandY-.078,bandY+.078]){
+          box(2*inner-.016,.013,.018,0,y,face*.128,mat.wood,bay,'Inner window timber transom bead');
+        }
+        const relief=mesh(windowVine,mat.wood,bay,'Inner window carved lotus and vine');
+        relief.position.set(0,bandY,face*.124);if(face<0)relief.rotation.y=Math.PI;
+        relief.userData={status:'CONCEPT · CARVED TRANSOM',source:'docs/decoration-finishes.md'};
+      }
+    }
+    function shutterPanel(leaf,w,h,y,face) {
+      box(w,h,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
+      const key=`${w}/${h}`;
+      if(!trimCache.has(key)){
+        function outline(path,x,y,r) {
+          path.moveTo(-x+r,-y);path.lineTo(x-r,-y);path.quadraticCurveTo(x-r,-y+r,x,-y+r);
+          path.lineTo(x,y-r);path.quadraticCurveTo(x-r,y-r,x-r,y);
+          path.lineTo(-x+r,y);path.quadraticCurveTo(-x+r,y-r,-x,y-r);
+          path.lineTo(-x,-y+r);path.quadraticCurveTo(-x+r,-y+r,-x+r,-y);
+        }
+        const shape=new T.Shape(), hole=new T.Path();
+        outline(shape,w/2-.018,h/2-.018,.065);
+        outline(hole,w/2-.040,h/2-.040,.053);shape.holes.push(hole);
+        trimCache.set(key,new T.ExtrudeGeometry(shape,{depth:.009,bevelEnabled:true,bevelSize:.002,
+          bevelThickness:.002,bevelSegments:1,curveSegments:3}));
+      }
+      const trim=mesh(trimCache.get(key),mat.wood,leaf,'Shutter shaped timber moulding');
+      trim.position.set(0,y,face*.040);if(face<0)trim.rotation.y=Math.PI;
+    }
+    function latticeShutter(leaf,w,h) {
+      const stile=Math.min(.068,w*.09), apron=h*.27, rail=.066;
+      box(w,apron,.06,0,apron/2,0,mat.wood,leaf,'Window timber shutter leaf');
+      for(const sign of [-1,1])
+        box(stile,h-apron,.06,sign*(w-stile)/2,(h+apron)/2,0,mat.wood,leaf,'Shutter stile');
+      for(const y of [apron,h-rail/2])
+        box(w-2*stile,rail,.057,0,y,0,mat.wood,leaf,'Shutter rail');
+      const span=w-2*stile, x=span*.27, low=apron+rail/2, high=h-rail;
+      const middle=(low+high)/2, rise=Math.min(span*.58,(high-low)*.32);
+      const half=Math.min(.016,span*.032);
+      box(span,high-low,.018,0,(low+high)/2,0,im.woodInset,leaf,'Shutter recessed solid field');
+      function moulding(shape,name){
+        const geometry=new T.ExtrudeGeometry(shape,{depth:.026,bevelEnabled:true,
+          bevelThickness:.004,bevelSize:.003,bevelSegments:2,curveSegments:14});
+        geometry.translate(0,0,-.013);
+        // Run the same moulding on both sides of the recessed field.
+        for(const face of [-1,1]){
+          const member=mesh(geometry,mat.wood,leaf,name);
+          member.position.z=face*.022;
+        }
+      }
+      for(const sign of [-1,1]){
+        const cx=sign*x, upright=new T.Shape();
+        upright.moveTo(cx-half,low);upright.lineTo(cx+half,low);
+        upright.lineTo(cx+half,high);upright.lineTo(cx-half,high);upright.closePath();
+        moulding(upright,'Shutter lattice bar');
+      }
+      // A single mitred outline gives the four corners a continuous bevel.
+      function diamond(path,width,height){
+        path.moveTo(0,middle-height);path.lineTo(width,middle);
+        path.lineTo(0,middle+height);path.lineTo(-width,middle);path.closePath();
+      }
+      const ring=new T.Shape(),opening=new T.Path();
+      diamond(ring,x-half-.003,rise);diamond(opening,x-3*half,rise*(x-3*half)/(x-half-.003));
+      ring.holes.push(opening);moulding(ring,'Shutter diamond moulding');
+      // Two curved shoulders meet at one pointed crown above the diamond.
+      const shoulder=middle+rise*.28,crown=high-.035;
+      const lancet=new T.Shape();
+      lancet.moveTo(-x+half,shoulder);
+      lancet.quadraticCurveTo(-x+half,crown-.17,0,crown);
+      lancet.quadraticCurveTo(x-half,crown-.17,x-half,shoulder);
+      lancet.quadraticCurveTo(x-half-.032,crown-.20,0,crown-.049);
+      lancet.quadraticCurveTo(-x+half+.032,crown-.20,-x+half,shoulder);
+      lancet.closePath();moulding(lancet,'Shutter lancet moulding');
+      for(const face of [-1,1])shutterPanel(leaf,w-2*stile,apron-.07,apron/2,face);
+    }
+    function rebuildSideOpening(bay,profile,centres,colonnettes=false){
+      const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening'||o.name==='Outer arcade wall with arched openings');
       if(!wall)return;
       const old=wall.geometry,parameters=old.parameters,depth=parameters.options.depth;
       old.computeBoundingBox();const b=old.boundingBox;
@@ -436,15 +576,29 @@
       for(const x of centres)for(let i=0;i<profile.radii.length-1;i++){
         const a=profile.radii[i],b=profile.radii[i+1],z0=sideCAD.reliefDepth[0],z1=sideCAD.reliefDepth[1]-i*.008;
         const material=i===2||i===4?mat.darkTrim:mat.trim;
-        const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:48}),material,bay,'Side CAD opening archivolt moulding');
+        const ring=mesh(new T.ExtrudeGeometry(sideArchBand(x,profile.spring,a,b),{depth:z1-z0,bevelEnabled:false,curveSegments:20}),material,bay,'Side CAD opening archivolt moulding');
         ring.position.z=z0;ring.userData={status:'NATIVE CAD RADII / CONCEPT RELIEF DEPTH',source:'DWG E26/D29'};
-        for(const s of [-1,1])box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
+        // Where E02's colonnette stands (the side toward the bay centre) it replaces the flat jamb.
+        for(const s of [-1,1])if(!colonnettes||s!==-Math.sign(x))box(b-a,profile.spring-profile.bottom,z1-z0,x+s*(a+b)/2,(profile.spring+profile.bottom)/2,(z0+z1)/2,material,bay,'Side CAD opening jamb moulding');
       }
     }
+    // Inner C/G window bays (owner, 8 Nov 2026): one large opening, as the CAD's inside elevation
+    // draws it. The E02 colonnettes, panels and roundel that stood here from 3 Nov 2026 belong to the
+    // outer wall again (porches.js); the bundle's low parapet and schematic rose go. A sill on both faces.
+    function dressInnerWindowBay(bay,profile){
+      for(const m of bay.children.slice())if(/^(Window low parapet|Schematic parapet flute|Schematic rose-window infill|Schematic rosette ring|Schematic rosette ray)$/.test(m.name)){m.removeFromParent();m.geometry.dispose();}
+      const w=profile.width+.16,y=profile.bottom;
+      box(w,.05,.30,0,y-.025,0,mat.trim,bay,'Inner window stone sill').userData={status:'DERIVED SILL · CONCEPT',source:'Sheet 12 inside elevation (sill +0.65); owner 8 Nov 2026'};
+      box(w,.04,.06,0,y-.07,.14,mat.trim,bay,'Inner window sill nosing');box(w,.04,.06,0,y-.07,-.14,mat.trim,bay,'Inner window sill nosing');
+    }
     for(const bay of sideBays) {
-      const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
-      const profile=inner&&!door&&sideCAD?sideCAD.window:null;
-      if(profile)rebuildSideOpening(bay,profile,profile.centres);
+      const inner=bay.name.startsWith('Inner wall '),door=inner&&/ (4–5|8–9|11–12)$/.test(bay.name),wing=bay.name.endsWith(' 9–10');
+      // Owner, 3 Nov 2026: the wing-end windows follow EW too, at the drawn centres ±2.45 (were ±2.4).
+      // Owner, 8 Nov 2026: the inner C/G windows take the single 2.25 m inside opening.
+      const big=inner&&!door&&sideCAD?.innerWindow;
+      const profile=big?sideCAD.innerWindow:wing&&sideCAD?sideCAD.window:null,centres=wing?[-2.45,2.45]:profile?.centres;
+      if(profile)rebuildSideOpening(bay,profile,centres,false);
+      if(big)dressInnerWindowBay(bay,profile);
       // Joinery planes: the inner wall is 0.22 m thick (porch face at +0.11), the outer 0.30 m.
       paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {
@@ -458,13 +612,35 @@
             rod([-sign*.40,1.1,.12],[-sign*.40,1.45,.12],.025,mat.metal,leaf,'Bronze door pull');
           }
         }
+      } else if(big) {
+        // One 2.25 m window: clear glass body to the 0.22 m head band, then the silver M lunette on
+        // both faces (church concept picture); a pair of panelled timber shutters swings to the porch.
+        const P=profile,half=P.width/2;
+        const body=new T.Shape();body.moveTo(-half,P.bottom);body.lineTo(half,P.bottom);body.lineTo(half,P.leafTop);body.lineTo(-half,P.leafTop);body.closePath();
+        pane(body,bay,sashGlass,'Inner window clear glass body').castShadow=false;
+        box(P.width,P.spring-P.leafTop,.20,0,(P.spring+P.leafTop)/2,0,mat.trim,bay,'Inner window head band 220 mm').userData={status:'EXPLICIT HEIGHT',source:'Sheet 12 inside elevation (2301 + 220)'};
+        dressWindowFrame(bay,P);
+        if(marian)for(const face of [1,-1]){
+          const lun=mesh(window.CHURCH_MARIAN_ART.lunette(T,0,P.spring,half,P.radius,false),marian.monogram,bay,face>0?'Inner window M lunette · porch face':'Inner window M lunette · nave face');
+          lun.position.z=face*.05;if(face<0)lun.rotation.y=Math.PI;lun.castShadow=false;
+          lun.userData={status:window.CHURCH_MARIAN_ART.STATUS,source:window.CHURCH_MARIAN_ART.SOURCE};
+        }
+        for(const state of ['closed','open']) {
+          const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
+          for(const sign of [-1,1]) {
+            const hinge=new T.Group();hinge.position.set(sign*half,P.bottom,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
+            const leaf=new T.Group();leaf.position.x=-sign*half/2;hinge.add(leaf);
+            const h=P.leafTop-P.bottom,w=half-.02;
+            latticeShutter(leaf,w,h);
+          }
+        }
       } else {
         // Half-round glazed fanlight over a timber transom, like the doors;
         // the shutter pair below swings out with the doors.
         const spring=profile?.spring??3.101,radius=profile?.radius??.507,leafTop=profile?.leafTop??3.0;
-        for(const x of wing?[-2.4,2.4]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
+        for(const x of wing?[-2.45,2.45]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
           const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,leafTop);body.lineTo(x-.5,leafTop);body.closePath();
-          const clearPane=pane(body,bay,mat.glass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
+          const clearPane=pane(body,bay,sashGlass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
           const headBottom=profile?spring:3.0,headHeight=spring+radius-headBottom;
           fanPane(arch(x,headBottom,1,spring,radius),bay,fanMaterial(fanIndex++,{width:1,bottom:headBottom,spring,rise:radius,sectors:6}),'Window stained-glass fanlight',x,headBottom,1,headHeight);
           box(1,profile?spring-leafTop:.085,.15,x,profile?(spring+leafTop)/2:3.0,jz,mat.wood,bay,'Window timber transom');
@@ -476,12 +652,7 @@
               const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
               const leaf=new T.Group();leaf.position.x=-sign*.25;hinge.add(leaf);
               const shutterHeight=profile?leafTop-.85:2.1;
-              box(.49,shutterHeight,.06,0,shutterHeight/2,0,mat.wood,leaf,'Window timber shutter leaf');
-              for(const face of [-1,1]){
-                for(const sx of [-1,1])box(.04,shutterHeight,.03,sx*.225,shutterHeight/2,face*.04,mat.wood,leaf,'Shutter stile');
-                for(const y of [.04,.72,1.38,shutterHeight-.04])box(.49,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
-                for(const y of [.38,1.05,1.72])box(.33,.5,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
-              }
+              latticeShutter(leaf,.49,shutterHeight);
             }
           }
         }
@@ -509,14 +680,11 @@
       // A closed end on each single-flight landing, matching the new side view.
       if(dir.length===1)rail([x+dir[0]*1.25,-.32,sign*minZ],[x+dir[0]*1.25,-.32,sign*maxZ],stairGroup);
     }
-    // Replace the old thin approach railing with continuous stone balustrades.
+    // Superseded approach balustrades would block the P05 stair returns. Their
+    // final replacement and handrails remain an access/engineering hold.
     const removals=[];
     plinth.traverse(o=>{if(/Schematic approach handrail|Schematic baluster/.test(o.name))removals.push(o);});
     removals.forEach(o=>o.removeFromParent());
-    for(const sign of [-1,1]) {
-      rail([-13.219,-2.08,sign*13.38],[-8.099,-.48,sign*13.38],plinth);
-      rail([-8.099,-.48,sign*13.38],[-.55,-.48,sign*13.38],plinth);
-    }
     // Reference timber shafts on the existing column grids, no grid changes.
     structure.traverse(o=>{
       if(!o.isMesh)return;
@@ -762,6 +930,7 @@
     window.CHURCH_TOWERS?.prepare(ctx);
     // Porch parapets, the 9–10 side gables and the rear gable after the CAD file (roofline.js, 25 Oct 2026).
     window.CHURCH_ROOFLINE?.prepare(ctx);
+    window.CHURCH_ENTRANCE_APPROACH?.prepare(ctx);
     // Project maps in metres before the legacy renderer merges material batches.
     const p=new T.Vector3(),normal=new T.Vector3(),normalMatrix=new T.Matrix3();
     building.updateMatrixWorld(true);scene.updateMatrixWorld(true);
@@ -802,19 +971,44 @@
     // Display only: it gives no light, casts no shadow and is not part of the
     // building, its exports or any calculation. Drawing views look along the
     // horizon or straight down and so keep a plain pale ground.
-    const skyMap=stops=>{
-      const c=document.createElement('canvas');c.width=8;c.height=512;
+    const skyMap=(stops,day=false)=>{
+      const c=document.createElement('canvas');c.width=day?1024:8;c.height=512;
       const g=c.getContext('2d'),fade=g.createLinearGradient(0,0,0,512);
       for(const [at,colour] of stops)fade.addColorStop(at,colour);
-      g.fillStyle=fade;g.fillRect(0,0,8,512);
+      g.fillStyle=fade;g.fillRect(0,0,c.width,c.height);
+      if(day){
+        // Periodic value noise in azimuth. Long, broken streaks soften as
+        // they approach the horizon and disappear before the ground colour.
+        const pixels=g.getImageData(0,0,c.width,c.height), rgba=pixels.data;
+        const hash=(i,j)=>{
+          let h=Math.imul(i+541,374761393)+Math.imul(j+71,668265263);
+          h=Math.imul(h^(h>>>13),1274126177); return ((h^(h>>>16))>>>0)/4294967296;
+        };
+        const noise=(u,v,period)=>{
+          const x=Math.floor(u), y=Math.floor(v);
+          const fx=u-x, fy=v-y, a=fx*fx*(3-2*fx), b=fy*fy*(3-2*fy);
+          const i=((x%period)+period)%period, k=(i+1)%period;
+          return (hash(i,y)*(1-a)+hash(k,y)*a)*(1-b)+(hash(i,y+1)*(1-a)+hash(k,y+1)*a)*b;
+        };
+        for(let y=3;y<248;y++)for(let x=0;x<c.width;x++){
+          const u=x/c.width, v=y/c.height, sweep=.65*Math.sin(2*Math.PI*u);
+          const warp=noise(u*5,v*12,5);
+          const n=.53*noise(u*7,v*27+sweep,7)+.29*noise(u*17,v*65+warp*3,17)
+            +.13*noise(u*39,v*150+warp*6,39)+.05*noise(u*89,v*320,89);
+          const alpha=Math.min(.66,Math.max(0,(n-.46)*2.3))*Math.min(1,(248-y)/32,y/32);
+          const i=(y*c.width+x)*4;
+          rgba[i]+=(249-rgba[i])*alpha; rgba[i+1]+=(242-rgba[i+1])*alpha; rgba[i+2]+=(229-rgba[i+2])*alpha;
+        }
+        g.putImageData(pixels,0,0);
+      }
       const map=new T.CanvasTexture(c);map.colorSpace=T.SRGBColorSpace;return map;
     };
-    ctx.skyMaps={day:skyMap(SKY.day.stops),evening:skyMap(SKY.evening.stops)};
+    ctx.skyMaps={day:skyMap(SKY.day.stops,true),evening:skyMap(SKY.evening.stops)};
     const dome=new T.Mesh(new T.SphereGeometry(300,32,16),new T.MeshBasicMaterial({map:ctx.skyMaps.day,side:T.BackSide,fog:false,depthTest:false,depthWrite:false,toneMapped:false}));
     dome.name='Sky dome · display only';dome.renderOrder=-1000;dome.frustumCulled=false;dome.matrixAutoUpdate=false;dome.raycast=()=>{};
     dome.onBeforeRender=(r,s,camera)=>dome.matrixWorld.copyPosition(camera.matrixWorld);
     scene.add(dome);ctx.skyDome=dome;
-    sun.position.set(-35,48,-48);sun.target.position.set(20,9,0);
+    sun.position.set(-31,39,-58);sun.target.position.set(20,9,0);
     sun.shadow.mapSize.set(lightGraphics?1024:4096,lightGraphics?1024:4096);
     Object.assign(sun.shadow.camera,{left:-48,right:48,top:47,bottom:-39,near:.5,far:180});sun.shadow.camera.updateProjectionMatrix();sun.shadow.normalBias=.035;sun.shadow.bias=-.00008;
     // Restrained facade illumination: four static spot lights in evening only.
@@ -828,9 +1022,9 @@
     const centralWash=new T.SpotLight('#ffd49e',0,65,.85,.85,1.5);
     centralWash.position.set(-12,2,0);centralWash.target.position.set(2.4,9,0);scene.add(centralWash,centralWash.target);ctx.facadeLights.push(centralWash);
     data.revision='REFERENCE-REALISM-2026-10-05';
-    data.refinement={date:'2026-10-05',mainOuterPlinthWidth:22.489,wingOuterPlinthWidth:28.158,frontPlatformWidth:27.254,frontPlatformRise:1.6,sideLandings:6,sideFlights:8,rearStairs:0,sideDoorPlane:10.414,stairRisersPerFlight:12,stairRiserHeight:1.76/12,treeRows:2,treeCount:16,stairCountStatus:'Proposed; measured floor levels retained',references:window.CHURCH_REFERENCES.map(r=>r.url)};
+    data.refinement={date:'2026-10-05',mainOuterPlinthWidth:22.489,wingOuterPlinthWidth:28.158,frontPlatformWidth:27.084,frontPlatformRise:1.6,sideLandings:6,sideFlights:8,rearStairs:0,sideDoorPlane:10.414,stairRisersPerFlight:12,stairRiserHeight:1.76/12,treeRows:2,treeCount:16,stairCountStatus:'Proposed; measured floor levels retained',references:window.CHURCH_REFERENCES.map(r=>r.url)};
     data.assumptions=data.assumptions.filter(s=>!s.startsWith('The broad supporting plinth')&&!s.startsWith('Neutral and warm colors'));
-    data.assumptions.push('Main plinth 22.489 m and projecting wing plinth 28.158 m use the plan overall witnesses. Structural axes and the 2.835 m projection per side remain fixed. Front stage stays within 27.254 m tower facade width and 1.600 m above courtyard. Detailed face offsets remain provisional.');
+    data.assumptions.push('Main plinth 22.489 m and projecting wing plinth 28.158 m use the plan overall witnesses. Structural axes and the 2.835 m projection per side remain fixed. P05 entrance steps return around the forecourt on both sides; the widest drawn nosing is approximately 27.084 m and the forecourt is 1.600 m above the courtyard. Heights and construction are not approved.');
     data.assumptions.push('Exterior side doors now occupy the same outer wall plane as the windows, following the latest user correction. Doors open in Walk mode. Tower front arches remain open with the existing rear wall plane visible beyond.');
     data.assumptions.push('The sanctuary frame uses the three-lobed central and side arch silhouettes from section sheet 5. Curvature, relief depth and placement at axis 10 remain visual reconstructions pending a detailed longitudinal section.');
     data.assumptions.push('Side access follows the plan and the corrected side reference: paired flights at the first doorway, single flights flanking the projecting bay. Stair count, tread run, balustrade profiles and exact landing edges are proposed.');
@@ -842,8 +1036,123 @@
     building.userData.assumptions=data.assumptions;
     window.CHURCH_SANCTUARY?.prepare(ctx);
     window.CHURCH_DECORATION?.prepare(ctx);
+    // Interior finish study, 10 Nov 2026: paving, skirting, cornice, ceiling panels, sanctuary details.
+    window.CHURCH_INTERIOR_FINISH?.prepare(ctx);
+    // Design excellence stage 2, 20 Nov 2026: altar, ambo, credence and candlesticks (CONCEPT).
+    window.CHURCH_SANCTUARY_FURNISHINGS?.prepare(ctx);
+    // Courtyard tree canopies, 20 Nov 2026 (presentation only, unsurveyed landscape).
+    window.CHURCH_LANDSCAPE_TREES?.prepare(ctx);
+    // Plinth rubble, granite paving and the designed courtyard, 20 Nov 2026 (CONCEPT, site unsurveyed).
+    window.CHURCH_SITE_STONE?.prepare(ctx);
+    // Façade grandeur, 20 Nov 2026: exterior daylight balance and stone tone hierarchy (CONCEPT, display only).
+    window.CHURCH_FACADE_GRANDEUR?.prepare(ctx);
+    applyJoineryColours();
     applyGlass();
     finish(true);
+  }
+
+  // Keep the material and texture handles stable through load, batching and
+  // neutral/reference switches. The embedded photos work offline on file://.
+  function timberMaps(grain) {
+    const { THREE: T, renderer, woodGrain } = context;
+    if (woodGrain.has(grain)) return woodGrain.get(grain);
+    const entry = window.CHURCH_WOOD_GRAIN_TEXTURES?.[grain];
+    if (!entry || typeof window.Image !== 'function') return {};
+    const light = new URLSearchParams(location.search).get('graphics') === 'light';
+    function texture(key, space, fallback) {
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = light ? 384 : 768;
+      const g = canvas.getContext('2d');
+      g.fillStyle = fallback; g.fillRect(0, 0, canvas.width, canvas.height);
+      const map = new T.CanvasTexture(canvas);
+      map.name = `Photographic timber · ${grain} ${key}`;
+      map.colorSpace = space;
+      map.wrapS = map.wrapT = T.RepeatWrapping;
+      map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      if (light) map.userData.displayResample = { kind: 'resampled display texture', source: [768, 768], display: [384, 384], mode: 'light' };
+      const image = new window.Image();
+      image.onload = () => {
+        g.imageSmoothingQuality = 'high';
+        // A translucent dark stain settles the light/dark bands in the source photograph.
+        if (key === 'colour') {
+          g.fillStyle = grain === 'pews' ? '#785540' : '#684637';
+          g.fillRect(0, 0, canvas.width, canvas.height);
+          g.globalAlpha = grain === 'pews' ? .34 : .28;
+        }
+        g.drawImage(image, 0, 0, canvas.width, canvas.height);
+        g.globalAlpha = 1;
+        map.needsUpdate = true;
+        window.CHURCH_PERFORMANCE?.invalidate();
+      };
+      image.onerror = () => console.error('Could not decode timber texture: ' + map.name);
+      image.src = entry[key];
+      return map;
+    }
+    const maps = {
+      map: texture('colour', T.SRGBColorSpace, grain === 'pews' ? '#a88972' : '#735140'),
+      bumpMap: texture('height', T.NoColorSpace, '#808080')
+    };
+    woodGrain.set(grain, maps);
+    return maps;
+  }
+
+  function stainedTimber(source, name, grain, color, roughness) {
+    const material = source.clone();
+    material.name = name;
+    material.color.set(color);
+    Object.assign(material, timberMaps(grain), { roughness, bumpScale: .00022, envMapIntensity: .30 });
+    context.palettes.set(material, { color: material.color.clone(), map: material.map, bump: material.bumpMap });
+    return material;
+  }
+
+  // The long axis follows the board on rails, seats, backs and stiles. UVs
+  // are in local metres, so opening a leaf keeps the grain on that leaf.
+  function paintTimber(part, material, phase = 0, upright = false) {
+    const T = context.THREE;
+    const geometry = part.geometry.clone();
+    geometry.computeBoundingBox();
+    const size = geometry.boundingBox.getSize(new T.Vector3());
+    const axes = [0, 1, 2].sort((a, b) => size.getComponent(b) - size.getComponent(a));
+    if (upright) { axes.splice(axes.indexOf(1), 1); axes.unshift(1); }
+    const [along, middle, thin] = axes;
+    const position = geometry.attributes.position, normal = geometry.attributes.normal;
+    const uv = new T.BufferAttribute(new Float32Array(position.count * 2), 2);
+    const p = new T.Vector3(), n = new T.Vector3();
+    for (let i = 0; i < position.count; i++) {
+      p.fromBufferAttribute(position, i); n.fromBufferAttribute(normal, i);
+      const end = Math.abs(n.getComponent(along)) > .7;
+      const across = end || Math.abs(n.getComponent(thin)) < Math.abs(n.getComponent(middle)) ? thin : middle;
+      uv.setXY(i, p.getComponent(end ? middle : along) / 2.35 + phase, p.getComponent(across) / 1.10 + phase * .37);
+    }
+    geometry.setAttribute('uv', uv);
+    part.geometry = geometry;
+    part.material = material;
+  }
+
+  function applyJoineryColours() {
+    const { building, mat, interior: { materials } } = context;
+    const door = stainedTimber(mat.wood, 'Doors · red-brown timber', 'joinery', '#e4d1c9', .56);
+    const doorPanel = stainedTimber(materials.woodInset, 'Doors · recessed red-brown timber', 'joinery', '#d4bfb5', .59);
+    const doorEdge = stainedTimber(mat.wood, 'Doors · red-brown timber mouldings', 'joinery', '#ead9d1', .53);
+
+    for (const group of Object.values(doorGroups)) group.traverse(part => {
+      if (!part.isMesh) return;
+      const phase = part.position.y * .19 + part.position.x * .23;
+      if (/^(Recessed carved timber panel|Timber rosette relief|Carved rosette petal)$/.test(part.name)) paintTimber(part, doorPanel, phase, true);
+      if (/^Raised panel (horizontal|vertical) frame$/.test(part.name)) paintTimber(part, doorEdge, phase);
+      if (part.material === mat.wood && /^(Open timber door leaf|Exterior timber door leaf|Door panel(?: |$))/.test(part.name)) paintTimber(part, door, phase);
+      if (/^(Window timber shutter leaf|Shutter stile)$/.test(part.name)) paintTimber(part, door, phase);
+      if (/^(Shutter rail|Shutter lattice bar|Shutter diamond moulding|Shutter lancet moulding|Shutter shaped timber moulding)$/.test(part.name)) paintTimber(part, doorEdge, phase);
+      if (part.name === 'Shutter recessed solid field') paintTimber(part, door, phase, true);
+      if (part.name === 'Shutter inset panel') paintTimber(part, doorPanel, phase, true);
+    });
+    building.traverse(part => {
+      if (!part.isMesh) return;
+      if (part.name === 'Inner window timber transom field') paintTimber(part,doorPanel);
+      if (/^(Window timber transom|Inner window timber transom bead|Inner window carved lotus and vine)$/.test(part.name)) paintTimber(part,doorEdge);
+      // Fixed façade and rear meshes already carry their builder's per-part UVs.
+      if (part.material===mat.wood&&/^(Triple window |Rear fixed window )/.test(part.name)) part.material = /rail|transom/.test(part.name) ? doorEdge : door;
+    });
   }
 
   function finish(reference=true) {
@@ -856,7 +1165,7 @@
   function applyGlass(){
     if(!context?.artGlass)return;
     const T=context.THREE,night=lightMode==='evening';
-    for(const {m,map,bump,rough} of context.artGlass){
+    for(const {m,map,bump,rough,clearOpacity=.14,clearReflection=.85} of context.artGlass){
       m.transparent=true;m.depthWrite=false;m.side=T.DoubleSide;m.metalness=0;
       if(glassKind==='stained'&&map){
         m.map=m.emissiveMap=map;m.color.set('#ffffff');m.emissive.set('#ffffff');
@@ -865,8 +1174,8 @@
         m.clearcoat=.28;m.clearcoatRoughness=.16;m.envMapIntensity=.72;
       }else{
         m.map=m.emissiveMap=m.bumpMap=m.roughnessMap=null;m.color.set('#edf6f5');m.emissive.set('#000000');
-        m.emissiveIntensity=0;m.opacity=.14;m.roughness=.045;
-        m.clearcoat=.35;m.clearcoatRoughness=.08;m.envMapIntensity=.85;
+        m.emissiveIntensity=0;m.opacity=clearOpacity;m.roughness=.045;
+        m.clearcoat=.35;m.clearcoatRoughness=.08;m.envMapIntensity=clearReflection;
       }
       m.needsUpdate=true;
     }
@@ -879,16 +1188,20 @@
   function lighting(mode) {
     if(!context)return;
     lightMode=mode==='evening'?'evening':'day';applyGlass();
+    window.CHURCH_DISPLAY_FINISH?.lighting(lightMode);
     const {scene,sun,fill,hemisphere,renderer,interior,facadeLights}=context,night=mode==='evening';
     scene.background.set(SKY[lightMode].horizon);scene.fog.color.copy(scene.background);
     if(context.skyDome)context.skyDome.material.map=context.skyMaps[lightMode];
     scene.environmentIntensity=night?.18:.6;
-    hemisphere.color.set(night?'#9bb1cf':'#d9edff');hemisphere.groundColor.set(night?'#4c4038':'#b4a28a');hemisphere.intensity=night?.22:1.15;
+    hemisphere.color.set(night?'#9bb1cf':'#d9edff');hemisphere.groundColor.set(night?'#4c4038':'#b4a28a');hemisphere.intensity=night?.22:.91;
     sun.color.set(night?'#adbedc':'#fff0d5');sun.intensity=night?.09:3.15;
-    fill.color.set(night?'#a5bada':'#d2e3f4');fill.intensity=night?.1:.45;
+    fill.color.set(night?'#a5bada':'#d2e3f4');fill.intensity=night?.1:.33;
     renderer.toneMappingExposure=night?1.12:1;
     // Reset from the interior's registered values, so repeated toggles never compound.
     interior.setLighting(mode);
+    window.CHURCH_INTERIOR_FINISH?.lighting(lightMode,interior);
+    // Sky light through the side windows and doors, for the display by day only.
+    window.CHURCH_SIMULATOR?.persistentLighting?.daylight?.(night?0:1);
     interior.lights.forEach(light=>{light.intensity*=night?1.9:.95;});
     facadeLights.forEach((light,index)=>{light.intensity=night?(index<2?430:index===4?450:230):0;});
     renderer.shadowMap.needsUpdate=true;

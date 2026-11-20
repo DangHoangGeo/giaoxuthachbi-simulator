@@ -107,3 +107,98 @@ Phương pháp: chồng cạnh của mô hình thật (nạp bằng `scripts/lib
 - **Còn giữ chờ:** bề rộng mép ngoài trụ tầng trệt nay đúng CAD (13,318). Cụm lá ở góc ô vòm mặt bên chưa thêm. Chiều sâu thật của tháp, hành lang sau tháp, kết cấu và móng chờ kiến trúc sư và kỹ sư.
 
 **Kiểm tra:** `verify_exterior_dwg.cjs` có thêm 9 phép so (và 13 phép so mặt trụ theo ENG-043) (cao độ dải 1,848 / 0,443 / 1,368; độ nhô bệ 0,269; mặt sau trụ 0,495; khung bảng; độ vươn lá vương miện). Đã chạy `verify_model.cjs`, `verify_construction.cjs` và `verify_tower_balcony.cjs`: đều đạt. `verify_simulator.cjs` dừng ở các mục tiêu thiết kế chưa đạt sẵn có: biên chống hú micro giảng đài 0,9 dB và bàn thờ 1,4 dB, 13 % ghế dưới 200 lux. Kết quả giống hệt khi chạy lại với `towers.js` trước sửa, nên không do lần sửa này. Đã xem trong trình xem trên máy tính, ban ngày, buổi tối và chế độ `?visit`; không có lỗi console. Các bộ bản vẽ trong `output/pdf/` và `output/pdf-vi/` vẫn ghi revision tháp cũ `2026-10-26-cad-towers-4`, nên **đã cũ** cho phần tháp cho tới khi dựng lại. Không đổi thiết bị, tuyến điện hay sổ Excel. Không phải hồ sơ thi công.
+
+## Tower-front leaf outline · 2 November 2026
+
+The H-front spandrel leaf corner profiles were transcribed separately from E01B T12 into a reusable component; the B-front repeat is derived. See the [source, permission, verification and 3D-relief limitations](tower-spandrel-review.md). The contour radius is illustrative (8 mm at first, 18 mm since the owner's request below), and the existing PDF/model exports are stale for this change. No equipment or routes changed.
+
+## Lower columns, side leaves and side capitals · 2 November 2026
+
+**In development / Đang phát triển · Not for construction / Không dùng để thi công.** Revision `2026-11-02-tower-lower-columns-1`, owner request: below ±0 the tower stands on columns balanced with the piers above, not on a solid block.
+
+- **Source (DRAWING SHOWN).** E02 side elevation, lines D8DE56–D8DE77 and D8DE5C–D8DE62, and E01B lines C454ED–C454F9 draw, under each corner pier, a column from the −0.203 band down to the −2.08 courtyard. Its face runs 0.309 m beyond the pier's corner edge and 0.224 m beyond the other edge (front X −1.024 to 0.719, rear X 4.181 to 5.924, |Z| 6.679–8.422 and 11.884–13.627), with strip lines 0.305 / 0.22 / 0.22 m wide. A band in two steps (0 to −0.13 and −0.13 to −0.203) runs over the columns, 0.113 m and 0.05 m proud. Nothing is drawn between the columns. Raw vector PDFs `exports/23102026_vector/_vector_raw/E02.pdf` and `E01B.pdf` were inspected zoomed out for this reading; they stay local under H1.
+- **Model.** Each corner pier stands on a cream lower column, built as a body plus three strips 0, 15 and 40 mm proud (relief **DERIVED**). The grey stone core between the columns is set back to the tower wall plane above (front X −0.14, outer face |Z| 12.743). This set-back is **DERIVED**: the drawing shows no infill line, and it does not establish whether the bays are open, closed or of stone. The core keeps X 5.4 at the rear (veranda) and |Z| 6.75 on the inner side. The former solid plinth (X −0.984 to 5.4, |Z| 6.75–13.62) and its rear extension under the outer rear pier (ENG-043) are replaced; the outer rear column now reaches X 5.924 as E02 draws it.
+- **Side spandrel leaves.** E02 draws the T12 leaf pair round the side great arch: all 150 arc centres, radii and end points of both profiles agree within 0.1 mm about X 2.450. The same reusable component now stands on the outer side of both towers (`Tower side spandrel spray · E02`); relief is **CONCEPT**. The earlier hold in this record ("Cụm lá ở góc ô vòm mặt bên chưa thêm") is resolved for the outer face; the inner and rear faces have no great arch.
+- **Side capitals.** E02 draws the same acanthus capitals as the front on the side great-arch imposts and blind colonnettes. They reuse `pilasterCapital` (`Tower side great capital foliage · E02`, `Tower side blind capital foliage · E02`); carving is illustrative.
+- **Bolder leaves.** At the owner's request the leaf contour radius is 18 mm (was 8 mm), with arcs tessellated to a 1 mm chord tolerance (was 0.2 mm). Source end points are unchanged.
+- **Open.** The lower storey's structure, foundations, drainage, whether the bays between the columns are open or filled, and their material remain with the architect and structural engineer. The wall-plane discrepancy at stage 1 is unchanged. The uncommitted H-side ramp study runs beside the outer face (inner edge |Z| 13.72; columns end at 13.627, band at 13.74 above the ramp).
+
+**Checks:** `verify_model.cjs` (ray hits on each column face at its CAD line and on the set-back core; facade triangle budget 144,152 < 150,000), `verify_tower_spandrel.cjs` (600 front and 600 side end points within the 18 mm stroke), `verify_construction.cjs` and the simulator calculation audit. Desktop day views captured headless (front corner, both outer sides, side spandrels and the B-tower base). `verify_entrance_approach.cjs` fails at its first ramp lookup because the uncommitted ramp study renamed that mesh; this predates the change. Exports in `output/pdf*` are stale for the towers. No equipment, circuits or routes changed.
+
+## Traced tower decoration · 3 November 2026
+
+**In development / Đang phát triển · Not for construction / Không dùng để thi công.** Revision `2026-11-03-tower-traced-decoration-1`, owner direction of 3 November 2026: make the tower decoration follow the CAD drawing as closely as possible. Outlines are stored in `Thach_Bi_Viewer/detail-towers-profile.js` (`window.CHURCH_DETAIL_PROFILE_TOWERS`) and checked row by row against the DXF by `scripts/verify_detail_towers_source.py`, which also measures every drawn repeat that the viewer renders from the same rows. Source DWG and SHA-256 as above; publication hold H1 applies to the outlines.
+
+### Pier capitals and flute position
+
+- **Capitals (DRAWN outline, CONCEPT relief).** The generic `pilasterCapital` foliage on the corner piers is replaced by the drawn acanthus band of each storey: `pierCapital1` (ground, E01B Z 7.32–8.27, +7.50–7.80; the Greek-key LINE pieces D10AB5–D10AC2 and C482F7 in the same band are left out), `pierCapital2` (+15.00–15.34), `pierCapital3` (+22.36–22.64) and `pierCapital4` (+28.51–28.78; the abacus edge lines C4411D/C44123/C4412D are left out). Each key is the E01B inner pier, u = Z − 10.153, ARC/LINE only, arcs ≤ 0.3 m, lines ≤ 0.19 m. The outer pier is its mirror about the tower centre, and E02 draws the same outline on the side faces (front pier as traced, rear pier mirrored): all three copies lie within 0.13 mm of the traced points. Rendered as an 8 mm contour tube just proud of the capital band (`capitalStroke`), on the front and outer side faces of all four storeys of both towers. Meshes `Tower pier capital foliage · traced E01B` and `· traced E02`.
+- **Kept illustrative.** The nave-side face of the truncated ground inner rear pier (ENG-043) keeps the old `pilasterCapital`, because the drawn band is wider than that pier.
+- **Flute position (DRAWN).** The drawn flutes are not on the pier centre. The middle flute (r 25 mm end arcs) is at t 2.450 / 2.390 / 2.330 / 2.199 m from the tower centre on E01B (Z 7.703/12.603, 7.763/12.543, 7.823/12.483, 7.954/12.351) and at X 0.00 / 0.06 / 0.12 / 0.252 (front pier) and 4.90 / 4.84 / 4.78 / 4.649 (rear pier) on E02. On storeys 1–3 that is 0.09–0.11 m in from the pier centre, toward the face centre; storey 4 is centred. The fluted fields (2 Nov form unchanged) and the ground pilaster strips now stand on those lines (`spec.flutes[].t/x`), so the capital's central fleuron sits over the middle flute as drawn. Pier widths, bands and depths are unchanged.
+
+**Checks:** `verify_detail_towers_source.py` (805 rows exact to 5e-10; copies ≤ 0.13 mm), `verify_model.cjs`, `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0; the known unmet targets for wing clarity and feedback margins are unchanged), `verify_tower_balcony.cjs`, `verify_tower_spandrel.cjs`, `verify_exterior_dwg.cjs`. Desktop day views captured headless (stage-3 capital close-up, outer side, full front). Tower triangles 493,048 → 630,536 (+137,488): the traced bands are far finer than the old generic leaves. No equipment, circuits or routes changed; the festival light strings on the pier faces are unchanged. Exports in `output/pdf*` are stale for the towers.
+
+### Roses, window heads, imposts and lantern rose
+
+Revision `2026-11-03-tower-traced-decoration-1`, second step. All keys in `detail-towers-profile.js`; u and v are stored from the origin given, E01B, ARC/LINE only.
+
+| Key | Source (E01B) and origin | Drawn repeats checked (largest gap) | Replaces in the model |
+| --- | --- | --- | --- |
+| `rose` (201 rows) | Stage-3 front rose tracery: twelve interlaced lobes, radial bars, hub and the r 0.3947 inner circle; origin Z 10.152934, +20.612392; arcs < 0.395 m so the drawn r 0.45/0.54 rings stay the existing torus | Stage-2 front rose (0.0 mm); E02 stage-2/3 side roses (0.0 mm) | `K.bloom` rose carving on the 16 stage-2/3 rose faces |
+| `roseSmall` (200) | Stage-4 front rose; origin Z 10.141459, +27.191525 | Dome rosette at +31.699584 (0.0 mm); E02 stage-4 side rose (0.0 mm) | `K.bloom` on the 8 stage-4 roses and the 8 dome rosettes |
+| `windowHead` (67) | Tympanum tracery of the paired louvre openings: cross with trefoil ends over a three-lobed arch; origin = B-side stage-3 opening Z 9.257934, springing +19.317964; the springing lines at v 0 are left out | Other stage-3 opening (0.7 mm); stage-2 openings (15 and 25 mm, their radius is 0.4996 not 0.5); E02 stage-3 openings (0.7 mm) | nothing (heads were plain) |
+| `windowHead4` (54) | Stage-4 tympanum; origin Z 9.457112, +26.149596 | Other stage-4 opening and E02 stage-4 openings (0.0 mm) | nothing |
+| `lanternRose` (153) | Rose with leaves in the lantern's middle panel; origin Z 10.141459, +33.481658 | — (E02 draws the same panel; not checked) | `K.bloom` lantern panel rosettes |
+| `greatCapital` (80) | Ground great-arch impost capital, inner (B) side, Z 8.20–8.86, v from the +3.984770 springing; the abacus and astragal LINEs are left out | Outer side mirrored (0.13 mm); E02 both sides (0.07 mm) | `pilasterCapital` on front and E02 side imposts |
+| `blindCapital` (54) | Ground blind-arch colonnette capital, Z 8.95–9.27, v from +2.899970; two abacus LINEs left out | Mirrored (0.13 mm); E02 at its +3.100470 springing (0.07 mm) | `pilasterCapital` on front and E02 side colonnettes |
+
+- **Placement.** Front roses 25 mm proud of the wall face over the existing coloured infill; window-head tracery 40 mm inside the opening, over the dark shutter backing (whether the tympanum is open, glazed or solid is not drawn; CONCEPT). Stage-2 roses, the stage-2 heads, the B/outer repeats and all inner/rear faces carry `DERIVED REPEAT` status; the inner and rear faces keep their existing **DERIVED REPEATED PROFILE / CONFIRMATION PENDING** label (ENG-040).
+- **Upper great-arch imposts (DRAWN).** E01B and E02 draw a plain pilaster with a necking band, a lower and an upper abacus, and no foliage (C43850..C44C48 stage 2, C438A0..C438B0 stage 3, C44263..C44290 stage 4). The illustrative foliage and the solid 0.46 m capital block are removed on all 24 upper faces; the bands are at −0.46…−0.39 (stage 4 −0.295…−0.225), −0.14…−0.07 and −0.07…0 m from the springing, 0.03 / 0.03 / 0.08 m beyond the shaft (on stages 2–3 the drawn bands also run back across the wall to the corner pier; that return is not modelled yet). On stage 4 the shaft spans all five arch rings (E01B Z 8.648–8.838) instead of the first 25 mm ring. Band depths are DERIVED.
+- **Ground great-arch impost (DRAWN width).** E01B draws three orders down to the base (Z 8.43 / 8.60 / 8.77) and the capital over all three, t 1.293–1.955. The inner order (r 1.385–1.555) is added as a 0.10 m pilaster and the capital block widened to t 1.293 on the front and the E02 side. Depths DERIVED.
+- **Dome rosettes.** The rosette and its ring now lean back to the dome slope at +31.70 (DERIVED) so the lower half is no longer buried in the dome.
+- ~~**Not changed, open.** The model's eight dome ribs are not drawn on E01B or E02.~~ Resolved on 3 November 2026: see *Tower top after the drawing* below.
+
+**Checks:** `verify_detail_towers_source.py` (1,614 rows exact to 5e-10; all repeats listed above), `verify_model.cjs`, `verify_construction.cjs`, `verify_simulator.cjs --report --estimates` (exit 0; known unmet targets unchanged), `verify_tower_balcony.cjs`, `verify_tower_spandrel.cjs`, `verify_exterior_dwg.cjs`, `verify_side_dwg.cjs`. Headless desktop day views: stage-3 and stage-4 fronts, ground front and E02 side, dome, rear diagonal. Tower triangles 630,536 → 804,520 (+173,984); together with the capitals +311,472 over the 2 November model (scene 2.90 M). The tubes use the light setting of `towerSpandrel` (3 sides, 30° arc steps); the remaining budget lever is the 12 DERIVED inner/rear faces (about 79,000 triangles of roses and heads). No equipment, circuits or routes changed. Exports in `output/pdf*` are stale for the towers.
+
+### False doors in the blind arches · 3 November 2026
+
+Owner, 3 Nov 2026: the towers' false doors should look like the main timber doors without being real doors. The front blind arch (radius 0.824, +0.30 to the springing +2.900) and the E02 side opening (±0.5, sill +0.850, springing +3.100) now carry a fixed timber facing. It has a frame, a transom, two leaves with three raised panels each, carved rosettes and a timber fan of seven ribs in the arched head, in the main doors' wood with a darker inset. The wall stays closed behind; nothing opens, and walking and analysis geometry are unchanged. The side blind panel takes the wall finish instead of the dark trim, so the door stands out. Sizes follow the drawn arches; joinery and depths are CONCEPT.
+
+### Tower top after the drawing · 3 November 2026
+
+The owner asked that the tower tops look like the design (E01B elevation, sent as an image). Rebuilt in `towers.js` for both towers:
+
+- **Four-faced dome, not a round ribbed one.** The +29.09 plan (PT29) draws the dome as a square: diagonal arris lines from the corners to the centre and a diamond corner rib at ±1.7266 m. E01B's double inner line is therefore the margin of each face, not a rib.
+  - Each face follows the traced outline: arc `C4568C`/`C45696`, r 2.628674 about an offset centre (±0.649346, +30.541187).
+  - It has a 0.18 m margin at full height, a 0.06 m fillet (concentric arcs r 2.448674 / 2.388674, `C4568D/E`, `C45697/8`) and the field within. The tops are flat at +32.6405 / +32.5805 (`C4568F`–`C45692`, ends at ±0.611 / ±0.5945).
+  - The margin meets the next face on the arris. The fillet and field are set back 0.05 / 0.12 m (**DERIVED**). PT29's 0.24 m face step at the drum level is not modelled. The eight ribs and the round base torus are removed.
+  - The four dome rosettes sit on the fields. The mesh keeps the name `Tower dome · CAD profile`, and its contact with the lantern stays at +32.790457.
+- **Lantern after E01B** (LINEs about u 10.1529):
+  - a quarter-round step r 0.1278 on the plinth;
+  - a base (±0.5577, +33.1111–33.2317) breaking forward over ±0.3163;
+  - a body ±0.4878 (was ±0.5578, with corner posts the drawing does not show) with a projecting middle bay ±0.2464;
+  - the traced rose in a framed panel ±0.1963, between two sunk side panels (±0.2463–0.4377, +33.2817–33.6817);
+  - the bead band with eleven beads per face and its cap (±0.5827), both breaking forward like the base.
+
+  Projections are **DERIVED**.
+- **Crown traced** (`crown`, 153 ARCs, origin the ball centre Z 10.152933; E02 draws the same crown within 0.04 mm; checked by `verify_detail_towers_source.py`).
+  - The traced front is wrapped onto a bowl of revolution on each of the four faces, so each elevation shows the drawn leaves and scrolls. The bowl's silhouette (r 0.50 at +33.86, 0.70 at +34.35, 0.15 at +35.0) is **DERIVED** from the trace.
+  - Strokes outside the bowl (the flared tips reaching 0.948 m at +34.17, the outer leaves and the top bosses) stand as 60 mm solid flat-cut leaves on each face's centre plane (`Tower lantern acanthus crown`).
+  - Each face's wrap stops at 55° from its centre, so the four faces do not overlap.
+  - The free-modelled acanthus leaves, the bulb and the six-knob collar are removed. Relief and thickness are **CONCEPT**.
+- **Cross:** the traced trefoil now takes the trim finish like the gable crosses, instead of the brown cross material. Four leftover brown cap pieces from the old cross (`Schematic round profile` above +35.5 m) are removed.
+- Not changed: the pierced parapet, corner pinnacles and the entablature below already follow the drawing.
+
+**Checks:** `verify_detail_towers_source.py` (with the new `crown` key), `verify_model`, `verify_exterior_dwg`, `verify_tower_balcony`, `verify_tower_spandrel`, `verify_construction`, `verify_side_dwg`, `verify_simulator --report --estimates`. Headless captures (light graphics) were reviewed: front, diagonal, close crown and cross. No equipment, circuits or routes changed.
+
+### Sandstone accent on the tower carving — 3 November 2026
+
+Owner, 3 Nov 2026: the carving on the towers was hard to see because it had the same colour as the surface behind it. Every carved part used the cream trim finish (`#efe2c8`) against the cream dome (`#efdfbd`, contrast about 1.03 : 1) and the ivory walls and lantern (`#faf3e1`, about 1.16 : 1). The owner chose **warm sandstone**, first for the tops, then for all stages and the central façade. The carving now uses the existing dark trim finish (`mat.darkTrim`, `#b69b73`, about 2.4 : 1 against the walls), as the old bundle cap's rosettes did:
+
+- **Tops:** the dome rosette tracery and rings, the lantern panel roses and beads, and the crown carving and acanthus crown.
+- **Every stage:** the pier capital foliage (traced E01B/E02 and the illustrative inner rear), the great-arch impost and blind-arch capital foliage, the front and side spandrel sprays, the rose rings and rose tracery, the front cartouche frame and the base Greek-key frieze.
+
+Owner, 4 Nov 2026: the corner pinnacle crowns go back to cream, like the pinnacle crowns on the façade. Mouldings, cornices, bands, dentils, colonnettes, the louvre-head tracery (over the dark shutter backing), the dome, the lantern body and frames, the crown bowl, neck and ball stay cream. The cross also keeps the trim finish, like the gable crosses. The central façade follows the same rule; see [facade-model.md](../facade-model.md#sandstone-accent-on-the-carving--3-november-2026). Only the material changed: geometry, names, placement and the analysis model are unchanged. The colour is **CONCEPT** (appearance only; the stone or paint specification, weathering and maintenance are not chosen). In the drawing (no-colour) view the accent turns grey like the other finishes.
+
+### Tower wall and shutter colour · 20 November 2026
+
+The base enclosures and upper wall faces on both towers use the church-wide continuous stone-grey colour. The piers share the wall tint. The mouldings and caps use closely related stone tones, with a muted sandstone accent on the designated carved work. Each paired shutter backing now uses the timber finish of its frame and blades, including the outer, inner and rear faces. [Courtyard and tower comparisons](../../review/wall-stone-2026-11-20/README.md)

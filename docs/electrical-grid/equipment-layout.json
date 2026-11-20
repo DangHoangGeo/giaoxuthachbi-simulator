@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-01T02:48:13.779Z",
+  "savedAt": "2026-11-08T14:25:20.093Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -56,6 +56,19 @@
     "parishMeetingRevision": "2026-10-25-parish-meeting-7",
     "towerPierRevision": "2026-10-31-tower-pier-depth-2",
     "naveWingLightingRevision": "2026-11-01-nave-wing-lighting-1",
+    "entranceFitRevision": "2026-11-01-entrance-fit-1",
+    "sideVaultLightsRevision": "2026-11-01-side-vault-lights-1",
+    "wingRoofLightingRevision": "2026-11-01-wing-roof-lighting-1",
+    "columnWashRevision": "2026-11-01-column-up-down-1",
+    "centreReadingRevision": "2026-11-01-centre-reading-balance-1",
+    "entranceInteriorRevision": "2026-11-01-entrance-interior-1",
+    "rearSideLightsRevision": "2026-11-02-rear-side-lights-1",
+    "festivalTerraceRevision": "2026-11-02-festival-terrace-removed-1",
+    "festivalStringsRevision": "2026-11-03-festival-strings-removed-1",
+    "goldCoveRevision": "2026-11-03-gold-cove-2",
+    "sanctuaryPalmsRevision": "2026-11-03-sanctuary-palms-removed-1",
+    "wingGableLightsRevision": "2026-11-07-wing-gable-lights-1",
+    "beamSectionRevision": "2026-11-08-stronger-beams-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
@@ -113,12 +126,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.125,
+        10.174999999999999,
         8.77,
         -0.9
       ],
-      "yaw": -12.622877829714296,
-      "tilt": -86.6382178499512,
+      "yaw": -14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -127,7 +140,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -138,12 +151,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.125,
+        10.174999999999999,
         8.77,
         -2.48
       ],
-      "yaw": 176.5573020938274,
-      "tilt": -80.29536789218335,
+      "yaw": 176.6817704375595,
+      "tilt": -79.93907106567966,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -152,7 +165,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -163,12 +176,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.125,
+        10.174999999999999,
         8.77,
         0.9
       ],
-      "yaw": 12.622877829714296,
-      "tilt": -86.6382178499512,
+      "yaw": 14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -177,7 +190,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -188,12 +201,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.125,
+        10.174999999999999,
         8.77,
         2.48
       ],
-      "yaw": -176.5573020938274,
-      "tilt": -80.29536789218335,
+      "yaw": -176.6817704375595,
+      "tilt": -79.93907106567966,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -202,7 +215,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -213,12 +226,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.625,
+        14.674999999999999,
         8.77,
         -0.9
       ],
-      "yaw": -12.622877829714296,
-      "tilt": -86.6382178499512,
+      "yaw": -14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -227,7 +240,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -238,12 +251,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.625,
+        14.674999999999999,
         8.77,
         -2.48
       ],
-      "yaw": 175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": 175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -252,7 +265,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -263,12 +276,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.625,
+        14.674999999999999,
         8.77,
         0.9
       ],
-      "yaw": 12.622877829714296,
-      "tilt": -86.6382178499512,
+      "yaw": 14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -277,7 +290,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -288,12 +301,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.625,
+        14.674999999999999,
         8.77,
         2.48
       ],
-      "yaw": -175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": -175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -302,7 +315,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -313,12 +326,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.125,
+        19.175,
         8.77,
         -0.9
       ],
-      "yaw": -12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": -14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -327,7 +340,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -338,12 +351,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.125,
+        19.175,
         8.77,
         -2.48
       ],
-      "yaw": 175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": 175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -352,7 +365,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -363,12 +376,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.125,
+        19.175,
         8.77,
         0.9
       ],
-      "yaw": 12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": 14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -377,7 +390,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -388,12 +401,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.125,
+        19.175,
         8.77,
         2.48
       ],
-      "yaw": -175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": -175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -402,7 +415,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -413,12 +426,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        23.625,
+        23.675,
         8.77,
         -0.9
       ],
-      "yaw": -12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": -14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -427,7 +440,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -438,12 +451,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        23.625,
+        23.675,
         8.77,
         -2.48
       ],
-      "yaw": 175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": 175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -452,7 +465,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -463,12 +476,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        23.625,
+        23.675,
         8.77,
         0.9
       ],
-      "yaw": 12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": 14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -477,7 +490,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -488,12 +501,12 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        23.625,
+        23.675,
         8.77,
         2.48
       ],
-      "yaw": -175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": -175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -502,7 +515,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -513,12 +526,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.125,
+        28.175,
         8.77,
         -0.9
       ],
-      "yaw": -12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": -14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -527,7 +540,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -538,12 +551,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.125,
+        28.175,
         8.77,
         -2.48
       ],
-      "yaw": 175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": 175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -552,7 +565,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -563,12 +576,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.125,
+        28.175,
         8.77,
         0.9
       ],
-      "yaw": 12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": 14.153927667934417,
+      "tilt": -86.9949028628761,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -577,7 +590,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -588,12 +601,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.125,
+        28.175,
         8.77,
         2.48
       ],
-      "yaw": -175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": -175.26842805800837,
+      "tilt": -82.9032879411661,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -602,7 +615,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -613,12 +626,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.625,
+        32.675000000000004,
         8.77,
         -0.9
       ],
-      "yaw": -12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": -14.153927667934536,
+      "tilt": -86.99490286287613,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -627,7 +640,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -638,12 +651,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.625,
+        32.675000000000004,
         8.77,
         -2.48
       ],
-      "yaw": 175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": 175.26842805800837,
+      "tilt": -82.90328794116607,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -652,7 +665,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -663,12 +676,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.625,
+        32.675000000000004,
         8.77,
         0.9
       ],
-      "yaw": 12.622877829714248,
-      "tilt": -86.63821784995119,
+      "yaw": 14.153927667934536,
+      "tilt": -86.99490286287613,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -677,7 +690,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -688,12 +701,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.625,
+        32.675000000000004,
         8.77,
         2.48
       ],
-      "yaw": -175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": -175.26842805800837,
+      "tilt": -82.90328794116607,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -702,7 +715,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -713,12 +726,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.125,
+        37.175000000000004,
         8.77,
         -0.9
       ],
-      "yaw": -6.633943476428958,
-      "tilt": -83.65942151447896,
+      "yaw": -7.039548762268788,
+      "tilt": -84.02035520897296,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -727,7 +740,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -738,12 +751,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.125,
+        37.175000000000004,
         8.77,
         -2.48
       ],
-      "yaw": 175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": 175.26842805800837,
+      "tilt": -82.90328794116607,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -752,7 +765,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -763,12 +776,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.125,
+        37.175000000000004,
         8.77,
         0.9
       ],
-      "yaw": 6.633943476428958,
-      "tilt": -83.65942151447896,
+      "yaw": 7.039548762268788,
+      "tilt": -84.02035520897296,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -777,7 +790,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 2800,
       "beam": 36,
       "shadow": false
     },
@@ -788,12 +801,12 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.125,
+        37.175000000000004,
         8.77,
         2.48
       ],
-      "yaw": -175.01157472464428,
-      "tilt": -83.26440422811943,
+      "yaw": -175.26842805800837,
+      "tilt": -82.90328794116607,
       "mountYaw": 0,
       "anchorY": 8.59,
       "on": true,
@@ -802,7 +815,7 @@
       "params": {
         "finish": "timber"
       },
-      "lumens": 2300,
+      "lumens": 1500,
       "beam": 28,
       "shadow": false
     },
@@ -813,14 +826,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.084999999999999,
-        6.84,
+        10.125,
+        6.72,
         -6.09
       ],
-      "yaw": 37.93812956620011,
-      "tilt": -82.25496355184669,
+      "yaw": 40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -838,14 +851,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.084999999999999,
-        6.84,
+        10.125,
+        6.72,
         -4.84
       ],
-      "yaw": -143.27173814254706,
-      "tilt": -77.7637396147955,
+      "yaw": -143.8864976254625,
+      "tilt": -77.33884886848378,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -863,14 +876,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.084999999999999,
-        6.84,
+        10.125,
+        6.72,
         6.09
       ],
-      "yaw": -37.93812956620011,
-      "tilt": -82.25496355184669,
+      "yaw": -40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -888,14 +901,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        10.084999999999999,
-        6.84,
+        10.125,
+        6.72,
         4.84
       ],
-      "yaw": 143.27173814254706,
-      "tilt": -77.7637396147955,
+      "yaw": 143.8864976254625,
+      "tilt": -77.33884886848378,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -913,14 +926,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.584999999999999,
-        6.84,
+        14.625,
+        6.72,
         -6.09
       ],
-      "yaw": 37.93812956620011,
-      "tilt": -82.25496355184669,
+      "yaw": 40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -938,14 +951,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.584999999999999,
-        6.84,
+        14.625,
+        6.72,
         -4.84
       ],
-      "yaw": -143.27173814254706,
-      "tilt": -77.7637396147955,
+      "yaw": -143.8864976254625,
+      "tilt": -77.33884886848378,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -963,14 +976,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.584999999999999,
-        6.84,
+        14.625,
+        6.72,
         6.09
       ],
-      "yaw": -37.93812956620011,
-      "tilt": -82.25496355184669,
+      "yaw": -40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -988,14 +1001,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        14.584999999999999,
-        6.84,
+        14.625,
+        6.72,
         4.84
       ],
-      "yaw": 143.27173814254706,
-      "tilt": -77.7637396147955,
+      "yaw": 143.8864976254625,
+      "tilt": -77.33884886848378,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1013,14 +1026,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.085,
-        6.84,
+        19.125,
+        6.72,
         -6.09
       ],
-      "yaw": 37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": 40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1038,14 +1051,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.085,
-        6.84,
+        19.125,
+        6.72,
         -4.84
       ],
-      "yaw": -143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": -143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1063,14 +1076,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.085,
-        6.84,
+        19.125,
+        6.72,
         6.09
       ],
-      "yaw": -37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": -40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1088,14 +1101,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        19.085,
-        6.84,
+        19.125,
+        6.72,
         4.84
       ],
-      "yaw": 143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": 143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1113,14 +1126,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        23.585,
-        6.84,
+        23.625,
+        6.72,
         -6.09
       ],
-      "yaw": 37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": 40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1138,14 +1151,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        23.585,
-        6.84,
+        23.625,
+        6.72,
         -4.84
       ],
-      "yaw": -143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": -143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1163,14 +1176,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        23.585,
-        6.84,
+        23.625,
+        6.72,
         6.09
       ],
-      "yaw": -37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": -40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1188,14 +1201,14 @@
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        23.585,
-        6.84,
+        23.625,
+        6.72,
         4.84
       ],
-      "yaw": 143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": 143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1213,14 +1226,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.085,
-        6.84,
+        28.125,
+        6.72,
         -6.09
       ],
-      "yaw": 37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": 40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1238,14 +1251,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.085,
-        6.84,
+        28.125,
+        6.72,
         -4.84
       ],
-      "yaw": -143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": -143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1263,14 +1276,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.085,
-        6.84,
+        28.125,
+        6.72,
         6.09
       ],
-      "yaw": -37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": -40.5994264707307,
+      "tilt": -82.52676062017457,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1288,14 +1301,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        28.085,
-        6.84,
+        28.125,
+        6.72,
         4.84
       ],
-      "yaw": 143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": 143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1313,14 +1326,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.585,
-        6.84,
+        32.625,
+        6.72,
         -6.09
       ],
-      "yaw": 37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": 40.59942647073051,
+      "tilt": -82.52676062017456,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1338,14 +1351,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.585,
-        6.84,
+        32.625,
+        6.72,
         -4.84
       ],
-      "yaw": -143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": -143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1363,14 +1376,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.585,
-        6.84,
+        32.625,
+        6.72,
         6.09
       ],
-      "yaw": -37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": -40.59942647073051,
+      "tilt": -82.52676062017456,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1388,14 +1401,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        32.585,
-        6.84,
+        32.625,
+        6.72,
         4.84
       ],
-      "yaw": 143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": 143.8864976254624,
+      "tilt": -77.33884886848381,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1413,14 +1426,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.085,
-        6.84,
+        37.125,
+        6.72,
         -6.09
       ],
-      "yaw": 37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": 40.59942647073051,
+      "tilt": -82.52676062017456,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1438,14 +1451,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.085,
-        6.84,
+        37.125,
+        6.72,
         -4.84
       ],
-      "yaw": -143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": -143.8864976254625,
+      "tilt": -77.33884886848378,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1463,14 +1476,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.085,
-        6.84,
+        37.125,
+        6.72,
         6.09
       ],
-      "yaw": -37.93812956620003,
-      "tilt": -82.25496355184669,
+      "yaw": -40.59942647073051,
+      "tilt": -82.52676062017456,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1488,14 +1501,14 @@
       "circuit": "L1",
       "mount": "wall",
       "pos": [
-        37.085,
-        6.84,
+        37.125,
+        6.72,
         4.84
       ],
-      "yaw": 143.27173814254712,
-      "tilt": -77.76373961479548,
+      "yaw": 143.8864976254625,
+      "tilt": -77.33884886848378,
       "mountYaw": 0,
-      "anchorY": 6.66,
+      "anchorY": 6.54,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1509,23 +1522,24 @@
     {
       "id": "L59",
       "type": "readingProjector",
-      "name": "Rear rows light · entrance façade · B",
+      "name": "Rear rows light · axis 3 side wall · B",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.45,
-        -4.2
+        9.25,
+        3.65,
+        -7.25
       ],
-      "yaw": -39.73230287195575,
-      "tilt": -46.6326316163316,
-      "mountYaw": 0,
+      "yaw": 140.78724296403152,
+      "tilt": -53.566706876819445,
+      "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
       "lumens": 6000,
       "beam": 44,
       "shadow": false
@@ -1533,47 +1547,49 @@
     {
       "id": "L60",
       "type": "readingProjector",
-      "name": "Rear centre light · entrance façade · B",
+      "name": "Rear centre light · axis 3 side wall · B",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.9,
-        -4.2
+        9.6,
+        3.65,
+        -7.25
       ],
-      "yaw": 35.14554549970607,
-      "tilt": -39.0472654521878,
-      "mountYaw": 0,
+      "yaw": 94.83380793566903,
+      "tilt": -30.980350932132932,
+      "mountYaw": 90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
-      "lumens": 3300,
-      "beam": 50,
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
+      "lumens": 6000,
+      "beam": 36,
       "shadow": false
     },
     {
       "id": "L61",
       "type": "readingProjector",
-      "name": "Rear rows light · entrance façade · H",
+      "name": "Rear rows light · axis 3 side wall · H",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.45,
-        4.2
+        9.25,
+        3.65,
+        7.25
       ],
-      "yaw": 39.73230287195575,
-      "tilt": -46.6326316163316,
-      "mountYaw": 0,
+      "yaw": -140.78724296403152,
+      "tilt": -53.566706876819445,
+      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
       "lumens": 6000,
       "beam": 44,
       "shadow": false
@@ -1581,25 +1597,26 @@
     {
       "id": "L62",
       "type": "readingProjector",
-      "name": "Rear centre light · entrance façade · H",
+      "name": "Rear centre light · axis 3 side wall · H",
       "circuit": "L2",
       "mount": "wall",
       "pos": [
-        5.475,
-        3.9,
-        4.2
+        9.6,
+        3.65,
+        7.25
       ],
-      "yaw": -35.14554549970607,
-      "tilt": -39.0472654521878,
-      "mountYaw": 0,
+      "yaw": -94.83380793566903,
+      "tilt": -30.980350932132932,
+      "mountYaw": -90,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
         "finish": "wall"
       },
-      "lumens": 3300,
-      "beam": 50,
+      "note": "CONCEPT / ENGINEERING HOLD: bracket, wall fixing, cable entry, glare, maintenance and selected photometry require review.",
+      "lumens": 6000,
+      "beam": 36,
       "shadow": false
     },
     {
@@ -1770,7 +1787,7 @@
       "yaw": 0,
       "tilt": 0,
       "mountYaw": 0,
-      "anchorY": 12.152,
+      "anchorY": 11.95,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -1993,7 +2010,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 700,
       "beam": 24,
@@ -2017,7 +2034,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 850,
       "beam": 36,
@@ -2041,7 +2058,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 1300,
       "shadow": false
@@ -2064,7 +2081,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 2200,
       "shadow": false
@@ -2087,7 +2104,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 700,
       "beam": 24,
@@ -2111,7 +2128,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 850,
       "beam": 36,
@@ -2135,7 +2152,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 1300,
       "shadow": false
@@ -2158,7 +2175,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 2200,
       "shadow": false
@@ -2181,7 +2198,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "chamber"
+        "finish": "gilt"
       },
       "lumens": 900,
       "beam": 10,
@@ -2192,22 +2209,23 @@
       "type": "spot15",
       "name": "Statue accent · B",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        -4.75
+        47.03,
+        5.903,
+        -4.14
       ],
-      "yaw": -9.651833466804238,
-      "tilt": -39.21267771222643,
+      "yaw": -37.07307331731045,
+      "tilt": -36.395440381835215,
       "mountYaw": 0,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 165,
+      "lumens": 45,
       "beam": 12,
       "shadow": false
     },
@@ -2216,22 +2234,23 @@
       "type": "projector36",
       "name": "Shrine wash · B",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        -6.25
+        46.25,
+        5.903,
+        -4.14
       ],
-      "yaw": 10.101118347708251,
-      "tilt": -39.69810503390403,
+      "yaw": -29.74488129694228,
+      "tilt": -29.69157106617694,
       "mountYaw": 0,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 1800,
+      "lumens": 480,
       "beam": 50,
       "shadow": false
     },
@@ -2240,22 +2259,23 @@
       "type": "spot15",
       "name": "Statue accent · H",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        4.75
+        47.03,
+        5.903,
+        4.14
       ],
-      "yaw": 9.651833466804238,
-      "tilt": -39.21267771222643,
+      "yaw": 37.07307331731045,
+      "tilt": -36.395440381835215,
       "mountYaw": 0,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 165,
+      "lumens": 45,
       "beam": 12,
       "shadow": false
     },
@@ -2264,22 +2284,23 @@
       "type": "projector36",
       "name": "Shrine wash · H",
       "circuit": "L3",
-      "mount": "wall",
+      "mount": "pendant",
       "pos": [
-        44.419999999999995,
-        7.75,
-        6.25
+        46.25,
+        5.903,
+        4.14
       ],
-      "yaw": -10.101118347708251,
-      "tilt": -39.69810503390403,
+      "yaw": 29.74488129694228,
+      "tilt": -29.69157106617694,
       "mountYaw": 0,
+      "anchorY": 6.063,
       "on": true,
       "hidden": false,
       "dim": 1,
       "params": {
-        "finish": "timber"
+        "finish": "chamber"
       },
-      "lumens": 1800,
+      "lumens": 480,
       "beam": 50,
       "shadow": false
     },
@@ -3006,7 +3027,7 @@
       "circuit": "E1",
       "mount": "wall",
       "pos": [
-        5.313000000894069,
+        5.555,
         4.762499999552966,
         0
       ],
@@ -3017,7 +3038,7 @@
       "hidden": false,
       "dim": 1,
       "params": {
-        "backReach": 0.08,
+        "backReach": 0.32199999910593036,
         "clipRise": 0.1375000004470346
       },
       "note": "CONCEPT: inside-face transom clip, case below the coloured fanlight. Lowest edge about 4.68 m; support/door clearance and sign visibility need fire/architectural review. E1 remains maintained from DB-",
@@ -4005,582 +4026,6 @@
       },
       "lumens": 3000,
       "beam": 55,
-      "shadow": false
-    },
-    {
-      "id": "L196",
-      "type": "bulbString",
-      "name": "Festival lights · roof ridge",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        29.16,
-        12.69,
-        0
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 47.3,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L197",
-      "type": "bulbString",
-      "name": "Festival lights · main eave B · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        7.32,
-        -7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L198",
-      "type": "bulbString",
-      "name": "Festival lights · main eave B · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        7.32,
-        -7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L199",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave B · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        6.4,
-        -10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L200",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave B · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        6.4,
-        -10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L201",
-      "type": "bulbString",
-      "name": "Festival lights · rear gable B",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        53.72,
-        9,
-        -5.475
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 4.05,
-        "slope": 41,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L202",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 1 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        -7.593
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L203",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 1 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        -12.713000000000001
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L204",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 2 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        -7.663
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L205",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 2 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        -12.643
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L206",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 3 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        -7.7330000000000005
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L207",
-      "type": "bulbString",
-      "name": "Festival lights · tower B · stage 3 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        -12.573
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L208",
-      "type": "bulbString",
-      "name": "Festival lights · main eave H · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        7.32,
-        7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L209",
-      "type": "bulbString",
-      "name": "Festival lights · main eave H · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        7.32,
-        7.3
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L210",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave H · nave",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        21.35,
-        6.4,
-        10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 31.7,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L211",
-      "type": "bulbString",
-      "name": "Festival lights · veranda eave H · sanctuary",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        48.4,
-        6.4,
-        10.78
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 8.9,
-        "slope": 0,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L212",
-      "type": "bulbString",
-      "name": "Festival lights · rear gable H",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        53.72,
-        9,
-        5.475
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 4.05,
-        "slope": -41,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L213",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 1 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        7.593
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L214",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 1 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.7749999999999999,
-        4.195,
-        12.713000000000001
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 7.790000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L215",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 2 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        7.663
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L216",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 2 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.635,
-        12.115,
-        12.643
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.85,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L217",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 3 · inner corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        7.7330000000000005
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L218",
-      "type": "bulbString",
-      "name": "Festival lights · tower H · stage 3 · outer corner",
-      "circuit": "L7",
-      "mount": "wall",
-      "pos": [
-        -0.525,
-        19.490000000000002,
-        12.573
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 180,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 6.700000000000001,
-        "slope": 90,
-        "spacing": 0.6
-      },
-      "shadow": false
-    },
-    {
-      "id": "L219",
-      "type": "bulbString",
-      "name": "Festival lights · front terrace between the towers",
-      "circuit": "L7",
-      "mount": "floor",
-      "pos": [
-        2.15,
-        8.5,
-        0
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": false,
-      "hidden": false,
-      "dim": 1,
-      "params": {
-        "length": 14.8,
-        "slope": 0,
-        "spacing": 0.6
-      },
       "shadow": false
     },
     {
@@ -6200,25 +5645,6 @@
       "params": {}
     },
     {
-      "id": "D296",
-      "type": "palm",
-      "name": "Palm · sanctuary B",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        45.15,
-        0.8,
-        -2.9
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
       "id": "D297",
       "type": "floorFlowers",
       "name": "Shrine flowers · B · outer",
@@ -6251,25 +5677,6 @@
       "yaw": 180,
       "tilt": 0,
       "mountYaw": 180,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
-      "id": "D299",
-      "type": "palm",
-      "name": "Palm · entrance B",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        6.3,
-        0,
-        -6.55
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -6316,25 +5723,6 @@
       "params": {}
     },
     {
-      "id": "D302",
-      "type": "palm",
-      "name": "Palm · sanctuary H",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        45.15,
-        0.8,
-        2.9
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
       "id": "D303",
       "type": "floorFlowers",
       "name": "Shrine flowers · H · inner",
@@ -6367,25 +5755,6 @@
       "yaw": 180,
       "tilt": 0,
       "mountYaw": 180,
-      "on": true,
-      "hidden": false,
-      "dim": 1,
-      "params": {}
-    },
-    {
-      "id": "D305",
-      "type": "palm",
-      "name": "Palm · entrance H",
-      "circuit": "DECOR",
-      "mount": "floor",
-      "pos": [
-        6.3,
-        0,
-        6.55
-      ],
-      "yaw": 0,
-      "tilt": 0,
-      "mountYaw": 0,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -6507,195 +5876,11 @@
       "yaw": 90,
       "tilt": 0,
       "mountYaw": 90,
-      "anchorY": 12.152,
+      "anchorY": 11.95,
       "on": false,
       "hidden": true,
       "dim": 1,
       "params": {},
-      "shadow": false
-    },
-    {
-      "id": "D312",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 4–5",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        16.725,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D313",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 4–5",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        16.725,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D314",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 5–6",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        21.225,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D315",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 5–6",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        21.225,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D316",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 7–8",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        30.225,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D317",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 7–8",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        30.225,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D318",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda B · bay 8–9",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        34.725,
-        5.6,
-        -8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
-      "shadow": false
-    },
-    {
-      "id": "D319",
-      "type": "lanternString",
-      "name": "Red lanterns · veranda H · bay 8–9",
-      "circuit": "X1",
-      "mount": "pendant",
-      "pos": [
-        34.725,
-        5.6,
-        8.85
-      ],
-      "yaw": 90,
-      "tilt": 0,
-      "mountYaw": 90,
-      "anchorY": 6.638660220994475,
-      "on": false,
-      "hidden": true,
-      "dim": 1,
-      "params": {
-        "length": 3.4
-      },
       "shadow": false
     },
     {
@@ -6851,7 +6036,7 @@
       "circuit": "F2",
       "mount": "wall",
       "pos": [
-        5.475,
+        6.095,
         4.1,
         -7.07
       ],
@@ -6872,7 +6057,7 @@
       "circuit": "F2",
       "mount": "wall",
       "pos": [
-        5.475,
+        6.095,
         4.1,
         7.07
       ],
@@ -8165,13 +7350,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8179,7 +7364,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8192,13 +7377,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         -11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8206,7 +7391,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8218,14 +7403,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8233,7 +7418,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8245,14 +7430,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         -11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8260,7 +7445,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8273,13 +7458,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8287,7 +7472,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8300,13 +7485,13 @@
       "mount": "pendant",
       "pos": [
         38.94,
-        8.095059999999997,
+        7.635531887066677,
         11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.115059999999996,
+      "anchorY": 7.655531887066677,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8314,7 +7499,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8326,14 +7511,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         8.8
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8341,7 +7526,7 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
       "shadow": false
@@ -8353,14 +7538,14 @@
       "circuit": "L8",
       "mount": "pendant",
       "pos": [
-        42.22,
-        8.063580000000004,
+        42.21,
+        7.635531887066683,
         11.4
       ],
       "yaw": 0,
       "tilt": -90,
       "mountYaw": 0,
-      "anchorY": 8.083580000000003,
+      "anchorY": 7.655531887066682,
       "on": true,
       "hidden": false,
       "dim": 1,
@@ -8368,9 +7553,533 @@
         "finish": "timber"
       },
       "note": "CONCEPT: finish-matched 24 degree downlight on the wing roof timber replaces the held chandeliers (owner, 1 Nov 2026). Selected IES/LDT photometry, glare, fixing and access pending. See docs/systems/l",
-      "lumens": 2100,
+      "lumens": 3000,
       "cct": 2700,
       "beam": 24,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-3-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 3 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-3-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 3 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        9.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-4-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 4 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        14.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-4-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 4 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        14.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-5-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 5 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-5-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 5 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        18.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-6-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 6 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        23.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-6-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 6 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        23.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-7-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 7 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-7-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 7 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        27.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-8-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 8 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        32.475,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-8-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 8 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        32.475,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-9-B",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 9 · B",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.5,
+        -3.29
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-COLUMN-9-H",
+      "type": "columnUpDown",
+      "name": "Column up/down light · axis 9 · H",
+      "circuit": "LD",
+      "mount": "wall",
+      "pos": [
+        36.975,
+        5.5,
+        3.29
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "CONCEPT / ENGINEERING HOLD: two opposed 30 degree optics, 800 lm total / 8 W planning allowance. Fixing, glare, fire/heat, cable routing and maintenance remain unverified.",
+      "lumens": 800,
+      "cct": 2700,
+      "beam": 30,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-B-R",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · B · rear",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        43.725,
+        6.324,
+        -13.66
+      ],
+      "yaw": 178.03634246594802,
+      "tilt": 71.39308933236235,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-B-F",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · B · front",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        37.425,
+        6.324,
+        -13.66
+      ],
+      "yaw": 1.9636575340519788,
+      "tilt": 71.39308933236235,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-B-N-1",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · B · aedicule niche · 1",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.875,
+        10.3795,
+        -13.7
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-B-N-2",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · B · aedicule niche · 2",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.275,
+        10.3795,
+        -13.7
+      ],
+      "yaw": -90,
+      "tilt": 0,
+      "mountYaw": -90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-H-F",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · H · front",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        37.425,
+        6.324,
+        13.66
+      ],
+      "yaw": -1.9636575340519788,
+      "tilt": 71.39308933236235,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-GABLE-H-R",
+      "type": "ledgeFlood",
+      "name": "Wing gable uplight · H · rear",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        43.725,
+        6.324,
+        13.66
+      ],
+      "yaw": -178.03634246594802,
+      "tilt": 71.39308933236235,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {
+        "outreach": 0.06
+      },
+      "note": "OWNER REQUEST 7 Nov 2026 / CONCEPT: compact flood in the cornice colour on the ground-storey cornice ledge, behind the lip. Product, photometry, glare, weatherproofing, fixing and safe access at heigh",
+      "lumens": 3000,
+      "cct": 3000,
+      "beam": 60,
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-H-N-1",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · H · aedicule niche · 1",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.275,
+        10.3795,
+        13.7
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
+      "shadow": false
+    },
+    {
+      "id": "L-WING-STATUE-H-N-2",
+      "type": "nicheCandle",
+      "name": "Wing statue candle · H · aedicule niche · 2",
+      "circuit": "LW",
+      "mount": "floor",
+      "pos": [
+        40.875,
+        10.3795,
+        13.7
+      ],
+      "yaw": 90,
+      "tilt": 0,
+      "mountYaw": 90,
+      "on": true,
+      "hidden": false,
+      "dim": 1,
+      "params": {},
+      "note": "OWNER REQUEST 7 Nov 2026: two candle lights at each place kept for a statue; the statue is not chosen yet. CONCEPT electric candle; product, weather protection, fixing and lamp access at height pendin",
       "shadow": false
     },
     {

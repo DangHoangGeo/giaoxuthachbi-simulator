@@ -1,5 +1,5 @@
 window.CHURCH_PLAN_DATA = {
-  "revision": "2026-10-05",
+  "revision": "2026-11-01-entrance-row",
   "site": {
     "address": "756G+GFV, Nam Đồng, Ninh Bình, Vietnam",
     "front": "East (user confirmed; exact azimuth unmeasured)",
@@ -749,7 +749,7 @@ window.CHURCH_PLAN_DATA = {
   "pews": [
     {
       "id": 78,
-      "x": 6.49,
+      "x": 7.62,
       "z": -5.985,
       "length": 1.73,
       "layout": 4,
@@ -757,8 +757,8 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "2–3"
     },
     {
-      "id": 123,
-      "x": 6.49,
+      "id": 119,
+      "x": 7.62,
       "z": -3.625,
       "length": 4.65,
       "layout": 2,
@@ -767,7 +767,7 @@ window.CHURCH_PLAN_DATA = {
     },
     {
       "id": 77,
-      "x": 6.49,
+      "x": 7.62,
       "z": -2.15,
       "length": 1.86,
       "layout": 4,
@@ -776,7 +776,7 @@ window.CHURCH_PLAN_DATA = {
     },
     {
       "id": 79,
-      "x": 6.49,
+      "x": 7.62,
       "z": 2.15,
       "length": 1.86,
       "layout": 4,
@@ -784,8 +784,8 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "2–3"
     },
     {
-      "id": 124,
-      "x": 6.49,
+      "id": 120,
+      "x": 7.62,
       "z": 3.625,
       "length": 4.65,
       "layout": 2,
@@ -794,60 +794,6 @@ window.CHURCH_PLAN_DATA = {
     },
     {
       "id": 80,
-      "x": 6.49,
-      "z": 5.985,
-      "length": 1.73,
-      "layout": 4,
-      "block": "outer",
-      "addedRowBay": "2–3"
-    },
-    {
-      "id": 82,
-      "x": 7.62,
-      "z": -5.985,
-      "length": 1.73,
-      "layout": 4,
-      "block": "outer",
-      "addedRowBay": "2–3"
-    },
-    {
-      "id": 125,
-      "x": 7.62,
-      "z": -3.625,
-      "length": 4.65,
-      "layout": 2,
-      "block": "long",
-      "addedRowBay": "2–3"
-    },
-    {
-      "id": 81,
-      "x": 7.62,
-      "z": -2.15,
-      "length": 1.86,
-      "layout": 4,
-      "block": "central",
-      "addedRowBay": "2–3"
-    },
-    {
-      "id": 83,
-      "x": 7.62,
-      "z": 2.15,
-      "length": 1.86,
-      "layout": 4,
-      "block": "central",
-      "addedRowBay": "2–3"
-    },
-    {
-      "id": 126,
-      "x": 7.62,
-      "z": 3.625,
-      "length": 4.65,
-      "layout": 2,
-      "block": "long",
-      "addedRowBay": "2–3"
-    },
-    {
-      "id": 84,
       "x": 7.62,
       "z": 5.985,
       "length": 1.73,
@@ -865,7 +811,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 97,
+      "id": 93,
       "x": 8.75,
       "z": -3.625,
       "length": 4.65,
@@ -892,7 +838,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 98,
+      "id": 94,
       "x": 8.75,
       "z": 3.625,
       "length": 4.65,
@@ -946,7 +892,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 99,
+      "id": 95,
       "x": 10.975,
       "z": -3.625,
       "length": 4.65,
@@ -955,7 +901,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 100,
+      "id": 96,
       "x": 10.975,
       "z": 3.625,
       "length": 4.65,
@@ -1000,7 +946,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 101,
+      "id": 97,
       "x": 12.105,
       "z": -3.625,
       "length": 4.65,
@@ -1009,7 +955,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 102,
+      "id": 98,
       "x": 12.105,
       "z": 3.625,
       "length": 4.65,
@@ -1054,7 +1000,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 103,
+      "id": 99,
       "x": 13.235,
       "z": -3.625,
       "length": 4.65,
@@ -1063,7 +1009,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 104,
+      "id": 100,
       "x": 13.235,
       "z": 3.625,
       "length": 4.65,
@@ -1144,7 +1090,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 86,
+      "id": 82,
       "x": 15.61,
       "z": -5.985,
       "length": 1.73,
@@ -1153,7 +1099,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 127,
+      "id": 121,
       "x": 15.61,
       "z": -3.625,
       "length": 4.65,
@@ -1162,7 +1108,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 85,
+      "id": 81,
       "x": 15.61,
       "z": -2.15,
       "length": 1.86,
@@ -1171,7 +1117,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 87,
+      "id": 83,
       "x": 15.61,
       "z": 2.15,
       "length": 1.86,
@@ -1180,7 +1126,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 128,
+      "id": 122,
       "x": 15.61,
       "z": 3.625,
       "length": 4.65,
@@ -1189,7 +1135,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 88,
+      "id": 84,
       "x": 15.61,
       "z": 5.985,
       "length": 1.73,
@@ -1198,7 +1144,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 90,
+      "id": 86,
       "x": 17.79,
       "z": -5.985,
       "length": 1.73,
@@ -1207,7 +1153,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 129,
+      "id": 123,
       "x": 17.79,
       "z": -3.625,
       "length": 4.65,
@@ -1216,7 +1162,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 89,
+      "id": 85,
       "x": 17.79,
       "z": -2.15,
       "length": 1.86,
@@ -1225,7 +1171,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 91,
+      "id": 87,
       "x": 17.79,
       "z": 2.15,
       "length": 1.86,
@@ -1234,7 +1180,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 130,
+      "id": 124,
       "x": 17.79,
       "z": 3.625,
       "length": 4.65,
@@ -1243,7 +1189,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "4–5"
     },
     {
-      "id": 92,
+      "id": 88,
       "x": 17.79,
       "z": 5.985,
       "length": 1.73,
@@ -1288,7 +1234,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 105,
+      "id": 101,
       "x": 19.975,
       "z": -3.625,
       "length": 4.65,
@@ -1297,7 +1243,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 106,
+      "id": 102,
       "x": 19.975,
       "z": 3.625,
       "length": 4.65,
@@ -1342,7 +1288,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 107,
+      "id": 103,
       "x": 21.105,
       "z": -3.625,
       "length": 4.65,
@@ -1351,7 +1297,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 108,
+      "id": 104,
       "x": 21.105,
       "z": 3.625,
       "length": 4.65,
@@ -1396,7 +1342,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 109,
+      "id": 105,
       "x": 22.235,
       "z": -3.625,
       "length": 4.65,
@@ -1405,7 +1351,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 110,
+      "id": 106,
       "x": 22.235,
       "z": 3.625,
       "length": 4.65,
@@ -1486,7 +1432,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 111,
+      "id": 107,
       "x": 24.475,
       "z": -3.625,
       "length": 4.65,
@@ -1495,7 +1441,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 112,
+      "id": 108,
       "x": 24.475,
       "z": 3.625,
       "length": 4.65,
@@ -1540,7 +1486,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 113,
+      "id": 109,
       "x": 25.605,
       "z": -3.625,
       "length": 4.65,
@@ -1549,7 +1495,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 114,
+      "id": 110,
       "x": 25.605,
       "z": 3.625,
       "length": 4.65,
@@ -1594,7 +1540,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 115,
+      "id": 111,
       "x": 26.735,
       "z": -3.625,
       "length": 4.65,
@@ -1603,7 +1549,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 116,
+      "id": 112,
       "x": 26.735,
       "z": 3.625,
       "length": 4.65,
@@ -1684,7 +1630,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 117,
+      "id": 113,
       "x": 28.975,
       "z": -3.625,
       "length": 4.65,
@@ -1693,7 +1639,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 118,
+      "id": 114,
       "x": 28.975,
       "z": 3.625,
       "length": 4.65,
@@ -1738,7 +1684,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 119,
+      "id": 115,
       "x": 30.105,
       "z": -3.625,
       "length": 4.65,
@@ -1747,7 +1693,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 120,
+      "id": 116,
       "x": 30.105,
       "z": 3.625,
       "length": 4.65,
@@ -1792,7 +1738,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 121,
+      "id": 117,
       "x": 31.235,
       "z": -3.625,
       "length": 4.65,
@@ -1801,7 +1747,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 122,
+      "id": 118,
       "x": 31.235,
       "z": 3.625,
       "length": 4.65,
@@ -1882,7 +1828,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": null
     },
     {
-      "id": 94,
+      "id": 90,
       "x": 33.61,
       "z": -5.985,
       "length": 1.73,
@@ -1891,7 +1837,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "8–9"
     },
     {
-      "id": 131,
+      "id": 125,
       "x": 33.61,
       "z": -3.625,
       "length": 4.65,
@@ -1900,7 +1846,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "8–9"
     },
     {
-      "id": 93,
+      "id": 89,
       "x": 33.61,
       "z": -2.15,
       "length": 1.86,
@@ -1909,7 +1855,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "8–9"
     },
     {
-      "id": 95,
+      "id": 91,
       "x": 33.61,
       "z": 2.15,
       "length": 1.86,
@@ -1918,7 +1864,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "8–9"
     },
     {
-      "id": 132,
+      "id": 126,
       "x": 33.61,
       "z": 3.625,
       "length": 4.65,
@@ -1927,7 +1873,7 @@ window.CHURCH_PLAN_DATA = {
       "addedRowBay": "8–9"
     },
     {
-      "id": 96,
+      "id": 92,
       "x": 33.61,
       "z": 5.985,
       "length": 1.73,
@@ -1940,20 +1886,20 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "78-1",
       "pewId": 78,
-      "x": 6.535,
+      "x": 7.665,
       "z": -6.535,
       "block": "outer",
       "layout": 4,
       "blocked": {
         "altar": true,
         "ambo": true,
-        "crucifix": true
+        "crucifix": false
       }
     },
     {
       "id": "78-2",
       "pewId": 78,
-      "x": 6.535,
+      "x": 7.665,
       "z": -5.985,
       "block": "outer",
       "layout": 4,
@@ -1966,7 +1912,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "78-3",
       "pewId": 78,
-      "x": 6.535,
+      "x": 7.665,
       "z": -5.4350000000000005,
       "block": "outer",
       "layout": 4,
@@ -1977,9 +1923,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "123-1",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-1",
+      "pewId": 119,
+      "x": 7.665,
       "z": -5.550000000000001,
       "block": "long",
       "layout": 2,
@@ -1990,9 +1936,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "123-2",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-2",
+      "pewId": 119,
+      "x": 7.665,
       "z": -5,
       "block": "long",
       "layout": 2,
@@ -2003,9 +1949,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "123-3",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-3",
+      "pewId": 119,
+      "x": 7.665,
       "z": -4.45,
       "block": "long",
       "layout": 2,
@@ -2016,9 +1962,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "123-4",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-4",
+      "pewId": 119,
+      "x": 7.665,
       "z": -3.9,
       "block": "long",
       "layout": 2,
@@ -2029,22 +1975,22 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "123-5",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-5",
+      "pewId": 119,
+      "x": 7.665,
       "z": -3.35,
       "block": "long",
       "layout": 2,
       "blocked": {
         "altar": false,
-        "ambo": false,
+        "ambo": true,
         "crucifix": false
       }
     },
     {
-      "id": "123-6",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-6",
+      "pewId": 119,
+      "x": 7.665,
       "z": -2.8,
       "block": "long",
       "layout": 2,
@@ -2055,9 +2001,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "123-7",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-7",
+      "pewId": 119,
+      "x": 7.665,
       "z": -2.25,
       "block": "long",
       "layout": 2,
@@ -2068,9 +2014,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "123-8",
-      "pewId": 123,
-      "x": 6.535,
+      "id": "119-8",
+      "pewId": 119,
+      "x": 7.665,
       "z": -1.6999999999999997,
       "block": "long",
       "layout": 2,
@@ -2083,7 +2029,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "77-1",
       "pewId": 77,
-      "x": 6.535,
+      "x": 7.665,
       "z": -2.7,
       "block": "central",
       "layout": 4,
@@ -2096,7 +2042,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "77-2",
       "pewId": 77,
-      "x": 6.535,
+      "x": 7.665,
       "z": -2.15,
       "block": "central",
       "layout": 4,
@@ -2109,7 +2055,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "77-3",
       "pewId": 77,
-      "x": 6.535,
+      "x": 7.665,
       "z": -1.5999999999999999,
       "block": "central",
       "layout": 4,
@@ -2122,7 +2068,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "79-1",
       "pewId": 79,
-      "x": 6.535,
+      "x": 7.665,
       "z": 1.5999999999999999,
       "block": "central",
       "layout": 4,
@@ -2135,7 +2081,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "79-2",
       "pewId": 79,
-      "x": 6.535,
+      "x": 7.665,
       "z": 2.15,
       "block": "central",
       "layout": 4,
@@ -2148,7 +2094,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "79-3",
       "pewId": 79,
-      "x": 6.535,
+      "x": 7.665,
       "z": 2.7,
       "block": "central",
       "layout": 4,
@@ -2159,9 +2105,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "124-1",
-      "pewId": 124,
-      "x": 6.535,
+      "id": "120-1",
+      "pewId": 120,
+      "x": 7.665,
       "z": 1.6999999999999997,
       "block": "long",
       "layout": 2,
@@ -2172,9 +2118,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "124-2",
-      "pewId": 124,
-      "x": 6.535,
+      "id": "120-2",
+      "pewId": 120,
+      "x": 7.665,
       "z": 2.25,
       "block": "long",
       "layout": 2,
@@ -2185,9 +2131,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "124-3",
-      "pewId": 124,
-      "x": 6.535,
+      "id": "120-3",
+      "pewId": 120,
+      "x": 7.665,
       "z": 2.8,
       "block": "long",
       "layout": 2,
@@ -2198,9 +2144,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "124-4",
-      "pewId": 124,
-      "x": 6.535,
+      "id": "120-4",
+      "pewId": 120,
+      "x": 7.665,
       "z": 3.35,
       "block": "long",
       "layout": 2,
@@ -2211,23 +2157,10 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "124-5",
-      "pewId": 124,
-      "x": 6.535,
+      "id": "120-5",
+      "pewId": 120,
+      "x": 7.665,
       "z": 3.9,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": false,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "124-6",
-      "pewId": 124,
-      "x": 6.535,
-      "z": 4.45,
       "block": "long",
       "layout": 2,
       "blocked": {
@@ -2237,10 +2170,10 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "124-7",
-      "pewId": 124,
-      "x": 6.535,
-      "z": 5,
+      "id": "120-6",
+      "pewId": 120,
+      "x": 7.665,
+      "z": 4.45,
       "block": "long",
       "layout": 2,
       "blocked": {
@@ -2250,9 +2183,22 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "124-8",
-      "pewId": 124,
-      "x": 6.535,
+      "id": "120-7",
+      "pewId": 120,
+      "x": 7.665,
+      "z": 5,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "120-8",
+      "pewId": 120,
+      "x": 7.665,
       "z": 5.550000000000001,
       "block": "long",
       "layout": 2,
@@ -2265,7 +2211,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "80-1",
       "pewId": 80,
-      "x": 6.535,
+      "x": 7.665,
       "z": 5.4350000000000005,
       "block": "outer",
       "layout": 4,
@@ -2278,7 +2224,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "80-2",
       "pewId": 80,
-      "x": 6.535,
+      "x": 7.665,
       "z": 5.985,
       "block": "outer",
       "layout": 4,
@@ -2291,370 +2237,6 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "80-3",
       "pewId": 80,
-      "x": 6.535,
-      "z": 6.535,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": false,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "82-1",
-      "pewId": 82,
-      "x": 7.665,
-      "z": -6.535,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "82-2",
-      "pewId": 82,
-      "x": 7.665,
-      "z": -5.985,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "82-3",
-      "pewId": 82,
-      "x": 7.665,
-      "z": -5.4350000000000005,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "125-1",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -5.550000000000001,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "125-2",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -5,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "125-3",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -4.45,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "125-4",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -3.9,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "125-5",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -3.35,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": true,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "125-6",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -2.8,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "125-7",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -2.25,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "125-8",
-      "pewId": 125,
-      "x": 7.665,
-      "z": -1.6999999999999997,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "81-1",
-      "pewId": 81,
-      "x": 7.665,
-      "z": -2.7,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "81-2",
-      "pewId": 81,
-      "x": 7.665,
-      "z": -2.15,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "81-3",
-      "pewId": 81,
-      "x": 7.665,
-      "z": -1.5999999999999999,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "83-1",
-      "pewId": 83,
-      "x": 7.665,
-      "z": 1.5999999999999999,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "83-2",
-      "pewId": 83,
-      "x": 7.665,
-      "z": 2.15,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "83-3",
-      "pewId": 83,
-      "x": 7.665,
-      "z": 2.7,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "126-1",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 1.6999999999999997,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "126-2",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 2.25,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "126-3",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 2.8,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "126-4",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 3.35,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "126-5",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 3.9,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "126-6",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 4.45,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": false,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "126-7",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 5,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "126-8",
-      "pewId": 126,
-      "x": 7.665,
-      "z": 5.550000000000001,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "84-1",
-      "pewId": 84,
-      "x": 7.665,
-      "z": 5.4350000000000005,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "84-2",
-      "pewId": 84,
-      "x": 7.665,
-      "z": 5.985,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": false,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "84-3",
-      "pewId": 84,
       "x": 7.665,
       "z": 6.535,
       "block": "outer",
@@ -2705,8 +2287,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-1",
-      "pewId": 97,
+      "id": "93-1",
+      "pewId": 93,
       "x": 8.795,
       "z": -5.550000000000001,
       "block": "long",
@@ -2718,8 +2300,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-2",
-      "pewId": 97,
+      "id": "93-2",
+      "pewId": 93,
       "x": 8.795,
       "z": -5,
       "block": "long",
@@ -2731,8 +2313,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-3",
-      "pewId": 97,
+      "id": "93-3",
+      "pewId": 93,
       "x": 8.795,
       "z": -4.45,
       "block": "long",
@@ -2744,8 +2326,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-4",
-      "pewId": 97,
+      "id": "93-4",
+      "pewId": 93,
       "x": 8.795,
       "z": -3.9,
       "block": "long",
@@ -2757,8 +2339,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-5",
-      "pewId": 97,
+      "id": "93-5",
+      "pewId": 93,
       "x": 8.795,
       "z": -3.35,
       "block": "long",
@@ -2770,8 +2352,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-6",
-      "pewId": 97,
+      "id": "93-6",
+      "pewId": 93,
       "x": 8.795,
       "z": -2.8,
       "block": "long",
@@ -2783,8 +2365,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-7",
-      "pewId": 97,
+      "id": "93-7",
+      "pewId": 93,
       "x": 8.795,
       "z": -2.25,
       "block": "long",
@@ -2796,8 +2378,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "97-8",
-      "pewId": 97,
+      "id": "93-8",
+      "pewId": 93,
       "x": 8.795,
       "z": -1.6999999999999997,
       "block": "long",
@@ -2887,8 +2469,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-1",
-      "pewId": 98,
+      "id": "94-1",
+      "pewId": 94,
       "x": 8.795,
       "z": 1.6999999999999997,
       "block": "long",
@@ -2900,8 +2482,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-2",
-      "pewId": 98,
+      "id": "94-2",
+      "pewId": 94,
       "x": 8.795,
       "z": 2.25,
       "block": "long",
@@ -2913,8 +2495,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-3",
-      "pewId": 98,
+      "id": "94-3",
+      "pewId": 94,
       "x": 8.795,
       "z": 2.8,
       "block": "long",
@@ -2926,8 +2508,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-4",
-      "pewId": 98,
+      "id": "94-4",
+      "pewId": 94,
       "x": 8.795,
       "z": 3.35,
       "block": "long",
@@ -2939,8 +2521,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-5",
-      "pewId": 98,
+      "id": "94-5",
+      "pewId": 94,
       "x": 8.795,
       "z": 3.9,
       "block": "long",
@@ -2952,8 +2534,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-6",
-      "pewId": 98,
+      "id": "94-6",
+      "pewId": 94,
       "x": 8.795,
       "z": 4.45,
       "block": "long",
@@ -2965,8 +2547,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-7",
-      "pewId": 98,
+      "id": "94-7",
+      "pewId": 94,
       "x": 8.795,
       "z": 5,
       "block": "long",
@@ -2978,8 +2560,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "98-8",
-      "pewId": 98,
+      "id": "94-8",
+      "pewId": 94,
       "x": 8.795,
       "z": 5.550000000000001,
       "block": "long",
@@ -3186,8 +2768,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-1",
-      "pewId": 99,
+      "id": "95-1",
+      "pewId": 95,
       "x": 11.02,
       "z": -5.550000000000001,
       "block": "long",
@@ -3199,8 +2781,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-2",
-      "pewId": 99,
+      "id": "95-2",
+      "pewId": 95,
       "x": 11.02,
       "z": -5,
       "block": "long",
@@ -3212,8 +2794,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-3",
-      "pewId": 99,
+      "id": "95-3",
+      "pewId": 95,
       "x": 11.02,
       "z": -4.45,
       "block": "long",
@@ -3225,8 +2807,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-4",
-      "pewId": 99,
+      "id": "95-4",
+      "pewId": 95,
       "x": 11.02,
       "z": -3.9,
       "block": "long",
@@ -3238,8 +2820,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-5",
-      "pewId": 99,
+      "id": "95-5",
+      "pewId": 95,
       "x": 11.02,
       "z": -3.35,
       "block": "long",
@@ -3251,8 +2833,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-6",
-      "pewId": 99,
+      "id": "95-6",
+      "pewId": 95,
       "x": 11.02,
       "z": -2.8,
       "block": "long",
@@ -3264,8 +2846,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-7",
-      "pewId": 99,
+      "id": "95-7",
+      "pewId": 95,
       "x": 11.02,
       "z": -2.25,
       "block": "long",
@@ -3277,8 +2859,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "99-8",
-      "pewId": 99,
+      "id": "95-8",
+      "pewId": 95,
       "x": 11.02,
       "z": -1.6999999999999997,
       "block": "long",
@@ -3290,8 +2872,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-1",
-      "pewId": 100,
+      "id": "96-1",
+      "pewId": 96,
       "x": 11.02,
       "z": 1.6999999999999997,
       "block": "long",
@@ -3303,8 +2885,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-2",
-      "pewId": 100,
+      "id": "96-2",
+      "pewId": 96,
       "x": 11.02,
       "z": 2.25,
       "block": "long",
@@ -3316,8 +2898,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-3",
-      "pewId": 100,
+      "id": "96-3",
+      "pewId": 96,
       "x": 11.02,
       "z": 2.8,
       "block": "long",
@@ -3329,8 +2911,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-4",
-      "pewId": 100,
+      "id": "96-4",
+      "pewId": 96,
       "x": 11.02,
       "z": 3.35,
       "block": "long",
@@ -3342,8 +2924,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-5",
-      "pewId": 100,
+      "id": "96-5",
+      "pewId": 96,
       "x": 11.02,
       "z": 3.9,
       "block": "long",
@@ -3355,8 +2937,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-6",
-      "pewId": 100,
+      "id": "96-6",
+      "pewId": 96,
       "x": 11.02,
       "z": 4.45,
       "block": "long",
@@ -3368,8 +2950,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-7",
-      "pewId": 100,
+      "id": "96-7",
+      "pewId": 96,
       "x": 11.02,
       "z": 5,
       "block": "long",
@@ -3381,8 +2963,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "100-8",
-      "pewId": 100,
+      "id": "96-8",
+      "pewId": 96,
       "x": 11.02,
       "z": 5.550000000000001,
       "block": "long",
@@ -3550,8 +3132,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-1",
-      "pewId": 101,
+      "id": "97-1",
+      "pewId": 97,
       "x": 12.15,
       "z": -5.550000000000001,
       "block": "long",
@@ -3563,8 +3145,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-2",
-      "pewId": 101,
+      "id": "97-2",
+      "pewId": 97,
       "x": 12.15,
       "z": -5,
       "block": "long",
@@ -3576,8 +3158,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-3",
-      "pewId": 101,
+      "id": "97-3",
+      "pewId": 97,
       "x": 12.15,
       "z": -4.45,
       "block": "long",
@@ -3589,8 +3171,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-4",
-      "pewId": 101,
+      "id": "97-4",
+      "pewId": 97,
       "x": 12.15,
       "z": -3.9,
       "block": "long",
@@ -3602,8 +3184,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-5",
-      "pewId": 101,
+      "id": "97-5",
+      "pewId": 97,
       "x": 12.15,
       "z": -3.35,
       "block": "long",
@@ -3615,8 +3197,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-6",
-      "pewId": 101,
+      "id": "97-6",
+      "pewId": 97,
       "x": 12.15,
       "z": -2.8,
       "block": "long",
@@ -3628,8 +3210,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-7",
-      "pewId": 101,
+      "id": "97-7",
+      "pewId": 97,
       "x": 12.15,
       "z": -2.25,
       "block": "long",
@@ -3641,8 +3223,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "101-8",
-      "pewId": 101,
+      "id": "97-8",
+      "pewId": 97,
       "x": 12.15,
       "z": -1.6999999999999997,
       "block": "long",
@@ -3654,8 +3236,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-1",
-      "pewId": 102,
+      "id": "98-1",
+      "pewId": 98,
       "x": 12.15,
       "z": 1.6999999999999997,
       "block": "long",
@@ -3667,8 +3249,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-2",
-      "pewId": 102,
+      "id": "98-2",
+      "pewId": 98,
       "x": 12.15,
       "z": 2.25,
       "block": "long",
@@ -3680,8 +3262,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-3",
-      "pewId": 102,
+      "id": "98-3",
+      "pewId": 98,
       "x": 12.15,
       "z": 2.8,
       "block": "long",
@@ -3693,8 +3275,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-4",
-      "pewId": 102,
+      "id": "98-4",
+      "pewId": 98,
       "x": 12.15,
       "z": 3.35,
       "block": "long",
@@ -3706,8 +3288,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-5",
-      "pewId": 102,
+      "id": "98-5",
+      "pewId": 98,
       "x": 12.15,
       "z": 3.9,
       "block": "long",
@@ -3719,8 +3301,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-6",
-      "pewId": 102,
+      "id": "98-6",
+      "pewId": 98,
       "x": 12.15,
       "z": 4.45,
       "block": "long",
@@ -3732,8 +3314,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-7",
-      "pewId": 102,
+      "id": "98-7",
+      "pewId": 98,
       "x": 12.15,
       "z": 5,
       "block": "long",
@@ -3745,8 +3327,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "102-8",
-      "pewId": 102,
+      "id": "98-8",
+      "pewId": 98,
       "x": 12.15,
       "z": 5.550000000000001,
       "block": "long",
@@ -3914,8 +3496,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-1",
-      "pewId": 103,
+      "id": "99-1",
+      "pewId": 99,
       "x": 13.28,
       "z": -5.550000000000001,
       "block": "long",
@@ -3927,8 +3509,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-2",
-      "pewId": 103,
+      "id": "99-2",
+      "pewId": 99,
       "x": 13.28,
       "z": -5,
       "block": "long",
@@ -3940,8 +3522,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-3",
-      "pewId": 103,
+      "id": "99-3",
+      "pewId": 99,
       "x": 13.28,
       "z": -4.45,
       "block": "long",
@@ -3953,8 +3535,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-4",
-      "pewId": 103,
+      "id": "99-4",
+      "pewId": 99,
       "x": 13.28,
       "z": -3.9,
       "block": "long",
@@ -3966,8 +3548,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-5",
-      "pewId": 103,
+      "id": "99-5",
+      "pewId": 99,
       "x": 13.28,
       "z": -3.35,
       "block": "long",
@@ -3979,8 +3561,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-6",
-      "pewId": 103,
+      "id": "99-6",
+      "pewId": 99,
       "x": 13.28,
       "z": -2.8,
       "block": "long",
@@ -3992,8 +3574,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-7",
-      "pewId": 103,
+      "id": "99-7",
+      "pewId": 99,
       "x": 13.28,
       "z": -2.25,
       "block": "long",
@@ -4005,8 +3587,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "103-8",
-      "pewId": 103,
+      "id": "99-8",
+      "pewId": 99,
       "x": 13.28,
       "z": -1.6999999999999997,
       "block": "long",
@@ -4018,8 +3600,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-1",
-      "pewId": 104,
+      "id": "100-1",
+      "pewId": 100,
       "x": 13.28,
       "z": 1.6999999999999997,
       "block": "long",
@@ -4031,8 +3613,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-2",
-      "pewId": 104,
+      "id": "100-2",
+      "pewId": 100,
       "x": 13.28,
       "z": 2.25,
       "block": "long",
@@ -4044,8 +3626,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-3",
-      "pewId": 104,
+      "id": "100-3",
+      "pewId": 100,
       "x": 13.28,
       "z": 2.8,
       "block": "long",
@@ -4057,8 +3639,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-4",
-      "pewId": 104,
+      "id": "100-4",
+      "pewId": 100,
       "x": 13.28,
       "z": 3.35,
       "block": "long",
@@ -4070,8 +3652,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-5",
-      "pewId": 104,
+      "id": "100-5",
+      "pewId": 100,
       "x": 13.28,
       "z": 3.9,
       "block": "long",
@@ -4083,8 +3665,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-6",
-      "pewId": 104,
+      "id": "100-6",
+      "pewId": 100,
       "x": 13.28,
       "z": 4.45,
       "block": "long",
@@ -4096,8 +3678,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-7",
-      "pewId": 104,
+      "id": "100-7",
+      "pewId": 100,
       "x": 13.28,
       "z": 5,
       "block": "long",
@@ -4109,8 +3691,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "104-8",
-      "pewId": 104,
+      "id": "100-8",
+      "pewId": 100,
       "x": 13.28,
       "z": 5.550000000000001,
       "block": "long",
@@ -4434,8 +4016,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "86-1",
-      "pewId": 86,
+      "id": "82-1",
+      "pewId": 82,
       "x": 15.655,
       "z": -6.535,
       "block": "outer",
@@ -4447,8 +4029,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "86-2",
-      "pewId": 86,
+      "id": "82-2",
+      "pewId": 82,
       "x": 15.655,
       "z": -5.985,
       "block": "outer",
@@ -4460,8 +4042,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "86-3",
-      "pewId": 86,
+      "id": "82-3",
+      "pewId": 82,
       "x": 15.655,
       "z": -5.4350000000000005,
       "block": "outer",
@@ -4473,8 +4055,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-1",
-      "pewId": 127,
+      "id": "121-1",
+      "pewId": 121,
       "x": 15.655,
       "z": -5.550000000000001,
       "block": "long",
@@ -4486,8 +4068,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-2",
-      "pewId": 127,
+      "id": "121-2",
+      "pewId": 121,
       "x": 15.655,
       "z": -5,
       "block": "long",
@@ -4499,8 +4081,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-3",
-      "pewId": 127,
+      "id": "121-3",
+      "pewId": 121,
       "x": 15.655,
       "z": -4.45,
       "block": "long",
@@ -4512,8 +4094,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-4",
-      "pewId": 127,
+      "id": "121-4",
+      "pewId": 121,
       "x": 15.655,
       "z": -3.9,
       "block": "long",
@@ -4525,8 +4107,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-5",
-      "pewId": 127,
+      "id": "121-5",
+      "pewId": 121,
       "x": 15.655,
       "z": -3.35,
       "block": "long",
@@ -4538,8 +4120,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-6",
-      "pewId": 127,
+      "id": "121-6",
+      "pewId": 121,
       "x": 15.655,
       "z": -2.8,
       "block": "long",
@@ -4551,8 +4133,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-7",
-      "pewId": 127,
+      "id": "121-7",
+      "pewId": 121,
       "x": 15.655,
       "z": -2.25,
       "block": "long",
@@ -4564,9 +4146,373 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "127-8",
-      "pewId": 127,
+      "id": "121-8",
+      "pewId": 121,
       "x": 15.655,
+      "z": -1.6999999999999997,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "81-1",
+      "pewId": 81,
+      "x": 15.655,
+      "z": -2.7,
+      "block": "central",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "81-2",
+      "pewId": 81,
+      "x": 15.655,
+      "z": -2.15,
+      "block": "central",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "81-3",
+      "pewId": 81,
+      "x": 15.655,
+      "z": -1.5999999999999999,
+      "block": "central",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "83-1",
+      "pewId": 83,
+      "x": 15.655,
+      "z": 1.5999999999999999,
+      "block": "central",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "83-2",
+      "pewId": 83,
+      "x": 15.655,
+      "z": 2.15,
+      "block": "central",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "83-3",
+      "pewId": 83,
+      "x": 15.655,
+      "z": 2.7,
+      "block": "central",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "122-1",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 1.6999999999999997,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "122-2",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 2.25,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "122-3",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 2.8,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "122-4",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 3.35,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "122-5",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 3.9,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": true,
+        "ambo": false,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "122-6",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 4.45,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "122-7",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 5,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": true,
+        "ambo": false,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "122-8",
+      "pewId": 122,
+      "x": 15.655,
+      "z": 5.550000000000001,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "84-1",
+      "pewId": 84,
+      "x": 15.655,
+      "z": 5.4350000000000005,
+      "block": "outer",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "84-2",
+      "pewId": 84,
+      "x": 15.655,
+      "z": 5.985,
+      "block": "outer",
+      "layout": 4,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "84-3",
+      "pewId": 84,
+      "x": 15.655,
+      "z": 6.535,
+      "block": "outer",
+      "layout": 4,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "86-1",
+      "pewId": 86,
+      "x": 17.835,
+      "z": -6.535,
+      "block": "outer",
+      "layout": 4,
+      "blocked": {
+        "altar": false,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "86-2",
+      "pewId": 86,
+      "x": 17.835,
+      "z": -5.985,
+      "block": "outer",
+      "layout": 4,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "86-3",
+      "pewId": 86,
+      "x": 17.835,
+      "z": -5.4350000000000005,
+      "block": "outer",
+      "layout": 4,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "123-1",
+      "pewId": 123,
+      "x": 17.835,
+      "z": -5.550000000000001,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "123-2",
+      "pewId": 123,
+      "x": 17.835,
+      "z": -5,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "123-3",
+      "pewId": 123,
+      "x": 17.835,
+      "z": -4.45,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "123-4",
+      "pewId": 123,
+      "x": 17.835,
+      "z": -3.9,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "123-5",
+      "pewId": 123,
+      "x": 17.835,
+      "z": -3.35,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": true,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "123-6",
+      "pewId": 123,
+      "x": 17.835,
+      "z": -2.8,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "123-7",
+      "pewId": 123,
+      "x": 17.835,
+      "z": -2.25,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": false,
+        "ambo": false,
+        "crucifix": false
+      }
+    },
+    {
+      "id": "123-8",
+      "pewId": 123,
+      "x": 17.835,
       "z": -1.6999999999999997,
       "block": "long",
       "layout": 2,
@@ -4579,7 +4525,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "85-1",
       "pewId": 85,
-      "x": 15.655,
+      "x": 17.835,
       "z": -2.7,
       "block": "central",
       "layout": 4,
@@ -4592,7 +4538,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "85-2",
       "pewId": 85,
-      "x": 15.655,
+      "x": 17.835,
       "z": -2.15,
       "block": "central",
       "layout": 4,
@@ -4605,7 +4551,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "85-3",
       "pewId": 85,
-      "x": 15.655,
+      "x": 17.835,
       "z": -1.5999999999999999,
       "block": "central",
       "layout": 4,
@@ -4618,7 +4564,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "87-1",
       "pewId": 87,
-      "x": 15.655,
+      "x": 17.835,
       "z": 1.5999999999999999,
       "block": "central",
       "layout": 4,
@@ -4631,7 +4577,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "87-2",
       "pewId": 87,
-      "x": 15.655,
+      "x": 17.835,
       "z": 2.15,
       "block": "central",
       "layout": 4,
@@ -4644,7 +4590,7 @@ window.CHURCH_PLAN_DATA = {
     {
       "id": "87-3",
       "pewId": 87,
-      "x": 15.655,
+      "x": 17.835,
       "z": 2.7,
       "block": "central",
       "layout": 4,
@@ -4655,9 +4601,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "128-1",
-      "pewId": 128,
-      "x": 15.655,
+      "id": "124-1",
+      "pewId": 124,
+      "x": 17.835,
       "z": 1.6999999999999997,
       "block": "long",
       "layout": 2,
@@ -4668,9 +4614,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "128-2",
-      "pewId": 128,
-      "x": 15.655,
+      "id": "124-2",
+      "pewId": 124,
+      "x": 17.835,
       "z": 2.25,
       "block": "long",
       "layout": 2,
@@ -4681,9 +4627,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "128-3",
-      "pewId": 128,
-      "x": 15.655,
+      "id": "124-3",
+      "pewId": 124,
+      "x": 17.835,
       "z": 2.8,
       "block": "long",
       "layout": 2,
@@ -4694,9 +4640,9 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "128-4",
-      "pewId": 128,
-      "x": 15.655,
+      "id": "124-4",
+      "pewId": 124,
+      "x": 17.835,
       "z": 3.35,
       "block": "long",
       "layout": 2,
@@ -4707,36 +4653,23 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "128-5",
-      "pewId": 128,
-      "x": 15.655,
+      "id": "124-5",
+      "pewId": 124,
+      "x": 17.835,
       "z": 3.9,
       "block": "long",
       "layout": 2,
       "blocked": {
         "altar": true,
-        "ambo": false,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "128-6",
-      "pewId": 128,
-      "x": 15.655,
-      "z": 4.45,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
         "ambo": true,
         "crucifix": true
       }
     },
     {
-      "id": "128-7",
-      "pewId": 128,
-      "x": 15.655,
-      "z": 5,
+      "id": "124-6",
+      "pewId": 124,
+      "x": 17.835,
+      "z": 4.45,
       "block": "long",
       "layout": 2,
       "blocked": {
@@ -4746,411 +4679,60 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "128-8",
-      "pewId": 128,
-      "x": 15.655,
-      "z": 5.550000000000001,
+      "id": "124-7",
+      "pewId": 124,
+      "x": 17.835,
+      "z": 5,
       "block": "long",
       "layout": 2,
       "blocked": {
         "altar": false,
         "ambo": false,
+        "crucifix": true
+      }
+    },
+    {
+      "id": "124-8",
+      "pewId": 124,
+      "x": 17.835,
+      "z": 5.550000000000001,
+      "block": "long",
+      "layout": 2,
+      "blocked": {
+        "altar": true,
+        "ambo": true,
         "crucifix": true
       }
     },
     {
       "id": "88-1",
       "pewId": 88,
-      "x": 15.655,
+      "x": 17.835,
       "z": 5.4350000000000005,
       "block": "outer",
       "layout": 4,
       "blocked": {
-        "altar": false,
-        "ambo": false,
+        "altar": true,
+        "ambo": true,
         "crucifix": true
       }
     },
     {
       "id": "88-2",
       "pewId": 88,
-      "x": 15.655,
+      "x": 17.835,
       "z": 5.985,
       "block": "outer",
       "layout": 4,
       "blocked": {
         "altar": true,
         "ambo": true,
-        "crucifix": true
+        "crucifix": false
       }
     },
     {
       "id": "88-3",
       "pewId": 88,
-      "x": 15.655,
-      "z": 6.535,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "90-1",
-      "pewId": 90,
-      "x": 17.835,
-      "z": -6.535,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "90-2",
-      "pewId": 90,
-      "x": 17.835,
-      "z": -5.985,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "90-3",
-      "pewId": 90,
-      "x": 17.835,
-      "z": -5.4350000000000005,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "129-1",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -5.550000000000001,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "129-2",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -5,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "129-3",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -4.45,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "129-4",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -3.9,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "129-5",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -3.35,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": true,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "129-6",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -2.8,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "129-7",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -2.25,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "129-8",
-      "pewId": 129,
-      "x": 17.835,
-      "z": -1.6999999999999997,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "89-1",
-      "pewId": 89,
-      "x": 17.835,
-      "z": -2.7,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "89-2",
-      "pewId": 89,
-      "x": 17.835,
-      "z": -2.15,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "89-3",
-      "pewId": 89,
-      "x": 17.835,
-      "z": -1.5999999999999999,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "91-1",
-      "pewId": 91,
-      "x": 17.835,
-      "z": 1.5999999999999999,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "91-2",
-      "pewId": 91,
-      "x": 17.835,
-      "z": 2.15,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "91-3",
-      "pewId": 91,
-      "x": 17.835,
-      "z": 2.7,
-      "block": "central",
-      "layout": 4,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "130-1",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 1.6999999999999997,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "130-2",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 2.25,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "130-3",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 2.8,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "130-4",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 3.35,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "130-5",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 3.9,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "130-6",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 4.45,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": false,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "130-7",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 5,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": false,
-        "ambo": false,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "130-8",
-      "pewId": 130,
-      "x": 17.835,
-      "z": 5.550000000000001,
-      "block": "long",
-      "layout": 2,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "92-1",
-      "pewId": 92,
-      "x": 17.835,
-      "z": 5.4350000000000005,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": true
-      }
-    },
-    {
-      "id": "92-2",
-      "pewId": 92,
-      "x": 17.835,
-      "z": 5.985,
-      "block": "outer",
-      "layout": 4,
-      "blocked": {
-        "altar": true,
-        "ambo": true,
-        "crucifix": false
-      }
-    },
-    {
-      "id": "92-3",
-      "pewId": 92,
       "x": 17.835,
       "z": 6.535,
       "block": "outer",
@@ -5318,8 +4900,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-1",
-      "pewId": 105,
+      "id": "101-1",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -5.550000000000001,
       "block": "long",
@@ -5331,8 +4913,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-2",
-      "pewId": 105,
+      "id": "101-2",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -5,
       "block": "long",
@@ -5344,8 +4926,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-3",
-      "pewId": 105,
+      "id": "101-3",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -4.45,
       "block": "long",
@@ -5357,8 +4939,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-4",
-      "pewId": 105,
+      "id": "101-4",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -3.9,
       "block": "long",
@@ -5370,8 +4952,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-5",
-      "pewId": 105,
+      "id": "101-5",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -3.35,
       "block": "long",
@@ -5383,8 +4965,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-6",
-      "pewId": 105,
+      "id": "101-6",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -2.8,
       "block": "long",
@@ -5396,8 +4978,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-7",
-      "pewId": 105,
+      "id": "101-7",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -2.25,
       "block": "long",
@@ -5409,8 +4991,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "105-8",
-      "pewId": 105,
+      "id": "101-8",
+      "pewId": 101,
       "x": 20.020000000000003,
       "z": -1.6999999999999997,
       "block": "long",
@@ -5422,8 +5004,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-1",
-      "pewId": 106,
+      "id": "102-1",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 1.6999999999999997,
       "block": "long",
@@ -5435,8 +5017,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-2",
-      "pewId": 106,
+      "id": "102-2",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 2.25,
       "block": "long",
@@ -5448,8 +5030,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-3",
-      "pewId": 106,
+      "id": "102-3",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 2.8,
       "block": "long",
@@ -5461,8 +5043,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-4",
-      "pewId": 106,
+      "id": "102-4",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 3.35,
       "block": "long",
@@ -5474,8 +5056,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-5",
-      "pewId": 106,
+      "id": "102-5",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 3.9,
       "block": "long",
@@ -5487,8 +5069,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-6",
-      "pewId": 106,
+      "id": "102-6",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 4.45,
       "block": "long",
@@ -5500,8 +5082,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-7",
-      "pewId": 106,
+      "id": "102-7",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 5,
       "block": "long",
@@ -5513,8 +5095,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "106-8",
-      "pewId": 106,
+      "id": "102-8",
+      "pewId": 102,
       "x": 20.020000000000003,
       "z": 5.550000000000001,
       "block": "long",
@@ -5682,8 +5264,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-1",
-      "pewId": 107,
+      "id": "103-1",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -5.550000000000001,
       "block": "long",
@@ -5695,8 +5277,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-2",
-      "pewId": 107,
+      "id": "103-2",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -5,
       "block": "long",
@@ -5708,8 +5290,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-3",
-      "pewId": 107,
+      "id": "103-3",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -4.45,
       "block": "long",
@@ -5721,8 +5303,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-4",
-      "pewId": 107,
+      "id": "103-4",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -3.9,
       "block": "long",
@@ -5734,8 +5316,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-5",
-      "pewId": 107,
+      "id": "103-5",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -3.35,
       "block": "long",
@@ -5747,8 +5329,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-6",
-      "pewId": 107,
+      "id": "103-6",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -2.8,
       "block": "long",
@@ -5760,8 +5342,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-7",
-      "pewId": 107,
+      "id": "103-7",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -2.25,
       "block": "long",
@@ -5773,8 +5355,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "107-8",
-      "pewId": 107,
+      "id": "103-8",
+      "pewId": 103,
       "x": 21.150000000000002,
       "z": -1.6999999999999997,
       "block": "long",
@@ -5786,8 +5368,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-1",
-      "pewId": 108,
+      "id": "104-1",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 1.6999999999999997,
       "block": "long",
@@ -5799,8 +5381,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-2",
-      "pewId": 108,
+      "id": "104-2",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 2.25,
       "block": "long",
@@ -5812,8 +5394,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-3",
-      "pewId": 108,
+      "id": "104-3",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 2.8,
       "block": "long",
@@ -5825,8 +5407,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-4",
-      "pewId": 108,
+      "id": "104-4",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 3.35,
       "block": "long",
@@ -5838,8 +5420,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-5",
-      "pewId": 108,
+      "id": "104-5",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 3.9,
       "block": "long",
@@ -5851,8 +5433,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-6",
-      "pewId": 108,
+      "id": "104-6",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 4.45,
       "block": "long",
@@ -5864,8 +5446,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-7",
-      "pewId": 108,
+      "id": "104-7",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 5,
       "block": "long",
@@ -5877,8 +5459,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "108-8",
-      "pewId": 108,
+      "id": "104-8",
+      "pewId": 104,
       "x": 21.150000000000002,
       "z": 5.550000000000001,
       "block": "long",
@@ -6046,8 +5628,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-1",
-      "pewId": 109,
+      "id": "105-1",
+      "pewId": 105,
       "x": 22.28,
       "z": -5.550000000000001,
       "block": "long",
@@ -6059,8 +5641,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-2",
-      "pewId": 109,
+      "id": "105-2",
+      "pewId": 105,
       "x": 22.28,
       "z": -5,
       "block": "long",
@@ -6072,8 +5654,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-3",
-      "pewId": 109,
+      "id": "105-3",
+      "pewId": 105,
       "x": 22.28,
       "z": -4.45,
       "block": "long",
@@ -6085,8 +5667,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-4",
-      "pewId": 109,
+      "id": "105-4",
+      "pewId": 105,
       "x": 22.28,
       "z": -3.9,
       "block": "long",
@@ -6098,8 +5680,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-5",
-      "pewId": 109,
+      "id": "105-5",
+      "pewId": 105,
       "x": 22.28,
       "z": -3.35,
       "block": "long",
@@ -6111,8 +5693,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-6",
-      "pewId": 109,
+      "id": "105-6",
+      "pewId": 105,
       "x": 22.28,
       "z": -2.8,
       "block": "long",
@@ -6124,8 +5706,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-7",
-      "pewId": 109,
+      "id": "105-7",
+      "pewId": 105,
       "x": 22.28,
       "z": -2.25,
       "block": "long",
@@ -6137,8 +5719,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "109-8",
-      "pewId": 109,
+      "id": "105-8",
+      "pewId": 105,
       "x": 22.28,
       "z": -1.6999999999999997,
       "block": "long",
@@ -6150,8 +5732,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-1",
-      "pewId": 110,
+      "id": "106-1",
+      "pewId": 106,
       "x": 22.28,
       "z": 1.6999999999999997,
       "block": "long",
@@ -6163,8 +5745,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-2",
-      "pewId": 110,
+      "id": "106-2",
+      "pewId": 106,
       "x": 22.28,
       "z": 2.25,
       "block": "long",
@@ -6176,8 +5758,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-3",
-      "pewId": 110,
+      "id": "106-3",
+      "pewId": 106,
       "x": 22.28,
       "z": 2.8,
       "block": "long",
@@ -6189,8 +5771,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-4",
-      "pewId": 110,
+      "id": "106-4",
+      "pewId": 106,
       "x": 22.28,
       "z": 3.35,
       "block": "long",
@@ -6202,8 +5784,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-5",
-      "pewId": 110,
+      "id": "106-5",
+      "pewId": 106,
       "x": 22.28,
       "z": 3.9,
       "block": "long",
@@ -6215,8 +5797,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-6",
-      "pewId": 110,
+      "id": "106-6",
+      "pewId": 106,
       "x": 22.28,
       "z": 4.45,
       "block": "long",
@@ -6228,8 +5810,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-7",
-      "pewId": 110,
+      "id": "106-7",
+      "pewId": 106,
       "x": 22.28,
       "z": 5,
       "block": "long",
@@ -6241,8 +5823,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "110-8",
-      "pewId": 110,
+      "id": "106-8",
+      "pewId": 106,
       "x": 22.28,
       "z": 5.550000000000001,
       "block": "long",
@@ -6566,8 +6148,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-1",
-      "pewId": 111,
+      "id": "107-1",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -5.550000000000001,
       "block": "long",
@@ -6579,8 +6161,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-2",
-      "pewId": 111,
+      "id": "107-2",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -5,
       "block": "long",
@@ -6592,8 +6174,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-3",
-      "pewId": 111,
+      "id": "107-3",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -4.45,
       "block": "long",
@@ -6605,8 +6187,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-4",
-      "pewId": 111,
+      "id": "107-4",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -3.9,
       "block": "long",
@@ -6618,8 +6200,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-5",
-      "pewId": 111,
+      "id": "107-5",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -3.35,
       "block": "long",
@@ -6631,8 +6213,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-6",
-      "pewId": 111,
+      "id": "107-6",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -2.8,
       "block": "long",
@@ -6644,8 +6226,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-7",
-      "pewId": 111,
+      "id": "107-7",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -2.25,
       "block": "long",
@@ -6657,8 +6239,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "111-8",
-      "pewId": 111,
+      "id": "107-8",
+      "pewId": 107,
       "x": 24.520000000000003,
       "z": -1.6999999999999997,
       "block": "long",
@@ -6670,8 +6252,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-1",
-      "pewId": 112,
+      "id": "108-1",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 1.6999999999999997,
       "block": "long",
@@ -6683,8 +6265,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-2",
-      "pewId": 112,
+      "id": "108-2",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 2.25,
       "block": "long",
@@ -6696,8 +6278,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-3",
-      "pewId": 112,
+      "id": "108-3",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 2.8,
       "block": "long",
@@ -6709,8 +6291,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-4",
-      "pewId": 112,
+      "id": "108-4",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 3.35,
       "block": "long",
@@ -6722,8 +6304,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-5",
-      "pewId": 112,
+      "id": "108-5",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 3.9,
       "block": "long",
@@ -6735,8 +6317,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-6",
-      "pewId": 112,
+      "id": "108-6",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 4.45,
       "block": "long",
@@ -6748,8 +6330,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-7",
-      "pewId": 112,
+      "id": "108-7",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 5,
       "block": "long",
@@ -6761,8 +6343,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "112-8",
-      "pewId": 112,
+      "id": "108-8",
+      "pewId": 108,
       "x": 24.520000000000003,
       "z": 5.550000000000001,
       "block": "long",
@@ -6930,8 +6512,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-1",
-      "pewId": 113,
+      "id": "109-1",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -5.550000000000001,
       "block": "long",
@@ -6943,8 +6525,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-2",
-      "pewId": 113,
+      "id": "109-2",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -5,
       "block": "long",
@@ -6956,8 +6538,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-3",
-      "pewId": 113,
+      "id": "109-3",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -4.45,
       "block": "long",
@@ -6969,8 +6551,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-4",
-      "pewId": 113,
+      "id": "109-4",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -3.9,
       "block": "long",
@@ -6982,8 +6564,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-5",
-      "pewId": 113,
+      "id": "109-5",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -3.35,
       "block": "long",
@@ -6995,8 +6577,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-6",
-      "pewId": 113,
+      "id": "109-6",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -2.8,
       "block": "long",
@@ -7008,8 +6590,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-7",
-      "pewId": 113,
+      "id": "109-7",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -2.25,
       "block": "long",
@@ -7021,8 +6603,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "113-8",
-      "pewId": 113,
+      "id": "109-8",
+      "pewId": 109,
       "x": 25.650000000000002,
       "z": -1.6999999999999997,
       "block": "long",
@@ -7034,8 +6616,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-1",
-      "pewId": 114,
+      "id": "110-1",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 1.6999999999999997,
       "block": "long",
@@ -7047,8 +6629,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-2",
-      "pewId": 114,
+      "id": "110-2",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 2.25,
       "block": "long",
@@ -7060,8 +6642,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-3",
-      "pewId": 114,
+      "id": "110-3",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 2.8,
       "block": "long",
@@ -7073,8 +6655,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-4",
-      "pewId": 114,
+      "id": "110-4",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 3.35,
       "block": "long",
@@ -7086,8 +6668,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-5",
-      "pewId": 114,
+      "id": "110-5",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 3.9,
       "block": "long",
@@ -7099,8 +6681,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-6",
-      "pewId": 114,
+      "id": "110-6",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 4.45,
       "block": "long",
@@ -7112,8 +6694,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-7",
-      "pewId": 114,
+      "id": "110-7",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 5,
       "block": "long",
@@ -7125,8 +6707,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "114-8",
-      "pewId": 114,
+      "id": "110-8",
+      "pewId": 110,
       "x": 25.650000000000002,
       "z": 5.550000000000001,
       "block": "long",
@@ -7294,8 +6876,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-1",
-      "pewId": 115,
+      "id": "111-1",
+      "pewId": 111,
       "x": 26.78,
       "z": -5.550000000000001,
       "block": "long",
@@ -7307,8 +6889,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-2",
-      "pewId": 115,
+      "id": "111-2",
+      "pewId": 111,
       "x": 26.78,
       "z": -5,
       "block": "long",
@@ -7320,8 +6902,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-3",
-      "pewId": 115,
+      "id": "111-3",
+      "pewId": 111,
       "x": 26.78,
       "z": -4.45,
       "block": "long",
@@ -7333,8 +6915,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-4",
-      "pewId": 115,
+      "id": "111-4",
+      "pewId": 111,
       "x": 26.78,
       "z": -3.9,
       "block": "long",
@@ -7346,8 +6928,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-5",
-      "pewId": 115,
+      "id": "111-5",
+      "pewId": 111,
       "x": 26.78,
       "z": -3.35,
       "block": "long",
@@ -7359,8 +6941,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-6",
-      "pewId": 115,
+      "id": "111-6",
+      "pewId": 111,
       "x": 26.78,
       "z": -2.8,
       "block": "long",
@@ -7372,8 +6954,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-7",
-      "pewId": 115,
+      "id": "111-7",
+      "pewId": 111,
       "x": 26.78,
       "z": -2.25,
       "block": "long",
@@ -7385,8 +6967,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "115-8",
-      "pewId": 115,
+      "id": "111-8",
+      "pewId": 111,
       "x": 26.78,
       "z": -1.6999999999999997,
       "block": "long",
@@ -7398,8 +6980,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-1",
-      "pewId": 116,
+      "id": "112-1",
+      "pewId": 112,
       "x": 26.78,
       "z": 1.6999999999999997,
       "block": "long",
@@ -7411,8 +6993,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-2",
-      "pewId": 116,
+      "id": "112-2",
+      "pewId": 112,
       "x": 26.78,
       "z": 2.25,
       "block": "long",
@@ -7424,8 +7006,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-3",
-      "pewId": 116,
+      "id": "112-3",
+      "pewId": 112,
       "x": 26.78,
       "z": 2.8,
       "block": "long",
@@ -7437,8 +7019,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-4",
-      "pewId": 116,
+      "id": "112-4",
+      "pewId": 112,
       "x": 26.78,
       "z": 3.35,
       "block": "long",
@@ -7450,8 +7032,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-5",
-      "pewId": 116,
+      "id": "112-5",
+      "pewId": 112,
       "x": 26.78,
       "z": 3.9,
       "block": "long",
@@ -7463,8 +7045,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-6",
-      "pewId": 116,
+      "id": "112-6",
+      "pewId": 112,
       "x": 26.78,
       "z": 4.45,
       "block": "long",
@@ -7476,8 +7058,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-7",
-      "pewId": 116,
+      "id": "112-7",
+      "pewId": 112,
       "x": 26.78,
       "z": 5,
       "block": "long",
@@ -7489,8 +7071,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "116-8",
-      "pewId": 116,
+      "id": "112-8",
+      "pewId": 112,
       "x": 26.78,
       "z": 5.550000000000001,
       "block": "long",
@@ -7814,8 +7396,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-1",
-      "pewId": 117,
+      "id": "113-1",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -5.550000000000001,
       "block": "long",
@@ -7827,8 +7409,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-2",
-      "pewId": 117,
+      "id": "113-2",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -5,
       "block": "long",
@@ -7840,8 +7422,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-3",
-      "pewId": 117,
+      "id": "113-3",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -4.45,
       "block": "long",
@@ -7853,8 +7435,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-4",
-      "pewId": 117,
+      "id": "113-4",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -3.9,
       "block": "long",
@@ -7866,8 +7448,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-5",
-      "pewId": 117,
+      "id": "113-5",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -3.35,
       "block": "long",
@@ -7879,8 +7461,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-6",
-      "pewId": 117,
+      "id": "113-6",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -2.8,
       "block": "long",
@@ -7892,8 +7474,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-7",
-      "pewId": 117,
+      "id": "113-7",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -2.25,
       "block": "long",
@@ -7905,8 +7487,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "117-8",
-      "pewId": 117,
+      "id": "113-8",
+      "pewId": 113,
       "x": 29.020000000000003,
       "z": -1.6999999999999997,
       "block": "long",
@@ -7918,8 +7500,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-1",
-      "pewId": 118,
+      "id": "114-1",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 1.6999999999999997,
       "block": "long",
@@ -7931,8 +7513,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-2",
-      "pewId": 118,
+      "id": "114-2",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 2.25,
       "block": "long",
@@ -7944,8 +7526,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-3",
-      "pewId": 118,
+      "id": "114-3",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 2.8,
       "block": "long",
@@ -7957,8 +7539,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-4",
-      "pewId": 118,
+      "id": "114-4",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 3.35,
       "block": "long",
@@ -7970,8 +7552,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-5",
-      "pewId": 118,
+      "id": "114-5",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 3.9,
       "block": "long",
@@ -7983,8 +7565,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-6",
-      "pewId": 118,
+      "id": "114-6",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 4.45,
       "block": "long",
@@ -7996,8 +7578,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-7",
-      "pewId": 118,
+      "id": "114-7",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 5,
       "block": "long",
@@ -8009,8 +7591,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "118-8",
-      "pewId": 118,
+      "id": "114-8",
+      "pewId": 114,
       "x": 29.020000000000003,
       "z": 5.550000000000001,
       "block": "long",
@@ -8178,8 +7760,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-1",
-      "pewId": 119,
+      "id": "115-1",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -5.550000000000001,
       "block": "long",
@@ -8191,8 +7773,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-2",
-      "pewId": 119,
+      "id": "115-2",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -5,
       "block": "long",
@@ -8204,8 +7786,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-3",
-      "pewId": 119,
+      "id": "115-3",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -4.45,
       "block": "long",
@@ -8217,8 +7799,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-4",
-      "pewId": 119,
+      "id": "115-4",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -3.9,
       "block": "long",
@@ -8230,8 +7812,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-5",
-      "pewId": 119,
+      "id": "115-5",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -3.35,
       "block": "long",
@@ -8243,8 +7825,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-6",
-      "pewId": 119,
+      "id": "115-6",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -2.8,
       "block": "long",
@@ -8256,8 +7838,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-7",
-      "pewId": 119,
+      "id": "115-7",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -2.25,
       "block": "long",
@@ -8269,8 +7851,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "119-8",
-      "pewId": 119,
+      "id": "115-8",
+      "pewId": 115,
       "x": 30.150000000000002,
       "z": -1.6999999999999997,
       "block": "long",
@@ -8282,8 +7864,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-1",
-      "pewId": 120,
+      "id": "116-1",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 1.6999999999999997,
       "block": "long",
@@ -8295,8 +7877,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-2",
-      "pewId": 120,
+      "id": "116-2",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 2.25,
       "block": "long",
@@ -8308,8 +7890,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-3",
-      "pewId": 120,
+      "id": "116-3",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 2.8,
       "block": "long",
@@ -8321,8 +7903,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-4",
-      "pewId": 120,
+      "id": "116-4",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 3.35,
       "block": "long",
@@ -8334,8 +7916,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-5",
-      "pewId": 120,
+      "id": "116-5",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 3.9,
       "block": "long",
@@ -8347,8 +7929,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-6",
-      "pewId": 120,
+      "id": "116-6",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 4.45,
       "block": "long",
@@ -8360,8 +7942,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-7",
-      "pewId": 120,
+      "id": "116-7",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 5,
       "block": "long",
@@ -8373,8 +7955,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "120-8",
-      "pewId": 120,
+      "id": "116-8",
+      "pewId": 116,
       "x": 30.150000000000002,
       "z": 5.550000000000001,
       "block": "long",
@@ -8542,8 +8124,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-1",
-      "pewId": 121,
+      "id": "117-1",
+      "pewId": 117,
       "x": 31.28,
       "z": -5.550000000000001,
       "block": "long",
@@ -8555,8 +8137,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-2",
-      "pewId": 121,
+      "id": "117-2",
+      "pewId": 117,
       "x": 31.28,
       "z": -5,
       "block": "long",
@@ -8568,8 +8150,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-3",
-      "pewId": 121,
+      "id": "117-3",
+      "pewId": 117,
       "x": 31.28,
       "z": -4.45,
       "block": "long",
@@ -8581,8 +8163,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-4",
-      "pewId": 121,
+      "id": "117-4",
+      "pewId": 117,
       "x": 31.28,
       "z": -3.9,
       "block": "long",
@@ -8594,8 +8176,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-5",
-      "pewId": 121,
+      "id": "117-5",
+      "pewId": 117,
       "x": 31.28,
       "z": -3.35,
       "block": "long",
@@ -8607,8 +8189,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-6",
-      "pewId": 121,
+      "id": "117-6",
+      "pewId": 117,
       "x": 31.28,
       "z": -2.8,
       "block": "long",
@@ -8620,8 +8202,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-7",
-      "pewId": 121,
+      "id": "117-7",
+      "pewId": 117,
       "x": 31.28,
       "z": -2.25,
       "block": "long",
@@ -8633,8 +8215,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "121-8",
-      "pewId": 121,
+      "id": "117-8",
+      "pewId": 117,
       "x": 31.28,
       "z": -1.6999999999999997,
       "block": "long",
@@ -8646,8 +8228,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-1",
-      "pewId": 122,
+      "id": "118-1",
+      "pewId": 118,
       "x": 31.28,
       "z": 1.6999999999999997,
       "block": "long",
@@ -8659,8 +8241,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-2",
-      "pewId": 122,
+      "id": "118-2",
+      "pewId": 118,
       "x": 31.28,
       "z": 2.25,
       "block": "long",
@@ -8672,8 +8254,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-3",
-      "pewId": 122,
+      "id": "118-3",
+      "pewId": 118,
       "x": 31.28,
       "z": 2.8,
       "block": "long",
@@ -8685,8 +8267,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-4",
-      "pewId": 122,
+      "id": "118-4",
+      "pewId": 118,
       "x": 31.28,
       "z": 3.35,
       "block": "long",
@@ -8698,8 +8280,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-5",
-      "pewId": 122,
+      "id": "118-5",
+      "pewId": 118,
       "x": 31.28,
       "z": 3.9,
       "block": "long",
@@ -8711,8 +8293,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-6",
-      "pewId": 122,
+      "id": "118-6",
+      "pewId": 118,
       "x": 31.28,
       "z": 4.45,
       "block": "long",
@@ -8724,8 +8306,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-7",
-      "pewId": 122,
+      "id": "118-7",
+      "pewId": 118,
       "x": 31.28,
       "z": 5,
       "block": "long",
@@ -8737,8 +8319,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "122-8",
-      "pewId": 122,
+      "id": "118-8",
+      "pewId": 118,
       "x": 31.28,
       "z": 5.550000000000001,
       "block": "long",
@@ -9062,8 +8644,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "94-1",
-      "pewId": 94,
+      "id": "90-1",
+      "pewId": 90,
       "x": 33.655,
       "z": -6.535,
       "block": "outer",
@@ -9075,8 +8657,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "94-2",
-      "pewId": 94,
+      "id": "90-2",
+      "pewId": 90,
       "x": 33.655,
       "z": -5.985,
       "block": "outer",
@@ -9088,8 +8670,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "94-3",
-      "pewId": 94,
+      "id": "90-3",
+      "pewId": 90,
       "x": 33.655,
       "z": -5.4350000000000005,
       "block": "outer",
@@ -9101,8 +8683,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-1",
-      "pewId": 131,
+      "id": "125-1",
+      "pewId": 125,
       "x": 33.655,
       "z": -5.550000000000001,
       "block": "long",
@@ -9114,8 +8696,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-2",
-      "pewId": 131,
+      "id": "125-2",
+      "pewId": 125,
       "x": 33.655,
       "z": -5,
       "block": "long",
@@ -9127,8 +8709,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-3",
-      "pewId": 131,
+      "id": "125-3",
+      "pewId": 125,
       "x": 33.655,
       "z": -4.45,
       "block": "long",
@@ -9140,8 +8722,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-4",
-      "pewId": 131,
+      "id": "125-4",
+      "pewId": 125,
       "x": 33.655,
       "z": -3.9,
       "block": "long",
@@ -9153,8 +8735,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-5",
-      "pewId": 131,
+      "id": "125-5",
+      "pewId": 125,
       "x": 33.655,
       "z": -3.35,
       "block": "long",
@@ -9166,8 +8748,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-6",
-      "pewId": 131,
+      "id": "125-6",
+      "pewId": 125,
       "x": 33.655,
       "z": -2.8,
       "block": "long",
@@ -9179,8 +8761,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-7",
-      "pewId": 131,
+      "id": "125-7",
+      "pewId": 125,
       "x": 33.655,
       "z": -2.25,
       "block": "long",
@@ -9192,8 +8774,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "131-8",
-      "pewId": 131,
+      "id": "125-8",
+      "pewId": 125,
       "x": 33.655,
       "z": -1.6999999999999997,
       "block": "long",
@@ -9205,8 +8787,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "93-1",
-      "pewId": 93,
+      "id": "89-1",
+      "pewId": 89,
       "x": 33.655,
       "z": -2.7,
       "block": "central",
@@ -9218,8 +8800,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "93-2",
-      "pewId": 93,
+      "id": "89-2",
+      "pewId": 89,
       "x": 33.655,
       "z": -2.15,
       "block": "central",
@@ -9231,8 +8813,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "93-3",
-      "pewId": 93,
+      "id": "89-3",
+      "pewId": 89,
       "x": 33.655,
       "z": -1.5999999999999999,
       "block": "central",
@@ -9244,8 +8826,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "95-1",
-      "pewId": 95,
+      "id": "91-1",
+      "pewId": 91,
       "x": 33.655,
       "z": 1.5999999999999999,
       "block": "central",
@@ -9257,8 +8839,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "95-2",
-      "pewId": 95,
+      "id": "91-2",
+      "pewId": 91,
       "x": 33.655,
       "z": 2.15,
       "block": "central",
@@ -9270,8 +8852,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "95-3",
-      "pewId": 95,
+      "id": "91-3",
+      "pewId": 91,
       "x": 33.655,
       "z": 2.7,
       "block": "central",
@@ -9283,8 +8865,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-1",
-      "pewId": 132,
+      "id": "126-1",
+      "pewId": 126,
       "x": 33.655,
       "z": 1.6999999999999997,
       "block": "long",
@@ -9296,8 +8878,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-2",
-      "pewId": 132,
+      "id": "126-2",
+      "pewId": 126,
       "x": 33.655,
       "z": 2.25,
       "block": "long",
@@ -9309,8 +8891,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-3",
-      "pewId": 132,
+      "id": "126-3",
+      "pewId": 126,
       "x": 33.655,
       "z": 2.8,
       "block": "long",
@@ -9322,8 +8904,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-4",
-      "pewId": 132,
+      "id": "126-4",
+      "pewId": 126,
       "x": 33.655,
       "z": 3.35,
       "block": "long",
@@ -9335,8 +8917,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-5",
-      "pewId": 132,
+      "id": "126-5",
+      "pewId": 126,
       "x": 33.655,
       "z": 3.9,
       "block": "long",
@@ -9348,8 +8930,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-6",
-      "pewId": 132,
+      "id": "126-6",
+      "pewId": 126,
       "x": 33.655,
       "z": 4.45,
       "block": "long",
@@ -9361,8 +8943,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-7",
-      "pewId": 132,
+      "id": "126-7",
+      "pewId": 126,
       "x": 33.655,
       "z": 5,
       "block": "long",
@@ -9374,8 +8956,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "132-8",
-      "pewId": 132,
+      "id": "126-8",
+      "pewId": 126,
       "x": 33.655,
       "z": 5.550000000000001,
       "block": "long",
@@ -9387,8 +8969,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "96-1",
-      "pewId": 96,
+      "id": "92-1",
+      "pewId": 92,
       "x": 33.655,
       "z": 5.4350000000000005,
       "block": "outer",
@@ -9400,8 +8982,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "96-2",
-      "pewId": 96,
+      "id": "92-2",
+      "pewId": 92,
       "x": 33.655,
       "z": 5.985,
       "block": "outer",
@@ -9413,8 +8995,8 @@ window.CHURCH_PLAN_DATA = {
       }
     },
     {
-      "id": "96-3",
-      "pewId": 96,
+      "id": "92-3",
+      "pewId": 92,
       "x": 33.655,
       "z": 6.535,
       "block": "outer",
@@ -9445,23 +9027,23 @@ window.CHURCH_PLAN_DATA = {
   },
   "sightlineSummary": {
     "2": {
-      "pewCount": 36,
-      "pewRows": 18,
-      "sampledSeats": 288,
+      "pewCount": 34,
+      "pewRows": 17,
+      "sampledSeats": 272,
       "blocked": {
-        "altar": 102,
-        "ambo": 107,
-        "crucifix": 122
+        "altar": 94,
+        "ambo": 101,
+        "crucifix": 114
       }
     },
     "4": {
-      "pewCount": 96,
-      "pewRows": 24,
-      "sampledSeats": 288,
+      "pewCount": 92,
+      "pewRows": 23,
+      "sampledSeats": 276,
       "blocked": {
-        "altar": 86,
-        "ambo": 85,
-        "crucifix": 92
+        "altar": 80,
+        "ambo": 81,
+        "crucifix": 86
       }
     }
   },
@@ -9478,7 +9060,6 @@ window.CHURCH_PLAN_DATA = {
       {
         "bay": "2–3",
         "xs": [
-          6.49,
           7.62
         ]
       },
@@ -9510,7 +9091,7 @@ window.CHURCH_PLAN_DATA = {
         "widthM": 1.2
       }
     ],
-    "note": "Two extra rows in each of bays 2–3 and 4–5 and one in bay 8–9, for both layouts; the front row before the sanctuary is omitted. Proposed door-bay crossings are 1.20 m. Kneeler clearance requires a mock-up."
+    "note": "The entrance-end row at X 6.49 m is removed in both layouts at the owner’s request. One added row remains in bay 2–3, two in 4–5 and one in 8–9. Proposed door-bay crossings are 1.20 m. Kneeler clearance requires a mock-up."
   },
   "columns": [
     {

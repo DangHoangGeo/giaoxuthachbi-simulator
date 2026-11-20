@@ -2,7 +2,17 @@
 
 **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.**
 
+**Interior finish and display study, 10 November 2026:** paving joints and sheen, nave skirting and cornice, panelled roof lining with gilded rosettes, calmer lacquer, finer joinery grain, red marble pedestal panels, sanctuary details and a display pass (contact shading, highlight roll-off, glow, daylight at the openings). See the [owning record](interior-finish.md) and the [before](../review/interior-baseline-2026-11-10/README.md) and [after](../review/interior-finish-2026-11-10/README.md) captures. Fans stay all white at the owner's request. Display finishes and ornament proxies; owner appearance review pending.
+
 Owner brief: improve exterior, interior and sanctuary decoration and visual realism in the northern Vietnamese Catholic tradition. This revision refines the existing approved composition rather than treating newly invented ornament as historic evidence. The drawing-controlled envelope, liturgical arrangement and parish meeting decisions remain the basis.
+
+**Sanctuary close-up, 3 November 2026:** The four central and side-shrine pilasters use red lacquer fields and bounded raised gilded carving, and the adjacent niche arcs are kept clear of the shafts. At the owner's clarification, red-and-gold skins continue onto the indoor faces of the existing outer concrete support proxies (since 7 November 2026 not onto the faces in the porch; [record](engineering/wing-gables-and-service-room-doors.md)) and doorway-base proxies; the shelf reaches the supports and the previously white side arches are red and gold, while Mary and Joseph stay recessed. See the [sanctuary record](sanctuary-model.md#red-and-gold-pilaster-clarity--3-november-2026). The owner-confirmed concrete above the service room and the existing niche/ceiling discrepancy remain on [ENG-044](engineering/issues.md#concrete-above-the-service-room-and-crucifix-recess--eng-044). No concrete removal or deeper recess is approved.
+
+**Sanctuary detail, 7 November 2026:** The central niche gains connected scrolls and folded, veined foliage, and the central and side-shrine pilasters gain denser climbing relief. The broad reredos ground has reduced grain contrast using a local lacquer material copy. See the [sanctuary revision](sanctuary-model.md#lacquer-and-gilded-carving-detail--7-november-2026) and [desktop comparisons](../review/sanctuary-gilding-2026-11-07/README.md). These are proposed decorative finishes with artisan and material review pending.
+
+The second sanctuary detail pass carries the carving into the canopy band, crown scroll, niche architrave, central capitals, lower friezes and seven lotus panels. Paired climbing vines give the central and side-shrine pilasters a fuller parcel-gilt field. All new gold remains authored procedural display relief on the existing lacquer or gilded surfaces.
+
+**Rich frame carving and continuous grid, 7 November 2026:** Fitted rolled-scroll borders, layered fronds, multi-ring flowers and fuller pilaster panels develop the main arch and side shrines. The red grid now follows shared stations across the chamber ceiling, cornice, plumb cove and side vaults. The five spandrels and shrine backgrounds carry satin lacquer under the sculpted gold. See the [owning model revision](sanctuary-model.md#rich-carved-frames-and-continuous-red-ceiling-grid--7-november-2026) and [desktop review](../review/sanctuary-carved-frames-2026-11-07/README.md). Finish, craft and engineering approval remain pending.
 
 ## Sources and cultural direction
 
@@ -58,8 +68,26 @@ The existing two rows of eight proposed trees now stand in soil within their exi
 
 The existing tree visibility switch is now named **Show landscaping / Hiện cảnh quan** because it hides the grass and tree beds as well as the trees. `treesToggle` remains the same control ID. No equipment, electrical line, calculated boundary, walk collision or building dimension changes; plan and electrical exports do not encode the presentation planting. The existing category registers and their concurrent edits are untouched. See the [desktop review](../review/grounds-2026-10-30/README.md). The [web viewer contract](web/viewer.md), [central-view constraint](engineering/central-view-constraint.md), [roof specification](beams-roof-connections/SPECIFICATION.md) and [appearance references](church-view-renderings.md) were checked; no engineering hold is closed.
 
+## Timber finish on doors, windows and pews · 20 November 2026
+
+**CONCEPT.** The owner asked for substantial-looking timber with more natural colour and grain. The red-brown door palette takes its cue from the red-lacquered timber vocabulary already used in the church. The window joinery shares the red-brown door materials and the pews use walnut-brown tones. Timber species, stain, physical samples and fabrication remain open. [Archdiocese of Hanoi, cathedral interior](https://www.tonggiaophanhanoi.org/giao-xu-chinh-toa-ha-noi/)
+
+| Viewer surface | Colour treatment |
+| --- | --- |
+| Front and side doors | Deep red-brown leaves, a quieter recessed field and slightly lighter timber mouldings. The existing rosettes share their panel's tone. The treatment follows both the open and closed assemblies. |
+| Window timber | Shutter stiles, recessed fields and raised profiles use the door leaf, panel and edge materials respectively. The twelve C/G windows have exposed masonry reveals and a carved lotus-and-vine band above the shutters. The upper shutter field is solid recessed timber. Two slender uprights, a bevelled diamond and a pointed lancet crown stand proud of each face. Closing the shutters screens the lower glass and opening them restores the view. A solid moulded lower apron carries the wood grain. The clear body glazing has a neutral perimeter in both glass modes. Its low reflection and opacity let the solid field show the same material as the main door leaf. This concept variant also applies to the four wing windows. |
+| Nave pews | Walnut-brown backs and ends, warmer seats and handrails, and darker feet and supports. Both the long and short seating layouts use the same palette. |
+
+The four embedded photographic maps replace the old synthetic stripes on these timber surfaces. Grain follows the length of the seats, backs and rails, and runs vertically on the door and shutter panels. The display finish blends the photograph over a chestnut base, retaining 28% of its colour variation on doors and windows and 34% on pews. Reduced bump shading keeps the lighter grain from catching the lamps in parallel streaks. Materials share a colour and a height map for each timber, with 768 × 768 pixels per map in standard graphics and 384 × 384 in light graphics. The neutral finish control can still remove and restore the presentation finish. [Photographic map provenance and CC0 credits](../Thach_Bi_Viewer/references/materials/provenance.json)
+
+The carved band fits within the existing 220 mm head. These are presentation profiles pending craft review. Fabrication, privacy, shading and daylight performance of the lattice option require review. The drawn openings, hinges, seating dimensions and engineering inputs retain their recorded values. [Opening coordination](engineering/outer-wall-and-marian-art-2026-11-08.md) · [Seating study](interior-systems-plan.md) · [Desktop comparisons](../review/timber-finish-2026-11-20/README.md)
+
 ## Outstanding review
 
 **USER CONFIRMED, 25 October 2026:** “mirror things” means **minor visual details** in this decoration request. It is not a request to reflect the model. ENG-027, the separate possible drawing/model left-right mirror, remains open. This finish revision applies no global reflection and changes no saint, tower-board, stair or station side assignment. A coordinate reflection needs its own coordinated geometry, winding, navigation, equipment, route and register migration.
 
 Parish/artist review is still required for the station narratives, statue sculpture, precise regional motifs and final finish samples. Structural support, fixing, fire behaviour, service access, humidity durability and cleaning methods require the relevant designers. The present textures provide no product performance or purchasing approval.
+
+## Continuous stone wall colour · 20 November 2026
+
+The owner chose pale yellow cream for interior walls and mineral-finished nave supports, with cream-grey stone colours outside. The surfaces are continuous. Muted warm sandstone picks out the carved detail. [Desktop comparisons](../review/wall-stone-2026-11-20/README.md)

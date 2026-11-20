@@ -1,5 +1,11 @@
 # Church view renderings
 
+## Nave joints and ceiling study · 9 November 2026
+
+The owner requested image-generation improvements to the column/beam spaces and the plain roof underside. The [new appearance study](../review/interior-concept-2026-11-09/README.md) pairs current desktop viewer screenshots with two native **1586 × 992** generated proposals: an upward joint/ceiling detail and a nave view. Layered lacquered foliate capitals, carved beam panels, pierced curved collars and framed ivory ceiling panels extend the existing red-and-gold direction using the project-created timber concepts. Exact prompts, ordered sources, hashes and source-model qualifications are retained in the study. **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** Owner appearance review is pending.
+
+The generated views are independent interpretations, not a dimensionally coordinated drawing set. In particular, the wide image adds centre uprights where the current model omits them for roof uplights; those details require lighting/route review before implementation. Artwork omits visible fans and rods to express the all-hidden brief without solving concealment or airflow. No viewer, equipment, routes, registers, exports, current reference selection or engineering results change. All structural, electrical, maintenance, lighting, speech/feedback and ventilation holds remain open.
+
 ## Viewer finish development · 25 October 2026
 
 The [decoration revision](decoration-finishes.md) refines mineral plaster, honed stone, terracotta, red lacquer and gilding across the actual viewer, and adds shallow foliate station surrounds. [Desktop review captures](../review/decoration-2026-10-25/README.md) are actual model screenshots, separate from the generated artwork below. Existing concepts, reference selections and provenance stay intact. This is an appearance study in the approved northern Vietnamese Catholic direction; commissioned station narratives, fine statue carving and engineering holds remain unresolved.

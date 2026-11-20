@@ -92,55 +92,107 @@
   "status": "Software geometry screen passed; physical design remains ENGINEERING HOLD",
   "lightEnvelopes": [
     {
-      "id": "L63",
+      "id": "L-WING-B-FI",
       "minimum": [
-        38.2699999833107,
-        2.5595000267028807,
-        -10.739615225791932
+        38.85826095432043,
+        7.305531889450863,
+        -8.919999997317792
       ],
       "maximum": [
-        39.6100000166893,
-        8.115060000372525,
-        -9.56038477420807
+        39.02173904567957,
+        7.6555318874392055,
+        -8.68000000268221
       ]
     },
     {
-      "id": "L65",
+      "id": "L-WING-B-FO",
       "minimum": [
-        41.5499999833107,
-        2.5595000267028807,
-        -10.739615225791932
+        38.85826095432043,
+        7.305531889450863,
+        -11.519999997317791
       ],
       "maximum": [
-        42.8900000166893,
-        8.083580000372532,
-        -9.56038477420807
+        39.02173904567957,
+        7.6555318874392055,
+        -11.28000000268221
       ]
     },
     {
-      "id": "L67",
+      "id": "L-WING-B-RI",
       "minimum": [
-        38.2699999833107,
-        2.5595000267028807,
-        9.56038477420807
+        42.12826095432043,
+        7.305531889450869,
+        -8.919999997317792
       ],
       "maximum": [
-        39.6100000166893,
-        8.115060000372525,
-        10.739615225791932
+        42.29173904567957,
+        7.655531887439211,
+        -8.68000000268221
       ]
     },
     {
-      "id": "L69",
+      "id": "L-WING-B-RO",
       "minimum": [
-        41.5499999833107,
-        2.5595000267028807,
-        9.56038477420807
+        42.12826095432043,
+        7.305531889450869,
+        -11.519999997317791
       ],
       "maximum": [
-        42.8900000166893,
-        8.083580000372532,
-        10.739615225791932
+        42.29173904567957,
+        7.655531887439211,
+        -11.28000000268221
+      ]
+    },
+    {
+      "id": "L-WING-H-FI",
+      "minimum": [
+        38.85826095432043,
+        7.305531889450863,
+        8.68000000268221
+      ],
+      "maximum": [
+        39.02173904567957,
+        7.6555318874392055,
+        8.919999997317792
+      ]
+    },
+    {
+      "id": "L-WING-H-FO",
+      "minimum": [
+        38.85826095432043,
+        7.305531889450863,
+        11.28000000268221
+      ],
+      "maximum": [
+        39.02173904567957,
+        7.6555318874392055,
+        11.519999997317791
+      ]
+    },
+    {
+      "id": "L-WING-H-RI",
+      "minimum": [
+        42.12826095432043,
+        7.305531889450869,
+        8.68000000268221
+      ],
+      "maximum": [
+        42.29173904567957,
+        7.655531887439211,
+        8.919999997317792
+      ]
+    },
+    {
+      "id": "L-WING-H-RO",
+      "minimum": [
+        42.12826095432043,
+        7.305531889450869,
+        11.28000000268221
+      ],
+      "maximum": [
+        42.29173904567957,
+        7.655531887439211,
+        11.519999997317791
       ]
     }
   ],
@@ -160,7 +212,8 @@
         ]
       },
       "minimumAboveWingFloorM": 4.056598750269481,
-      "minimumAngleFromAnyWingReadingOpticDegrees": 103.81793085257482
+      "minimumAngleFromAnyWingReadingOpticDegrees": 19.892767269508962,
+      "minimumMarginOutsideMainBeamDegrees": 7.892767269508962
     },
     {
       "id": "F241",
@@ -177,7 +230,8 @@
         ]
       },
       "minimumAboveWingFloorM": 4.056627714985788,
-      "minimumAngleFromAnyWingReadingOpticDegrees": 103.84113850925233
+      "minimumAngleFromAnyWingReadingOpticDegrees": 19.893312266623695,
+      "minimumMarginOutsideMainBeamDegrees": 7.8933122666236955
     },
     {
       "id": "F242",
@@ -194,7 +248,8 @@
         ]
       },
       "minimumAboveWingFloorM": 4.056598750269481,
-      "minimumAngleFromAnyWingReadingOpticDegrees": 103.81793085257482
+      "minimumAngleFromAnyWingReadingOpticDegrees": 19.892767269508962,
+      "minimumMarginOutsideMainBeamDegrees": 7.892767269508962
     },
     {
       "id": "F243",
@@ -211,79 +266,190 @@
         ]
       },
       "minimumAboveWingFloorM": 4.056627714985788,
-      "minimumAngleFromAnyWingReadingOpticDegrees": 103.84113850925233
+      "minimumAngleFromAnyWingReadingOpticDegrees": 19.893312266623695,
+      "minimumMarginOutsideMainBeamDegrees": 7.8933122666236955
     }
   ],
   "fixturePairs": [
     {
-      "a": "L63",
+      "a": "L-WING-B-FI",
       "b": "S276",
-      "axisAlignedEnvelopeGapM": 4.432737401974604
+      "axisAlignedEnvelopeGapM": 6.394679338226409
     },
     {
-      "a": "L63",
+      "a": "L-WING-B-FI",
       "b": "F240",
-      "axisAlignedEnvelopeGapM": 1.4688019155730316
+      "axisAlignedEnvelopeGapM": 4.401088587324703
     },
     {
-      "a": "L63",
+      "a": "L-WING-B-FI",
       "b": "F241",
-      "axisAlignedEnvelopeGapM": 3.374787386946907
+      "axisAlignedEnvelopeGapM": 5.691673799631728
     },
     {
-      "a": "L63",
-      "b": "L65",
-      "axisAlignedEnvelopeGapM": 1.9399999666214
+      "a": "L-WING-B-FI",
+      "b": "L-WING-B-FO",
+      "axisAlignedEnvelopeGapM": 2.3600000053644177
     },
     {
-      "a": "L65",
+      "a": "L-WING-B-FI",
+      "b": "L-WING-B-RI",
+      "axisAlignedEnvelopeGapM": 3.1065219086408646
+    },
+    {
+      "a": "L-WING-B-FI",
+      "b": "L-WING-B-RO",
+      "axisAlignedEnvelopeGapM": 3.901291887847631
+    },
+    {
+      "a": "L-WING-B-FO",
       "b": "S276",
-      "axisAlignedEnvelopeGapM": 2.272525213815907
+      "axisAlignedEnvelopeGapM": 5.171839500729443
     },
     {
-      "a": "L65",
+      "a": "L-WING-B-FO",
       "b": "F240",
-      "axisAlignedEnvelopeGapM": 3.383775095157197
+      "axisAlignedEnvelopeGapM": 3.0049644930405517
     },
     {
-      "a": "L65",
+      "a": "L-WING-B-FO",
       "b": "F241",
-      "axisAlignedEnvelopeGapM": 1.468827407061033
+      "axisAlignedEnvelopeGapM": 4.696301623259666
     },
     {
-      "a": "L67",
+      "a": "L-WING-B-FO",
+      "b": "L-WING-B-RI",
+      "axisAlignedEnvelopeGapM": 3.901291887847631
+    },
+    {
+      "a": "L-WING-B-FO",
+      "b": "L-WING-B-RO",
+      "axisAlignedEnvelopeGapM": 3.1065219086408646
+    },
+    {
+      "a": "L-WING-B-RI",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 4.750933382621375
+    },
+    {
+      "a": "L-WING-B-RI",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 5.691646696982598
+    },
+    {
+      "a": "L-WING-B-RI",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 4.401117705907638
+    },
+    {
+      "a": "L-WING-B-RI",
+      "b": "L-WING-B-RO",
+      "axisAlignedEnvelopeGapM": 2.3600000053644177
+    },
+    {
+      "a": "L-WING-B-RO",
+      "b": "S276",
+      "axisAlignedEnvelopeGapM": 2.9029929363799396
+    },
+    {
+      "a": "L-WING-B-RO",
+      "b": "F240",
+      "axisAlignedEnvelopeGapM": 4.696282889075958
+    },
+    {
+      "a": "L-WING-B-RO",
+      "b": "F241",
+      "axisAlignedEnvelopeGapM": 3.0049850842343315
+    },
+    {
+      "a": "L-WING-H-FI",
       "b": "S278",
-      "axisAlignedEnvelopeGapM": 4.432737401974604
+      "axisAlignedEnvelopeGapM": 6.394679338226409
     },
     {
-      "a": "L67",
+      "a": "L-WING-H-FI",
       "b": "F242",
-      "axisAlignedEnvelopeGapM": 1.4688019155730316
+      "axisAlignedEnvelopeGapM": 4.401088587324703
     },
     {
-      "a": "L67",
+      "a": "L-WING-H-FI",
       "b": "F243",
-      "axisAlignedEnvelopeGapM": 3.374787386946907
+      "axisAlignedEnvelopeGapM": 5.691673799631728
     },
     {
-      "a": "L67",
-      "b": "L69",
-      "axisAlignedEnvelopeGapM": 1.9399999666214
+      "a": "L-WING-H-FI",
+      "b": "L-WING-H-FO",
+      "axisAlignedEnvelopeGapM": 2.3600000053644177
     },
     {
-      "a": "L69",
+      "a": "L-WING-H-FI",
+      "b": "L-WING-H-RI",
+      "axisAlignedEnvelopeGapM": 3.1065219086408646
+    },
+    {
+      "a": "L-WING-H-FI",
+      "b": "L-WING-H-RO",
+      "axisAlignedEnvelopeGapM": 3.901291887847631
+    },
+    {
+      "a": "L-WING-H-FO",
       "b": "S278",
-      "axisAlignedEnvelopeGapM": 2.272525213815907
+      "axisAlignedEnvelopeGapM": 5.171839500729443
     },
     {
-      "a": "L69",
+      "a": "L-WING-H-FO",
       "b": "F242",
-      "axisAlignedEnvelopeGapM": 3.383775095157197
+      "axisAlignedEnvelopeGapM": 3.0049644930405517
     },
     {
-      "a": "L69",
+      "a": "L-WING-H-FO",
       "b": "F243",
-      "axisAlignedEnvelopeGapM": 1.468827407061033
+      "axisAlignedEnvelopeGapM": 4.696301623259666
+    },
+    {
+      "a": "L-WING-H-FO",
+      "b": "L-WING-H-RI",
+      "axisAlignedEnvelopeGapM": 3.901291887847631
+    },
+    {
+      "a": "L-WING-H-FO",
+      "b": "L-WING-H-RO",
+      "axisAlignedEnvelopeGapM": 3.1065219086408646
+    },
+    {
+      "a": "L-WING-H-RI",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 4.750933382621375
+    },
+    {
+      "a": "L-WING-H-RI",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 5.691646696982598
+    },
+    {
+      "a": "L-WING-H-RI",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 4.401117705907638
+    },
+    {
+      "a": "L-WING-H-RI",
+      "b": "L-WING-H-RO",
+      "axisAlignedEnvelopeGapM": 2.3600000053644177
+    },
+    {
+      "a": "L-WING-H-RO",
+      "b": "S278",
+      "axisAlignedEnvelopeGapM": 2.9029929363799396
+    },
+    {
+      "a": "L-WING-H-RO",
+      "b": "F242",
+      "axisAlignedEnvelopeGapM": 4.696282889075958
+    },
+    {
+      "a": "L-WING-H-RO",
+      "b": "F243",
+      "axisAlignedEnvelopeGapM": 3.0049850842343315
     }
   ],
   "fanPairs": [
@@ -301,7 +467,7 @@
   "limits": [
     "17 yaw samples do not prove the continuous swept envelope or installation tolerances",
     "Full AABB separation is conservative geometry evidence, not an approved service clearance",
-    "Task beam half-angle is 50 degrees; wider field tails and decorative point light can reach fan blades, so flicker remains unverified",
+    "Main-beam checks use each simulated emitter and its configured half-angle; wider field tails may reach blades, so flicker remains unverified",
     "Roof projection supplies visualization anchor only; substrate capacity, cable/driver access and load restraint are unknown",
     "No complete architecture, inclusive sightline or concealment approval"
   ]

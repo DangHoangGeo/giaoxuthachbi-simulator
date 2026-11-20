@@ -17,6 +17,7 @@
     agedBrass: { color: '#a07a3c', metalness: 0.8, roughness: 0.42 },
     bronze: { color: '#4f3f2e', metalness: 0.55, roughness: 0.48 },
     black: { color: '#1e1e20', metalness: 0.35, roughness: 0.5 },
+    // Owner, 10 November 2026: fans stay plain white (the ivory trial was reverted).
     white: { color: '#efede6', metalness: 0.08, roughness: 0.45 },
     steel: { color: '#9aa0a6', metalness: 0.7, roughness: 0.35 },
     aluminium: { color: '#c9ccd0', metalness: 0.75, roughness: 0.3 },
@@ -31,6 +32,8 @@
     // The sanctuary chamber's own lacquer (side walls, cornices): it stays red whatever the
     // structural timber tone, so fittings on the chamber walls match it in every setting.
     chamberLacquer: { color: '#853125', roughness: 0.26, share: 'sanctuary' },
+    // The gilded vault boarding of the sanctuary (owner, 3 November 2026: the chamber heads on the gilded cove).
+    chamberGilt: { color: '#c9a045', metalness: 0.35, roughness: 0.42, share: 'sanctuaryGilt' },
     wallPlaster: { color: '#faf3e1', roughness: 0.83, share: 'wall' },
     corniceStone: { color: '#efe2c8', roughness: 0.67, share: 'trim' },
     wood: { color: '#8a6040', roughness: 0.5 },
@@ -185,9 +188,10 @@
   // A projector hung from the timber beams may take the beam lacquer instead of its metal
   // finish (19 October 2026: no black heads beside the red reading lights on the axis-9 tie),
   // and one on the sanctuary chamber walls the chamber lacquer (owner, 19 October 2026: all
-  // the sanctuary lights). Finish only: the body, optic and emitter are the same.
-  const projectorFinish = (params, metal) => ({ timber: 'beamTimber', chamber: 'chamberLacquer' })[params?.finish] ?? metal;
-  const finishParam = (metal, label) => ({ finish: { label: 'Finish', options: { [metal]: label, timber: 'Beam timber (follows the timber tone)', chamber: 'Sanctuary chamber lacquer' }, value: metal } });
+  // the sanctuary lights), and one on the gilded cove of the chamber its gilding (owner, 3 November
+  // 2026). Finish only: the body, optic and emitter are the same.
+  const projectorFinish = (params, metal) => ({ timber: 'beamTimber', chamber: 'chamberLacquer', gilt: 'chamberGilt' })[params?.finish] ?? metal;
+  const finishParam = (metal, label) => ({ finish: { label: 'Finish', options: { [metal]: label, timber: 'Beam timber (follows the timber tone)', chamber: 'Sanctuary chamber lacquer', gilt: 'Sanctuary gilding (vault boarding)' }, value: metal } });
   function buildProjector(k, r = 0.075, len = 0.24, finish = 'black', yoke = true, mountUp = false) {
     const sign = mountUp ? 1 : -1;
     k.box(0.14, 0.022, 0.14, finish, { p: [0, sign * 0.011, 0] });
@@ -214,6 +218,15 @@
       k.box(0.006, 0.18, 0.26, 'glow', { p: [0.034, 0, 0] });
       k.glowPoint([0.06, 0, 0], 0.4);
     });
+  }
+  // One compact body and two opposed optics; dimensions and output are planning proxies.
+  function buildColumnUpDown(k) {
+    k.box(0.035, 0.18, 0.12, 'beamTimber', { p: [0.0175, 0, 0] });
+    k.cyl(0.055, 0.055, 0.24, 'beamTimber', { p: [0.085, 0, 0] }, 16);
+    for (const s of [-1, 1]) {
+      k.cyl(0.043, 0.043, 0.006, 'glow', { p: [0.085, s * 0.122, 0] }, 16);
+      k.glowPoint([0.085, s * 0.13, 0], 0.17);
+    }
   }
   function buildHighbay(k) {
     k.cyl(0.03, 0.03, 0.2, 'white', { p: [0, -0.1, 0] }, 10);
@@ -348,22 +361,25 @@
     }
   }
 
-  function fanBlades(k, n, rIn, rOut, width, mat, pitch = deg(12), thick = 0.012) {
+  function fanBlades(k, n, rIn, rOut, width, mat, pitch = deg(12), thick = 0.012, iron = 'black') {
     k.in('rotor', () => {
-      k.cyl(0.07, 0.07, 0.05, 'black', {}, 16);
+      k.cyl(0.07, 0.07, 0.05, iron, {}, 16);
       ring(n, (i, a) => {
         const mid = (rIn + rOut) / 2, len = rOut - rIn;
         const q = new k.T.Quaternion().setFromEuler(new k.T.Euler(pitch, -a, 0, 'YXZ'));
         k.box(len, thick, width, mat, { p: [Math.cos(a) * mid, -0.01, Math.sin(a) * mid], q });
-        k.box(0.16, 0.012, 0.03, 'black', { p: [Math.cos(a) * (rIn - 0.03), 0.005, Math.sin(a) * (rIn - 0.03)], r: [0, -a, 0] });
+        k.box(0.16, 0.012, 0.03, iron, { p: [Math.cos(a) * (rIn - 0.03), 0.005, Math.sin(a) * (rIn - 0.03)], r: [0, -a, 0] });
       });
     });
   }
   function buildCeilingFan(k) {
-    k.cyl(0.075, 0.08, 0.05, 'darkWood', { p: [0, -0.02, 0] }, 14);
-    k.lathe([[0.04, -0.05], [0.11, -0.08], [0.13, -0.14], [0.12, -0.2], [0.06, -0.24], [0.001, -0.25]], 'bronze', {}, 22);
+    // Owner, 10 November 2026: an all-white fan — canopy, motor, hub, blade irons, blades and rod —
+    // not the roof lacquer and no black parts. Size, position, speed and duty are unchanged; the
+    // product finish is not selected.
+    k.cyl(0.075, 0.08, 0.05, 'white', { p: [0, -0.02, 0] }, 14);
+    k.lathe([[0.04, -0.05], [0.11, -0.08], [0.13, -0.14], [0.12, -0.2], [0.06, -0.24], [0.001, -0.25]], 'white', {}, 22);
     k.pivots.rotor = [0, -0.17, 0];
-    fanBlades(k, 5, 0.17, 0.71, 0.13, 'darkWood');
+    fanBlades(k, 5, 0.17, 0.71, 0.13, 'white', undefined, undefined, 'white');
   }
   function buildHVLS(k) {
     k.box(0.36, 0.3, 0.3, 'steel', { p: [0, -0.2, 0] });
@@ -500,11 +516,30 @@
   }
 
   /* Decorations */
+  // Statue pedestal in the sanctuary's red lacquer with gilded mouldings and a gilded frame and
+  // rosette on each face (10 November 2026; was plain marble boxes, which stood out white against
+  // the red-and-gold shrines). Same height and the same 0.62 m top, inside the 0.7 m footprint.
   function pedestal(k, h = 1.0, w = 0.5) {
-    k.box(w + 0.1, 0.1, w + 0.1, 'marble', { p: [0, 0.05, 0] });
-    k.box(w, h - 0.18, w, 'marble', { p: [0, 0.1 + (h - 0.18) / 2, 0] });
-    k.box(w + 0.08, 0.04, w + 0.08, 'stone', { p: [0, h - 0.06, 0] });
-    k.box(w + 0.12, 0.05, w + 0.12, 'marble', { p: [0, h - 0.025, 0] });
+    const L = 'chamberLacquer', G = 'chamberGilt';
+    // Plinth and base mouldings, bottom up: [width added, height, material].
+    let y = 0;
+    for (const [grow, t, m] of [[0.1, 0.08, L], [0.06, 0.025, G], [0.03, 0.035, L]]) { k.box(w + grow, t, w + grow, m, { p: [0, y + t / 2, 0] }); y += t; }
+    const top = h - 0.15, die = top - y;
+    k.box(w, die, w, L, { p: [0, y + die / 2, 0] });
+    // A gilded frame and a small rosette on each face of the die.
+    const fw = w - 0.12, fh = die - 0.12, cy = y + die / 2, off = w / 2 + 0.005;
+    for (const [nx, nz] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const across = (a, b) => (nx ? [0.01, b, a] : [a, b, 0.01]);
+      for (const e of [-1, 1]) {
+        k.box(...across(fw + 0.016, 0.016), G, { p: [nx * off, cy + e * fh / 2, nz * off] });
+        k.box(...across(0.016, fh), G, { p: [nx * off + (nz ? e * fw / 2 : 0), cy, nz * off + (nx ? e * fw / 2 : 0)] });
+      }
+      k.tor(0.045, 0.007, G, { p: [nx * off, cy, nz * off], r: nx ? [0, PI / 2, 0] : [0, 0, 0] }, 2 * PI, 5, 20);
+      k.sph(0.025, G, { p: [nx * (off + 0.004), cy, nz * (off + 0.004)], s: nx ? [0.45, 1, 1] : [1, 1, 0.45] }, 10, 8);
+    }
+    // Cornice, bottom up, finishing at the same top as before.
+    y = top;
+    for (const [grow, t, m] of [[0.03, 0.025, G], [0.07, 0.045, L], [0.1, 0.025, G], [0.12, 0.055, L]]) { k.box(w + grow, t, w + grow, m, { p: [0, y + t / 2, 0] }); y += t; }
   }
   /* ------------------------------------------------------------ sculpture
    * Statue figures: a lofted body with drapery folds, a modelled head and face,
@@ -815,7 +850,14 @@
       const a = i * 2.39996, rr = (0.06 + (i % 4) * 0.05) * s, h = (0.12 + (i % 5) * 0.06) * s;
       k.rod([x, y, z], [x + Math.cos(a) * rr, y + h, z + Math.sin(a) * rr], 0.006 * s, 'leaf', 5);
       k.sph(0.045 * s, i % 3 ? 'leaf' : 'leafLight', { p: [x + Math.cos(a) * rr * 0.8, y + h * 0.75, z + Math.sin(a) * rr * 0.8], s: [0.5, 1.3, 0.8], r: [a, 0, 0.6] }, 8, 6);
-      k.sph(0.05 * s, colors[i % colors.length], { p: [x + Math.cos(a) * rr, y + h + 0.02 * s, z + Math.sin(a) * rr] }, 8, 6);
+      // An open bloom: five petals round a small heart, tilted outward from the stem (10 November 2026;
+      // was one ball). Same position and overall size, so arrangements keep their footprint.
+      const fx = x + Math.cos(a) * rr, fy = y + h + 0.02 * s, fz = z + Math.sin(a) * rr, tilt = 0.5 + (i % 3) * 0.18;
+      k.sph(0.016 * s, 'flowerCream', { p: [fx, fy + 0.012 * s, fz] }, 6, 4);
+      for (let p = 0; p < 5; p++) {
+        const b = a + p * 2 * PI / 5, d = 0.03 * s;
+        k.sph(0.03 * s, colors[i % colors.length], { p: [fx + Math.cos(b) * d, fy + 0.004 * s, fz + Math.sin(b) * d], s: [1, 0.32, 0.62], r: [0, -b, tilt] }, 6, 4);
+      }
     }
   }
   function buildFlowerStand(k) {
@@ -849,8 +891,15 @@
     ring(6, (i, a) => candleLamp(k, Math.cos(a) * 0.3, 1.03, Math.sin(a) * 0.3, 1.1));
   }
   function buildPaschal(k) {
-    k.lathe([[0.001, 0], [0.22, 0], [0.2, 0.06], [0.07, 0.14], [0.05, 0.75], [0.09, 0.95], [0.11, 1.0]], 'brass', {}, 18);
+    // Turned brass stand (10 November 2026; was a plain cone): stepped foot, knopped baluster stem and
+    // a drip pan under the candle. Same 0.44 m foot, 1.0 m stand height, candle and flame position.
+    k.lathe([[0.001, 0], [0.22, 0], [0.22, 0.025], [0.2, 0.04], [0.19, 0.075], [0.13, 0.11], [0.075, 0.135], [0.06, 0.16],
+      [0.085, 0.19], [0.09, 0.215], [0.06, 0.245], [0.04, 0.29], [0.034, 0.42], [0.05, 0.47], [0.072, 0.5], [0.05, 0.53],
+      [0.034, 0.58], [0.03, 0.74], [0.045, 0.79], [0.062, 0.815], [0.04, 0.845], [0.036, 0.9], [0.06, 0.94], [0.125, 0.965],
+      [0.135, 0.985], [0.12, 1.0], [0.055, 1.0], [0.05, 1.02], [0.001, 1.02]], 'brass', {}, 24);
+    for (const y of [0.075, 0.5, 0.815]) k.tor(y === 0.075 ? 0.19 : y === 0.5 ? 0.072 : 0.062, 0.006, 'agedBrass', { p: [0, y, 0], r: [PI / 2, 0, 0] }, 2 * PI, 5, 24);
     k.cyl(0.045, 0.045, 0.85, 'candle', { p: [0, 1.43, 0] }, 16);
+    k.cyl(0.003, 0.003, 0.03, 'black', { p: [0, 1.865, 0] }, 5);
     k.box(0.006, 0.18, 0.012, 'robeRed', { p: [0.046, 1.5, 0] });
     k.box(0.006, 0.012, 0.11, 'robeRed', { p: [0.046, 1.55, 0] });
     k.sph(0.024, 'glow', { p: [0, 1.9, 0], s: [1, 1.8, 1] }, 10, 8);
@@ -860,11 +909,18 @@
     const c = item.params?.colour || 'fabricWhite';
     k.cyl(0.012, 0.012, 1.0, 'brass', { p: [0.04, -0.03, 0], r: [PI / 2, 0, 0] }, 8);
     for (const z of [-0.5, 0.5]) k.sph(0.025, 'brass', { p: [0.04, -0.03, z] }, 8, 6);
-    k.box(0.012, 2.6, 0.9, c, { p: [0.04, -1.36, 0] });
+    // Hanging cloth with soft vertical folds (10 November 2026; was one flat board): ten panels
+    // set on a shallow zigzag, ±8 mm. Same 2.6 × 0.9 m outline, rod and pennant tail.
+    const folds = 10, amp = 0.008, fx = j => 0.04 + amp * Math.cos(j * PI), fz = j => -0.45 + 0.9 * j / folds;
+    for (let j = 0; j < folds; j++) {
+      const dx = fx(j + 1) - fx(j), dz = fz(j + 1) - fz(j), len = Math.hypot(dx, dz);
+      k.box(0.008, 2.6, len + 0.004, c, { p: [(fx(j) + fx(j + 1)) / 2, -1.36, (fz(j) + fz(j + 1)) / 2], r: [0, Math.atan2(dx, dz), 0] });
+    }
     k.shape([[-0.45, 0], [0.45, 0], [0, -0.35]], 0.012, c, { p: [0.04, -2.66, 0], r: [0, PI / 2, 0] }, 'pennant-tail');
-    k.box(0.016, 0.9, 0.08, 'fabricGold', { p: [0.04, -1.2, 0] });
-    k.box(0.016, 0.08, 0.5, 'fabricGold', { p: [0.04, -1.0, 0] });
-    for (const z of [-0.44, 0.44]) k.box(0.014, 2.5, 0.025, 'fabricGold', { p: [0.04, -1.33, z] });
+    // Gold appliqué deep enough to sit proud of the folds on both faces.
+    k.box(0.03, 0.9, 0.08, 'fabricGold', { p: [0.04, -1.2, 0] });
+    k.box(0.03, 0.08, 0.5, 'fabricGold', { p: [0.04, -1.0, 0] });
+    for (const z of [-0.44, 0.44]) k.box(0.024, 2.5, 0.025, 'fabricGold', { p: [0.04, -1.33, z] });
   }
   function catenary(len, sag, n) {
     const pts = [];
@@ -1004,6 +1060,9 @@
     { id: 'sconce2', cat: LIGHT, family: 'Decorative', name: 'Brass candle sconce · 2 lamps', mounts: ['wall'], defaultHeight: 3.6, glow: 'warm', circuit: 'LD',
       desc: '2 × 470 lm candle LEDs, 2700 K. Wall rhythm and evening atmosphere.',
       light: { lumens: 940, watts: 9, cct: 2700, cri: 90, emitters: [{ kind: 'point', pos: [0.24, 0.2, 0] }] }, build: buildSconce },
+    { id: 'columnUpDown', cat: LIGHT, family: 'Architectural', name: 'Column up/down light · concept', mounts: ['wall'], defaultHeight: 5.5, glow: 'warm', circuit: 'LD',
+      desc: 'Concept two-way column wash; 1 600 lm total, 16 W, 2700 K, 30° per optic. Selected photometry, fixing, glare and maintenance remain pending.',
+      light: { lumens: 1600, watts: 16, cct: 2700, cri: 90, beam: 30, field: 50, emitters: [{ kind: 'spot', pos: [0.085, 0.13, 0], tiltOffset: 90 }, { kind: 'spot', pos: [0.085, -0.13, 0], tiltOffset: -90 }] }, build: buildColumnUpDown },
     { id: 'projector24', cat: LIGHT, family: 'Task & accent', name: 'LED projector · narrow 24°', mounts: ['pendant', 'wall'], aim: true, defaultTilt: -90, defaultDrop: 0, glow: 'lens', circuit: 'L1',
       desc: '6 000 lm, 3000 K CRI 90, 24° beam, 50 W. Long throws from beams.',
       params: finishParam('black', 'Black'),

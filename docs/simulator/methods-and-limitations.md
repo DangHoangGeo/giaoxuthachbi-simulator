@@ -1,5 +1,7 @@
 # Simulator methods and limitations
 
+> **Entrance seating change, 1 November 2026:** The rearmost row at X 6.49 m is removed from both seating options. Receiver counts and audience distribution differ by layout; recalculate rather than comparing old same-count results directly. Sampling is not an occupancy approval; all measurement and acoustic limitations remain.
+
 Consolidated 7 October 2026 from the implementation, the [calculation audit](../../review/stats-audit-2026-10-06/README.md), the [guide](guide.md) and the [sanctuary revision](../sanctuary-model.md).
 
 These methods produce planning estimates for comparing layouts. They do not certify structural, lighting, acoustic, ventilation or electrical performance. The web app does not measure the room or command installed devices.
@@ -33,6 +35,8 @@ Every active lamp contributes from its actual modeled position. Native and textu
 
 This keeps the display consistent when moving around or changing graphics quality. It does not establish agreement with measured illuminance: rendering and analysis use different approximations, and most lamps have no individual shadow map. Never use camera exposure to disguise a lighting shortfall.
 
+Since 10 November 2026 the standard display adds contact shading, a highlight roll-off, a soft glow and, by day, an approximate sky-light term at the side openings ([interior finish study](../interior-finish.md)). These act on the picture only. They are not lamp shadows, not a daylight calculation and not lux; the analysis, its reflectance schedule and the exposure setting are unchanged. `?finish=off` shows the picture without the display pass.
+
 Listening mode uses speaker direction, propagation/DSP delays and synthesized room reverberation. Headphone output depends on playback hardware and volume. Digital output dBFS is separate from predicted acoustic dBA. Playing a STIPA sample does not perform a calibrated STIPA measurement. Listening signals are prepared in cooperative tasks with sample-for-sample parity to the original generator; stationary propagation calculations are reused without skipping fan movement, source gating or listener orientation. See the [audio performance checks](performance.md#listening-mode).
 
 ## Comparing design options
@@ -49,4 +53,4 @@ Implementation owners: [physics](../../Thach_Bi_Viewer/simulator/physics.js), [a
 
 ## Same-count seating cache correction · 9 October 2026
 
-Two/four-block seating each has 368 receivers, with different positions. Directional audience fractions previously used a cache key including only receiver count, so a layout switch could retain the other layout's fractions. `refreshSeats` now invalidates that cache when the actual receiver-array identity changes. [Independent regression and negative control](../../review/wing-revision-2026-10-09/audience-cache-regression.json) use the unchanged `P.audienceFraction` for every source and 4→2→4 plus same-count synthetic position changes. The previous code fails that test. Four-block frozen comparisons are exact; prior two-block sound estimates must use corrected results. No thresholds, sampling, fan/speaker ratings or physical formula changed. Unpowered generated saint pictures change the displayed frame surfaces only; actual framed/glazed absorption/reflection remains unverified, and no acoustic tuning is assigned to the artwork.
+Before the 1 November 2026 entrance-row removal, two/four-block seating each had 368 receivers, with different positions. Directional audience fractions previously used a cache key including only receiver count, so a layout switch could retain the other layout's fractions. `refreshSeats` now invalidates that cache when the actual receiver-array identity changes. [Independent regression and negative control](../../review/wing-revision-2026-10-09/audience-cache-regression.json) use the unchanged `P.audienceFraction` for every source and 4→2→4 plus same-count synthetic position changes. The previous code fails that test. Four-block frozen comparisons are exact; prior two-block sound estimates must use corrected results. No thresholds, sampling, fan/speaker ratings or physical formula changed. Unpowered generated saint pictures change the displayed frame surfaces only; actual framed/glazed absorption/reflection remains unverified, and no acoustic tuning is assigned to the artwork.

@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-11-08-marian-art-1",
+  "receivedDate": "2026-11-08",
+  "status": "CONCEPT",
+  "publicationStatus": "PUBLICATION HOLD (H8): author, licence and permission for public use not recorded",
+  "intentStatus": "USER CONFIRMED placement intent (owner, 8 November 2026): reliefs over the nine outside doors, M lunette over the inner windows, rose window in the outer wall",
+  "source": "Pictures passed on by the owner from the parish on 8 November 2026 (\"I got updated from the church\"). They appear to be generated concept images; the author, tool and date of creation are not recorded. The supplied pictures are not committed; their SHA-256 values identify them.",
+  "sourcePictures": [
+    {
+      "file": "1.jpg",
+      "description": "Concept sheet \"Đường hành hương Đức Mẹ\" — nine relief lunettes over the nine doors (1280x1170 JPEG)",
+      "sha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5"
+    },
+    {
+      "file": "2.jpg",
+      "description": "Silver M monogram lunette on white (1280x640 JPEG)",
+      "sha256": "e3a1dec11cf452225a746f71c988bf266209f9a5d739582ac5b503bcefbd8e2e"
+    },
+    {
+      "file": "4.jpg",
+      "description": "\"Hoa hồng Đức Mẹ\" 60 cm round stained-glass window, phone screenshot of a design sheet (590x1280 JPEG)",
+      "sha256": "5604634d2727c875a321ebda0de8b86dc61686ff2fb6f78ca1c48c0b4a107b43"
+    }
+  ],
+  "licence": null,
+  "licenceNote": "Third-party material: not covered by the project licences (NOTICE.md) until the parish records the author and permission.",
+  "approval": {
+    "placementIntent": "USER CONFIRMED",
+    "finalArtwork": null,
+    "physicalProduct": null,
+    "publicUseAndRightsReview": null,
+    "engineeringAndConstruction": null
+  },
+  "limitations": [
+    "Concept pictures, not shop drawings: carving depth, timber species, glass type, leading, frame, fixing and weathering are not specified.",
+    "The reliefs are drawn on a flat lunette with a bump map; their outline is stretched about 14 % vertically to the 2.25 m x 1.125 m semicircle (source ratio about 2.27:1).",
+    "The concept sheet shows ten doors in one elevation; the model has nine outside doors (3 front, 4 nave side, 2 service room); the mapping is the owner's choice of 8 November 2026.",
+    "No public-use/copyright clearance or final parish artwork approval is implied."
+  ],
+  "assets": [
+    {
+      "id": "relief-1-annunciation",
+      "file": "relief-1-annunciation.jpg",
+      "title": "Truyền Tin · The Annunciation (Lc 1,26-38)",
+      "width": 390,
+      "height": 172,
+      "bytes": 27409,
+      "sha256": "5667bec625a275be58348567dd1c56950e56c3bb4fc80f49b51d211678cd0237",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        18,
+        139,
+        408,
+        311
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Front side door, H side (left on site; right in the mirrored viewer, ENG-027)",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-2-visitation",
+      "file": "relief-2-visitation.jpg",
+      "title": "Mẹ Thăm Viếng · The Visitation (Lc 1,39-56)",
+      "width": 391,
+      "height": 172,
+      "bytes": 28379,
+      "sha256": "20981548ae7061bb8645a5611a150381b899bb0dbf3cd2801eeac39938bce631",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        445,
+        139,
+        836,
+        311
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Inner G wall door, bay 4–5",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-3-nativity",
+      "file": "relief-3-nativity.jpg",
+      "title": "Giáng Sinh · The Nativity (Lc 2,1-20)",
+      "width": 388,
+      "height": 172,
+      "bytes": 28298,
+      "sha256": "3ace340ea941536ddef1ef45d5760552c48d62dee608644b789a2d3597ff0ed7",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        875,
+        139,
+        1263,
+        311
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Inner G wall door, bay 8–9",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-4-presentation",
+      "file": "relief-4-presentation.jpg",
+      "title": "Dâng Chúa trong Đền Thờ · The Presentation (Lc 2,22-35)",
+      "width": 390,
+      "height": 178,
+      "bytes": 27464,
+      "sha256": "83c3c2dda6a000b506cd0f4d32721344d53c2aa357151b2f76fcca6203bd6a01",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        18,
+        361,
+        408,
+        539
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Inner G wall door, bay 11–12 (service room)",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-5-cana",
+      "file": "relief-5-cana.jpg",
+      "title": "Tiệc Cưới Cana · The Wedding at Cana (Ga 2,1-11)",
+      "width": 391,
+      "height": 178,
+      "bytes": 28161,
+      "sha256": "2434d8d9e0db54255b35aceafa93d5b11f3e0c2b7af8104da8f00a285706d947",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        445,
+        361,
+        836,
+        539
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Inner C wall door, bay 11–12 (service room)",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-6-cross",
+      "file": "relief-6-cross.jpg",
+      "title": "Mẹ dưới chân Thập Giá · Mary at the foot of the Cross (Ga 19,25-27)",
+      "width": 388,
+      "height": 178,
+      "bytes": 27457,
+      "sha256": "391f7f05c3d13f40d479b5a3e24cdefb427ffc5ad5a3d6abe497e2850188cf6e",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        875,
+        361,
+        1263,
+        539
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Inner C wall door, bay 8–9",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-7-pentecost",
+      "file": "relief-7-pentecost.jpg",
+      "title": "Mẹ giữa Hội Thánh sơ khai · Mary with the early Church (Cv 1,12-14)",
+      "width": 390,
+      "height": 180,
+      "bytes": 29232,
+      "sha256": "88294ee96d1941fa07a836e179acc8271df31e4809fd2a2ad9912a45708fb9d6",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        18,
+        587,
+        408,
+        767
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Inner C wall door, bay 4–5",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-8-woman-clothed-with-the-sun",
+      "file": "relief-8-woman-clothed-with-the-sun.jpg",
+      "title": "Mẹ được rước về trời · The woman clothed with the sun (Kh 12,1)",
+      "width": 391,
+      "height": 180,
+      "bytes": 29992,
+      "sha256": "bb9d467f24ee55ba8b5ab5950ab4eb7aea85e3ca4d80e572d5d9d50e4e8ec03b",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        445,
+        587,
+        836,
+        767
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Front side door, B side",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "relief-9-assumption",
+      "file": "relief-9-assumption.jpg",
+      "title": "Đức Mẹ Hồn Xác Lên Trời · The Assumption (Kh 12,1-2)",
+      "width": 388,
+      "height": 180,
+      "bytes": 30476,
+      "sha256": "ae649826faa8a5beaca7bc42cce8e90452047d559e467937f99af2a207135275",
+      "sourcePicture": "1.jpg",
+      "sourcePictureSha256": "9cc8cddcdbdf21e79195ca28b30f15fe01222d42185f731a88915ba2770985a5",
+      "cropBox": [
+        875,
+        587,
+        1263,
+        767
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Carved timber relief in the fanlight (lunette) of Main centre door",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "inner-window-m-lunette",
+      "file": "inner-window-m-lunette.jpg",
+      "title": "Silver Ave Maria (AM) monogram with crown and cross, white ground",
+      "width": 1260,
+      "height": 584,
+      "bytes": 147423,
+      "sha256": "eb0a7cde6ac91cebf1eb3db34df6f7fd42c4982d8506102631fd2a7580fa088b",
+      "sourcePicture": "2.jpg",
+      "sourcePictureSha256": "e3a1dec11cf452225a746f71c988bf266209f9a5d739582ac5b503bcefbd8e2e",
+      "cropBox": [
+        10,
+        16,
+        1270,
+        600
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Head (lunette) of each inner C/G window, both faces",
+      "status": "CONCEPT"
+    },
+    {
+      "id": "rose-window-m",
+      "file": "rose-window-m.jpg",
+      "title": "Rose of Our Lady: M and cross, twelve stars, eight roses; stained glass, 60 cm",
+      "width": 480,
+      "height": 480,
+      "bytes": 99468,
+      "sha256": "4bfe2a3faa3eba4f4d58983c15635c7c411f344a5f781f6e75f3f065abc66285",
+      "sourcePicture": "4.jpg",
+      "sourcePictureSha256": "5604634d2727c875a321ebda0de8b86dc61686ff2fb6f78ca1c48c0b4a107b43",
+      "cropBox": [
+        63,
+        213,
+        543,
+        693
+      ],
+      "resampled": false,
+      "reencoded": "JPEG quality 92 (crop only; no resize, colour change or retouching)",
+      "modelUse": "Round stained-glass window above the paired arches of each window bay of the outer B/H porch wall",
+      "status": "CONCEPT"
+    }
+  ]
+}

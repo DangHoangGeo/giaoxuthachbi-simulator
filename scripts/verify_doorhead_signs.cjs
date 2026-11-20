@@ -6,7 +6,7 @@ try{
  assert.equal(signs.length,5);assert(!items.some(i=>/^Sconce · axis/.test(i.name)),'Nave sconces above wall fans are removed');
  assert.equal(items.filter(i=>i.type==='fanNaveWall').length,16,'Wall fans retained');
  model.building.updateMatrixWorld(true);
- model.building.traverse(o=>{if(o.isMesh){if(/^(Inner doorway coloured oval|Entrance door coloured oval)$/.test(o.name))glass.push({name:o.name,box:new T.Box3().setFromObject(o)});if(/^(Exterior timber door leaf|Open timber door leaf)$/.test(o.name))leaves.push(new T.Box3().setFromObject(o));}});
+ model.building.traverse(o=>{if(o.isMesh){if(/^(Inner doorway (coloured oval|relief lunette)|Entrance door (coloured oval|relief lunette))$/.test(o.name))glass.push({name:o.name,box:new T.Box3().setFromObject(o)});if(/^(Exterior timber door leaf|Open timber door leaf)$/.test(o.name))leaves.push(new T.Box3().setFromObject(o));}});
  const boxes=[];
  for(const it of signs){
   const fx=SIM.fixtures.get(it.id),body=new T.Box3();let count=0;
@@ -18,8 +18,8 @@ try{
    if(p.x>=-1e-6&&p.x<=.050001&&Math.abs(p.y)<=.085001&&Math.abs(p.z)<=.190001){body.expandByPoint(world);count++;}
   }});
   assert(count>=8&&Math.abs(body.max.y-body.min.y-.17)<1e-5,'Original sign-case geometry retained');
-  const main=it.id==='L155',pane=glass.find(g=>main?g.name==='Entrance door coloured oval'&&Math.abs(g.box.min.z+g.box.max.z)<.1:g.name==='Inner doorway coloured oval'&&Math.abs((g.box.min.x+g.box.max.x)/2-it.pos[0])<.01&&Math.sign(g.box.min.z)===Math.sign(it.pos[2]));
-  assert(pane&&body.max.y<pane.box.min.y-.01,'Case is below the coloured glass: '+it.id);
+  const main=it.id==='L155',pane=glass.find(g=>main?/^Entrance door /.test(g.name)&&Math.abs(g.box.min.z+g.box.max.z)<.1:/^Inner doorway /.test(g.name)&&Math.abs((g.box.min.x+g.box.max.x)/2-it.pos[0])<.01&&Math.sign(g.box.min.z)===Math.sign(it.pos[2]));
+  assert(pane&&body.max.y<pane.box.min.y-.01,'Case is below the fanlight relief: '+it.id);
   const fixed=R.geometry(SIM);
   if(main)for(const z of [-.13,.13])assert(fixed.main.clone().expandByScalar(1e-6).containsPoint(new T.Vector3(it.pos[0]-it.params.backReach,it.pos[1]+it.params.clipRise,z)),'Clip meets the actual transom');
   else assert(fixed.bands.some(b=>b.clone().expandByScalar(1e-6).containsPoint(new T.Vector3(...it.pos))),'Case back contacts the fixed head band');

@@ -9,7 +9,7 @@ Reading, sanctuary, circulation, paths, facade and festival exterior lighting.
 
 ## Current scope
 
-276 equipment/enclosures, 299 routes, 2242 route vertices. 0 hidden alternatives; 276 shown connected components. Circuits: L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LS.
+274 equipment/enclosures, 301 routes, 2233 route vertices. 0 hidden alternatives; 274 shown connected components. Circuits: L1, L10, L2, L3, L4, L5, L6, L7, L8, L9, LA, LD, LS, LW.
 
 ## Editing and coordination
 

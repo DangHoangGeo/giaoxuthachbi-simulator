@@ -1,0 +1,33 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "style": "drawn",
+      "seating": 2,
+      "ready": true,
+      "selectedStyle": "drawn",
+      "rendered": true
+    },
+    {
+      "style": "drawn",
+      "seating": 4,
+      "ready": true,
+      "selectedStyle": "drawn",
+      "rendered": true
+    },
+    {
+      "style": "reference",
+      "seating": 2,
+      "ready": true,
+      "selectedStyle": "reference",
+      "rendered": true
+    },
+    {
+      "style": "reference",
+      "seating": 4,
+      "ready": true,
+      "selectedStyle": "reference",
+      "rendered": true
+    }
+  ]
+}

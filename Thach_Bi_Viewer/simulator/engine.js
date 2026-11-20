@@ -44,7 +44,7 @@
     L3: { label: 'L3 · Sanctuary', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L4: { label: 'L4 · Circulation & verandas', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     LA: { label: 'LA · Roof uplight', cat: 'light', board: 'DB1', area: 'Nave' },
-    LD: { label: 'LD · Wall sconces', cat: 'light', board: 'DB1', area: 'Nave' },
+    LD: { label: 'LD · Column up/down lights', cat: 'light', board: 'DB1', area: 'Nave' },
     L5: { label: 'L5 · Steps & paths', cat: 'light', board: 'DB1', area: 'Verandas & paths' },
     L8: { label: 'L8 · Wings · choir & ministers', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' },
     L6: { label: 'L6 · Façade & towers', cat: 'light', board: 'DB2', area: 'Towers & façade' },
@@ -80,7 +80,10 @@
     V2: { label: 'V2 · Exhaust · wing gables', cat: 'fan', board: 'DB1', splitFrom: 'V1' },
     V3: { label: 'V3 · Exhaust · service room', cat: 'fan', board: 'DB1', splitFrom: 'V1' },
     // Candles below the fourteen Stations of the Cross (parish priest, 25 Oct 2026), appended.
-    LS: { label: 'LS · Stations of the Cross candles', cat: 'light', board: 'DB1', area: 'Nave' }
+    LS: { label: 'LS · Stations of the Cross candles', cat: 'light', board: 'DB1', area: 'Nave' },
+    // Wing gable uplights and the candles at the three statue places on each wing gable (owner,
+    // 7 Nov 2026), appended.
+    LW: { label: 'LW · Wing gables · uplights & statue candles', cat: 'light', board: 'DB1', area: 'Sanctuary & wings' }
   };
   // Display order: a circuit split from another is listed right after it.
   const CIRCUIT_ORDER = Object.keys(CIRCUITS).filter(c => !CIRCUITS[c].splitFrom)
@@ -114,7 +117,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', wingGableLightsRevision: '', beamSectionRevision: '', eveningExposureRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -210,9 +213,14 @@
     for (const b of GEO.mainBeams) if (Math.abs(x - b.x) <= b.w / 2 + 0.05 && az <= b.zHalf && b.y0 > y) best = best === null ? b.y0 : Math.min(best, b.y0);
     for (const b of GEO.sideBeams) if (Math.abs(x - b.x) <= b.w / 2 + 0.05 && az >= b.zIn && az <= b.zOut && b.y0 > y) best = best === null ? b.y0 : Math.min(best, b.y0);
     if (best !== null) return { y: best, kind: 'beam' };
+    // 9–10 wings, lined since 1 Nov 2026 (second round): the ivory boarded lining lies 0.19 m under the tile
+    // planes, +9.26 m at the ridge (x 40.575) and falling 0.805 m per m, over the wing and over the triangular
+    // opening in the nave lining that looks into it (sanctuary.js, spec.wingRoof). It was the bare tile
+    // underside, +9.39 m at x 40.56 and falling 0.787 m per m, before.
+    const WR = window.CHURCH_SANCTUARY?.spec.wingRoof;
+    if (WR && x >= 37.1 && x <= 44.05 && az <= 13.1 && WR.covers(x, z)) return { y: WR.liningY(x), kind: 'roof' };
     if (x >= 5.2 && x <= 52.95 && az <= 7.25) return { y: liningY(z), kind: 'roof' };
-    // 9–10 wings: gabled roof, underside 9.39 m at its ridge (x 40.56), falling ≈0.79 m per m.
-    if (x >= 37.22 && x <= 43.9 && az <= 12.95) return { y: Math.max(6.8, 9.39 - 0.787 * Math.abs(x - 40.56)), kind: 'roof' };
+    if (!WR && x >= 37.22 && x <= 43.9 && az <= 12.95) return { y: Math.max(6.8, 9.39 - 0.787 * Math.abs(x - 40.56)), kind: 'roof' };
     // Porches (porches.js, 25 Oct 2026): cast slab under the tiles, a cross arch C–B / G–H on
     // every inner axis.
     if (x >= 5.2 && x <= 52.9 && az <= 10.45) {
@@ -232,13 +240,28 @@
     // Inner C/G walls at the 14.500 m clear faces, with each bay's arched opening.
     const bays = [['2′', '3'], ['3', '4'], ['4', '5'], ['5', '6'], ['6', '7'], ['7', '8'], ['8', '9'], ['10', '11'], ['11', '12']];
     // Bay 10–11 has a window since 25 Oct 2026 (parish priest: no door from the sanctuary sides to the porches).
-    const doorBays = new Set(['4–5', '8–9']);
+    // The service room (11–12) has a doorway on each side instead of windows since 7 Nov 2026 (owner).
+    const doorBays = new Set(['4–5', '8–9', '11–12']);
     for (const s of [-1, 1]) for (const [x0, x1] of [[5.475, 37.22], [43.9, 52.85]]) {
       const openings = bays.map(([a, b]) => {
         const c = (AX[a] + AX[b]) / 2, door = doorBays.has(`${a}–${b}`);
         return { x0: c - (door ? 1.115 : 1.125), x1: c + (door ? 1.115 : 1.125), y0: door ? -0.4 : 0.65, y1: 4.31 };
       }).filter(o => o.x1 > x0 && o.x0 < x1);
       GEO.walls.push({ z: s * 7.25, x0, x1, y0: -0.4, y1: 7.13, openings });
+    }
+    // Outer porch walls on B/H (owner, 8 Nov 2026; porches.js): solid between the drawn openings, which
+    // are open (no glass). Rectangles enclose each arch. Kept out of GEO.walls, which the cable router
+    // reads as the building's perimeter: they only occlude light. The rose windows count as solid.
+    GEO.porchWalls = [];
+    const PO = window.CHURCH_PORCHES?.spec;
+    if (PO?.outer) for (const s of [-1, 1]) for (const [a, b] of PO.runs) {
+      const keys = Object.keys(AX).filter(k => AX[k] >= AX[a] - 1e-6 && AX[k] <= AX[b] + 1e-6).sort((p, q) => AX[p] - AX[q]), openings = [];
+      for (let i = 0; i < keys.length - 1; i++) {
+        const c = (AX[keys[i]] + AX[keys[i + 1]]) / 2, W = PO.outer.window, D = PO.outer.door;
+        if (PO.stairBays.some(x => Math.abs(x - c) < 0.6)) openings.push({ x0: c - D.width / 2, x1: c + D.width / 2, y0: -0.4, y1: D.spring + D.radius });
+        else for (const u of W.centres) openings.push({ x0: c + u - W.width / 2, x1: c + u + W.width / 2, y0: W.bottom, y1: W.spring + W.radius });
+      }
+      GEO.porchWalls.push({ z: s * PO.lineZ, x0: AX[a], x1: AX[b], y0: PO.floor - 0.08, y1: PO.entablature, openings });
     }
     // The 9–10 side bays are closed to the porches on axes 9 and 10 (porches.js, 25 Oct 2026).
     for (const s of [-1, 1]) for (const x of [AX['9'], AX['10']]) GEO.walls.push({ x, z0: Math.min(s * 7.47, s * 10.234), z1: Math.max(s * 7.47, s * 10.234), y0: -0.4, y1: 7.1, openings: [] });
@@ -256,13 +279,13 @@
     const sx = window.CHURCH_SANCTUARY?.spec;
     GEO.sanctuary = { walls: [], boxes: [] };
     if (sx) {
-      const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz } = sx;
+      const { chamber: ch, centralArch: ca, sideArch: sa, wingX: wx, wingZ: wz, shrineShelf: sh } = sx;
       for (const s of [-1, 1]) {
         // Open below the lintel since 25 Oct 2026 (parish priest).
         GEO.sanctuary.walls.push({ z: s * (ch.face + ch.outer) / 2, x0: ch.x0, x1: ch.x1, y0: ch.lintel ?? SIDE_Y, y1: ch.top, openings: [] });
         for (const e of [-1, 1]) GEO.sanctuary.boxes.push({ min: [wx - 0.31, SIDE_Y, s * wz + e * 1.03 - 0.32], max: [wx + 1.01, 2.55, s * wz + e * 1.03 + 0.32] });
         // Shelf, and the lacquered wall that closes the bay behind the shrine up to the roof.
-        GEO.sanctuary.boxes.push({ min: [wx - 0.35, 2.55, s * wz - 1.38], max: [wx + 1.01, 2.85, s * wz + 1.38] },
+        GEO.sanctuary.boxes.push({ min: [wx - 0.38, 2.525, s * (wz + sh.offset) - sh.half], max: [wx + 1.02, 2.865, s * (wz + sh.offset) + sh.half] },
           { min: [wx + 0.42, 2.85, s * wz - 1.75], max: [wx + 0.55, 9.5, s * wz + 1.75] });
       }
       // Lined back wall of the chamber on axis 11, in front of the service room, open
@@ -279,7 +302,7 @@
     GEO.occluders = P.buildOccluders({
       columns: GEO.columns.map(c => ({ x: c.x, z: c.z, r: c.r, y0: 0, y1: 9.4 })),
       boxes: [...GEO.columns.map(c => ({ min: [c.x - 0.41, 0, c.z - 0.41], max: [c.x + 0.41, 0.6, c.z + 0.41] })), ...GEO.sanctuary.boxes],
-      walls: [...GEO.walls, ...GEO.sanctuary.walls]
+      walls: [...GEO.walls, ...GEO.sanctuary.walls, ...GEO.porchWalls]
     });
   }
 
@@ -313,6 +336,16 @@
       m.userData = { status: 'AS DRAWN · SECTION SHEET 4', source: 'Measured on the vector section: tie +8.59…+9.18 m, side beams +6.66…+7.00 m' };
       asDrawn.add(m); return m;
     };
+    // Rounded-edge beam section (approved concept: heavy beams with eased, rounded arrises), same bounding box as
+    // the former box. along: 'z' (ties, side beams) or 'x' (column-line beams).
+    const rounded = (m, w, h, len, along, r) => {
+      const sh = new T.Shape(), x0 = -w / 2, y0 = -h / 2;
+      sh.moveTo(x0 + r, y0); sh.lineTo(-x0 - r, y0); sh.quadraticCurveTo(-x0, y0, -x0, y0 + r); sh.lineTo(-x0, -y0 - r); sh.quadraticCurveTo(-x0, -y0, -x0 - r, -y0);
+      sh.lineTo(x0 + r, -y0); sh.quadraticCurveTo(x0, -y0, x0, -y0 - r); sh.lineTo(x0, y0 + r); sh.quadraticCurveTo(x0, y0, x0 + r, y0);
+      const g = new T.ExtrudeGeometry(sh, { depth: len, bevelEnabled: false, curveSegments: 5 }); g.translate(0, 0, -len / 2);
+      if (along === 'x') g.rotateY(Math.PI / 2);
+      m.geometry.dispose(); m.geometry = g; return m;
+    };
     // The beams carry the lacquer of the columns (sanctuary.js). Their ornament follows the approved
     // timber concept (references/01-timber-frame and the 7 October interior views): gilded border
     // lines and a carved cartouche on both faces, a band near each support, carved haunches under
@@ -336,23 +369,31 @@
     // Haunch runs stop short of the fittings that hang under the beams: the reading lights 1.0 m
     // from the column axis under the ties, the outer reading lights and the wall fans on the piers.
     const carving = K && {
-      tieHaunch: K.haunch({ run: 0.8, rise: 0.62, thick: 0.16 }), longHaunch: K.haunch({ run: 0.95, rise: 0.6, thick: 0.14 }),
-      sideHaunch: K.haunch({ run: 0.8, rise: 0.52, thick: 0.13, u0: 0.24 }), pierBracket: K.haunch({ run: 0.55, rise: 0.42, thick: 0.13, u0: 0 }),
+      // Owner, 8 Nov 2026 (approved frame concept, docs/beams-roof-connections/images 01, 02, 07): larger curved
+      // brackets under the beams; runs still stop short of the reading heads (tie z ±2.48) and fans (mid-bay).
+      tieHaunch: K.haunch({ run: 0.98, rise: 0.82, thick: 0.22 }), longHaunch: K.haunch({ run: 1.1, rise: 0.8, thick: 0.2 }),
+      sideHaunch: K.haunch({ run: 0.9, rise: 0.62, thick: 0.2, u0: 0.24 }), pierBracket: K.haunch({ run: 0.62, rise: 0.5, thick: 0.2, u0: 0 }),
       tieCartouche: K.cartouche({ len: 1.7, r: 0.17 }), sideCartouche: K.cartouche({ len: 1.1, r: 0.1 }), longCartouche: K.cartouche({ len: 1.5, r: 0.13 }),
       end: K.cluster({ a: 0.13, b: 0.24, c: 0.07, leaves: 8, blooms: 1, size: 0.15 })
     };
-    const tieLine = new T.BoxGeometry(0.012, 0.035, 5.12), tieBand = new T.BoxGeometry(0.33, 0.62, 0.08), rosette = new T.CylinderGeometry(0.15, 0.15, 0.02, 20);
-    const sideBand = new T.BoxGeometry(0.25, 0.37, 0.07), sideLine = new T.BoxGeometry(0.012, 0.03, 2.48);
+    // Owner, 8 Nov 2026: the beams must look stronger. The levels stay as drawn (tie +8.59…+9.18; side-beam top
+    // +7.00), the sections are concept sections on engineering hold: tie 0.40 m wide (drawn proxy 0.30), side beams
+    // 0.30 × 0.46 m (0.22 × 0.34), column-line beams 0.32 m wide (0.24). Width grows both ways from the axis; the
+    // side beams grow downward. The reading heads on the beam faces follow them (design.js BEAMS, migration).
+    const SEC = { tieW: 0.40, sideW: 0.30, sideD: 0.46, longW: 0.32 }, SIDE_Y0 = 7.0 - SEC.sideD;
+    const SECTION = { status: 'DRAWN LEVELS · CONCEPT SECTION (owner 8 Nov 2026) · ENGINEERING HOLD', source: 'Levels measured on section sheet 4; widths/depth enlarged at the owner\'s request, not a checked section' };
+    const tieLine = new T.BoxGeometry(0.012, 0.035, 5.12), tieBand = new T.BoxGeometry(SEC.tieW + 0.03, 0.62, 0.08), rosette = new T.CylinderGeometry(0.15, 0.15, 0.02, 20);
+    const sideBand = new T.BoxGeometry(SEC.sideW + 0.03, SEC.sideD + 0.03, 0.07), sideLine = new T.BoxGeometry(0.012, 0.03, 2.48);
     const axis9 = data().longitudinal['9'];
     GEO.mainBeams = [];
     for (const x of [...tieXs].sort((a, b) => a - b)) {
-      member(0.3, 0.59, 8.42, x, 8.885, 0, 'Main tie beam 0.30 × 0.59 m · as drawn');
-      GEO.mainBeams.push({ x, y0: 8.59, y1: 9.18, zHalf: 4.21, w: 0.3 });
+      rounded(member(SEC.tieW, 0.59, 8.42, x, 8.885, 0, 'Main tie beam 0.40 × 0.59 m · concept section'), SEC.tieW, 0.59, 8.42, 'z', 0.07).userData = { ...SECTION };
+      GEO.mainBeams.push({ x, y0: 8.59, y1: 9.18, zHalf: 4.21, w: SEC.tieW });
       if (!gilt) continue;
       for (const f of [-1, 1]) {
-        for (const y of [8.65, 9.12]) gild(tieLine, x + f * 0.153, y, 0, 'Main tie beam gilded border');
-        if (carving) gild(carving.tieCartouche, x + f * 0.15, 8.885, 0, 'Main tie beam gilded rosette').rotation.y = f * Math.PI / 2;
-        else gild(rosette, x + f * 0.156, 8.885, 0, 'Main tie beam gilded rosette').rotation.z = Math.PI / 2;
+        for (const y of [8.65, 9.12]) gild(tieLine, x + f * (SEC.tieW / 2 + 0.003), y, 0, 'Main tie beam gilded border');
+        if (carving) gild(carving.tieCartouche, x + f * SEC.tieW / 2, 8.885, 0, 'Main tie beam gilded rosette').rotation.y = f * Math.PI / 2;
+        else gild(rosette, x + f * (SEC.tieW / 2 + 0.006), 8.885, 0, 'Main tie beam gilded rosette').rotation.z = Math.PI / 2;
       }
       for (const s of [-1, 1]) {
         gild(tieBand, x, 8.885, s * 2.6, 'Main tie beam gilded band');
@@ -368,15 +409,16 @@
     for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
       const x = data().longitudinal[k];
       for (const s of [-1, 1]) {
-        member(0.22, 0.34, 3.15, x, 6.83, s * 5.475, 'Side beam 0.22 × 0.34 m · as drawn');
-        GEO.sideBeams.push({ x, y0: 6.66, y1: 7.0, zIn: 3.9, zOut: 7.05, side: s, w: 0.22 });
+        const sy = (SIDE_Y0 + 7.0) / 2;
+        rounded(member(SEC.sideW, SEC.sideD, 3.15, x, sy, s * 5.475, 'Side beam 0.30 × 0.46 m · concept section'), SEC.sideW, SEC.sideD, 3.15, 'z', 0.06).userData = { ...SECTION };
+        GEO.sideBeams.push({ x, y0: SIDE_Y0, y1: 7.0, zIn: 3.9, zOut: 7.05, side: s, w: SEC.sideW });
         if (!gilt) continue;
-        for (const z of [4.2, 6.75]) gild(sideBand, x, 6.83, s * z, 'Side beam gilded band');
-        for (const f of [-1, 1]) for (const y of [6.71, 6.95]) gild(sideLine, x + f * 0.113, y, s * 5.475, 'Side beam gilded border');
+        for (const z of [4.2, 6.75]) gild(sideBand, x, sy, s * z, 'Side beam gilded band');
+        for (const f of [-1, 1]) for (const y of [SIDE_Y0 + 0.05, 6.95]) gild(sideLine, x + f * (SEC.sideW / 2 + 0.003), y, s * 5.475, 'Side beam gilded border');
         if (!carving) continue;
-        for (const f of [-1, 1]) gild(carving.sideCartouche, x + f * 0.11, 6.83, s * 5.475, 'Side beam gilded cartouche').rotation.y = f * Math.PI / 2;
-        haunch(carving.sideHaunch, x, 6.66, s * 3.6, -s * Math.PI / 2, 'Side beam carved haunch');
-        haunch(carving.pierBracket, x, 6.66, s * 7.07, s * Math.PI / 2, 'Side beam carved pier bracket');
+        for (const f of [-1, 1]) gild(carving.sideCartouche, x + f * SEC.sideW / 2, sy, s * 5.475, 'Side beam gilded cartouche').rotation.y = f * Math.PI / 2;
+        haunch(carving.sideHaunch, x, SIDE_Y0, s * 3.6, -s * Math.PI / 2, 'Side beam carved haunch');
+        haunch(carving.pierBracket, x, SIDE_Y0, s * 7.07, s * Math.PI / 2, 'Side beam carved pier bracket');
       }
     }
     // Lengthwise beams on the column lines (B03 of the beam specification). The owner confirmed
@@ -390,33 +432,131 @@
       const a = lineKeys[i], b = lineKeys[i + 1], xa = data().longitudinal[a], xb = data().longitudinal[b], x0 = xa + 0.3, x1 = xb - (b === frameKey ? 0.28 : 0.3), mid = (x0 + x1) / 2;
       for (const s of [-1, 1]) {
         const line = s < 0 ? 'D' : 'E', z = s * 3.6, id = `B03-${line}-${two(a)}-${two(b)}`;
-        member(x1 - x0, 0.45, 0.24, mid, 8.955, z, 'Longitudinal column-line beam 0.24 × 0.45 m · concept proxy').userData = {
+        rounded(member(x1 - x0, 0.45, SEC.longW, mid, 8.955, z, 'Longitudinal column-line beam 0.32 × 0.45 m · concept proxy'), SEC.longW, 0.45, x1 - x0, 'x', 0.06).userData = {
           memberId: id, status: 'USER CONFIRMED ARRANGEMENT · SECTION IS A VISUALIZATION PROXY', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03',
           materialRole: 'timber', structuralRole: 'longitudinal column-line beam', sectionStatus: 'ENGINEERING HOLD', supports: [`${a}/${line}`, `${b}/${line}`],
           connectionIds: [`J04-${line}-${two(a)}`, `J04-${line}-${two(b)}`], engineeringApproved: false };
-        GEO.longBeams.push({ id, x0, x1, z, y0: 8.73, y1: 9.18, w: 0.24 });
+        GEO.longBeams.push({ id, x0, x1, z, y0: 8.73, y1: 9.18, w: SEC.longW });
         if (!gilt) continue;
         const key = (x1 - x0).toFixed(3);
         if (!borders.has(key)) borders.set(key, new T.BoxGeometry(x1 - x0 - 0.5, 0.03, 0.012));
         for (const f of [-1, 1]) {
-          for (const y of [8.79, 9.12]) gild(borders.get(key), mid, y, z + f * 0.123, 'Longitudinal column-line beam gilded border');
-          if (carving) gild(carving.longCartouche, mid, 8.955, z + f * 0.12, 'Longitudinal column-line beam gilded cartouche').rotation.y = f > 0 ? 0 : Math.PI;
+          for (const y of [8.79, 9.12]) gild(borders.get(key), mid, y, z + f * (SEC.longW / 2 + 0.003), 'Longitudinal column-line beam gilded border');
+          if (carving) gild(carving.longCartouche, mid, 8.955, z + f * SEC.longW / 2, 'Longitudinal column-line beam gilded cartouche').rotation.y = f > 0 ? 0 : Math.PI;
         }
         if (!carving) continue;
         haunch(carving.longHaunch, xa, 8.73, z, 0, 'Longitudinal column-line beam carved haunch');
         haunch(carving.longHaunch, xb, 8.73, z, Math.PI, 'Longitudinal column-line beam carved haunch');
       }
     }
-    // Purlins every ~0.50 m across the slope, split at the 9–10 roof valleys.
+    // Column-head junctions (owner, 8 Nov 2026, approved concept images 01/02/07): a mass of carved acanthus and
+    // peony foliage wraps each D/E column head from a moulded collar up over the ends of the tie and column-line
+    // beams. Eight large clusters round the head at beam level and eight smaller ones round the capital, each
+    // facing outward, with a moulded collar below. At axis 9 the clusters toward the nave centre are left out:
+    // the ambo key light and presider light hang there 0.45/0.60 m from the column axes. CONCEPT ORNAMENT.
+    if (carving) {
+      const big = K.palmette(.40,.68,.19), small = K.palmette(.32,.50,.13);
+      const collar = new T.TorusGeometry(0.335, 0.055, 10, 36), collar2 = new T.TorusGeometry(0.32, 0.03, 8, 36);
+      GEO.columnJunctions = 0;
+      for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
+        const x = data().longitudinal[k];
+        for (const s of [-1, 1]) {
+          const z = s * 3.6;
+          for (const [g, y, rad, a0] of [[big, 8.82, 0.42, 0], [small, 8.2, 0.44, Math.PI / 8]]) {
+            for (let n = 0; n < 8; n++) {
+              const a = a0 + n * Math.PI / 4, dx = Math.cos(a), dz = Math.sin(a);
+              if (k === '9' && dz * -s > 0.3) continue;
+              ornament(g.body, carved, x + dx * rad, y, z + dz * rad, Math.atan2(dx, dz), 'Column carving · junction foliage mass');
+              ornament(g.accent, gilt, x + dx * rad, y, z + dz * rad, Math.atan2(dx, dz), 'Column carving · junction foliage mass · gilding');
+            }
+          }
+          ornament(collar, carved, x, 7.74, z, 0, 'Column carving · junction collar').rotation.x = Math.PI / 2;
+          ornament(collar2, gilt, x, 7.66, z, 0, 'Column carving · junction collar · gilding').rotation.x = Math.PI / 2;
+          GEO.columnJunctions++;
+        }
+      }
+    }
+    // Softer trusses (owner, 9 Nov 2026: looking up, the bare triangles of tie and rafters read stiff, coarse and
+    // amateur). After the approved concept images 01/07 (docs/beams-roof-connections/images), each nave truss on
+    // axes 3–9 gets, above its tie: two carved posts at |z| 1.8 m, a gently arched collar between their caps with
+    // carved foliage and a gilded lotus over it, a curved bracket filling the sharp angle where each rafter meets
+    // the tie, and a carved lotus boss under the ridge where the rafters meet; each side beam carries a short
+    // carved post under its rafter. The uplight on the tie (100° flood) now washes these carvings as well as the
+    // roof; the analysis does not occlude it. CONCEPT ORNAMENT · ENGINEERING HOLD: no structural role is claimed.
+    if (carving) {
+      const TR_ = (x, y, z) => new T.Matrix4().makeTranslation(x, y, z);
+      const rafterUnder = az => 12.28 - 0.7258 * az - 0.52;
+      const roundPost = (w, h, r) => { const sh = new T.Shape(), a = w / 2;
+        sh.moveTo(-a + r, -a); sh.lineTo(a - r, -a); sh.quadraticCurveTo(a, -a, a, -a + r); sh.lineTo(a, a - r); sh.quadraticCurveTo(a, a, a - r, a);
+        sh.lineTo(-a + r, a); sh.quadraticCurveTo(-a, a, -a, a - r); sh.lineTo(-a, -a + r); sh.quadraticCurveTo(-a, -a, -a + r, -a);
+        const g = new T.ExtrudeGeometry(sh, { depth: h, bevelEnabled: false, curveSegments: 4 }); g.rotateX(-Math.PI / 2); return g; };
+      const post = roundPost(0.24, 0.9, 0.05), cap = new T.BoxGeometry(0.34, 0.12, 0.34), plinth = new T.BoxGeometry(0.32, 0.06, 0.32);
+      const shortPost = roundPost(0.22, 0.62, 0.05), panel = K.panel({ w: 0.15, h: 0.46 }), shortPanel = K.panel({ w: 0.14, h: 0.3 });
+      const leafy = K.cluster({ a: 0.2, b: 0.16, c: 0.07, leaves: 12, blooms: 2, size: 0.13 }), lotus = K.bloom({ r: 0.16, petals: 10, rings: 2, seg: 4 });
+      const bossGeo = K.cluster({ a: 0.2, b: 0.2, c: 0.16, leaves: 14, blooms: 1, size: 0.14 });
+      // Arched collar in the truss plane: intrados from (|z| 1.8, +10.20) to a crown at +10.55, 0.20 deep, 0.20 thick.
+      const P0 = 1.8, Y0 = 10.2, CROWN = 10.55, sag = CROWN - Y0, R = (P0 * P0 + sag * sag) / (2 * sag), CY = CROWN - R, half = Math.asin(P0 / R);
+      const arcPts = (r) => { const pts = []; for (let i = 0; i <= 24; i++) { const a = -half + 2 * half * i / 24; pts.push([r * Math.sin(a), CY + r * Math.cos(a)]); } return pts; };
+      const collarShape = new T.Shape([...arcPts(R), ...arcPts(R + 0.2).reverse()].map(([z, y]) => new T.Vector2(z, y)));
+      const collar = new T.ExtrudeGeometry(collarShape, { depth: 0.2, bevelEnabled: false, curveSegments: 1 }); collar.translate(0, 0, -0.1); collar.rotateY(Math.PI / 2);
+      const bead = new T.ExtrudeGeometry(new T.Shape([...arcPts(R - 0.001), ...arcPts(R + 0.03).reverse()].map(([z, y]) => new T.Vector2(z, y))), { depth: 0.012, bevelEnabled: false, curveSegments: 1 }); bead.rotateY(Math.PI / 2);
+      // Curved bracket filling the sharp angle between the tie top (+9.18) and the rafter underside, |z| 2.45…3.55:
+      // its lower edge is a quarter curve, so the joint reads as a soft spandrel, not a wedge. Built per side
+      // (the shape is mirrored, not the mesh, so faces stay outward).
+      const filletGeo = sign => { const z0 = 2.45, z1 = 3.55, tipY = rafterUnder(z0) + 0.02, pts = [[z1, 9.18]];
+        for (let i = 0; i <= 12; i++) { const z = z1 - (z1 - z0) * i / 12; pts.push([z, Math.max(9.2, rafterUnder(z) + 0.02)]); }
+        for (let i = 1; i < 14; i++) { const t = i / 14 * Math.PI / 2; pts.push([z0 + (z1 - 0.35 - z0) * (1 - Math.cos(t)), tipY - (tipY - 9.18) * Math.sin(t)]); }
+        // rotateY(+90°) maps shape x to world −z: pre-mirror so the bracket lands on side `sign`.
+        const g = new T.ExtrudeGeometry(new T.Shape(pts.map(([z, y]) => new T.Vector2(-sign * z, y))), { depth: 0.2, bevelEnabled: false, curveSegments: 1 });
+        g.translate(0, 0, -0.1); g.rotateY(Math.PI / 2); return g; };
+      const fillets = { [-1]: filletGeo(-1), [1]: filletGeo(1) };
+      GEO.trussCarving = 0;
+      for (const k of ['3', '4', '5', '6', '7', '8', '9']) {
+        const x = data().longitudinal[k];
+        for (const s of [-1, 1]) {
+          const zp = s * P0;
+          ornament(plinth, timber, x, 9.21, zp, 0, 'Main tie beam truss post plinth');
+          ornament(post, timber, x, 9.24, zp, 0, 'Main tie beam truss post');
+          ornament(cap, carved, x, 10.14, zp, 0, 'Main tie beam truss post cap');
+          for (const f of [-1, 1]) { const pnl = ornament(panel, gilt, x + f * 0.121, 9.69, zp, f > 0 ? Math.PI / 2 : -Math.PI / 2, 'Main tie beam truss post carving · lotus panel'); }
+          // Curved fillet where the rafter meets the tie, with a carved spray on both faces.
+          ornament(fillets[s], timber, x, 0, 0, 0, 'Main tie beam truss fillet bracket');
+          for (const f of [-1, 1]) { const yaw = f > 0 ? Math.PI / 2 : -Math.PI / 2;
+            ornament(leafy.body, carved, x + f * 0.1, 9.42, s * 3.0, yaw, 'Main tie beam truss carving · fillet foliage');
+            ornament(leafy.accent, gilt, x + f * 0.1, 9.42, s * 3.0, yaw, 'Main tie beam truss carving · fillet foliage · gilding'); }
+          // Aisle: short carved post on the side beam under the rafter.
+          const az = 5.5, top = rafterUnder(az);
+          if (top > 7.25) {
+            const sp = ornament(shortPost, timber, x, 7.0, s * az, 0, 'Side beam truss post'); sp.scale.y = (top - 7.0) / 0.62;
+            for (const f of [-1, 1]) ornament(shortPanel, gilt, x + f * 0.111, (7.0 + top) / 2, s * az, f > 0 ? Math.PI / 2 : -Math.PI / 2, 'Side beam truss post carving · lotus panel');
+          }
+        }
+        ornament(collar, timber, x, 0, 0, 0, 'Main tie beam truss arched collar');
+        for (const f of [-1, 1]) ornament(bead, gilt, x + (f > 0 ? 0.1 : -0.112), 0, 0, 0, 'Main tie beam truss gilded collar bead');
+        // Carved foliage over the arch and a gilded lotus at the crown, both faces.
+        for (const u of [-1.15, -0.6, 0.6, 1.15]) for (const f of [-1, 1]) {
+          const y = CY + Math.sqrt(R * R - u * u) + 0.2 + 0.13;
+          if (y + 0.12 < rafterUnder(Math.abs(u))) { const yaw = f > 0 ? Math.PI / 2 : -Math.PI / 2;
+            ornament(leafy.body, carved, x + f * 0.06, y, u, yaw, 'Main tie beam truss carving · foliage over the collar');
+            ornament(leafy.accent, gilt, x + f * 0.06, y, u, yaw, 'Main tie beam truss carving · foliage over the collar · gilding'); }
+        }
+        for (const f of [-1, 1]) ornament(lotus, gilt, x + f * 0.11, CROWN + 0.36, 0, f > 0 ? Math.PI / 2 : -Math.PI / 2, 'Main tie beam truss carving · crown lotus');
+        // Ridge boss where the rafters meet.
+        ornament(bossGeo.body, carved, x, 11.62, 0, 0, 'Main tie beam truss carving · ridge boss').rotation.x = Math.PI / 2;
+        ornament(bossGeo.accent, gilt, x, 11.62, 0, 0, 'Main tie beam truss carving · ridge boss · gilding').rotation.x = Math.PI / 2;
+        GEO.trussCarving++;
+      }
+    }
+    // Continuous interior purlin proxies across the crossing; real valley supports remain on hold.
     const L = 40.575, U = 9.45, Pr = 3.88, N = (U - 6.325) / Pr;
     const X = (12.472 - U) / LINING_SLOPE, O = (U - 7.13) / N;
     const PURLIN = window.CHURCH_SANCTUARY?.spec.roofTimber?.purlin || { w: 0.14, d: 0.22 }, PURLIN_TILT = Math.atan(LINING_SLOPE);
     for (const s of [-1, 1]) for (let i = 0; i < 14; i++) {
       const z = 0.58 + i * 0.5, y = liningY(z) - 0.075;
-      const spans = z < X ? [[5.475, 52.85]] : (() => { const e = (z - X) / ((7.36 - X) / O); return [[5.475, L - e - 0.1], [L + e + 0.1, 52.85]]; })();
+      const spans = [[5.475, 52.85]];
       for (const [a, b] of spans) {
         // 1 Nov 2026 (owner: the roof timbers looked flimsy): 0.14 m wide, 0.22 m deep, square to the
-        // lining and hung from it. The spacing, ends and valley splits are unchanged; the top face is
+        // lining and hung from it. The visual run continues through the crossing; the top face is
         // 4 mm under the lining and the section grows downward only. Visualization proxy, ENGINEERING HOLD.
         const m = member(b - a, PURLIN.d, PURLIN.w, (a + b) / 2, y, s * z, 'Purlin · as drawn spacing ~0.50 m');
         m.rotation.x = s * PURLIN_TILT;
@@ -425,12 +565,96 @@
         m.userData.proxySection = `${PURLIN.w} × ${PURLIN.d} m (was 0.09 × 0.12 m)`;
       }
     }
+    buildWingRoof({ asDrawn, member, gild });
     GEO.trussMoved = moving.length;
     buildFrameVariants(asDrawn);
     GEO.purlinsAsDrawn = 28;
     closeEntranceBay();
     entranceSlats = buildEntranceSlats();
   }
+  /* ------------------------------------------------ wing roof lining and timbers */
+  // Owner feedback, 1 Nov 2026 (second round): the two 9-10 wings showed the bare tile roof from inside.
+  // They now take what the nave has: the ivory boarded lining 0.19 m under the tile planes, three principal
+  // rafter pairs (0.26 x 0.34 m, the nave proxy) every 2.4 m, purlins 0.14 x 0.22 m at nominal 0.5 m
+  // plan spacing (one line adjusted to meet the light canopy), and a ridge 0.30 x 0.28 m, in the same oxblood lacquer with gilded soffit lines. Every member grows
+  // down from the lining. Numbers: sanctuary.js spec.wingRoof; VISUALIZATION PROXIES on ENGINEERING HOLD.
+  function buildWingRoof({ asDrawn, member, gild }) {
+    const W = window.CHURCH_SANCTUARY?.spec.wingRoof, RT = window.CHURCH_SANCTUARY?.spec.roofTimber;
+    if (!W || !RT) return;
+    const lining = ctx.interior.materials.lining, timber = ctx.interior.materials.timber, gilt = window.CHURCH_SANCTUARY?.materials?.gold;
+    const S = W.slope, N = Math.sqrt(1 + S * S), theta = Math.atan(S), Kt = W.ridgeX;
+    const status = 'CONCEPT PROXY · wing roof of the owner feedback of 1 Nov 2026 · no wing roof section is drawn · ENGINEERING HOLD';
+    // Lining: one piece per wing side (s) and slope (t). Edges: the ridge, the gable face, the wall faces and the
+    // nave edge. The main lining continues across the crossing; the wing lining starts outside it.
+    const group = new T.Group();
+    group.name = 'Wing roof lining and timber · both wings';
+    group.userData = { status, revision: W.revision, source: 'sanctuary.js spec.wingRoof', engineeringApproved: false };
+    for (const s of [-1, 1]) for (const t of [-1, 1]) {
+      const ry = W.liningY(Kt), wy = W.liningY(Kt + t * W.half);
+      const v = [[Kt, ry, s * W.valleyEnd.z], [Kt + t * W.half, wy, s * W.valleyEnd.z], [Kt + t * W.half, wy, s * W.gableFace], [Kt, ry, s * W.gableFace]];
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute(v.flat(), 3));
+      g.setAttribute('uv', new T.Float32BufferAttribute(v.flatMap(p => [p[0] / 4, p[2] / 2]), 2));
+      g.setIndex(T.ShapeUtils.triangulateShape(v.map(p => new T.Vector2(p[0], p[2])), []).flat());
+      g.computeVertexNormals();
+      const m = new T.Mesh(g, lining);
+      m.name = 'Proposed timber lining under the wing roof planes'; m.receiveShadow = true;
+      m.userData = { status, source: 'bundle.js side-gable roof planes, ridge +9.45, eaves +6.325; lining 0.19 m below, as in the nave', engineeringApproved: false };
+      group.add(m);
+    }
+    // A timber member whose section (w along the slope, d square to it) hangs from the lining; x0..x1 are distances
+    // from the ridge measured on the lining and `lengthAxis` is 'slope' (rafter) or 'z' (purlin).
+    const hang = (t, dx, d) => { // centre of a member of depth d hung under the lining at distance dx from the ridge
+      const px = Kt + t * dx, py = W.liningY(px), off = d / 2 + 0.004;
+      return [px - t * S / N * off, py - off / N];
+    };
+    const mesh = (geometry, material, name, pos, rotZ, extra = {}) => {
+      const m = new T.Mesh(geometry, material);
+      m.name = name; m.position.set(...pos); m.rotation.z = rotZ; m.castShadow = material === timber; m.receiveShadow = true;
+      m.userData = { status, source: 'sanctuary.js spec.wingRoof', materialRole: material === timber ? 'timber' : 'gilding', structuralRole: extra.role, sectionStatus: 'ENGINEERING HOLD', engineeringApproved: false, ...extra };
+      group.add(m); return m;
+    };
+    const R = RT.rafter, P = RT.purlin, G = RT.ridge, wingId = s => s < 0 ? 'B' : 'H';
+    // Principal rafters: from the ridge to 4 cm short of the wall face, top face 4 mm under the lining.
+    for (const s of [-1, 1]) W.frames.forEach((zf, i) => {
+      const rz = s * zf;
+      for (const t of [-1, 1]) {
+        const d0 = 0, d1 = W.rafterEndDx, mid = (d0 + d1) / 2, len = (d1 - d0) * N, [cx, cy] = hang(t, mid, R.d);
+        mesh(new T.BoxGeometry(len, R.d, R.w), timber, 'Wing principal rafter · proposed 0.26 × 0.34 m', [cx, cy, rz], -t * theta,
+          { memberId: `WR-RAF-${wingId(s)}-${i + 1}-${t < 0 ? 'L' : 'R'}`, role: 'wing principal rafter', proxySection: `${R.w} × ${R.d} m (the nave rafter proxy)` });
+        if (!gilt) continue;
+        const [gx, gy] = hang(t, mid, 2 * R.d + 0.016), line = mesh(new T.BoxGeometry(len - 0.3, 0.012, 0.07), gilt, 'Gilded wing rafter soffit line', [gx, gy, rz], -t * theta, { role: 'gilded soffit line' });
+        line.castShadow = false;
+      }
+    });
+    // Ridge: along Z at the wing ridge, from the nave lining's apex to the gable face; top face under the lining.
+    const rz0 = W.valleyEnd.z + 0.05, rz1 = W.gableFace - 0.01, ry = W.liningY(Kt) - 0.004 - G.d / 2;
+    for (const s of [-1, 1]) {
+      mesh(new T.BoxGeometry(G.w, G.d, rz1 - rz0), timber, 'Wing ridge · proposed 0.30 × 0.28 m', [Kt, ry, s * (rz0 + rz1) / 2], 0, { memberId: `WR-RIDGE-${wingId(s)}`, role: 'wing ridge member', proxySection: `${G.w} × ${G.d} m (the nave ridge proxy)` });
+      if (!gilt) continue;
+      mesh(new T.BoxGeometry(0.08, 0.012, rz1 - rz0 - 0.4), gilt, 'Gilded wing ridge soffit line', [Kt, ry - G.d / 2 - 0.004, s * (rz0 + rz1) / 2], 0, { role: 'gilded soffit line' }).castShadow = false;
+      const boss = new T.SphereGeometry(1, 6, 4);
+      for (const zf of W.frames) mesh(boss, gilt, 'Gilded wing ridge boss', [Kt, ry - G.d / 2 - 0.03, s * zf], 0, { role: 'gilded boss' }).scale.set(0.17, 0.06, 0.17);
+    }
+    // Purlins along Z on every purlin line, from the nave lining's V cut (0.1 m short of it) to the gable face.
+    // A line whose soffit falls under the nave wall top (+7.13) starts beyond the nave wall instead.
+    for (const s of [-1, 1]) for (const dx of W.purlinDx) for (const t of [-1, 1]) {
+      const drop = W.purlinDrop(P.d), soffit = W.liningY(Kt + t * dx) - drop;
+      let z0 = Math.max(W.valleyEnd.z + 0.1, W.valleyZ(dx) + 0.1); if (soffit < 7.2) z0 = Math.max(z0, 7.4);
+      const z1 = W.gableFace - 0.01, [cx, cy] = hang(t, dx, P.d);
+      const m = mesh(new T.BoxGeometry(P.w, P.d, z1 - z0), timber, 'Wing purlin · proposed 0.14 × 0.22 m', [cx, cy, s * (z0 + z1) / 2], -t * theta,
+        { memberId: `WR-PUR-${wingId(s)}-${t < 0 ? 'L' : 'R'}-${Math.round(dx * 1000)}`, role: 'wing purlin', proxySection: `${P.w} × ${P.d} m (the nave purlin proxy)` });
+      m.userData.soffitY = soffit;
+      if (gilt) {
+        const [gx, gy] = hang(t, dx, 2 * P.d + 0.016);
+        mesh(new T.BoxGeometry(0.04, 0.012, Math.max(0.01, z1 - z0 - 0.2)), gilt, 'Gilded wing purlin soffit line',
+          [gx, gy, s * (z0 + z1) / 2], -t * theta, { role: 'gilded soffit line' }).castShadow = false;
+      }
+    }
+    (ctx.interior.roofDetails || asDrawn).add(group);
+    GEO.wingRoof = { revision: W.revision, group, frames: W.frames.slice(), purlinDx: W.purlinDx.slice() };
+  }
+
   /* ----------------------------------------------- timber frame variants */
   // Two frames for comparison. 'drawn' follows section sheet 4: round shafts
   // and a 0.59 m tie beam across the nave at +8.59 m. 'reference' follows the
@@ -711,7 +935,7 @@
   // A finish-matched fitting draws with the model's own material for that surface: the
   // beam timber (the timber tone setting changes it), the sanctuary chamber lacquer (it
   // does not), the wall plaster or the cornice mouldings. Fittings never change these materials, so sharing them is safe.
-  const SHARED = { timber: () => ctx?.interior?.materials?.timber, wall: () => ctx?.mat?.wall, trim: () => ctx?.mat?.trim, sanctuary: () => window.CHURCH_SANCTUARY?.materials?.wood };
+  const SHARED = { timber: () => ctx?.interior?.materials?.timber, wall: () => ctx?.mat?.wall, trim: () => ctx?.mat?.trim, sanctuary: () => window.CHURCH_SANCTUARY?.materials?.wood, sanctuaryGilt: () => window.CHURCH_SANCTUARY?.materials?.leafGold };
   function material(key) {
     const shared = SHARED[CAT.MATERIALS[key]?.share]?.();
     if (shared?.isMaterial) return shared;
@@ -849,8 +1073,8 @@
       }
       if (item.mount === 'pendant') {
         // A head finished in a lacquer hangs from a stem and canopy in the same lacquer.
-        const lacquer = { timber: 'beamTimber', chamber: 'chamberLacquer' }[item.params?.finish];
-        const stemMat = lacquer ? material(lacquer) : type.cat === 'fan' ? material('bronze') : type.cat === 'speaker' ? material('black') : type.cat === 'decor' ? material('rope') : material(type.id.startsWith('chandelier') ? 'brass' : 'black');
+        const lacquer = { timber: 'beamTimber', chamber: 'chamberLacquer', gilt: 'chamberGilt' }[item.params?.finish];
+        const stemMat = lacquer ? material(lacquer) : type.cat === 'fan' ? material(type.id === 'fanCeiling' ? 'white' : 'bronze') : type.cat === 'speaker' ? material('black') : type.cat === 'decor' ? material('rope') : material(type.id.startsWith('chandelier') ? 'brass' : 'black');
         this.stem = new T.Mesh(stemGeo(), stemMat);
         this.stem.userData.simId = item.id;
         this.canopy = item.params?.spreader
@@ -932,7 +1156,7 @@
         if (e.kind === 'spot') {
           const beam = it.beam ?? L.beam, field = (L.field || L.beam * 1.6) * beam / L.beam;
           const cone = P.spotCone(beam, field);
-          list.push({ kind: 'spot', pos, dir: worldFrame(it).f, cd: P.peakCandela(lm, cone), cosOuter: cone.cosOuter, cosInner: cone.cosInner,
+          list.push({ kind: 'spot', pos, dir: worldFrame(it, e.tiltOffset ?? 0).f, cd: P.peakCandela(lm, cone), cosOuter: cone.cosOuter, cosInner: cone.cosInner,
             angle: cone.angle, penumbra: cone.penumbra, lumens: lm, color, id: it.id, shadow: !!it.shadow, interior: isInterior(pos), flicker: fx.type.flicker });
         } else {
           const pair = /^(Side|Service) door lantern ·/.test(it.name) ? it.name.replace(/ · (front|rear)$/, '') : it.name.startsWith('Central front door lantern ·') ? 'Central front door lantern' : null;
@@ -1221,7 +1445,7 @@
     SIM.persistentLighting.prepare(c);
     createPool(state.settings.quality);
     createHalos();
-    c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: '0.30 × 0.59 m at +8.59…+9.18 m', sideBeams: '0.22 × 0.34 m at +6.66…+7.00 m', purlinSpacing: '~0.50 m' }, conceptMembers: { longitudinalBeams: GEO.longBeams.map(b => b.id), section: '0.24 × 0.45 m at +8.73…+9.18 m · visualization proxy · ENGINEERING HOLD', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03' }, movedProposedMembers: GEO.trussMoved };
+    c.data.simulator = { status: 'Interactive planning layer; analysis values are estimates', asDrawnFrame: { mainTie: 'levels +8.59…+9.18 m as drawn; 0.40 m wide concept section (drawn proxy 0.30)', sideBeams: 'top +7.00 m as drawn; 0.30 × 0.46 m concept section, soffit +6.54 (drawn proxy 0.22 × 0.34 from +6.66)', purlinSpacing: '~0.50 m' }, conceptMembers: { longitudinalBeams: GEO.longBeams.map(b => b.id), section: '0.32 × 0.45 m at +8.73…+9.18 m · visualization proxy · ENGINEERING HOLD', source: 'docs/beams-roof-connections/SPECIFICATION.md · B03' }, movedProposedMembers: GEO.trussMoved };
     c.data.assumptions.push('Timber frame now follows section sheet 4 as measured on the vector PDF: main tie beam +8.59…+9.18 m (0.59 m deep), side beams +6.66…+7.00 m from the C/G piers to the D/E shafts, purlins about 0.50 m apart (shown as 0.14 × 0.22 m proxy sections since 1 November 2026, with rafters 0.26 × 0.34 m and the ridge member 0.30 × 0.28 m: heavier visualization proxies on engineering hold, not checked sections). The earlier king posts, diagonal braces and knee braces were not on the drawing and are now an optional "proposed bracing" layer.');
     c.data.assumptions.push('Lengthwise beams on the D and E column lines (axes 3 to 10, 14 members, IDs B03-D-03-04 to B03-E-09-10) follow the owner-confirmed arrangement of the beam specification. Their 0.24 × 0.45 m section at +8.73…+9.18 m is a visualization proxy on engineering hold; no equipment is mounted on them. Carved haunches, cartouches and beam ends are applied ornament from the approved concept art and carry nothing. No haunch stands under the axis-9 tie beam, where the ambo key light and the presider light hang close to the columns.');
   }
@@ -1836,18 +2060,18 @@
 
   /* ---------------------------------------------------------------- scenes */
   const SCENES = {
-    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 1 },
-    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
+    'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 1, LW: 1 },
+    'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6, LW: 0.6 },
     // Parish priest, 25 Oct 2026: an ordinary Mass can leave the four rear bays dark.
-    'Ordinary Mass · rear bays off': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6 },
-    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.8 },
-    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 1 },
+    'Ordinary Mass · rear bays off': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6, LW: 0.6 },
+    'Prayer & adoration': { L10: 0.6, L9: 1, L8: 0.25, L7: 0, L1: 0.2, L2: 0.2, L3: 0.45, L4: 0.25, LA: 0.5, LD: 0.35, L5: 1, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.8, LW: 0.6 },
+    'Christmas & festivals': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 1, LW: 1 },
     // Courtyard horns on: for crowds outside. Inside, their sound comes back
     // through the open windows late enough to blur speech, so use only then.
-    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 1, DECOR: 1, F5: 1, LS: 1 },
-    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 0 },
-    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0 },
-    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0 }
+    'Festival · courtyard overflow': { L10: 1, L9: 1, L8: 1, L7: 1, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 1, F1: 2, F2: 0, F3: 3, A1: 1, A2: 1, A3: 1, A4: 1, MIC: 1, F4: 0, V1: 2, V2: 2, V3: 2, A5: 1, DECOR: 1, F5: 1, LS: 1, LW: 1 },
+    'Cleaning': { L10: 0, L9: 0, L8: 1, L7: 0, L1: 1, L2: 1, L3: 0.5, L4: 1, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 1, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 2, V2: 2, V3: 2, A5: 0, DECOR: 1, F5: 1, LS: 0, LW: 0 },
+    'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0, LW: 0 },
+    'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0, LW: 0 }
   };
   SIM.SCENES = SCENES;
   // Reading light each scene is meant to give on the books (lux, maintained).
@@ -2455,15 +2679,28 @@
       ['parishMeetingRevision', D.parishMeetingRevision, '.before-parish-meeting', D.upgradeParishMeeting],
       ['towerPierRevision', D.towerPierRevision, '.before-tower-pier-depth', D.upgradeTowerPiers],
       ['naveWingLightingRevision', D.naveWingLightingRevision, '.before-nave-wing-lighting', D.upgradeNaveWingLighting],
+      ['entranceFitRevision', D.entranceFitRevision, '.before-entrance-fit', D.upgradeEntranceFit],
+      ['sideVaultLightsRevision', D.sideVaultLightsRevision, '.before-side-vault-lights', D.upgradeSideVaultLights],
+      ['wingRoofLightingRevision', D.wingRoofLightingRevision, '.before-wing-roof-lighting', D.upgradeWingRoofLighting],
+      ['columnWashRevision', D.columnWashRevision, '.before-column-up-down', D.upgradeColumnWash],
+      ['centreReadingRevision', D.centreReadingRevision, '.before-centre-reading-balance', D.upgradeCentreReading],
       ['verandaReviewRevision', window.CHURCH_VERANDA_REVIEW.revision, '.before-open-porch-light-sound', window.CHURCH_VERANDA_REVIEW.upgrade],
-      ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade]
+      ['doorheadReviewRevision', window.CHURCH_DOORHEAD_REVIEW.revision, '.before-doorheads-no-sconces', window.CHURCH_DOORHEAD_REVIEW.upgrade],
+      ['entranceInteriorRevision', D.entranceInteriorRevision, '.before-entrance-interior', D.upgradeEntranceInterior],
+      ['rearSideLightsRevision', D.rearSideLightsRevision, '.before-rear-side-lights', D.upgradeRearSideLights],
+      ['festivalTerraceRevision', D.festivalTerraceRevision, '.before-festival-terrace-removed', D.upgradeFestivalTerrace],
+      ['festivalStringsRevision', D.festivalStringsRevision, '.before-festival-strings-removed', D.upgradeFestivalStrings],
+      ['goldCoveRevision', D.goldCoveRevision, '.before-gold-cove', D.upgradeGoldCove],
+      ['sanctuaryPalmsRevision', D.sanctuaryPalmsRevision, '.before-sanctuary-palms', D.upgradeSanctuaryPalms],
+      ['wingGableLightsRevision', D.wingGableLightsRevision, '.before-wing-gable-lights', D.upgradeWingGableLights],
+      ['beamSectionRevision', D.beamSectionRevision, '.before-stronger-beams', D.upgradeBeamSections]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;
       const previous = JSON.parse(JSON.stringify(exportLayout()));
       try {
         localStorage.setItem(STORAGE_KEY + suffix, JSON.stringify(previous));
-        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM), GEO) }, { record: false });
+        importLayout({ ...previous, items: upgrade(state.items, D.recommended(GEO, SIM), GEO, SCENES[state.scene] || {}) }, { record: false });
         if (field === 'verandaReviewRevision') {
           const old = new Map(previous.items.map(it => [it.id, it]));
           const moved = state.items.filter(it => CAT.byId[it.type]?.speaker && (!old.has(it.id) ||

@@ -19,7 +19,7 @@ const plain = value => JSON.parse(JSON.stringify(value));
 // Film and music have the same length, in whole four-second bars.
 assert.equal(shots.reduce((sum, shot) => sum + shot.bars, 0), score.bars, 'shots and score cover the same bars');
 assert.equal(film.length, score.bars * 4);
-assert(film.length >= 240 && film.length <= 360, 'a film of four to six minutes');
+assert(film.length >= 420 && film.length <= 600, 'a film of seven to ten minutes, slow enough to look at each part (owner, 3 November 2026)');
 assert.equal(new Set(shots.map(shot => shot.id)).size, shots.length, 'scene ids are unique');
 for (const shot of shots) {
   assert(Number.isInteger(shot.bars) && shot.bars >= 2, `${shot.id}: whole bars`);
@@ -30,10 +30,15 @@ for (const shot of shots) {
 }
 
 // Scene order asked for by the owner: outside and inside by day, then the
-// evening, with the roof hidden only at night.
+// evening. Asked on 3 November 2026: towers, front, veranda, nave and
+// sanctuary each seen in detail, then round the church after dark, partly at
+// a walking person's eye height.
 assert.deepEqual([...new Set(shots.map(shot => shot.chapter))], ['outside', 'inside', 'night']);
 assert(shots.filter(shot => shot.chapter !== 'night').every(shot => shot.light === 'day' && shot.roof));
-assert(shots.filter(shot => !shot.roof).length >= 2 && shots.filter(shot => !shot.roof).every(shot => shot.light === 'evening'), 'roof hidden at night only');
+assert(shots.filter(shot => shot.chapter === 'night').every(shot => shot.light === 'evening'));
+const order = id => shots.findIndex(shot => shot.id === id);
+assert(['towers', 'facade', 'veranda', 'nave', 'sanctuary'].every((id, i, list) => order(id) >= 0 && (!i || order(id) > order(list[i - 1]))), 'towers, front, veranda, nave, sanctuary in that order');
+assert(shots.filter(shot => shot.chapter === 'night' && shot.walk).length >= 2 && shots.some(shot => shot.chapter === 'night' && !shot.walk && shot.keys.every(key => key[1] > 5)), 'after dark: walks and a flight round the outside');
 const last = shots[shots.length - 1];
 assert(last.end && last.roof, 'the film closes with the roof back on');
 // A change of light or roof is never seen: the picture is black at that moment.
@@ -71,22 +76,38 @@ function checkPath(reel, { indoorLimit }) {
   }
   return { fastest, quickestTurn };
 }
-const { fastest, quickestTurn } = checkPath(film.films.full, { indoorLimit: 3.2 });
+const { fastest, quickestTurn } = checkPath(film.films.full, { indoorLimit: 1.6 });
+assert(fastest < 4.5, `unhurried flights: fastest ${fastest.toFixed(2)} m/s`);
 assert(!shots.some(shot => shot.systems), 'no wiring-only scenes');
+// Walking scenes: eye 1.60 m above a modelled floor level (within the step's
+// rise and a stair between levels), at a person's pace, with the step's sway.
+const FLOORS = [-2.08, -0.48, -0.32, 0, 0.16, 0.8];
+const walks = shots.filter(shot => shot.walk);
+assert(walks.length >= 8, 'a good part of the film is walked');
+for (const shot of walks) {
+  const ends = [shot.keys[0], shot.keys[shot.keys.length - 1]];
+  assert(ends.every(key => FLOORS.some(floor => Math.abs(key[1] - 1.6 - floor) < 0.2)), `${shot.id}: starts and ends at eye height on a floor`);
+  assert(shot.keys.every(key => key[1] - 1.6 >= -2.1 && key[1] - 1.6 <= 0.82), `${shot.id}: eye between the courtyard and the platform`);
+  let previous = null, top = 0;
+  for (let time = shot.start + 0.5; time < shot.start + shot.duration - 0.5; time += FRAME) {
+    const p = film.pose(time);
+    if (previous) top = Math.max(top, Math.hypot(p.eye[0] - previous[0], p.eye[2] - previous[2]) / FRAME);
+    previous = p.eye;
+  }
+  assert(top < 1.4, `${shot.id}: walks at ${top.toFixed(2)} m/s`);
+  // The step shows: over two seconds the eye rises and falls by a few
+  // centimetres about the path's own slope (a stair climbs steadily).
+  const middle = shot.start + shot.duration / 4, heights = Array.from({ length: 21 }, (_, i) => film.pose(middle + i / 10).eye[1]);
+  const bob = Math.max(...heights.map((h, i) => Math.abs(h - (heights[0] + (heights[20] - heights[0]) * i / 20))));
+  assert(bob > 0.004 && bob < 0.04, `${shot.id}: a gentle step (${(bob * 1000).toFixed(0)} mm)`);
+}
 // Scenes joined by a plain cut that continue the same movement meet exactly.
-for (const [from, to] of [['facade', 'towers'], ['side-b', 'rear'], ['rear', 'return'], ['enter', 'nave'], ['roof-off', 'night-orbit'], ['night-orbit', 'over-nave']]) {
+for (const [from, to] of [['towers', 'belfry'], ['roof', 'rear'], ['rear', 'side-h'], ['enter', 'nave'], ['sanctuary', 'altar']]) {
   const a = shots.find(shot => shot.id === from), b = shots.find(shot => shot.id === to);
   assert.equal(b.index, a.index + 1); assert.equal(b.cut, 'cut');
   const end = film.pose(b.start - 1e-6), begin = film.pose(b.start);
   assert(dist(end.eye, begin.eye) < 0.01 && dist(end.look, begin.look) < 0.01 && Math.abs(end.lens - begin.lens) < 0.01, `${from} → ${to} continues`);
 }
-// The plan view looks straight down with side B at the top of the picture, and
-// hands over to the level-horizon orbit without a visible change: both poses
-// lie in the vertical plane through the look point.
-const plan = shots.find(shot => shot.id === 'roof-off');
-assert.deepEqual(plain(plan.up), [0, 0, -1]);
-assert(plan.keys.every(key => key[0] === key[3]), 'plan view stays in one vertical plane');
-assert(plan.keys[0][1] > 80 && Math.abs(plan.keys[0][2]) < 2, 'starts directly above the church');
 
 // Score: sorted, inside the film, within the organ compass, a pedal note
 // under the whole film.
@@ -106,7 +127,7 @@ assert(home.length > 80 && home.every(event => pentatonic.has(event.note % 12)),
 // Ave Maria (Bach–Gounod): complete in 41 bars, transcribed from Mutopia
 // edition 2167. These lock the transcription and its place in the film.
 const ave = score.events.filter(event => event.part === 'ave'), at = bar => (score.aveMaria.firstBar + bar - 1) * 4;
-assert.deepEqual(plain(score.aveMaria), { firstBar: 26, bars: 41 });
+assert.deepEqual(plain(score.aveMaria), { firstBar: 48, bars: 41 });
 const sung = ave.filter(event => event.voice === 'melody');
 assert.equal(sung.length, 106, 'melody notes');
 assert.deepEqual(plain(sung.slice(0, 5).map(event => [event.note, event.time])), [[76, at(5)], [77, at(6)], [79, at(7)], [74, at(7) + 3], [76, at(8)]], 'opening phrase E F G D E from bar 5');
@@ -119,16 +140,16 @@ assert.equal(broken.length, 37 * 12 + 28, 'broken chords of the prelude');
 assert.deepEqual(plain(broken.slice(0, 6).map(event => event.note)), [67, 72, 76, 67, 72, 76], 'bar 1: G C E twice');
 assert.deepEqual(plain(ave.filter(event => event.voice === 'bass').map(event => event.note).filter((n, i, all) => n !== all[i - 1])),
   [60, 59, 60, 59, 60, 59, 57, 50, 55, 53, 52, 50, 43, 48, 41, 42, 43, 44, 43, 36], 'bass line of the prelude');
-// Where the music meets the picture: the prelude begins as the camera reaches
-// the church door, the hush of bar 29 is the turn to evening, the "tutta
-// forza" of bar 33 is the roof lifted away, and the final tonic of bar 37
-// arrives as the orbit begins.
+// Where the music meets the picture: the prelude begins as the walker comes
+// through the church door, its "tutta forza" bar 33 is the close view of the
+// altar, and it ends with the inside by day; the evening has the homeland
+// melody again, quietly, then on full organ for the closing view.
 const scene = id => shots.find(shot => shot.id === id);
-assert(at(1) > scene('enter').start && at(5) < scene('nave').start + scene('nave').duration, 'Ave Maria begins on entering');
-assert.equal(at(29), scene('evening-nave').start);
-assert.equal(at(33), scene('roof-off').start);
-assert.equal(at(37), scene('night-orbit').start);
-assert(score.events.length > 900);
+assert.equal(at(1), scene('enter').start, 'Ave Maria begins on entering');
+assert.equal(at(33), scene('altar').start);
+assert.equal(at(42), shots.find(shot => shot.chapter === 'night').start, 'Ave Maria fills the inside by day');
+assert.equal(score.events.filter(event => event.part === 'homeland' && event.time >= at(42) && event.time < scene('closing').start && event.voice === 'melody').every(event => event.level <= 0.5), true, 'quiet in the evening until the closing view');
+assert(score.events.length > 1200);
 
 const bundle = read('bundle.js'), text = JSON.stringify(shots);
 

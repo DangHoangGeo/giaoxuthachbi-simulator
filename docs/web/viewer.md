@@ -71,6 +71,8 @@ These are lab observations on one machine. They are not a measurement on the par
 - **Hosting setting:** the build reads `../Thach_Bi_Viewer` from outside the `web` root. The Vercel project must allow source files outside the root directory. This is verified by the preview build of the pull request, not by local checks.
 - **Broken image names:** `bundle.js` still names seven reference images that were moved on 7 October. The viewer tolerates their absence. They are not published and not fixed here.
 - `planning/index.html` links to a Markdown document outside the viewer; that link does not resolve on the website. The rendered brief beside it does.
+- **Display pass and interior finishes (10 November 2026):** the visit shows the same contact shading, highlight roll-off, glow and interior finish study as the local viewer ([record](../interior-finish.md)). They need a floating-point render target; without one, or with `?graphics=light` or `?finish=off`, the visit shows the plain picture. Appearance only.
+- **Material and ornament study (19 November 2026).** Both viewer modes use the revised lacquer, carved timber, sanctuary mural and stone relief. The mural WebP is embedded in the viewer script for offline use. The unreferenced native painting and provenance stay in the source library. [Desktop comparison](../../review/material-depth-2026-11-19/README.md)
 - The estimate read-outs, sightline tools and seating options carry the same limitations as in the local viewer. No engineering hold is closed by this change.
 
 ## Retired on 10 October 2026

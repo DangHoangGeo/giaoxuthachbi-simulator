@@ -59,8 +59,8 @@ for(const [side,s] of [['H',1],['B',-1]]){
 }
 near(bounds(named('Tower dome · CAD profile')).min.y,source.faces[0].corniceRows[0].y,'Derived hidden drum contacts the source platform level (not a bearing design)');
 assert.equal(api.CHURCH_TOWERS.spec.dome.bearingLevel,null);
-near(bounds(named('Tower corner pinnacle')).min.y,source.faces[0].topRailRows[0].y,'Corner ornament rests on native top rail');
-near(bounds([...named('Tower corner pinnacle'),...named('Tower corner pinnacle fleur-de-lis')]).max.y,source.cornerPinnacleEnvelopesE01B[0].topWitness.y,'Native finial actual apex');
+near(bounds(named('Tower corner pinnacle crown')).min.y,source.faces[0].topRailRows[0].y,'Corner ornament rests on native top rail');
+near(bounds(named('Tower corner pinnacle crown')).max.y,source.cornerPinnacleEnvelopesE01B[0].topWitness.y,'Native finial actual apex');
 const allGuard=nodes.filter(o=>/parapet · /.test(o.name));
 const layoutBytes=fs.readFileSync(path.join(root,'docs/electrical-grid/equipment-layout.json'));
 const layout=JSON.parse(layoutBytes),lights=layout.items.filter(it=>it.type==='ledgeFlood'&&it.name.startsWith('Dome front wash ·'));

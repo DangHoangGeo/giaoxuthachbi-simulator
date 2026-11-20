@@ -1,9 +1,12 @@
 /* Thạch Bi viewer · cinematic guided tour.
  *
- * A five-minute film of the shared model: the camera flies round the outside by
- * day, enters through the central door, travels the nave, the timber roof, the
- * side aisle, the wings and the sanctuary, then returns at night with the roof
- * hidden to look down into the lit interior.
+ * A film of about eight and a half minutes of the shared model, at two paces: a
+ * slow camera crane that rises up the bell towers, circles a belfry and comes
+ * down the front, and a person walking at eye height, with the small sway of
+ * each step, up the forecourt steps, along the veranda, in through the central
+ * door, up the nave and the side aisle to the sanctuary. It pauses to look up at
+ * the timber roof and close at the altar, and returns after dark to walk up to
+ * the lit front, along the veranda, round the altar end and back inside.
  *
  * Presentation only. The film never edits the design, the saved layout, lamp
  * outputs or any calculation. It changes four display states while it runs
@@ -41,6 +44,10 @@
    * and carries forward. Durations are whole bars of the music (4 s each).
    *   cut   'fade' (chapter, 1.3 s each side) · 'dip' (0.55 s) · 'cut'
    *   ease  [start, end] speed as a share of cruising speed (0 = from rest)
+   *   walk  a person walking: eye keys are 1.60 m above the modelled floor
+   *         (courtyard −2.080, forecourt −0.480, veranda −0.320, nave 0,
+   *         side sanctuary +0.160, platform +0.800 m), at 1.3 m/s or less, and
+   *         the eye rises, falls and sways a little with each step
    * Captions state only values held in the model data (church.data); the
    * furnishings, ornament, lighting and sound equipment shown are proposals.
    */
@@ -51,86 +58,105 @@
     night: { en: 'III · Evening', vi: 'III · Buổi tối' }
   };
   const SHOTS = [
-    { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.25, 0.7],
+    // I · Around the church by day: towers, front, forecourt and veranda.
+    { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.2, 0.5],
       card: { small: 'Giáo xứ Thạch Bi', title: 'Nhà thờ Thạch Bi', line: 'Một lời mời trở về quê nhà · An invitation to come home' },
-      keys: [[-98, 54, 60, 14, 12, 0, 38], [-70, 36, 46, 12, 12.5, 0, 40], [-46, 19, 27, 8, 13, 0, 44]] },
-    { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0.6],
+      keys: [[-90, 46, 52, 14, 12, 0, 40], [-72, 35, 41, 12, 12.5, 0, 42], [-54, 24, 30, 9, 13, 0, 44]] },
+    { id: 'towers', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dip', ease: [0.2, 0.6],
+      en: 'The bell towers', vi: 'Hai tháp chuông',
+      note: { en: 'Rising stage by stage up the tower on side H: four stages at +8.390, +15.840, +23.140 and +29.090 m above the nave floor.', vi: 'Đi lên từng tầng của tháp phía H: bốn tầng tháp ở +8,390, +15,840, +23,140 và +29,090 m so với nền lòng nhà thờ.' },
+      keys: [[-15, 4.5, 13.5, 1.5, 8.4, 10.15, 46], [-14, 11, 12.5, 1.5, 14.5, 10.15, 44], [-13.5, 18, 11.5, 1.8, 21.5, 10.15, 42], [-14, 25, 10.8, 2.2, 28, 10.15, 40], [-16, 30, 9.5, 2.45, 32, 10.15, 40]] },
+    { id: 'belfry', chapter: 'outside', bars: 6, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.3],
+      en: 'Belfry and dome', vi: 'Lầu chuông và mái vòm',
+      note: { en: 'Louvred belfry arches under each dome let the bells ring out over the village. Ornament depth is still schematic.', vi: 'Các vòm cửa chớp của lầu chuông dưới mỗi mái vòm để tiếng chuông vang khắp làng. Chiều sâu hoa văn còn là sơ phác.' },
+      keys: [[-16, 30, 9.5, 2.45, 32, 10.15, 40], [-11, 31.5, 21, 2.45, 31.5, 10.15, 44], [0, 32, 26.5, 2.45, 31, 10.15, 46], [11, 31.5, 23, 2.45, 30.5, 10.15, 46], [17, 30, 13, 2.45, 30, 8, 46]] },
+    { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0.3],
       en: 'The tower front', vi: 'Mặt tiền hai tháp',
       note: { en: 'Twin bell towers frame three doors, with Our Lady of the Assumption between them. The cross apex is drawn at +36.920 m above the nave floor.', vi: 'Hai tháp chuông ôm lấy ba cửa chính, ở giữa là tượng Đức Mẹ Lên Trời. Đỉnh thánh giá theo bản vẽ ở cao độ +36,920 m so với nền lòng nhà thờ.' },
-      keys: [[-27, -0.5, 3.2, 2, 6, 0, 46], [-22, 6.5, 1.6, 2.2, 11, 0, 46], [-21, 17, -0.5, 2.4, 19, 0, 45], [-29, 27, -5, 2.4, 26, -0.5, 44]] },
-    { id: 'towers', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.6],
-      en: 'Around the bell towers', vi: 'Vòng quanh tháp chuông',
-      note: { en: 'Four stages at +8.390, +15.840, +23.140 and +29.090 m, with louvred belfry arches under each dome. Ornament depth is still schematic.', vi: 'Bốn tầng tháp ở +8,390, +15,840, +23,140 và +29,090 m, với các vòm cửa chớp của lầu chuông dưới mỗi mái vòm. Chiều sâu hoa văn còn là sơ phác.' },
-      keys: [[-29, 27, -5, 2.4, 26, -0.5, 44], [-15, 33, -21, 2.6, 28.5, -1, 44], [7, 36, -27, 3.5, 28, -1.5, 44], [25, 34, -23, 4.5, 26, -1, 45], [36, 29, -12, 6, 24, 0, 46]] },
-    { id: 'side-b', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.6, 0.6],
+      keys: [[-17, 21, 1.5, 2.4, 21, 0, 40], [-16, 15, 0.8, 2.4, 14.5, 0, 42], [-15, 9, 0, 2.4, 8.5, 0, 44], [-15.5, 4, -0.8, 2.4, 4, 0, 46]] },
+    { id: 'forecourt', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
+      en: 'Up the forecourt steps', vi: 'Bước lên sân trước',
+      note: { en: 'At walking pace, as a parishioner arrives: from the courtyard at −2.080 m up the steps to the forecourt at −0.480 m, with the three doors ahead.', vi: 'Theo nhịp bước của người giáo dân đến nhà thờ: từ sân ở cao độ −2,080 m bước lên sân trước ở −0,480 m, ba cửa chính ở ngay phía trước.' },
+      keys: [[-22, -0.48, -2.6, 2.4, 9, 0, 58], [-16.5, -0.48, -2.2, 2.4, 7, 0, 58], [-12.4, -0.42, -1.9, 2.4, 5.5, 0, 58], [-9.2, 1.12, -1.6, 2.4, 4.5, 0, 58], [-6, 1.12, -2.4, 2.4, 3.4, -6, 60]] },
+    { id: 'veranda', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
       en: 'Verandas for shade and breeze', vi: 'Hàng hiên che nắng, đón gió',
-      note: { en: 'Open verandas in 4.50 m bays shade the walls and let the air through. The church is planned for fans and open windows, without air conditioning.', vi: 'Hàng hiên mở theo bước gian 4,50 m che nắng cho tường và đón gió. Nhà thờ được tính toán dùng quạt và cửa mở, không dùng điều hòa.' },
-      keys: [[-11, 1.4, -19.4, 8, 4.2, -10, 50], [9, 2.1, -18.6, 26, 4.2, -10.5, 50], [29, 3, -18.6, 43, 4.8, -12, 50], [50, 4.6, -18.6, 57, 6, -5, 50]] },
-    { id: 'rear', chapter: 'outside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.6],
-      en: 'The altar end', vi: 'Đầu cung thánh',
-      note: { en: 'From axis 1 to axis 12 the church measures 53.016 m. A cross crowns the gable above the sanctuary; the vesting room sits behind its wall.', vi: 'Từ trục 1 đến trục 12 nhà thờ dài 53,016 m. Thánh giá trên đỉnh đầu hồi phía cung thánh; phòng áo nằm ngay sau tường.' },
-      keys: [[50, 4.6, -18.6, 57, 6, -5, 50], [66, 9, -13, 51, 8, -1, 48], [72, 12, 4, 49, 8.5, 0, 47], [62, 14, 25, 42, 7, 5, 46]] },
-    { id: 'return', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.15],
+      note: { en: 'Open verandas in 4.50 m bays shade the walls and let the air through, their floor 0.320 m below the nave. The church is planned for fans and open windows, without air conditioning.', vi: 'Hàng hiên mở theo bước gian 4,50 m che nắng cho tường và đón gió, nền thấp hơn lòng nhà thờ 0,320 m. Nhà thờ được tính toán dùng quạt và cửa mở, không dùng điều hòa.' },
+      keys: [[7, 1.28, -8.9, 20, 1.6, -8.9, 60], [12.5, 1.28, -9, 15, 2.3, -7.36, 60], [18.5, 1.28, -8.9, 30, 1.7, -8.9, 60], [24, 1.28, -8.85, 25.7, 2.2, -10.414, 60], [30, 1.28, -8.9, 40, 1.7, -9, 60]] },
+    { id: 'roof', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0.6],
       en: 'A roof of red clay tiles', vi: 'Mái ngói đỏ',
       note: { en: 'Ngói đỏ, fired-clay tiles: the red roof long familiar on Vietnamese village houses, communal halls and churches. A proposed finish, on one continuous roof with its ridge at +12.472 m.', vi: 'Ngói đỏ đất nung, màu mái thân quen của nhà làng, đình và nhà thờ Việt Nam. Đây là vật liệu đề xuất, trên một mái liên tục có nóc ở +12,472 m.' },
-      keys: [[62, 14, 25, 42, 7, 5, 46], [38, 22, 32, 27, 8, 0, 46], [10, 28, 28, 13, 10, 0, 45], [-20, 21, 14, 3, 12, 0, 44], [-34, 9, 2, 2.4, 10, 0, 42]] },
+      keys: [[12, 3, -25, 18, 4, -10, 50], [24, 8, -29, 30, 6, -8, 48], [38, 13, -28, 42, 7, -4, 46]] },
+    { id: 'rear', chapter: 'outside', bars: 6, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.6],
+      en: 'The altar end', vi: 'Đầu cung thánh',
+      note: { en: 'From axis 1 to axis 12 the church measures 53.016 m. A cross crowns the gable above the sanctuary; the vesting room sits behind its wall.', vi: 'Từ trục 1 đến trục 12 nhà thờ dài 53,016 m. Thánh giá trên đỉnh đầu hồi phía cung thánh; phòng áo nằm ngay sau tường.' },
+      keys: [[38, 13, -28, 42, 7, -4, 46], [60, 13, -24, 50, 8, -1, 48], [76, 12, -4, 51, 8.5, 0, 48], [70, 12, 16, 47, 8, 3, 48]] },
+    { id: 'side-h', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.1],
+      en: 'Widening like a cross', vi: 'Mở rộng như cây thánh giá',
+      note: { en: 'Between axes 9 and 10 the church widens on both sides like the arms of a cross; that bay is 7.20 m, against the typical 4.50 m.', vi: 'Giữa trục 9 và 10 nhà thờ mở rộng sang hai bên như hai cánh thánh giá; gian này rộng 7,20 m, các gian thường 4,50 m.' },
+      keys: [[70, 12, 16, 47, 8, 3, 48], [54, 10, 25, 42, 5, 9, 48], [38, 7.5, 27, 38, 4, 10, 48]] },
 
-    { id: 'enter', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.3, 0.75],
+    // II · Inside by day, at walking pace with a few still pauses.
+    { id: 'enter', chapter: 'inside', bars: 5, light: 'day', roof: true, cut: 'fade', ease: [0.2, 0.6], walk: true,
       en: 'The doors stand open', vi: 'Cánh cửa rộng mở',
-      note: { en: 'Up the forecourt steps and in between the towers. The central door is 3.100 m clear, under an arch of coloured glass.', vi: 'Bước lên bậc tiền sảnh, đi vào giữa hai tháp. Cửa giữa rộng thông thủy 3,100 m, phía trên là vòm kính màu.' },
-      keys: [[-23, -0.35, 0, 2.4, 4.2, 0, 50], [-13.6, -0.3, 0, 6, 3.4, 0, 50], [-8, 1.2, 0, 14, 3, 0, 52], [-1, 1.25, 0, 26, 3, 0, 54], [3.2, 1.6, 0, 38, 3.2, 0, 56], [9.5, 1.7, 0, 48, 3.5, 0, 56]] },
-    { id: 'nave', chapter: 'inside', bars: 5, light: 'day', roof: true, cut: 'cut', ease: [0.75, 0.3],
+      note: { en: 'In through the central door, 3.100 m clear, under an arch of coloured glass.', vi: 'Bước qua cửa giữa rộng thông thủy 3,100 m, phía trên là vòm kính màu.' },
+      keys: [[-7.5, 1.12, 0, 2.4, 3.8, 0, 56], [-3.5, 1.12, 0, 2.4, 4.6, 0, 56], [0.5, 1.15, 0, 14, 3, 0, 56], [4, 1.6, 0, 30, 2.4, 0, 58], [7, 1.6, 0, 42, 2.4, 0, 58]] },
+    { id: 'nave', chapter: 'inside', bars: 6, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.2], walk: true,
       en: 'The nave', vi: 'Lòng nhà thờ',
       note: { en: 'Fourteen timber columns in red lacquer carry the roof frames above the pews. Pews, lamps, fans and loudspeakers are a design proposal.', vi: 'Mười bốn cột gỗ sơn son đỡ các vì kèo phía trên hàng ghế. Ghế, đèn, quạt và loa là phương án đề xuất.' },
-      keys: [[9.5, 1.7, 0, 48, 3.5, 0, 56], [19, 2.3, 0, 48.5, 3.8, 0, 54], [28.5, 3.3, 0, 48.8, 4.2, 0, 52], [35, 3.9, 0, 48.8, 4.6, 0, 50]] },
-    { id: 'timber', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.4],
+      keys: [[7, 1.6, 0, 42, 2.4, 0, 58], [12, 1.6, 0.2, 24, 2.8, -4.5, 58], [17.5, 1.6, 0, 42, 2.6, 0, 58], [22.5, 1.6, -0.2, 32, 2.4, 4.5, 58], [27, 1.6, 0, 46, 2.8, 0, 58]] },
+    { id: 'timber', chapter: 'inside', bars: 6, light: 'day', roof: true, cut: 'dip', ease: [0, 0.3],
       en: 'Carved and gilded beams', vi: 'Xà kèo chạm khắc, thếp vàng',
       note: { en: 'Each tie beam carries a gilded bloom between leafy scrolls, under an ivory boarded lining that keeps the roof light. Member sizes and joints remain an engineering hold.', vi: 'Mỗi quá giang mang một bông hoa thếp vàng giữa hai dải lá cuốn, dưới lớp ván lót màu ngà giúp mái sáng và nhẹ. Tiết diện và mối nối còn chờ kỹ sư kết cấu.' },
-      keys: [[33.4, 6.4, 1.9, 22, 11.6, -0.6, 62], [25.6, 7, 2, 14, 11.8, -1, 62], [18.6, 7.1, 1.9, 7, 11, -0.6, 60], [12.6, 6.8, 1.5, 3, 8.5, 0, 58]] },
-    { id: 'aisle', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.5, 0.5],
+      keys: [[24, 1.6, 0, 36, 3, 0, 60], [24.2, 1.65, 0, 28, 8.5, 0, 64], [24.8, 4.2, 1, 21, 10.5, -0.8, 64], [25.6, 7, 2, 14, 11.8, -1, 62], [18.6, 7.1, 1.9, 7, 11, -0.6, 60]] },
+    { id: 'aisle', chapter: 'inside', bars: 5, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
       en: 'Light through two layers of windows', vi: 'Ánh sáng qua hai lớp cửa',
       note: { en: 'Inner and outer windows stand either side of the veranda, with coloured glass in the arched heads and timber shutters below.', vi: 'Hai lớp cửa sổ trong và ngoài nằm hai bên hiên, kính màu trên các vòm cửa và cánh cửa gỗ bên dưới.' },
-      keys: [[11.5, 2, -4.8, 21, 3, -7.6, 54], [22, 2.2, -4.85, 31, 3.2, -7.6, 54], [33, 2.4, -4.8, 41, 3.3, -9.5, 54]] },
-    { id: 'wings', chapter: 'inside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.3, 0.3],
+      keys: [[11, 1.6, -4.7, 22, 2.4, -4.8, 58], [16, 1.6, -4.7, 18, 2.8, -7.36, 58], [21.5, 1.6, -4.6, 32, 2.4, -5, 58], [26.5, 1.6, -4.7, 28.5, 3, -7.36, 58]] },
+    { id: 'wings', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.2, 0.2],
       en: 'The two wings', vi: 'Hai cánh nhà thờ',
-      note: { en: 'Between axes 9 and 10 the church widens on both sides, like the arms of a cross. Saint Peter and Saint Paul face each other across the sanctuary steps.', vi: 'Giữa trục 9 và 10 nhà thờ mở rộng sang hai bên như hai cánh thánh giá. Thánh Phêrô và Thánh Phaolô đối diện nhau qua bậc cung thánh.' },
-      keys: [[37.4, 2.5, 1.6, 40.6, 3.4, -12.5, 58], [37, 2.6, 0, 48.6, 4, 0, 58], [37.4, 2.5, -1.6, 40.6, 3.4, 12.5, 58]] },
-    { id: 'sanctuary', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.2, 0.2],
+      note: { en: 'Saint Peter and Saint Paul face each other across the sanctuary steps, one in each wing.', vi: 'Thánh Phêrô và Thánh Phaolô đối diện nhau qua bậc cung thánh, mỗi vị ở một cánh.' },
+      keys: [[36.5, 1.65, 1.4, 40.6, 3, -12.5, 58], [37, 1.7, 0, 46, 3, 0, 58], [37.5, 1.75, -1.4, 40.6, 3, 12.5, 58]] },
+    { id: 'sanctuary', chapter: 'inside', bars: 6, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0], walk: true,
       en: 'The sanctuary in red and gold', vi: 'Cung thánh sơn son thếp vàng',
       note: { en: 'Red lacquer and gilded carving, in the spirit of sơn son thếp vàng, the timber craft of northern Vietnam, frame the altar under three arches. An art proposal on the drawn +0.800 m platform.', vi: 'Sơn son thếp vàng theo tinh thần nghề mộc truyền thống Bắc Bộ ôm lấy bàn thờ dưới ba vòm cung. Đây là đề xuất mỹ thuật trên bục cung thánh +0,800 m theo bản vẽ.' },
-      keys: [[34.6, 2, 0, 48.8, 4.4, 0, 48], [39.2, 2.5, 0, 48.8, 4.7, 0, 43], [41.7, 2.8, 0, 48.8, 5.1, 0, 38]] },
-    { id: 'altar-arc', chapter: 'inside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.4, 0.4],
+      keys: [[35, 1.65, 0, 48.8, 4.4, 0, 56], [37.5, 1.76, 0, 48.8, 4.5, 0, 54], [39.6, 2.2, 0, 48.8, 4.4, 0, 52], [41.2, 2.4, 0, 48.8, 4.2, 0, 50]] },
+    { id: 'altar', chapter: 'inside', bars: 5, light: 'day', roof: true, cut: 'cut', ease: [0, 0.3],
       en: 'Altar, tabernacle and crucifix', vi: 'Bàn thờ, nhà tạm và thánh giá',
       note: { en: 'The carved Christ hangs on a red cross in an azure niche above the gilded tabernacle, with Our Lady and Saint Joseph in the shrines on either side.', vi: 'Tượng Chúa chịu nạn chạm gỗ trên thánh giá đỏ, trong hốc tường xanh thiên thanh phía trên nhà tạm thếp vàng; Đức Mẹ và Thánh Giuse ở hai bàn thờ bên.' },
-      keys: [[39.7, 3, -3, 45.6, 2.7, 0.4, 50], [38.7, 3.1, 0, 45.8, 2.6, 0, 50], [39.7, 3, 3, 45.6, 2.7, -0.4, 50]] },
-    { id: 'look-back', chapter: 'inside', bars: 3, light: 'day', roof: true, cut: 'cut', ease: [0.25, 0.1],
+      keys: [[41.2, 2.4, 0, 48.8, 4.2, 0, 50], [41.3, 2.45, 0.6, 47, 2.4, -3.6, 50], [41.5, 2.55, 0, 47.5, 2.6, 0, 44], [41.6, 2.6, 0, 47.5, 4.6, 0, 38], [41.3, 2.45, -0.6, 47, 2.4, 3.6, 50]] },
+    { id: 'look-back', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.25, 0.1],
       en: 'Looking back to the entrance', vi: 'Nhìn về phía cửa chính',
       note: { en: 'From the sanctuary steps, the whole length of the nave back to the doors.', vi: 'Từ bậc cung thánh nhìn suốt lòng nhà thờ về phía cửa chính.' },
       keys: [[40.6, 2.6, 0, 22, 3.8, 0, 56], [39.6, 4.8, 0, 12, 5.2, 0, 58], [38.7, 6.9, 0, 3, 6.4, 0, 60]] },
 
-    { id: 'evening-nave', chapter: 'night', bars: 4, light: 'evening', roof: true, cut: 'fade', ease: [0.15, 0.4],
-      en: 'After dark', vi: 'Khi đêm xuống',
+    // III · Evening: walking up to the lit front, round the outside, and in.
+    { id: 'evening', chapter: 'night', bars: 6, light: 'evening', roof: true, cut: 'fade', ease: [0.2, 0.1], walk: true,
+      en: 'Coming home after dark', vi: 'Về nhà khi trời tối',
+      note: { en: 'The tower front in the evening, with the proposed concealed lighting on the statues and towers. Screen brightness is not a lux measurement.', vi: 'Mặt tiền về đêm với phương án chiếu sáng giấu đèn cho các tượng và hai tháp. Độ sáng màn hình không phải số đo lux.' },
+      keys: [[-34, -0.48, 4.5, 2.4, 11, 0, 52], [-27, -0.48, 3.2, 2.4, 12, 0, 52], [-20, -0.48, 2, 2.4, 13.5, 0, 50], [-16.5, -0.48, 1.4, 2.4, 15, 0, 48]] },
+    { id: 'night-towers', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'dip', ease: [0.2, 0.5],
+      en: 'The towers at night', vi: 'Tháp chuông về đêm',
+      note: { en: 'Concealed lights wash the tower stages from below. Fittings, aiming and outputs remain a proposal until product photometry is chosen.', vi: 'Đèn giấu kín hắt sáng các tầng tháp từ bên dưới. Loại đèn, hướng chiếu và công suất vẫn là đề xuất cho đến khi chọn được số liệu quang học của sản phẩm.' },
+      keys: [[-20, 3, -3, 2.4, 11, 0, 48], [-22, 12, -11, 2.45, 19, -10.15, 46], [-20, 22, -15, 2.45, 27, -10.15, 44], [-18, 29, -16, 2.45, 31, -10.15, 44]] },
+    { id: 'night-veranda', chapter: 'night', bars: 6, light: 'evening', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
+      en: 'Along the veranda at night', vi: 'Dọc hàng hiên về đêm',
+      note: { en: 'Path lights guide the way along the veranda, and the windows glow from the nave inside. The lighting is the proposal as the viewer draws it.', vi: 'Đèn lối đi dẫn bước dọc hàng hiên, các cửa sổ sáng lên từ lòng nhà thờ bên trong. Ánh sáng là phương án đề xuất theo cách hiển thị của mô hình.' },
+      keys: [[7, 1.28, 8.9, 20, 1.6, 8.9, 60], [13, 1.28, 9, 15.3, 2.3, 7.36, 60], [19.5, 1.28, 8.9, 30, 1.7, 8.9, 60], [26, 1.28, 8.85, 28, 2.4, 7.36, 60]] },
+    { id: 'night-around', chapter: 'night', bars: 6, light: 'evening', roof: true, cut: 'dip', ease: [0.6, 0.6],
+      en: 'Around the church at night', vi: 'Vòng quanh nhà thờ về đêm',
+      note: { en: 'From the courtyard round toward the altar end: the lit towers, the glowing windows and the long red roof against the night sky.', vi: 'Từ sân trước vòng về phía cung thánh: hai tháp sáng đèn, những ô cửa ấm áp và mái ngói đỏ dài trên nền trời đêm.' },
+      keys: [[-14, 14, 34, 14, 8, 0, 48], [10, 17, 44, 22, 6, 0, 48], [36, 18, 44, 26, 6, 0, 48], [60, 16, 30, 30, 6, 0, 48]] },
+    { id: 'evening-nave', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'dip', ease: [0.3, 0.1], walk: true,
+      en: 'Inside after dark', vi: 'Bên trong khi đêm xuống',
       note: { en: 'Evening light: the sanctuary glows at the end of the nave. This is the proposed lighting as the viewer draws it; screen brightness is not a lux measurement.', vi: 'Ánh đèn buổi tối: cung thánh rực sáng cuối lòng nhà thờ. Đây là phương án chiếu sáng đề xuất theo cách hiển thị của mô hình; độ sáng màn hình không phải số đo lux.' },
-      keys: [[5.4, 1.9, 0, 48.8, 3.8, 0, 56], [14, 2.3, 0, 48.8, 4, 0, 54], [22.5, 2.9, 0, 48.8, 4.4, 0, 52]] },
-    { id: 'roof-off', chapter: 'night', bars: 4, light: 'evening', roof: false, cut: 'fade', ease: [0, 0], up: [0, 0, -1],
-      en: 'The roof lifted away', vi: 'Nhấc mái để nhìn từ trên',
-      note: { en: 'The whole plan in one view: entrance on the left, sanctuary on the right, the timber frames across the nave.', vi: 'Toàn bộ mặt bằng trong một khung hình: cửa chính bên trái, cung thánh bên phải, các vì kèo gỗ bắc ngang lòng nhà thờ.' },
-      keys: [[26.5, 96, 0.6, 26.5, 0, 0, 40], [26.5, 70, 7, 26.5, 1, 0, 42], [26.5, 46, 31, 26.5, 2, 0, 44], [26.5, 38, 42, 26.5, 2.5, 0, 45]] },
-    { id: 'night-orbit', chapter: 'night', bars: 6, light: 'evening', roof: false, cut: 'cut', ease: [0, 0.6],
-      en: 'Around the open church', vi: 'Vòng quanh nhà thờ mở mái',
-      note: { en: 'With the roof hidden, the lit interior shows how nave, wings, verandas and sanctuary fit together.', vi: 'Khi ẩn mái, nội thất sáng đèn cho thấy lòng nhà thờ, hai cánh, hàng hiên và cung thánh gắn kết với nhau thế nào.' },
-      keys: [[26.5, 38, 42, 26.5, 2.5, 0, 45], [59, 34, 33, 27, 2.5, 0, 45], [74, 30, 0, 28, 2.5, 0, 45], [59, 27, -33, 27, 2.5, 0, 45], [26.5, 25, -44, 25, 2.5, 0, 46], [-8, 24, -31, 22, 3, 0, 46]] },
-    { id: 'over-nave', chapter: 'night', bars: 4, light: 'evening', roof: false, cut: 'cut', ease: [0.6, 0.3],
-      en: 'Over the timber frames', vi: 'Bay trên các vì kèo',
-      note: { en: 'Frame after frame, from the towers to the sanctuary.', vi: 'Vì kèo nối tiếp vì kèo, từ tháp chuông đến cung thánh.' },
-      keys: [[-8, 24, -31, 22, 3, 0, 46], [-14, 26, -8, 14, 2, 0, 50], [1, 26, 0, 22, 0.5, 0, 54], [20, 16.5, 0, 36, 0.8, 0, 56], [38, 15.2, 0, 47, 1.5, 0, 56]] },
-    { id: 'closing', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'fade', ease: [0.1, 0], end: true,
+      keys: [[5, 1.6, 0, 48.8, 3.8, 0, 56], [10.5, 1.6, 0, 48.8, 3.9, 0, 55], [16, 1.6, 0, 48.8, 4.1, 0, 54]] },
+    { id: 'closing', chapter: 'night', bars: 10, light: 'evening', roof: true, cut: 'fade', ease: [0.1, 0], end: true,
       en: 'The lights of home', vi: 'Ánh đèn quê nhà',
-      note: { en: 'The tower front after dark, with the proposed concealed lighting on the statues and towers.', vi: 'Mặt tiền về đêm với phương án chiếu sáng giấu đèn cho các tượng và hai tháp.' },
-      card: { at: 9, small: 'Với tình yêu dành cho giáo xứ và quê hương\nWith love for our parish and our hometown', title: 'Nhà thờ Thạch Bi', line: 'Hẹn gặp lại ở quê nhà · Until we meet again at home',
+      note: { en: 'The church from the courtyard as the organ plays the homeland theme once more.', vi: 'Nhà thờ nhìn từ sân trong khi đàn organ ngân lại giai điệu quê hương.' },
+      card: { at: 24, small: 'Với tình yêu dành cho giáo xứ và quê hương\nWith love for our parish and our hometown', title: 'Nhà thờ Thạch Bi', line: 'Hẹn gặp lại ở quê nhà · Until we meet again at home',
         foot: ['Design-development model, not a construction-approved design · Mô hình phát triển thiết kế, chưa phải thiết kế được duyệt để thi công',
           'Music generated in the viewer: an original homeland theme and “Ave Maria” (Bach–Gounod) · Nhạc do mô hình tạo ra: giai điệu quê hương và “Ave Maria” (Bach–Gounod)'] },
-      keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46], [-50, 14, 22, 8, 13, 0, 44]] }
+      keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46], [-50, 14, 22, 8, 13, 0, 44], [-64, 21, 31, 10, 13, 0, 42]] }
   ];
 
   /* ------------------------------------------------------ technical tours
@@ -624,8 +650,13 @@
   }
 
   // Prepare each shot once: a travel table (so the camera keeps an even pace
-  // along the curve) and a timing table for its start and end speeds.
+  // along the curve), the distance walked, and a timing table for its start
+  // and end speeds.
   const STEPS = 40, RAMP = 0.3;
+  // A walking person: a 0.72 m step, the eye 25 mm higher in mid-stride than
+  // at heel strike and 15 mm to either side over a pair of steps, both fading
+  // out as the walker slows to a stop.
+  const STRIDE = 0.72, BOB = 0.025, SWAY = 0.015, WALKING = 0.6;
   function prepare(reel) {
     reel.length = 0;
     reel.shots.forEach((shot, index) => {
@@ -638,12 +669,14 @@
       shot.look = shot.keys.map(k => k.slice(3, 6));
       shot.lens = shot.keys.map(k => (lens = k[6] ?? lens));
       const segments = shot.keys.length - 1;
-      shot.travel = [0];
+      shot.travel = [0]; shot.walked = [0];
       let previousEye = shot.eye[0], previousLook = shot.look[0];
       for (let i = 1; i <= segments * STEPS; i++) {
         const q = i / STEPS, eye = along(shot.eye, q), look = along(shot.look, q);
-        // A pan with a still camera is paced by the movement of the point it looks at.
-        shot.travel.push(shot.travel[i - 1] + dist(eye, previousEye) + 0.3 * dist(look, previousLook) + 1e-5);
+        // A pan with a still camera is paced by the movement of the point it
+        // looks at; a walker keeps an even step while glancing about.
+        shot.travel.push(shot.travel[i - 1] + dist(eye, previousEye) + (shot.walk ? 0.03 : 0.3) * dist(look, previousLook) + 1e-5);
+        shot.walked.push(shot.walked[i - 1] + Math.hypot(eye[0] - previousEye[0], eye[2] - previousEye[2]));
         previousEye = eye; previousLook = look;
       }
       const [from, to] = shot.ease || [1, 1];
@@ -674,16 +707,32 @@
   }
   /* Pure function of film time: the same pose for playback, seeking and the
    * clearance audit. */
-  function pose(time, of = reel) {
-    const shot = shotAt(time, of);
-    const local = Math.min(1, Math.max(0, (time - shot.start) / shot.duration));
-    const done = table(shot.timing, local) / shot.timing[shot.timing.length - 1];
+  // Where along the keys (in key segments) the camera is at a share of the shot.
+  function placeAt(shot, local) {
+    const done = table(shot.timing, Math.min(1, Math.max(0, local))) / shot.timing[shot.timing.length - 1];
     const wanted = done * shot.travel[shot.travel.length - 1];
     let lo = 0, hi = shot.travel.length - 1;
     while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (shot.travel[mid] <= wanted) lo = mid; else hi = mid; }
-    const q = (lo + (wanted - shot.travel[lo]) / (shot.travel[hi] - shot.travel[lo])) / STEPS;
+    return (lo + (wanted - shot.travel[lo]) / (shot.travel[hi] - shot.travel[lo])) / STEPS;
+  }
+  function pose(time, of = reel) {
+    const shot = shotAt(time, of);
+    const local = Math.min(1, Math.max(0, (time - shot.start) / shot.duration));
+    const q = placeAt(shot, local);
     const segment = Math.min(shot.keys.length - 2, Math.floor(q));
-    return { shot, eye: along(shot.eye, q), look: along(shot.look, q), up: shot.up || [0, 1, 0],
+    const eye = along(shot.eye, q), look = along(shot.look, q);
+    if (shot.walk) {
+      // The step follows the distance walked, so it slows and stops with the walker.
+      const walked = q => table(shot.walked, q / (shot.keys.length - 1));
+      const span = 0.25 / shot.duration, metres = walked(q);
+      const pace = Math.abs(walked(placeAt(shot, local + span)) - walked(placeAt(shot, local - span))) / 0.5;
+      const amount = smooth(pace / WALKING), phase = Math.PI * metres / STRIDE;
+      const heading = Math.atan2(look[2] - eye[2], look[0] - eye[0]);
+      eye[1] += amount * BOB * (0.5 - 0.5 * Math.cos(2 * phase));
+      const sway = amount * SWAY * Math.sin(phase);
+      eye[0] -= sway * Math.sin(heading); eye[2] += sway * Math.cos(heading);
+    }
+    return { shot, eye, look, up: shot.up || [0, 1, 0],
       lens: lerp(shot.lens[segment], shot.lens[segment + 1], smooth(q - segment)) };
   }
   // Black level of the picture: 1 while a transition hides a change of scene.
@@ -706,16 +755,18 @@
   /* --------------------------------------------------------------- music
    * 4/4 at 60 beats a minute: one bar for every four seconds of film.
    *
-   *  1. "Homeland" (film bars 1–26, outside). An original melody on the five
+   *  1. "Homeland" (film bars 1–48, outside). An original melody on the five
    *     notes C D E G A, the scale of much Vietnamese folk song, on a flute
    *     stop over warm strings. It quotes no existing song.
-   *  2. "Ave Maria" (bars 27–67, from the church door to the open roof).
-   *     Charles Gounod's melody of 1853 over J. S. Bach's Prelude in C,
-   *     BWV 846, complete in 41 bars. Both are in the public domain. Notes are
-   *     transcribed from the Mutopia Project edition no. 2167 (after Heugel,
-   *     1856; released into the public domain by its editor). Its "tutta
-   *     forza" bar falls where the roof is lifted away.
-   *  3. "Homeland" again on full organ (bars 68–77), ending quietly.
+   *  2. "Ave Maria" (bars 49–89, inside, from the church door to the look
+   *     back from the sanctuary). Charles Gounod's melody of 1853 over
+   *     J. S. Bach's Prelude in C, BWV 846, complete in 41 bars. Both are in
+   *     the public domain. Notes are transcribed from the Mutopia Project
+   *     edition no. 2167 (after Heugel, 1856; released into the public domain
+   *     by its editor). Its "tutta forza" bar falls on the close view of the
+   *     altar and crucifix.
+   *  3. "Homeland" quietly in the evening (bars 90–117), then on full organ
+   *     for the closing view (bars 118–127), ending quietly.
    */
   // Homeland: [chords sharing the bar equally, melody as note:beats].
   const HOME_A = [['C', 'E4:1 G4:1 A4:2'], ['Am', 'C5:1.5 A4:.5 G4:2'], ['F', 'A4:1 C5:1 D5:1.5 C5:.5'], ['G', 'D5:4'],
@@ -726,8 +777,18 @@
     { pad: 'celeste', solo: 'voice', level: 0.52, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1'], ['Am', 'A5:1 G5:.5 E5:.5 G5:2'], ['F G', 'A4:2 D5:2']] },
     { pad: 'celeste', solo: 'voice', level: 0.62, bars: HOME_A },
     { pad: 'celeste', solo: 'voice', level: 0.7, quavers: true, bars: HOME_B },
-    { pad: 'celeste', solo: 'voice', level: 0.6, bars: HOME_A.slice(4) },
-    { pad: 'celeste', solo: 'voice', level: 0.46, bars: [['C', 'E5:1 G5:1 A5:2'], ['C', 'G5:4']] }
+    { pad: 'celeste', solo: 'voice', level: 0.56, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.6, bars: HOME_B },
+    { pad: 'celeste', solo: 'voice', level: 0.66, quavers: true, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.48, bars: [['F', 'A4:2 C5:2'], ['G', 'D5:4'], ['C', 'E5:1 G5:1 A5:2'], ['C', 'G5:4']] }
+  ];
+  // Evening, before the finale: the same melody quietly, as the camera walks in the dark.
+  const NOCTURNE = [
+    { pad: 'celeste', solo: 'voice', level: 0.4, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1']] },
+    { pad: 'celeste', solo: 'voice', level: 0.46, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.5, bars: HOME_B },
+    { pad: 'celeste', solo: 'voice', level: 0.44, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.4, bars: [['Am', 'E5:2 D5:2'], ['F', 'C5:2 A4:2']] }
   ];
   const FINALE = [
     { pad: 'full', solo: 'reed', pedal: 'fullPedal', level: 0.74, quavers: true, bars: [['G', 'G4:1 A4:1 C5:1 D5:1']] },
@@ -761,10 +822,10 @@
     'A5:2.5 A5:.5 B5:.5 C6:.5', 'E6:2.5 C6:.5 G5:.5 E5:.5', 'D5:2.5 A5:.5 B5:.5 A5:.5', 'A5:.5 G5:.5 F5:.5 D5:.5 B4:.5 G4:.5 F4:.5 D4:.5',
     'C4:8', '', 'G3:8', ''];
   // The edition's dynamics, bar by bar (pp … ff as a share of full organ). The
-  // hush at bar 29 is where the film turns to evening.
+  // hush at bar 29 falls as the walker steps up toward the altar.
   const AVE_SWELL = [0.5, 0.5, 0.5, 0.5, 0.54, 0.54, 0.54, 0.54, 0.64, 0.54, 0.64, 0.54, 0.7, 0.62, 0.54, 0.64, 0.56, 0.66, 0.56,
     0.64, 0.74, 0.86, 0.6, 0.64, 0.7, 0.78, 0.84, 0.9, 0.5, 0.6, 0.72, 0.86, 0.94, 1, 0.96, 0.96, 0.8, 0.56, 0.46, 0.42, 0.42];
-  const AVE_STARTS = 26; // film bars before the prelude begins
+  const AVE_STARTS = 48; // film bars before the prelude begins
 
   // Ranks: [tone, pitch (1 = 8 ft, 2 = 4 ft, 0.5 = 16 ft), level, detune in cents].
   const STOPS = {
@@ -898,6 +959,7 @@
     });
     bar += AVE_SWELL.length;
     held.clear();
+    bar = chordal(NOCTURNE, bar);
     bar = chordal(FINALE, bar);
     // The last chord rings on under the closing card.
     const end = bar * BAR;
@@ -1207,7 +1269,7 @@
    * applied from the base state when the scene starts or the film is moved
    * back, and one after another while the film plays.
    */
-  const CIRCUIT_EN = { L1: 'Front three bays', L2: 'Rear four bays', L3: 'Sanctuary', L4: 'Circulation', LA: 'Roof uplight', LD: 'Wall sconces', L5: 'Steps and paths', L8: 'Wings',
+  const CIRCUIT_EN = { L1: 'Front three bays', L2: 'Rear four bays', L3: 'Sanctuary', L4: 'Circulation', LA: 'Roof uplight', LD: 'Column up/down lights', L5: 'Steps and paths', L8: 'Wings',
     L6: 'Façade and towers', L9: 'Entrance', L7: 'Festival exterior', L10: 'Statues and candles', E1: 'Exit signs',
     F1: 'Ceiling fans', F2: 'Wall fans', F3: 'Portable fans', F4: 'Entrance fans', F5: 'Wing wall fans', V1: 'Exhaust · front', V2: 'Exhaust · wings', V3: 'Exhaust · service',
     A1: 'Main loudspeakers', A2: 'Veranda', A3: 'Courtyard', A4: 'Choir monitors', A5: 'Rear fill', MIC: 'Microphones' };

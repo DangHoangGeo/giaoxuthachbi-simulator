@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-09",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in image edit",
+  "author": "Thạch Bi Church design simulator project with OpenAI image generation",
+  "status": "CONCEPT; owner appearance review pending; not construction approved",
+  "license": "CC BY 4.0 to the extent the project holds rights; see NOTICE.md",
+  "captureRecord": "capture.json",
+  "jobs": [
+    {
+      "id": "detail",
+      "output": "concepts/columns-beams-ceiling.png",
+      "generatorFile": "exec-3c70fb67-95ea-4c17-aa0b-ed178d6a6d26.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: Thạch Bi Church interior architectural concept, close study of timber joints and roof underside.\nInput images: Image 1 is the EDIT TARGET, an actual current desktop 3D viewer screenshot looking upward obliquely at red-lacquered nave columns, beams and the pitched roof underside. Images 2 and 3 are project-created supporting APPEARANCE references for the craftsmanship of curved openwork frames and carved column/beam junctions; use their carving quality, NOT their brown palette or their different roof proportions.\nPrimary request: Upgrade the interior visible in image 1 into a beautiful, credible northern Vietnamese Catholic church with masterfully carved timber connections and a fully considered ceiling. The current isolated gold leaf stickers, blunt rectangular ties, skinny repeated white ceiling stripes and rigid triangular junctions feel generic. Make these parts read as one sophisticated architectural composition.\nComposition: Preserve the EXACT oblique upward camera, perspective, column axes, beam elevations and pitched roof envelope of image 1. Render one unified full-bleed architectural visualization, landscape 16:10. Remove ALL app UI, menus, navigation, figures and screen overlays. Do not turn it into a collage.\nMaterials and carving: retain deep oxblood/red-brown lacquer, warmly aged selective gold leaf, ivory plaster at outer supports. Keep column shafts mostly calm lacquer. Replace the flat leaf appliques at the column heads with deeply modeled, layered flowing foliate and lotus corbels, crisply undercut curling leaves, shaped red timber volume with selective gilded edges, moulded collars and coherent transitions into transverse AND longitudinal beams. Keep genuine open spaces; not solid masses of gold. Enrich beam faces with recessed long framed panels, carved central floral cartouches and tapered foliate ends. Refine existing shallow arched collars above the ties into elegant layered curved frames with controlled pierced foliate cresting and carved short uprights, following the supporting references while staying INSIDE the screenshot's existing triangular envelope.\nRoof underside: replace the blank white stripe fields WITH warm ivory inset boarded/coffered panels framed by the existing red purlin rhythm, delicate double gold lines, small restrained gold rosettes and subtle symmetrical low relief within selected panels. Purlins remain continuous and roof pitch and ridge height stay exactly as captured. The ceiling should have a clear hierarchy of broad calm panel fields, intermediate mouldings, and fine details, visually linking the frame ornament to the sanctuary's red and gold vocabulary. No enormous new barrel vaults, no extra columns or extra structural ties.\nLighting: polished high-end architectural visualization, soft realistic daylight and restrained existing warm uplighting revealing relief, natural material variation, fine shadows, warm but legible, no blown gold or theatrical fog. Do not add fixtures, chandeliers or new visible service routes.\nConstraints: This is appearance-only proposed art, not a structural or mechanical solution. Omit visible fans AND their black hangers/downrods from the illustration to express the owner's all-hidden appearance brief; do not represent the omission as validated ventilation. Retain existing unobtrusive lamps and their intended locations where visible. Do not cover circulation or add crosses/figures as generic pattern. Avoid fantasy temple dragons, pagoda geometry, Gothic stone vaults, all-gold surfaces, floating leaves and clutter.\nText: reserve a slim clean bottom caption band integrated into the image reading exactly \"CONCEPT · In development / Đang phát triển\" and on a second line \"Not for construction / Không dùng để thi công\". No other text.",
+      "sha256": "3baa0e28edd826f47ed25fa2609066bd230736285922f2cef63f95f576f34d5b",
+      "nativeDimensions": [
+        1586,
+        992
+      ],
+      "resampled": false,
+      "inputs": [
+        {
+          "file": "review/interior-concept-2026-11-09/current-columns-roof-day.jpg",
+          "sha256": "be3fbc02a66d6368ffe29087e22bf00659b6bb6a8ae4c0164650f00cb1ec95b8",
+          "role": "edit-target"
+        },
+        {
+          "file": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+          "sha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+          "role": "supporting-reference"
+        },
+        {
+          "file": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+          "sha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+          "role": "supporting-reference"
+        }
+      ]
+    },
+    {
+      "id": "nave",
+      "output": "concepts/nave-interior.png",
+      "generatorFile": "exec-b56dcf20-8c9d-4f64-bea7-3ec87da0e7b6.png",
+      "prompt": "Use case: precise-object-edit.\nAsset type: Thạch Bi Church nave interior upgrade concept, one full-bleed landscape architectural visualization.\nInput images: Image 1 is the EDIT TARGET, a current actual desktop viewer capture from the central aisle toward the sanctuary. Image 2 is a supporting CURRENT MODEL capture looking upward at its columns and pitched roof. Images 3 and 4 are the project's generated timber-craft APPEARANCE references. Their wood carving quality governs the decorative ambition; their brown palette and altered proportions do not govern the building.\nPrimary request: Show how THIS existing church interior can become more beautiful, complete and professionally crafted, particularly BETWEEN THE COLUMNS AND BEAMS and on the roof underside ABOVE THE BEAMS. Preserve the building in image 1: exactly two central timber column rows, their positions and repeated bay rhythm, round red lacquer shafts, concrete/ivory outer supports, straight central processional aisle, four pew blocks, white floor, existing door/window positions and the red-and-gold Catholic sanctuary with Crucifix in a blue niche at the end. The sanctuary remains recognizable and is not redesigned. Keep the same centered aisle perspective, gently raising the camera's gaze enough to show more of the upper frames and roof while retaining the altar and pews.\nUpgrade: Bring reference-quality depth and flowing sculptural carving to the column capitals and the junctions with transverse and longitudinal beams. Layered red timber foliate corbels and scroll brackets, moulded collars, finely undercut leaves with selective aged gold leaf. Long beam faces get recessed framed lacquer panels with coherent carved floral/lotus cartouches, fine gold mouldings and tapered carved ends, avoiding isolated leaf stickers. Give the existing open truss frames an elegant curved inner collar/rail with pierced foliate cresting and carved short uprights INSIDE their existing roof envelope; no new structural beams or rows of columns. Make longitudinal beams and cross frames feel joined by skilled craftsmanship.\nRoof underside: Develop the current plain ivory strip fields into sophisticated warm ivory inset coffer/board panels within the existing red purlin grid. Fine double gold rules, restrained small floral rosettes and shallow relief, organized consistently along the roof slope and length. The hierarchy should be calm broad panels plus intermediate mouldings plus crisp fine ornament, coordinated with the sanctuary. Keep the pitched roof, ridge height, eaves and slope; no barrel vault or Gothic stone ceiling, no pagoda silhouette.\nStyle: refined photorealistic architectural concept rendering, convincing lacquered wood grain, warm aged gilding that catches light only on the relief, softly textured ivory plaster, realistic daylight and subtle existing warm lighting. Beautiful quiet worship space, human proportions, material richness rather than piles of gold. No people, no glitter, no fog.\nConstraints: Remove all app chrome, UI, meters, controls and screenshot warning overlays, replacing them with only the caption below. Omit visible fans AND ALL their hangers/downrods from the ARTWORK to express the owner's all-hidden appearance intent; this is not a validated physical concealment scheme. Do not add new light fixtures, pendant lamps or cables. Preserve existing safety signs where visible. Do not invent extra saints, sculptures, temple dragons, walls, arches across circulation or a redesigned sanctuary. Keep columns structurally substantial and shafts mostly plain. Do not fill the aisle or block views with decoration.\nText: Place a slim discreet but clearly readable footer with exactly these two lines: \"CONCEPT · In development / Đang phát triển\" and \"Not for construction / Không dùng để thi công\". No other text.",
+      "sha256": "43fbd5d625c38432abb08d0f5e4ee89617cad6a5debb8ac910b22c5be82ae65c",
+      "nativeDimensions": [
+        1586,
+        992
+      ],
+      "resampled": false,
+      "inputs": [
+        {
+          "file": "review/interior-concept-2026-11-09/current-nave-day.jpg",
+          "sha256": "5e4b4edacbb681aa51899b6cdb168043ed8023f7a89e309162448b63a1bbaa19",
+          "role": "edit-target"
+        },
+        {
+          "file": "review/interior-concept-2026-11-09/current-columns-roof-day.jpg",
+          "sha256": "be3fbc02a66d6368ffe29087e22bf00659b6bb6a8ae4c0164650f00cb1ec95b8",
+          "role": "supporting-reference"
+        },
+        {
+          "file": "docs/beams-roof-connections/images/07-full-width-frame-concrete-sides.png",
+          "sha256": "be351782a27031c8c71cec27045dc0237be172cbe861533df3dd84a2794fe8e1",
+          "role": "supporting-reference"
+        },
+        {
+          "file": "docs/beams-roof-connections/images/02-column-head-three-quarter.png",
+          "sha256": "80e608c91a1cb965d1e88526c02dc98745fedc6ffa2342ee65bd9bcc259fd5e2",
+          "role": "supporting-reference"
+        }
+      ]
+    }
+  ]
+}
