@@ -74,6 +74,7 @@ This register lists proposals that go beyond what the drawings show. Each item i
 | DX-02 | 20 Nov 2026 | Ambo | Pedestal and sloped desk (concept) | Fluted stone column, moulded desk edge, fall in the liturgical colour | Appearance review pending | Microphone and cable passage unchanged; furniture design open |
 | DX-03 | 20 Nov 2026 | Credence | Table (concept) | Red-lacquer and gilt table on turned legs with a carved apron; chalice, cruets and lavabo bowl shown | Appearance review pending | None |
 | DX-04 | 20 Nov 2026 | Altar candlesticks | Candle cups (concept) | Six brass baluster candlesticks with drip pans | Appearance review pending | Open flame; fire safety review open |
+| DX-06 | 20 Nov 2026 | Pinnacle crowns (gable and tower corners) | E01B traced crown: clustered mini-spires with fleurs | Single crocketed spire on a gabled die, carved finial; same base footprint and apex heights | Owner asked for the redraw on 20 Nov 2026; appearance review pending | Carving, stone, fixing and wind loading on ENGINEERING HOLD |
 | DX-05 | 20 Nov 2026 | Entrance courtyard | No paving design drawn; plain presentation ground | Granite courtyard: processional way, medallion with star and cross, diagonal field, banding, dark border | Appearance review pending | Levels, falls, drainage, sub-base, slip resistance and stone selection open; site unsurveyed |
 
 Earlier departures stay in their own records. Examples are the red cross ([sanctuary model](sanctuary-model.md)), the arches over the shrines and the restored outer porch wall ([façade model](facade-model.md)).
@@ -120,6 +121,13 @@ On 20 November 2026 the owner said the front (towers and façade) still felt too
 
 **Second pass, same day: entrance archivolts.** The three entrance arches each had four continuous mouldings that stood almost flush, with the inner ring forward. That is the reverse of a Romanesque portal. The rings keep their elevation outlines and the clear opening, but now step in depth: the outer order stands forward at X 1.80 m, and each inner order sits 70 mm deeper (1.87, 1.94, 2.01 m). All four reach back to the wall face at X 2.21 m, so each arch reads as a layered portal by day and in the evening (`facade-grandeur.js`).
 
-Crockets were tried on the gable and tower pinnacle crowns and then removed. These crowns are already clusters of miniature spires, and the added leaves floated between them and made the skyline busier, not richer. A crocketed skyline needs crowns redrawn as single spires, which is a design departure for the owner to decide.
+**Pinnacle spires (DX-06, owner, 20 Nov 2026: "redraw them").** A first try added crockets to the traced crowns. These crowns are clusters of miniature spires, so the leaves floated between them, and the try was removed. The owner then asked for the crowns to be redrawn. The shared crown (`pinnacleCrown` in `exterior-ornament.js`) is now one spire with:
+
+- a plinth and a die, with a crocketed gablet and knop on each face;
+- a four-sided spire from +0.50 to +1.36 of the crown height, with its arrises on the diagonals;
+- six rows of crockets climbing each arris;
+- a turned neck, a collar and a carved fleur at the apex.
+
+It keeps the traced crown's base footprint (half 0.289) and is scaled to its exact overall height, so the 4 gable pier pinnacles and the 8 tower corner pinnacles keep their drawn base and apex (the tower balcony check confirms both). `?crowns=drawn` restores the E01B crown.
 
 Still to do: archivolt orders at the triple window (its rings are traced from CAD at different depths and need their own study), deeper louvre and window reveals, tracery and glass seen from outside, and the rear elevation. Relief depths, projections and tones are display interpretations. Carving sections, stone, fixings, weathering and drainage of the deeper cornice are not designed and stay on engineering hold.

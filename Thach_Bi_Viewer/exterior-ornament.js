@@ -183,8 +183,47 @@
     // spire under the big fleur. Base centre at the origin, 1.68 m high at scale 1;
     // owner, 2 Nov 2026: the same crown tops every pier pinnacle around the church.
     let crownCache = null;
+    // Design excellence DX-06 (owner, 20 Nov 2026: "redraw them"): each pinnacle crown becomes one
+    // crocketed spire on a gabled die, with the traced crown's base footprint (half 0.289) and overall
+    // height, so every placement keeps its drawn base and apex. `?crowns=drawn` restores the E01B crown.
     const pinnacleCrown = () => {
       if (crownCache) return crownCache;
+      const drawn = drawnCrown();
+      if (new URLSearchParams(globalThis.location?.search || '').get('crowns') === 'drawn') return (crownCache = drawn);
+      const H = drawn.boundingBox.max.y, parts = [];
+      const box = (h, [y0, y1]) => [new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(0, (y0 + y1) / 2, 0)];
+      const crocket = K.leaf({ len: .1, wid: .07, thick: .018, curl: 2.6, lobes: 2, cup: .45, seg: 3, fine: false });
+      // Plinth, die and spire base band.
+      parts.push(box(.289, [0, .05]), box(.255, [.05, .09]), box(.2, [.09, .44]), box(.225, [.44, .47]), box(.205, [.47, .5]));
+      // A gablet on each face of the die, crocketed, with a small knop at its apex.
+      const gable = new T.Shape(); gable.moveTo(-.17, 0); gable.lineTo(.17, 0); gable.lineTo(0, .26); gable.closePath();
+      const gableGeo = new T.ExtrudeGeometry(gable, { depth: .035, bevelEnabled: false });
+      const tiny = new T.ConeGeometry(.022, .07, 6); tiny.translate(0, .035, 0);
+      for (let f = 0; f < 4; f++) {
+        const a = f * Math.PI / 2;
+        parts.push([gableGeo, place(TR(0, .3, .2), K.RY(a))], [tiny, place(TR(0, .555, .218), K.RY(a))]); // gablet apex knop
+        for (const e of [-1, 1]) for (const t of [.45])
+          parts.push([crocket, place(SC(.7), RX(1.0), K.RY(e * .9), TR(e * .17 * (1 - t), .3 + .26 * t, .225), K.RY(a))]);
+      }
+      // Four-sided spire, its arrises on the diagonals, from +0.50 to +1.36.
+      const y0 = .5, y1 = 1.36, h0 = .165, h1 = .014;
+      parts.push([new T.CylinderGeometry(h1 * Math.SQRT2, h0 * Math.SQRT2, y1 - y0, 4, 1), place(K.RY(Math.PI / 4), TR(0, (y0 + y1) / 2, 0))]);
+      // Crockets climbing the four arrises, smaller toward the tip.
+      for (let k = 0; k < 6; k++) {
+        const t = .08 + .78 * k / 5, y = y0 + (y1 - y0) * t, r = (h0 + (h1 - h0) * t) * Math.SQRT2 + .008, sc = 1.15 - .55 * t;
+        for (let e = 0; e < 4; e++) {
+          const a = Math.PI / 4 + e * Math.PI / 2;
+          parts.push([crocket, place(SC(sc), RX(1.05), K.RY(a), TR(Math.sin(a) * r, y, Math.cos(a) * r))]);
+        }
+      }
+      // Finial: a turned neck, a collar and the carved fleur at the drawn apex.
+      parts.push([new T.CylinderGeometry(.018, .03, .06, 10), TR(0, 1.35, 0)], [new T.CylinderGeometry(.045, .035, .025, 10), TR(0, 1.39, 0)], [fleur(.3), TR(0, 1.4, 0)]);
+      let g = merge(parts); g.computeBoundingBox();
+      // Match the traced crown's overall height exactly, so callers keep the native apex.
+      const k = H / g.boundingBox.max.y; g.applyMatrix4(SC(1, k, 1)); g.computeBoundingBox();
+      crownCache = g; return crownCache;
+    };
+    const drawnCrown = () => {
       const box = (h, [y0, y1], x = 0, z = 0) => [new T.BoxGeometry(2 * h, y1 - y0, 2 * h), TR(x, (y0 + y1) / 2, z)];
       const pyramid = (h, [y0, y1]) => [new T.ConeGeometry(Math.SQRT2, 1, 4, 1), place(K.RY(Math.PI / 4), SC(h, y1 - y0, h), TR(0, (y0 + y1) / 2, 0))];
       const small = fleur(.25), big = fleur(.43), parts = [pyramid(.289, [0, .213]), box(.12, [.1, .743])];
@@ -200,8 +239,8 @@
       // the big fleur off the cap.
       parts.push([new T.CylinderGeometry(.052 * Math.SQRT2, .147 * Math.SQRT2, .474, 4, 1), place(K.RY(Math.PI / 4), TR(0, .98, 0))],
         box(.068, [1.217, 1.235]), box(.06, [1.235, 1.27]), [new T.CylinderGeometry(.03, .06, .13, 12), TR(0, 1.335, 0)], [big, TR(0, 1.27, 0)]);
-      crownCache = merge(parts); crownCache.computeBoundingBox();
-      return crownCache;
+      const drawnGeometry = merge(parts); drawnGeometry.computeBoundingBox();
+      return drawnGeometry;
     };
     // Ground-storey pier of the church body as EW and E02 draw it (EW corner pier about u 3.925,
     // levels from the ±0 floor): plinth and mouldings, pedestal die with a rosette panel, base, fluted

@@ -27,3 +27,11 @@ The before column is `443cc39` (the first pass); the after column adds the archi
 Each arch now steps back in four orders, 70 mm apart. The arch outlines in elevation and the clear openings are unchanged.
 
 Crockets on the pinnacle crowns were rendered and rejected: the crowns are clusters of small spires, and the leaves floated between them. They are not in this revision.
+
+## Pinnacle spires (DX-06)
+
+The owner asked for the pinnacle crowns to be redrawn. The before column is the same build with `?crowns=drawn` (the traced E01B crown); the after column shows the crocketed spire. The cameras are the gable pier pinnacle up close from (−1.5, 18.6, −5) looking at (2.75, 19.4, −2.98), the tower corner pinnacles from (−6, 29, −16) looking at (2.4, 31, −10), and the gable by day from (−8, 16, −7) looking at (3, 19, 0). The wide views are the front by day and the gable and towers in the evening from (−30, 8, −14) looking at (3, 18, 0).
+
+[Close comparison](compare-spires.jpg) · [Wide comparison](compare-spires-wide.jpg)
+
+The base and apex of every pinnacle are unchanged. The crockets are small at courtyard distance; they read in the close and evening views.

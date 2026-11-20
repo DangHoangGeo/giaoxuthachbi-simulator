@@ -234,3 +234,5 @@ The six E01B T12 leaves above the three entrance arches sit in the assembled wal
 ## Façade grandeur, first pass · 20 November 2026
 
 **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** After the owner found the front still too flat, this pass deepens the relief, the central cornice and the tower arch orders, warms the carving tone and gives the exterior a raking late-morning sun. Traced outlines and levels are unchanged. [Design excellence, façade grandeur](design-excellence.md#façade-grandeur)
+
+The pinnacle crowns on the gable piers and the tower corners are redrawn as single crocketed spires (departure DX-06, owner, 20 November 2026), with the same base and apex. [Design excellence](design-excellence.md#façade-grandeur)
