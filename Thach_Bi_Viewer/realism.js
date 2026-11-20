@@ -259,7 +259,9 @@
     mat.glass=new T.MeshPhysicalMaterial({name:'Clear float glass · window bodies',side:T.DoubleSide,
       metalness:0,roughness:.045,ior:1.52,clearcoat:.35,clearcoatRoughness:.08,
       transparent:true,opacity:.14,depthWrite:false,envMapIntensity:.85});
-    const artGlass=[{m:mat.glass,map:null}];
+    const sashGlass=mat.glass.clone();
+    sashGlass.name='Clear float glass · panelled timber windows';
+    const artGlass=[{m:mat.glass,map:null},{m:sashGlass,map:null,clearOpacity:.006,clearReflection:.18}];
     function artMaterial(canvas,name){
       const m=mat.glass.clone(),maps=art.surfaceMaps(canvas);m.name=name;
       const bump=glassTexture(maps.bump,`${name} · rolled surface`),rough=glassTexture(maps.roughness,`${name} · lead and glass roughness`);
@@ -454,6 +456,105 @@
       const shape=new T.Shape();shape.moveTo(x+r0,spring);shape.absarc(x,spring,r0,0,Math.PI,false);
       shape.lineTo(x-r1,spring);shape.absarc(x,spring,r1,Math.PI,0,true);shape.closePath();return shape;
     }
+    const K=window.CHURCH_CARVING.create(T);
+    const trimCache=new Map();
+    function carvedWindowBand() {
+      const {TR,SC,RZ,place,merge}=K;
+      const bloom=K.bloom({r:.052,petals:8,rings:1,seg:4});
+      const leaf=K.leaf({len:.088,wid:.034,thick:.010,curl:.85,lobes:2,seg:5,fine:false});
+      const vine=K.stem([[.044,-.011,0],[.22,-.035,.003],[.39,.016,.005],[.52,.019,.006],
+        [.64,-.016,.004],[.81,-.026,.004],[.97,.012,.002]],.009,.004,18,6);
+      const curl=K.stem(K.scroll(.932,.013,.045,1.12,-Math.PI/2,1,12),.005,.002,12,5);
+      const parts=[[bloom,SC(1,1,.46)]];
+      for(const sign of [-1,1]){
+        const mirror=SC(sign,1,1);
+        parts.push([vine,mirror],[curl,mirror]);
+        parts.push([bloom,place(SC(.48,.48,.32),TR(.49,.028,.004),mirror)]);
+        for(const [x,y,turn] of [[.16,-.027,-.89],[.30,-.025,-2.07],[.40,.018,-.95],[.57,.011,-2.10],[.68,-.023,-.94],[.78,-.027,-2.0]]){
+          parts.push([leaf,place(SC(1,1,.63),RZ(turn),TR(x,y,.005),mirror)]);
+        }
+      }
+      return merge(parts);
+    }
+    const windowVine=carvedWindowBand();
+    function dressWindowFrame(bay,profile) {
+      const inner=profile.width/2;
+      const bandY=(profile.spring+profile.leafTop)/2;
+      for(const face of [-1,1]){
+        box(2*inner+.016,.196,.024,0,bandY,face*.111,im.woodInset,bay,'Inner window timber transom field');
+        for(const y of [bandY-.078,bandY+.078]){
+          box(2*inner-.016,.013,.018,0,y,face*.128,mat.wood,bay,'Inner window timber transom bead');
+        }
+        const relief=mesh(windowVine,mat.wood,bay,'Inner window carved lotus and vine');
+        relief.position.set(0,bandY,face*.124);if(face<0)relief.rotation.y=Math.PI;
+        relief.userData={status:'CONCEPT · CARVED TRANSOM',source:'docs/decoration-finishes.md'};
+      }
+    }
+    function shutterPanel(leaf,w,h,y,face) {
+      box(w,h,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
+      const key=`${w}/${h}`;
+      if(!trimCache.has(key)){
+        function outline(path,x,y,r) {
+          path.moveTo(-x+r,-y);path.lineTo(x-r,-y);path.quadraticCurveTo(x-r,-y+r,x,-y+r);
+          path.lineTo(x,y-r);path.quadraticCurveTo(x-r,y-r,x-r,y);
+          path.lineTo(-x+r,y);path.quadraticCurveTo(-x+r,y-r,-x,y-r);
+          path.lineTo(-x,-y+r);path.quadraticCurveTo(-x+r,-y+r,-x+r,-y);
+        }
+        const shape=new T.Shape(), hole=new T.Path();
+        outline(shape,w/2-.018,h/2-.018,.065);
+        outline(hole,w/2-.040,h/2-.040,.053);shape.holes.push(hole);
+        trimCache.set(key,new T.ExtrudeGeometry(shape,{depth:.009,bevelEnabled:true,bevelSize:.002,
+          bevelThickness:.002,bevelSegments:1,curveSegments:3}));
+      }
+      const trim=mesh(trimCache.get(key),mat.wood,leaf,'Shutter shaped timber moulding');
+      trim.position.set(0,y,face*.040);if(face<0)trim.rotation.y=Math.PI;
+    }
+    function latticeShutter(leaf,w,h) {
+      const stile=Math.min(.068,w*.09), apron=h*.27, rail=.066;
+      box(w,apron,.06,0,apron/2,0,mat.wood,leaf,'Window timber shutter leaf');
+      for(const sign of [-1,1])
+        box(stile,h-apron,.06,sign*(w-stile)/2,(h+apron)/2,0,mat.wood,leaf,'Shutter stile');
+      for(const y of [apron,h-rail/2])
+        box(w-2*stile,rail,.057,0,y,0,mat.wood,leaf,'Shutter rail');
+      const span=w-2*stile, x=span*.27, low=apron+rail/2, high=h-rail;
+      const middle=(low+high)/2, rise=Math.min(span*.58,(high-low)*.32);
+      const half=Math.min(.016,span*.032);
+      box(span,high-low,.018,0,(low+high)/2,0,im.woodInset,leaf,'Shutter recessed solid field');
+      function moulding(shape,name){
+        const geometry=new T.ExtrudeGeometry(shape,{depth:.026,bevelEnabled:true,
+          bevelThickness:.004,bevelSize:.003,bevelSegments:2,curveSegments:14});
+        geometry.translate(0,0,-.013);
+        // Run the same moulding on both sides of the recessed field.
+        for(const face of [-1,1]){
+          const member=mesh(geometry,mat.wood,leaf,name);
+          member.position.z=face*.022;
+        }
+      }
+      for(const sign of [-1,1]){
+        const cx=sign*x, upright=new T.Shape();
+        upright.moveTo(cx-half,low);upright.lineTo(cx+half,low);
+        upright.lineTo(cx+half,high);upright.lineTo(cx-half,high);upright.closePath();
+        moulding(upright,'Shutter lattice bar');
+      }
+      // A single mitred outline gives the four corners a continuous bevel.
+      function diamond(path,width,height){
+        path.moveTo(0,middle-height);path.lineTo(width,middle);
+        path.lineTo(0,middle+height);path.lineTo(-width,middle);path.closePath();
+      }
+      const ring=new T.Shape(),opening=new T.Path();
+      diamond(ring,x-half-.003,rise);diamond(opening,x-3*half,rise*(x-3*half)/(x-half-.003));
+      ring.holes.push(opening);moulding(ring,'Shutter diamond moulding');
+      // Two curved shoulders meet at one pointed crown above the diamond.
+      const shoulder=middle+rise*.28,crown=high-.035;
+      const lancet=new T.Shape();
+      lancet.moveTo(-x+half,shoulder);
+      lancet.quadraticCurveTo(-x+half,crown-.17,0,crown);
+      lancet.quadraticCurveTo(x-half,crown-.17,x-half,shoulder);
+      lancet.quadraticCurveTo(x-half-.032,crown-.20,0,crown-.049);
+      lancet.quadraticCurveTo(-x+half+.032,crown-.20,-x+half,shoulder);
+      lancet.closePath();moulding(lancet,'Shutter lancet moulding');
+      for(const face of [-1,1])shutterPanel(leaf,w-2*stile,apron-.07,apron/2,face);
+    }
     function rebuildSideOpening(bay,profile,centres,colonnettes=false){
       const wall=bay.children.find(o=>o.name==='Inner C/G wall with opening'||o.name==='Outer arcade wall with arched openings');
       if(!wall)return;
@@ -516,8 +617,9 @@
         // both faces (church concept picture); a pair of panelled timber shutters swings to the porch.
         const P=profile,half=P.width/2;
         const body=new T.Shape();body.moveTo(-half,P.bottom);body.lineTo(half,P.bottom);body.lineTo(half,P.leafTop);body.lineTo(-half,P.leafTop);body.closePath();
-        pane(body,bay,mat.glass,'Inner window clear glass body').castShadow=false;
+        pane(body,bay,sashGlass,'Inner window clear glass body').castShadow=false;
         box(P.width,P.spring-P.leafTop,.20,0,(P.spring+P.leafTop)/2,0,mat.trim,bay,'Inner window head band 220 mm').userData={status:'EXPLICIT HEIGHT',source:'Sheet 12 inside elevation (2301 + 220)'};
+        dressWindowFrame(bay,P);
         if(marian)for(const face of [1,-1]){
           const lun=mesh(window.CHURCH_MARIAN_ART.lunette(T,0,P.spring,half,P.radius,false),marian.monogram,bay,face>0?'Inner window M lunette · porch face':'Inner window M lunette · nave face');
           lun.position.z=face*.05;if(face<0)lun.rotation.y=Math.PI;lun.castShadow=false;
@@ -529,12 +631,7 @@
             const hinge=new T.Group();hinge.position.set(sign*half,P.bottom,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
             const leaf=new T.Group();leaf.position.x=-sign*half/2;hinge.add(leaf);
             const h=P.leafTop-P.bottom,w=half-.02;
-            box(w,h,.06,0,h/2,0,mat.wood,leaf,'Window timber shutter leaf');
-            for(const face of [-1,1]){
-              for(const sx of [-1,1])box(.05,h,.03,sx*(w/2-.025),h/2,face*.04,mat.wood,leaf,'Shutter stile');
-              for(const y of [.04,h*.36,h*.68,h-.04])box(w,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
-              for(const y of [h*.2,h*.52,h*.84])box(w-.18,h*.26,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
-            }
+            latticeShutter(leaf,w,h);
           }
         }
       } else {
@@ -543,7 +640,7 @@
         const spring=profile?.spring??3.101,radius=profile?.radius??.507,leafTop=profile?.leafTop??3.0;
         for(const x of wing?[-2.45,2.45]:profile?profile.centres:inner?[-1.015,1.015]:[-1,1]) {
           const body=new T.Shape();body.moveTo(x-.5,.85);body.lineTo(x+.5,.85);body.lineTo(x+.5,leafTop);body.lineTo(x-.5,leafTop);body.closePath();
-          const clearPane=pane(body,bay,mat.glass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
+          const clearPane=pane(body,bay,sashGlass,inner?'Inner window clear glass body':'Outer window clear glass body');clearPane.castShadow=false;
           const headBottom=profile?spring:3.0,headHeight=spring+radius-headBottom;
           fanPane(arch(x,headBottom,1,spring,radius),bay,fanMaterial(fanIndex++,{width:1,bottom:headBottom,spring,rise:radius,sectors:6}),'Window stained-glass fanlight',x,headBottom,1,headHeight);
           box(1,profile?spring-leafTop:.085,.15,x,profile?(spring+leafTop)/2:3.0,jz,mat.wood,bay,'Window timber transom');
@@ -555,12 +652,7 @@
               const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
               const leaf=new T.Group();leaf.position.x=-sign*.25;hinge.add(leaf);
               const shutterHeight=profile?leafTop-.85:2.1;
-              box(.49,shutterHeight,.06,0,shutterHeight/2,0,mat.wood,leaf,'Window timber shutter leaf');
-              for(const face of [-1,1]){
-                for(const sx of [-1,1])box(.04,shutterHeight,.03,sx*.225,shutterHeight/2,face*.04,mat.wood,leaf,'Shutter stile');
-                for(const y of [.04,.72,1.38,shutterHeight-.04])box(.49,.05,.03,0,y,face*.04,mat.wood,leaf,'Shutter rail');
-                for(const y of [.38,1.05,1.72])box(.33,.5,.012,0,y,face*.033,im.woodInset,leaf,'Shutter inset panel');
-              }
+              latticeShutter(leaf,.49,shutterHeight);
             }
           }
         }
@@ -973,7 +1065,14 @@
       const image = new window.Image();
       image.onload = () => {
         g.imageSmoothingQuality = 'high';
+        // A translucent dark stain settles the light/dark bands in the source photograph.
+        if (key === 'colour') {
+          g.fillStyle = grain === 'pews' ? '#785540' : '#684637';
+          g.fillRect(0, 0, canvas.width, canvas.height);
+          g.globalAlpha = grain === 'pews' ? .34 : .28;
+        }
         g.drawImage(image, 0, 0, canvas.width, canvas.height);
+        g.globalAlpha = 1;
         map.needsUpdate = true;
         window.CHURCH_PERFORMANCE?.invalidate();
       };
@@ -993,7 +1092,7 @@
     const material = source.clone();
     material.name = name;
     material.color.set(color);
-    Object.assign(material, timberMaps(grain), { roughness, bumpScale: .0007, envMapIntensity: .30 });
+    Object.assign(material, timberMaps(grain), { roughness, bumpScale: .00022, envMapIntensity: .30 });
     context.palettes.set(material, { color: material.color.clone(), map: material.map, bump: material.bumpMap });
     return material;
   }
@@ -1027,8 +1126,6 @@
     const door = stainedTimber(mat.wood, 'Doors · red-brown timber', 'joinery', '#e4d1c9', .56);
     const doorPanel = stainedTimber(materials.woodInset, 'Doors · recessed red-brown timber', 'joinery', '#d4bfb5', .59);
     const doorEdge = stainedTimber(mat.wood, 'Doors · red-brown timber mouldings', 'joinery', '#ead9d1', .53);
-    const windowFrame = stainedTimber(mat.wood, 'Windows · warm umber timber', 'joinery', '#d1caca', .59);
-    const windowPanel = stainedTimber(materials.woodInset, 'Windows · recessed umber timber', 'joinery', '#bfb3b1', .62);
 
     for (const group of Object.values(doorGroups)) group.traverse(part => {
       if (!part.isMesh) return;
@@ -1036,14 +1133,17 @@
       if (/^(Recessed carved timber panel|Timber rosette relief|Carved rosette petal)$/.test(part.name)) paintTimber(part, doorPanel, phase, true);
       if (/^Raised panel (horizontal|vertical) frame$/.test(part.name)) paintTimber(part, doorEdge, phase);
       if (part.material === mat.wood && /^(Open timber door leaf|Exterior timber door leaf|Door panel(?: |$))/.test(part.name)) paintTimber(part, door, phase);
-      if (/^(Window timber shutter leaf|Shutter stile|Shutter rail)$/.test(part.name)) paintTimber(part, windowFrame, phase);
-      if (part.name === 'Shutter inset panel') paintTimber(part, windowPanel, phase, true);
+      if (/^(Window timber shutter leaf|Shutter stile)$/.test(part.name)) paintTimber(part, door, phase);
+      if (/^(Shutter rail|Shutter lattice bar|Shutter diamond moulding|Shutter lancet moulding|Shutter shaped timber moulding)$/.test(part.name)) paintTimber(part, doorEdge, phase);
+      if (part.name === 'Shutter recessed solid field') paintTimber(part, door, phase, true);
+      if (part.name === 'Shutter inset panel') paintTimber(part, doorPanel, phase, true);
     });
     building.traverse(part => {
-      if (!part.isMesh || part.material !== mat.wood) return;
-      if (part.name === 'Window timber transom') paintTimber(part, windowFrame);
+      if (!part.isMesh) return;
+      if (part.name === 'Inner window timber transom field') paintTimber(part,doorPanel);
+      if (/^(Window timber transom|Inner window timber transom bead|Inner window carved lotus and vine)$/.test(part.name)) paintTimber(part,doorEdge);
       // Fixed façade and rear meshes already carry their builder's per-part UVs.
-      if (/^(Triple window |Rear fixed window )/.test(part.name)) part.material = windowFrame;
+      if (part.material===mat.wood&&/^(Triple window |Rear fixed window )/.test(part.name)) part.material = /rail|transom/.test(part.name) ? doorEdge : door;
     });
   }
 
@@ -1057,7 +1157,7 @@
   function applyGlass(){
     if(!context?.artGlass)return;
     const T=context.THREE,night=lightMode==='evening';
-    for(const {m,map,bump,rough} of context.artGlass){
+    for(const {m,map,bump,rough,clearOpacity=.14,clearReflection=.85} of context.artGlass){
       m.transparent=true;m.depthWrite=false;m.side=T.DoubleSide;m.metalness=0;
       if(glassKind==='stained'&&map){
         m.map=m.emissiveMap=map;m.color.set('#ffffff');m.emissive.set('#ffffff');
@@ -1066,8 +1166,8 @@
         m.clearcoat=.28;m.clearcoatRoughness=.16;m.envMapIntensity=.72;
       }else{
         m.map=m.emissiveMap=m.bumpMap=m.roughnessMap=null;m.color.set('#edf6f5');m.emissive.set('#000000');
-        m.emissiveIntensity=0;m.opacity=.14;m.roughness=.045;
-        m.clearcoat=.35;m.clearcoatRoughness=.08;m.envMapIntensity=.85;
+        m.emissiveIntensity=0;m.opacity=clearOpacity;m.roughness=.045;
+        m.clearcoat=.35;m.clearcoatRoughness=.08;m.envMapIntensity=clearReflection;
       }
       m.needsUpdate=true;
     }

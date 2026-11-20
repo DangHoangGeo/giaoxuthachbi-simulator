@@ -211,9 +211,41 @@ const colouredHeads=nodes.filter(o=>/coloured oval$|fixed fanlight$|stained-glas
 assert.equal(colouredHeads.length,28,'glass of the tower cap rosettes (towers.js), of the old side- and rear-gable roses (roofline.js) and of the inner C/G roses removed; since 8 Nov 2026 the 24 inner window fanlights became 12 M lunettes and the 9 door fanlights carry reliefs');
 assert(!nodes.some(o=>o.name==='Schematic rose-window infill'&&/^Inner wall /.test(o.parent?.name||'')),'no schematic glass rose on the inner C/G wall');
 assert.equal(nodes.filter(o=>o.name==='Inner window carving · E02 capitals and roundel').length,0,'the E02 colonnettes and roundel belong to the outer wall again (owner, 8 Nov 2026)');
+assert(!nodes.some(o=>o.name==='Window coloured perimeter light'),'Timber window bodies have no coloured border');
+const sashGlass=clearBodies[0].material;
+assert.notEqual(sashGlass,mat.glass,'Shutter glass has an independent display material');
+assert(sashGlass.isMeshPhysicalMaterial&&sashGlass.transparent&&!sashGlass.depthWrite,'Clear sash bodies use transparent physical glass');
 for(const o of clearBodies){
-  assert.equal(o.material,mat.glass);assert.equal(o.material.map,null);
+  assert.equal(o.material,sashGlass);assert.equal(o.material.map,null);
   assert(o.material.opacity<.2,'Window bodies must stay transparent by default');
+}
+{
+  const door=nodes.find(o=>o.name==='Exterior timber door leaf').material;
+  const doorPanel=nodes.find(o=>o.name==='Recessed carved timber panel').material;
+  assert(!nodes.some(o=>/^(Inner window timber (jamb|architrave)|Nave window profiled timber casing|Inner window bronze (arch|jamb) fillet)$/.test(o.name)),'The masonry reveal is exposed');
+  assert(nodes.filter(o=>o.name==='Shutter recessed solid field').every(o=>o.material===door),'Solid fields use main door timber');
+  const friezes=nodes.filter(o=>o.name==='Inner window carved lotus and vine');
+  assert.equal(friezes.length,24,'One frieze on each face of every fixed head band');
+  for(const o of friezes){
+    const box=bounds(o);
+    assert(box.min.y>2.951&&box.max.y<3.171,'Frieze fits the 220 mm head band');
+  }
+  for(const state of ['open','closed']){
+    const group=nodes.find(o=>o.userData.doorState===state), parts=[];
+    group.traverse(o=>{if(o.isMesh)parts.push(o);});
+    const shutters=parts.filter(o=>o.name==='Shutter inset panel');
+    const beads=parts.filter(o=>o.name==='Shutter shaped timber moulding');
+    assert.equal(beads.length,32*2,'One moulded lower apron on both faces of all shutters');
+    assert.equal(parts.filter(o=>o.name==='Shutter lattice bar').length,32*4,'Two uprights on each face');
+    for(const name of ['Shutter diamond moulding','Shutter lancet moulding'])assert.equal(parts.filter(o=>o.name===name).length,64);
+    assert.equal(parts.filter(o=>o.name==='Shutter recessed solid field').length,32);
+    for(const panel of shutters)assert(panel.geometry.parameters.height<.7,'Only the lower apron is solid');
+    assert(shutters.every(o=>o.material===doorPanel),'The shutter inset uses the door panel finish');
+    for(const o of beads){
+      o.geometry.computeBoundingBox();
+      assert(Math.abs(o.position.z)+o.geometry.boundingBox.max.z<=.055,'Shutter trim stays behind its stiles');
+    }
+  }
 }
 for(const o of colouredHeads){
   assert(o.material.map,'All curved window and door heads start coloured');
@@ -225,6 +257,7 @@ for(const kind of ['clear','stained','clear','stained']){
   realism.setGlass(kind);
   for(const o of colouredHeads)assert.equal(!!o.material.map,kind==='stained');
   for(const o of clearBodies)assert.equal(o.material.map,null,'Colour toggle never adds artwork to a window body');
+  near(sashGlass.opacity,.006,'Sash transparency stays constant through the glazing modes');
 }
 assert(nodes.filter(o=>o.name==='Schematic bell louver').every(o=>o.material===mat.wood));
 for(const x of [16.725,34.725,46.425])for(const sign of [-1,1])near(realism.floorHeight(x,sign*11.7),-.32,'Side landing navigation height');
