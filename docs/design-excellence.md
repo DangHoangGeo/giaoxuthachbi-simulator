@@ -39,7 +39,7 @@ The judgement below comes from the desktop captures of 19–20 November ([wall s
 | 2 | **Sanctuary furnishings:** carved stone altar with marble veining, corner colonnettes and a gilded frieze; ambo with a matching column and a fall in the season's colour; red-and-gold credence table with vessels; brass altar candlesticks | Started, 20 Nov 2026: see [sanctuary furnishings](#stage-2-sanctuary-furnishings) |
 | 3 | **Nave timber and ceiling to the concept:** deeper carved capitals, lotus friezes on the ties, coffered ceiling panels, carved pew ends, a composed entrance wall | Pending |
 | 4 | **Exterior depth:** stone tones and trim, deeper reveals, window tracery and glass seen from outside, real jointed plinth stone, a richer rear elevation | Pending |
-| 5 | **Site and grounds:** tree species and canopies, courtyard paving pattern, gates and fence, garden and Marian grotto, grounds lighting | Pending: needs site survey information |
+| 5 | **Site and grounds:** tree species and canopies, courtyard paving pattern, gates and fence, garden and Marian grotto, grounds lighting | Tree canopies redrawn, 20 Nov 2026 (see [preview](#stage-5-preview-courtyard-tree-canopies)); the rest needs site survey information |
 | 6 | **Rendering:** baked or approximate bounce light and soft shadow for the interior | Pending: technical study first |
 | Separate | Concealment of the fans (engineering item in the central-view constraint) | Engineering hold |
 
@@ -88,3 +88,9 @@ Earlier departures stay in their own records. Examples are the red cross ([sanct
 ## Stage 2: sanctuary furnishings
 
 Recorded in [interior finish](interior-finish.md#sanctuary-furnishings--20-november-2026).
+
+## Stage 5 preview: courtyard tree canopies
+
+The two rows of eight presentation trees had crowns made of about 1,000 small faceted shapes each, and they read as toy trees. Each crown is now a fuller canopy that fills the same volume. It has a dark inner mass and about 230 leaf sprays drawn on transparent cards. The sunlit outer sprays are lighter than the shaded inner ones, and the cards cast shadows on the lawn. The positions, trunks, branches, soil beds, stone edging and lawn of the trees are unchanged (`Thach_Bi_Viewer/landscape-trees.js`, loaded after `realism.js` builds the rows).
+
+The species, mature size, planting, root protection and drainage are not designed. These trees are an unsurveyed presentation context, like the lawn. [Desktop before and after](../review/tree-canopies-2026-11-20/README.md)

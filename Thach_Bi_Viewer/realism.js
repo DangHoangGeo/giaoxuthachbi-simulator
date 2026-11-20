@@ -1040,6 +1040,8 @@
     window.CHURCH_INTERIOR_FINISH?.prepare(ctx);
     // Design excellence stage 2, 20 Nov 2026: altar, ambo, credence and candlesticks (CONCEPT).
     window.CHURCH_SANCTUARY_FURNISHINGS?.prepare(ctx);
+    // Courtyard tree canopies, 20 Nov 2026 (presentation only, unsurveyed landscape).
+    window.CHURCH_LANDSCAPE_TREES?.prepare(ctx);
     applyJoineryColours();
     applyGlass();
     finish(true);
