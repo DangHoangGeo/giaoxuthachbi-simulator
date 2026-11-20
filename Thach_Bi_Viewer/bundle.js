@@ -42122,46 +42122,16 @@ void main() {
           [5.25, 0],
           [52.85, 0],
           [52.85, 7.25],
-          [L + O, 7.25],
-          [L, X],
-          [L - O, 7.25],
           [5.25, 7.25],
         ],
         F,
       );
       for (let G of [0.95, 2.25, 3.6, 5.1, 6.6]) {
         let H = ie(G) - 0.13;
-        if (G < X)
-          g(
-            [5.475, H, F * G],
-            [52.85, H, F * G],
-            0.095,
-            0.11,
-            c.timber,
-            i,
-            "Proposed longitudinal roof purlin",
-          );
-        else {
-          let ee = (G - X) / ((7.36 - X) / O);
-          (g(
-            [5.475, H, F * G],
-            [L - ee - 0.1, H, F * G],
-            0.095,
-            0.11,
-            c.timber,
-            i,
-            "Proposed purlin before roof valley",
-          ),
-            g(
-              [L + ee + 0.1, H, F * G],
-              [52.85, H, F * G],
-              0.095,
-              0.11,
-              c.timber,
-              i,
-              "Proposed purlin beyond roof valley",
-            ));
-        }
+        // Owner 1 Nov: continuous interior purlin appearance across the 9–10 crossing.
+        // Visualization only: the real valley, bearing, splices and support remain ENGINEERING HOLD.
+        g([5.475, H, F * G], [52.85, H, F * G], 0.095, 0.11, c.timber, i,
+          "Proposed longitudinal roof purlin");
       }
     }
     g(
@@ -44171,7 +44141,9 @@ void main() {
     ],
     // Doorways in bays 4–5 and 8–9. Bay 10–11 beside the sanctuary has a window: the parish
     // priest (25 Oct 2026) wants no door from the sanctuary sides to the porches.
-    b1 = new Set(["4", "8"]);
+    // Owner, 7 Nov 2026: the service room (sacristy, bay 11–12) has no windows; one doorway
+    // on each side opens it to the porch instead.
+    b1 = new Set(["4", "8", "11"]);
   for (let s of [-1, 1]) {
     for (let [e, t] of S1) {
       let n = ti.longitudinal[e],

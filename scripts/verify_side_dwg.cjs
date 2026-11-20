@@ -49,44 +49,58 @@ for (const key of ['width', 'bottom', 'leafTop', 'spring', 'radius'])
   near(opening[key], sourceWindow.derived_m[key], 'Outside-window source ' + key);
 opening.radii.forEach((r, i) => near(r, sourceWindow.radius_chain_m[i], 'Window moulding radius'));
 // Inspect real built wall/glass geometry, not just a duplicated parameter table.
+// Owner, 8 Nov 2026: the outside window type (E26) stands in the outer B/H porch wall again, open;
+// the inner C/G wall has the single inside opening (2.25 m, semicircular head holding the M lunette).
 const { loadStudyModel } = require('./lib/study_model.cjs');
 const context = loadStudyModel();
-let windowBays = 0, panes = 0;
+let windowBays = 0, panes = 0, outerCrowns = 0;
 try {
-  const { model } = context, T = model.THREE;
+  const { model } = context, T = model.THREE, P = api.spec, inner = P.openings.innerWindow;
+  assert.equal(P.outer.window, opening, 'outer wall uses the native outside window type');
   model.building.updateMatrixWorld(true);
+  const outer = [];
+  model.building.traverse(o => { if (o.isMesh && o.name.startsWith('Porch outer wall')) outer.push(o); });
+  assert.equal(outer.length, 1, 'one merged outer porch wall');
+  const v = outer[0].geometry.attributes.position, A = context.model.data?.longitudinal || model.data.longitudinal;
+  for (const s of [-1, 1]) for (const [from, to] of P.runs) {
+    const keys = Object.keys(A).filter(k => A[k] >= A[from] - 1e-6 && A[k] <= A[to] + 1e-6).sort((a, b) => A[a] - A[b]);
+    for (let i = 0; i < keys.length - 1; i++) {
+      const c = (A[keys[i]] + A[keys[i + 1]]) / 2;
+      if (P.stairBays.some(x => Math.abs(x - c) < .6)) continue;
+      for (const u of opening.centres) {
+        let distance = Infinity;
+        for (let k = 0; k < v.count; k++) if (Math.sign(v.getZ(k)) === s)
+          distance = Math.min(distance, Math.hypot(v.getX(k) - (c + u), v.getY(k) - sourceWindow.derived_m.crown));
+        assert(distance < 2e-5, 'Rendered outer wall includes the native aperture crown');
+        outerCrowns++;
+      }
+    }
+  }
   model.building.traverse(bay => {
-    if (!/^Inner wall [CG] /.test(bay.name) || / (4–5|8–9)$/.test(bay.name)) return;
+    if (!/^Inner wall [CG] /.test(bay.name) || / (4–5|8–9|11–12)$/.test(bay.name)) return;
     windowBays++;
     const wall = bay.children.find(o => o.name === 'Inner C/G wall with opening');
-    assert(wall && wall.geometry.parameters.shapes.holes.length === 2, 'Paired physical wall apertures retained');
-    for (const hole of wall.geometry.parameters.shapes.holes)
-      near(Math.max(...hole.getPoints(128).map(p => p.y)), sourceWindow.derived_m.crown, 'Wall-hole crown', 1e-6);
-    const vertices = wall.geometry.attributes.position;
-    for (const x of opening.centres) {
-      let distance = Infinity;
-      for (let i = 0; i < vertices.count; i++)
-        distance = Math.min(distance, Math.hypot(vertices.getX(i) - x, vertices.getY(i) - sourceWindow.derived_m.crown));
-      assert(distance < 2e-6, 'Rendered mesh includes native aperture crown');
-    }
+    assert(wall && wall.geometry.parameters.shapes.holes.length === 1, 'One inner wall aperture per window bay');
+    near(Math.max(...wall.geometry.parameters.shapes.holes[0].getPoints(128).map(p => p.y)), inner.spring + inner.radius, 'Inner wall-hole crown', 1e-6);
     for (const mesh of bay.children) {
-      if (mesh.name === 'Window stained-glass fanlight') {
+      if (mesh.name === 'Inner window M lunette · nave face') {
         const b = new T.Box3().setFromObject(mesh);
-        near(b.min.y, opening.spring, 'Actual fanlight spring', 2e-6);
-        near(b.max.y, sourceWindow.derived_m.crown, 'Actual fanlight crown', 2e-6);
+        near(b.min.y, inner.spring, 'Lunette spring', 2e-6);
+        near(b.max.y, inner.spring + inner.radius, 'Lunette crown', 2e-6);
         panes++;
       }
       if (mesh.name === 'Inner window clear glass body') {
         const b = new T.Box3().setFromObject(mesh);
-        near(b.min.y, opening.bottom, 'Actual glass-body sill', 2e-6);
-        near(b.max.y, opening.leafTop, 'Actual glass-body head', 2e-6);
+        near(b.min.y, inner.bottom, 'Actual glass-body sill', 2e-6);
+        near(b.max.y, inner.leafTop, 'Actual glass-body head', 2e-6);
       }
     }
   });
-  assert.equal(windowBays, 14, 'Seven paired-window bays on each side');
-  assert.equal(panes, 28, 'Two native semicircular fanlights per window bay');
+  assert.equal(windowBays, 12, 'Six inner window bays on each side (11–12 has doors since 7 Nov 2026)');
+  assert.equal(panes, 12, 'One M lunette (nave face) per inner window');
+  assert.equal(outerCrowns, 24, 'Two native outside-window crowns in each of the 12 outer window bays');
 } finally { context.dispose(); }
 console.log(JSON.stringify({ status: 'passed', drawing: witness.drawing, arcs: spec.arcs.map(a => a.handle),
   clearColumnSpanM: spec.half * 2, springM: spec.spring, shoulderM: spec.shoulder, crownM: spec.crown,
-  maximumChordSagittaMm: sagitta * 1000, nativeWindowBays: windowBays, nativeWindowFanlights: panes, source: witness.source_sha256,
+  maximumChordSagittaMm: sagitta * 1000, innerWindowBays: windowBays, innerLunettes: panes, outerNativeCrowns: outerCrowns, source: witness.source_sha256,
   limits: 'Geometric transcription and display bounds only. Unit/datum confirmation, outer band, extrusion and structural design remain held.' }, null, 2));

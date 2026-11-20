@@ -1,0 +1,83 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "name": "main-arch",
+      "lighting": "day",
+      "frame": 45,
+      "calls": 317,
+      "triangles": 7261737,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "main-arch",
+      "lighting": "evening",
+      "frame": 62,
+      "calls": 317,
+      "triangles": 7261737,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "mary",
+      "lighting": "day",
+      "frame": 89,
+      "calls": 98,
+      "triangles": 6700350,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "mary",
+      "lighting": "evening",
+      "frame": 125,
+      "calls": 98,
+      "triangles": 6700350,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "joseph",
+      "lighting": "day",
+      "frame": 161,
+      "calls": 101,
+      "triangles": 6709918,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "joseph",
+      "lighting": "evening",
+      "frame": 197,
+      "calls": 101,
+      "triangles": 6709918,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "cove",
+      "lighting": "day",
+      "frame": 236,
+      "calls": 104,
+      "triangles": 6957848,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "cove",
+      "lighting": "evening",
+      "frame": 275,
+      "calls": 104,
+      "triangles": 6957848,
+      "points": 296,
+      "lines": 0
+    }
+  ],
+  "visit": {
+    "visitOnly": true,
+    "editing": false,
+    "engineeringStorageCalls": []
+  },
+  "sanctuarySHA256": "c62006fb79c0e83a30b5c73a969ef487644552d5ff57ae0b8dc18063303e1d48"
+}

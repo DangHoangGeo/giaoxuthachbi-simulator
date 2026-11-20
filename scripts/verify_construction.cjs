@@ -38,7 +38,7 @@ const document = {
 };
 const sandbox = { console, document, location: { search: '' }, URLSearchParams, Uint8ClampedArray, window: {} };
 vm.createContext(sandbox);
-for (const file of ['construction-data.js', 'construction.js', 'texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js', 'sanctuary.js', 'facade.js', 'porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js'])
+for (const file of ['construction-data.js', 'construction.js', 'texture-memory.js', 'render-batches.js', 'references.js', 'glass-art.js', 'carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js', 'sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js', 'realism.js', 'planning.js'])
   vm.runInContext(fs.readFileSync(viewer(file), 'utf8'), sandbox);
 let src = fs.readFileSync(viewer('bundle.js'), 'utf8');
 const begin = src.indexOf('    Us = document.getElementById("viewport"),');
@@ -74,12 +74,14 @@ for (const source of building.children) {
 for (const l of C.LAYERS) if (!l.special) assert(layerCount[l.id] > 0, `layer ${l.id} has parts`);
 const expect = {
   'Central column 5/D — illustrative diameter': 'columns', 'Column head +9.402': 'columns',
-  'Main tie beam 0.30 × 0.59 m · as drawn': 'frame', 'Purlin · as drawn spacing ~0.50 m': 'frame', 'Queen post · reference': 'frame',
+  'Main tie beam 0.40 × 0.59 m · concept section': 'frame', 'Purlin · as drawn spacing ~0.50 m': 'frame', 'Queen post · reference': 'frame',
   'Continuous principal roof, valley clipped': 'roof', 'Terracotta half-round ridge cap': 'roof',
   'Outer window clear glass body': 'openings', 'Exterior timber door leaf': 'openings',
   'Inner C–G floor at ±0.000 — buildup schematic': 'floors', 'Side stair riser': 'plinth',
   'Schematic arch moulding': 'ornament', 'Main tie beam carved haunch': 'ornament', 'Column carving · capital foliage': 'ornament',
-  'Sanctuary back wall behind the reredos': 'walls', 'Schematic block': 'walls', 'Window low parapet': 'walls',
+  'Sanctuary back wall behind the reredos': 'walls', 'Schematic block': 'walls', 'Porch parapet plinth': 'walls',
+  'Porch spandrel carving · E02 corner leaf': 'ornament', 'Porch outer colonnette carving · E02 capital': 'ornament', 'Porch outer archivolt moulding': 'ornament', 'Porch outer wall · drawn elevation, openings open · plastered': 'walls',
+  'Porch rose window · stained glass M rose · church concept': 'openings', 'Inner window M lunette · nave face': 'openings', 'Inner doorway relief lunette': 'ornament',
   'Proposed central aisle stone inlay': 'finishes', 'Pew seat': 'furniture', 'Tree trunk': 'site', 'Gilded floral relief': 'sanctuary',
 };
 const seen = new Set();
@@ -91,7 +93,7 @@ for (const [source, parts] of bySource) for (const { o, layer } of parts) if (ex
 // The timber frames, proposed truss bracing and the frame's purlins are added by
 // the simulator at start-up (not built here): classify their real names directly.
 const frameParts = {
-  'Main tie beam 0.30 × 0.59 m · as drawn': ['Timber frame · as drawn (round shafts and tie beams)', 'frame'],
+  'Main tie beam 0.40 × 0.59 m · concept section': ['Timber frame · as drawn (round shafts and tie beams)', 'frame'],
   'Main tie beam carved haunch': ['Timber frame · as drawn (round shafts and tie beams)', 'ornament', 'CONCEPT ORNAMENT · NOT STRUCTURAL'],
   'Column carving · capital foliage': ['Timber frame · as drawn (round shafts and tie beams)', 'ornament'],
   'Central column 7/E — illustrative diameter': ['Timber frame · as drawn (round shafts and tie beams)', 'columns', 'SCHEMATIC'],

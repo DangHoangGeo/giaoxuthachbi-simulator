@@ -31,6 +31,8 @@ No licence is granted by this project for the following. They are kept as source
 | --- | --- | --- |
 | The church's architectural drawings and images taken from them | `docs/layout_design/*.pdf`, the drawing images `docs/layout_design/*.png`, the copies in `docs/beams-roof-connections/sources/`, and the CAD file received 24 October 2026 with its sheet images (kept locally, not committed) | Rights remain with the drawing authors and the parish. Permission to publish them is a **PUBLICATION HOLD** in the [publication checklist](docs/open-source/publication-checklist.md). |
 | Five photographs and phone screenshots of other churches | `docs/beams-roof-connections/sources/IMG_*` | Third-party images. Their photographer and permission are not recorded. The four screenshots were cropped on 10 October 2026 to remove the sender's name and profile picture. **PUBLICATION HOLD**. |
+| Church concept pictures: nine door reliefs, the M monogram lunette and the M rose window | `Thach_Bi_Viewer/references/11-marian-art/`, packaged in `Thach_Bi_Viewer/marian-art-textures.js` | Received from the parish through the owner on 8 November 2026; author and licence not recorded. **PUBLICATION HOLD** H8 in the [publication checklist](docs/open-source/publication-checklist.md). |
+| Photographic timber textures by Poly Haven contributors | `Thach_Bi_Viewer/wood-grain-textures.js` | CC0 1.0. [Sources, credits and processing](Thach_Bi_Viewer/references/materials/provenance.json). |
 | three.js, bundled inside the viewer | `Thach_Bi_Viewer/bundle.js` | MIT, © three.js authors: [THREE_LICENSE.txt](Thach_Bi_Viewer/THREE_LICENSE.txt) |
 | Noto Sans fonts for PDF exports | `scripts/fonts/` | SIL Open Font License 1.1: [OFL.txt](scripts/fonts/OFL.txt) |
 | Web application dependencies | installed from `web/package-lock.json`, not stored here | Each package's own licence |
@@ -41,3 +43,5 @@ The name and image of Thạch Bi parish belong to the parish community. The lice
 ## Adding material
 
 Record the source, author, date and licence or permission of anything you add that you did not make yourself, in the relevant manifest. Do not add material whose terms do not allow public sharing. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+**Tower-front spandrel leaf:** On 2 November 2026 the owner confirmed permission from the parish and designer to reproduce this E01B detail in the public model. The source remains the designers’ 23 October 2026 DWG; this scoped permission is not a licence for the original drawing or other details. The original grant document was not supplied. Other drawing material remains on PUBLICATION HOLD.

@@ -1,0 +1,76 @@
+{
+  "basis": "6669e2e plus sanctuary carving, source-version token and focused model regression checks",
+  "model": {
+    "command": "node scripts/verify_model.cjs",
+    "scope": "isolated sanctuary-only change",
+    "exitCode": 0
+  },
+  "webViewer": {
+    "commands": [
+      "node web/scripts/prepare-viewer.mjs",
+      "node web/scripts/check-viewer.mjs"
+    ],
+    "exitCode": 0,
+    "files": 83
+  },
+  "webUnits": {
+    "command": "npm test",
+    "cwd": "web",
+    "exitCode": 0,
+    "files": 12,
+    "tests": 116
+  },
+  "desktop": {
+    "visit": "after-metrics.json",
+    "normal": "normal-modes.json"
+  },
+  "sharedModel": {
+    "command": "node scripts/verify_model.cjs",
+    "exitCode": 1,
+    "failure": "coloured oval/fanlight count 61 versus 63, concurrent exterior/opening edits"
+  },
+  "calculationAudit": {
+    "command": "node scripts/verify_simulator.cjs --report --estimates",
+    "status": "passed calculation invariants with design holds",
+    "exitCode": 0,
+    "limitations": [
+      "Ambo feedback margin 0.9 dB",
+      "Altar feedback margin 1.4 dB",
+      "Wing STI minimum 0.410, average 0.484",
+      "Air minimum 0.05 m/s, 61% meeting occupied-zone target"
+    ],
+    "scope": "Isolated base and first carving iteration; later edits are display-only contour/leaf refinements with identical analytical inputs."
+  },
+  "refinement": {
+    "source": "refined-metrics.json",
+    "model": {
+      "command": "node scripts/verify_model.cjs",
+      "scope": "isolated sanctuary-only revision",
+      "status": "passed",
+      "exitCode": 0,
+      "triangles": 4731839,
+      "displayBytes": 253189282,
+      "expandedBytes": 454256544,
+      "plainGroundPanels": 7
+    },
+    "electrical": {
+      "command": "node scripts/verify_simulator.cjs --electrical",
+      "exitCode": 0,
+      "components": 366,
+      "runs": 425
+    },
+    "webViewer": {
+      "files": 83,
+      "bytes": 72045738,
+      "exitCode": 0
+    },
+    "webUnits": {
+      "files": 12,
+      "tests": 116,
+      "exitCode": 0
+    },
+    "normalModes": "refined-normal-modes.json",
+    "analysis": "Display relief only; completed full calculation audit retains the same physical inputs and existing holds.",
+    "craftDetails": "craft-metrics.json"
+  }
+}

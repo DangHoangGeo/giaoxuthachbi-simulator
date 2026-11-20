@@ -369,6 +369,10 @@ def pdf_checks(output, data, manifest, index, equipment, routes, lengths, checks
         else:
             require(values[6] == "-", f"Non-home-run has an audio cable quantity: {route_id}")
     check_setout_rows(setout_rows, routes, list(routes), lengths, data, language)
+    key_pages = [page for page, entry in zip(pages, index) if entry['sheet'].startswith('IM-')]
+    expected_keys = [f'I{i+1:02}' for i, _ in enumerate(sorted({r['installation'] for r in routes.values()}))]
+    key_codes = [code for page in key_pages for code in re.findall(r'\bI\d{2}\b', page)]
+    require(Counter(key_codes) == Counter(expected_keys), 'Installation key repeats or omits a note across its pages')
     tower = [page for page, entry in zip(pages, index) if entry["sheet"] == "TW-01"]
     require(len(tower) == 1 and tr("RISERS IN THE TOWER FRONT WALL") in tower[0], "Tower riser sheet missing")
     require(len({s["id"] for s in data["sheets"]}) == len(data["sheets"]), "Drawing scopes repeat")

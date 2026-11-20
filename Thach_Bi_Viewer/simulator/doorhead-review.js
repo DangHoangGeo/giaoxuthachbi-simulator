@@ -41,12 +41,16 @@
  const sconces=it=>/^Sconce · axis [3-9] · [BH]$/.test(it.name);
  function apply(items,GEO,SIM){
   const g=geometry(SIM);
-  if(!g.main||g.bands.length!==4)throw new Error('Door-head geometry changed; review sign supports before updating defaults.');
+  // Six head bands since 7 Nov 2026: the side doors in bays 4–5 and 8–9 and the service-room doors in 11–12 (owner).
+  if(!g.main||g.bands.length!==6)throw new Error('Door-head geometry changed; review sign supports before updating defaults.');
   for(const it of items.filter(it=>it.type==='exitSign')){
    if(it.name==='Exit sign · main doors'){
     const y=g.main.min.y-.095;
-    it.pos=[g.main.max.x+.08,y,0];
-    it.params={backReach:.08,clipRise:(g.main.min.y+g.main.max.y)/2-y};
+    const inside=(window.CHURCH_FACADE?.spec.entrance.wall[1]??g.main.max.x)+.08;
+    const reach=inside-g.main.max.x;
+    if(reach<0||reach>.4)throw new Error('Main-sign clip reach outside modeled bounds; review support.');
+    it.pos=[inside,y,0];
+    it.params={backReach:reach,clipRise:(g.main.min.y+g.main.max.y)/2-y};
     it.note='CONCEPT: inside-face transom clip, case below the coloured fanlight. Lowest edge about 4.68 m; support/door clearance and sign visibility need fire/architectural review. E1 remains maintained from DB-1.';
    }else{
     const s=Math.sign(it.pos[2]),b=g.bands.find(b=>Math.abs((b.min.x+b.max.x)/2-it.pos[0])<.01&&Math.sign(b.min.z+b.max.z)===s);

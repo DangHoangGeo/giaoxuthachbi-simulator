@@ -1,5 +1,7 @@
 # Hidden reading lights, tower lights and corner loudspeakers · 19 October 2026
 
+> Historical record: L59–L62 were moved to the axis-3 side walls on 2 November 2026. Their former entrance-wall positions below are superseded; see [current lighting record](../systems/lighting.md).
+
 Status: **CONCEPT / ENGINEERING HOLD**. Implemented in the local simulator; nothing here is approved to buy or build. Coordinates are metres in the shared model axes: X from axis 1 toward the sanctuary, Y up from the nave floor ±0.000, Z negative toward B and positive toward H. Positions taken from the model are ray casts on the current meshes (`MODEL TRANSCRIPTION`); pier widths, cornice depths and moulding profiles are themselves illustrative transcriptions, not survey.
 
 **Owner requests, 19 October 2026 (`USER CONFIRMED` intent):**
@@ -14,7 +16,7 @@ This follows the owner's earlier direction for decorative and statue light (9 Oc
 
 | Records | Type | Where | Finish |
 | --- | --- | --- | --- |
-| L3–L30 (L1, central blocks) | `readingProjector`, side bracket | Sanctuary-facing face of each tie beam, axes 3–9: X axis + 0.15, bracket centre Y +8.77, Z ±2.48 and ±2.72 (either side of the gilded band at ±2.60) | Beam lacquer |
+| L3–L30 (L1, central blocks) | `readingProjector`, side bracket | Sanctuary-facing face of each tie beam, axes 3–9: X axis + 0.15, bracket centre Y +8.77, Z ±0.90 (heads aimed toward the sanctuary) and ±2.48 (entrance-facing twins, beside the gilded band at ±2.60); before 1 Nov 2026 ±2.48 and ±2.72, see [lighting.md](../systems/lighting.md#nave-centre-and-wing-lighting--1-november-2026) | Beam lacquer |
 | L31–L58 (L2, outer blocks) | `readingProjector`, side bracket | Sanctuary-facing face of each side beam: X axis + 0.11, Y +6.84, Z ±4.84 and ±6.09 (either side of the gilded cartouche, about ±4.96–6.00) | Beam lacquer |
 | L59–L62 (L1, rear rows) | `readingProjector`, side bracket | Unchanged places on the inside of the entrance wall | Wall plaster |
 
@@ -31,9 +33,11 @@ The 21 L3 sanctuary fittings were still black (projectors) or bronze (spotlights
 | Records | Type | Fittings | Finish |
 | --- | --- | --- | --- |
 | L98–L105 | `projector24`, `spot15`, `projector36` | Altar key lights B/H, ambo key light, sanctuary step fills B/H, presider chair light, sanctuary frame washes B/H, under the axis-9 tie | Black / bronze → beam lacquer |
-| L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams (since 25 Oct 2026 on the back face of the axis-10 frame above its side arches, hidden by the spandrel; see the [parish meeting](parish-meeting-2026-10-25.md)) | Bronze / black → beam lacquer |
+| L115–L118 | `spot15`, `projector36` | Statue accents and shrine washes B/H, under the axis-9 side beams (from 25 Oct 2026 on the back face of the axis-10 frame above its side arches, hidden by the spandrel, see the [parish meeting](parish-meeting-2026-10-25.md); since 1 Nov 2026 hung from the inner rib of the gilded side vaults, in the chamber lacquer, screened by the frame's inner jamb from the centre of the nave but visible from the aisle on their own side, see [sanctuary-model.md](../sanctuary-model.md#gilded-vaults-over-the-side-passages--1-november-2026)) | Bronze / black → beam lacquer (chamber lacquer since 1 Nov 2026) |
 | L106–L108, L110–L112, L114 | `spot15`, `projector36` | Crucifix accents B/H, reredos washes B/H, reredos base washes B/H, tabernacle accent, on the chamber side walls behind the frame | Bronze / black → chamber lacquer |
 | L109, L113 | `uplight` | Sanctuary vault uplights B/H on the springing cornice | Bronze → chamber lacquer |
+
+*3 November 2026 (owner):* L106–L114 (the chamber heads and the two vault uplights) now stand on the gilded cove and the gilded springing cornice and take the **gilt** finish, the vault boarding's own material; L115–L118 keep the chamber lacquer. See [docs/sanctuary-model.md](../sanctuary-model.md#gilded-cove-between-the-chamber-and-side-vaults--3-november-2026).
 
 - `projector24`, `projector36`, `spot15` and `uplight` gain a **Finish** setting: their metal as before, *Beam timber* or *Sanctuary chamber lacquer*. Every other fitting of these types keeps its metal finish (the held wing projectors, the roof uplights on top of the ties).
 - **Two lacquers, one colour.** The beam timber (`interior.materials.timber`) copies only the colour and roughness of the sanctuary lacquer and follows **Settings → Structural timber tone**. The chamber walls are drawn with the sanctuary's own material (`Sanctuary · oxblood lacquer`: clear coat over a faint grain), which stays red in every tone. In the default red tone they look the same; in a natural tone the beams and the 12 beam heads turn brown together while the chamber walls and their 9 fittings stay red. Each group therefore shares the material of the surface it is fixed to. A pendant stem and canopy take the head's lacquer.

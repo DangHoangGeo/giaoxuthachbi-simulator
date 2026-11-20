@@ -1,0 +1,79 @@
+{
+  "basis": "4598485 plus this sanctuary revision and preserved entrance work",
+  "command": "node scripts/verify_simulator.cjs --report --estimates",
+  "exitCode": 0,
+  "result": {
+    "checks": "passed",
+    "mode": "calculation audit",
+    "designTargets": [
+      {
+        "name": "No design warnings",
+        "met": false,
+        "detail": "Low feedback margin Ambo microphone: only 0.9 dB of margin.; Low feedback margin Altar microphone: only 1.4 dB of margin."
+      },
+      {
+        "name": "At least 95% of seats reach 200 lux",
+        "met": true,
+        "detail": "100.0%"
+      },
+      {
+        "name": "Every wing seat reaches 200 lux",
+        "met": true,
+        "detail": "321.0 lux minimum"
+      },
+      {
+        "name": "Nave clarity: minimum 0.45, at least 75% reaching 0.60",
+        "met": true,
+        "detail": "minimum 0.568, 94.6% reaching 0.60"
+      },
+      {
+        "name": "Wing clarity: minimum 0.45, average 0.50",
+        "met": false,
+        "detail": "minimum 0.410, average 0.484"
+      }
+    ],
+    "allOff": {
+      "watts": 15,
+      "lux": 0,
+      "air": 0,
+      "noise": 40,
+      "spl": null,
+      "sti": null
+    },
+    "items": 399,
+    "lux": {
+      "avg": 340,
+      "min": 212,
+      "p10": 247,
+      "u0": 0.62,
+      "okPct": 100
+    },
+    "sti": {
+      "avg": 0.62,
+      "min": 0.41,
+      "okPct": 73,
+      "fairPct": 85
+    },
+    "air": {
+      "avg": 0.32,
+      "min": 0.05,
+      "max": 0.63,
+      "okPct": 61
+    },
+    "noise": {
+      "avg": 45.2,
+      "max": 45.7
+    },
+    "Tmid": 1.17
+  },
+  "tours": {
+    "tours": "passed",
+    "steps": {
+      "lighting": 17,
+      "air": 15,
+      "sound": 14,
+      "grid": 12
+    }
+  },
+  "scopeNote": "The audit loaded before final display-only face orientation and midrib sampling refinements. Analytical inputs are identical. Final model/volume, fitting and beam-axis checks were rerun on the final source and pass."
+}

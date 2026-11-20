@@ -1,0 +1,61 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "name": "nave",
+      "lighting": "day",
+      "frame": 47,
+      "calls": 277,
+      "triangles": 3659067,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "nave",
+      "lighting": "evening",
+      "frame": 69,
+      "calls": 277,
+      "triangles": 3659067,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "off-axis",
+      "lighting": "day",
+      "frame": 93,
+      "calls": 236,
+      "triangles": 3618242,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "off-axis",
+      "lighting": "evening",
+      "frame": 124,
+      "calls": 236,
+      "triangles": 3618242,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "detail",
+      "lighting": "day",
+      "frame": 161,
+      "calls": 135,
+      "triangles": 3483858,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "detail",
+      "lighting": "evening",
+      "frame": 198,
+      "calls": 135,
+      "triangles": 3483858,
+      "points": 296,
+      "lines": 0
+    }
+  ],
+  "sanctuarySHA256": "d80b5cca72eb1df41ba8fb614fc01607a8e2c88fe8b1b5cec8b8bfe404ae24f3",
+  "baseCommit": "6669e2e"
+}

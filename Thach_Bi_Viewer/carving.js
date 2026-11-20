@@ -170,6 +170,31 @@
       }
       return { body: merge(body), accent: merge(accent) };
     }
+    // Paired foliage rises from one calyx. Convex red blades overlap in front
+    // of a smaller row; the gold midribs follow the curled faces of the leaves.
+    function palmette(w,h,d) {
+      const body=[], accent=[];
+      for (const [turn, length, base, depth] of [[0,1,0,.1],[.43,.90,.14,.04],[.91,.72,.23,0]]) {
+        const blade=leaf({len:h*length,wid:w*.42,thick:d*.16,curl:1.45,lobes:4,cup:.38,seg:12});
+        // Sample the centre ridge of this same leaf, from root to tip.
+        const vein=[], v=new T.Vector3(), vertices=blade.attributes.position;
+        for(let j=0;j<=12;j++) vein.push(v.fromBufferAttribute(vertices,j*6+2).toArray());
+        const rib=stem(vein,d*.064,d*.018,12,5);
+        for(const side of (turn ? [-1,1] : [1])){
+          const m=place(RX(.14),RZ(side*turn),TR(side*base*w,-h*.54,d*depth));
+          body.push([blade,m]); accent.push([rib,m]);
+        }
+      }
+      const flower=bloom({r:w*.23,petals:8,rings:2,seg:4});
+      accent.push([flower,place(RX(.28),TR(0,-h*.38,d*.25))]);
+      for(const side of [-1,1]){
+        const curl=scroll(w*.34,h*.05,w*.17,1.12,-Math.PI/2,1,15);
+        const stemPath=[[0,-h*.52,0],[w*.20,-h*.34,d*.14],...curl.map(([x,y])=>[x,y,d*.17])];
+        body.push([stem(stemPath,d*.19,d*.076,22,7),SC(side,1,1)]);
+        accent.push([stem(stemPath,d*.048,d*.018,22,5),place(TR(0,0,d*.1),SC(side,1,1))]);
+      }
+      return {body:merge(body),accent:merge(accent)};
+    }
     // Gilded lotus panel for one face of a die, w × h, facing +Z.
     function panel({ w = .4, h = .2 } = {}) {
       const parts = [[bloom({ r: Math.min(w, h) * .4, petals: 8, rings: 1, seg: 3 }), SC(1, 1, .5)]];
@@ -189,13 +214,16 @@
       s.moveTo(u0, 0); s.lineTo(run, 0); s.quadraticCurveTo(u0 + span * .3, -rise * .2, u0, -rise); s.closePath();
       const body = [[new T.ExtrudeGeometry(s, { depth: thick, bevelEnabled: false, curveSegments: 10 }), TR(0, 0, -thick / 2)]];
       // The tip rolls into a gilded scroll; three leaves and a bloom lie on each cheek.
-      const carve = [], gilt = [[stem(scroll(run - rise * .13, -rise * .11, rise * .1, 1.2, Math.PI / 2, -1), thick * .44, thick * .3, 10, 6), null]];
-      const along = leaf({ len: span * .56, wid: rise * .34, thick: .03, curl: 1.1, lobes: 3, seg: 7 }), down = leaf({ len: rise * .56, wid: rise * .34, thick: .03, curl: 1.4, lobes: 3, seg: 7 });
-      const sweep = leaf({ len: rise * .5, wid: rise * .3, thick: .028, curl: 1.3, lobes: 3, seg: 6 }), flower = bloom({ r: rise * .15, petals: 7, rings: 1, seg: 3 });
+      const carve = [], gilt = [];
+      const tip = scroll(run - rise * .13 - thick * .09, -rise * .13 - thick * .16, rise * .1, 1.18, Math.PI / 2, -1, 15);
+      body.push([stem(tip,thick*.19,thick*.08,12,6),null]);
+      const chase = stem(tip,thick*.046,thick*.016,11,4);
+      const along = leaf({ len: span * .56, wid: rise * .34, thick: .03, curl: 1.1, lobes: 3, seg: 7 }), down = leaf({ len: rise * .56, wid: rise * .34, thick: .03, curl: 1.4, lobes: 3, seg: 7, fine: false });
+      const sweep = leaf({ len: rise * .5, wid: rise * .3, thick: .028, curl: 1.3, lobes: 3, seg: 6, fine: false }), flower = bloom({ r: rise * .15, petals: 7, rings: 1, seg: 3 });
       for (const e of [-1, 1]) {
         const cheek = (u, v, turn) => place(RZ(-turn), TR(u, v, thick / 2), SC(1, 1, e));
         carve.push([along, cheek(u0 + span * .34, -rise * .13, Math.PI / 2 + .12)], [down, cheek(u0 + span * .16, -rise * .36, Math.PI - .15)], [sweep, cheek(u0 + span * .3, -rise * .3, Math.PI * .72)]);
-        gilt.push([flower, cheek(u0 + span * .26, -rise * .24, 0)]);
+        gilt.push([flower, cheek(u0 + span * .26, -rise * .24, 0)], [chase,TR(0,0,e*thick*.10)]);
       }
       return { body: merge(body), carve: merge(carve), gilt: merge(gilt) };
     }
@@ -494,6 +522,6 @@
       return { figure: facing(wood), hair: facing(dark), cloth: facing(gilt), nails: facing(iron), height: 2.06, span: 1.72 };
     }
 
-    return { place, TR, SC, RX, RY, RZ, merge, corpus, pinnacle, cresting, plate, relief, glow, leaf, stem, scroll, bloom, turned, base, capital, cluster, panel, haunch, cartouche, grain, canvas, texture, rand };
+    return { place, TR, SC, RX, RY, RZ, merge, corpus, pinnacle, cresting, plate, relief, glow, leaf, stem, scroll, bloom, turned, base, capital, cluster, palmette, panel, haunch, cartouche, grain, canvas, texture, rand };
   }
 })();

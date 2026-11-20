@@ -67,6 +67,14 @@ trades edge/detail sharpness and preview shadows for weaker hardware. The same
 button restores standard graphics. PNG capture renders immediately before reading
 pixels, allowing `preserveDrawingBuffer` to stay disabled.
 
+**Display pass, 10 November 2026.** Standard graphics draw the scene into a
+floating-point target and add contact shading, highlight roll-off and glow
+(`display-finish.js`; see the [interior finish study](../interior-finish.md)). One
+evening nave frame at 1600 × 900 took 146 ms without and 156 ms with the pass in
+headless Chrome on an Apple M1 Pro. Light graphics and `?finish=off` skip it, and a
+failure switches it off for the session. It changes no lamp, material or analytical
+sample.
+
 Navigation renders at the available frame rate. A stationary view renders up to
 approximately 30 fps while fans and other simulation updates remain current. Hidden
 tabs stop the main viewer work; resume resets timing. The minimap writes to the DOM

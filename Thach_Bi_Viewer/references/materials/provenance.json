@@ -1,0 +1,54 @@
+{
+  "status": "CONCEPT · display textures only",
+  "packagedOn": "2026-11-20",
+  "licence": "CC0-1.0",
+  "licenceUrl": "https://polyhaven.com/license",
+  "viewerPackage": "../../wood-grain-textures.js",
+  "processing": {
+    "sourceSize": [1024, 1024],
+    "packagedSize": [768, 768],
+    "lightGraphicsSize": [384, 384],
+    "colourSpace": "sRGB for diffuse colour, linear data for height",
+    "method": "Pillow Lanczos resampling, RGB diffuse and grayscale height, embedded JPEG quality 87 and 82 respectively. Dark Wood diffuse maps each channel to (value − source mean) × 0.82 + target mean (115, 81, 64); walnut diffuse and height data receive no tone treatment. Height maps provide only shallow bump shading."
+  },
+  "assets": [
+    {
+      "viewerKey": "joinery",
+      "title": "Dark Wood",
+      "provider": "Poly Haven",
+      "source": "https://polyhaven.com/a/dark_wood",
+      "credits": "Dimitrios Savva (photography), Dario Barresi (baking), Rico Cilliers (tiling)",
+      "maps": {
+        "colour": {
+          "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dark_wood/dark_wood_diff_1k.jpg",
+          "sourceSha256": "d68da31655bf47024af893156a6a01a6c95bb60f55d97e2dc9bdd47be320e5b5",
+          "embeddedSha256": "0f9ee2b2e955f66a88fa985b8152e404e8d9148a96de3268aff98d82750d4408"
+        },
+        "height": {
+          "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dark_wood/dark_wood_disp_1k.jpg",
+          "sourceSha256": "c8f29c28468c4b7bfc6b9347d8a91e61dace39364271971dff18989bf18245b7",
+          "embeddedSha256": "b06c4460829f7e41cea11998897be742c9b4ef2f564560661d14ae5fe703f2cd"
+        }
+      }
+    },
+    {
+      "viewerKey": "pews",
+      "title": "Walnut Veneer 02",
+      "provider": "Poly Haven",
+      "source": "https://polyhaven.com/a/walnut_veneer_02",
+      "credits": "Jenelle van Heerden",
+      "maps": {
+        "colour": {
+          "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/walnut_veneer_02/walnut_veneer_02_diff_1k.jpg",
+          "sourceSha256": "0e066c9876dc2517f2571f3d177e892b5631020d27b16cfd385a80a69493fdea",
+          "embeddedSha256": "1a515f8e7f1298e4bb3cec0cf7e9549d839fcd08e3fd6a89dadf310802d64479"
+        },
+        "height": {
+          "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/walnut_veneer_02/walnut_veneer_02_disp_1k.jpg",
+          "sourceSha256": "f8a3c4dc35ab6f8cc2aeee252808f3ca8c457ad8f9c81927ca72c740ae34dcb7",
+          "embeddedSha256": "ed58647035088f6e2322af60b954a3a565819c3426b6013e9a36ae4416623f2f"
+        }
+      }
+    }
+  ]
+}

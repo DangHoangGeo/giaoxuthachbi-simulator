@@ -499,6 +499,15 @@
       "evidence": "Hồ sơ sản phẩm, IES/LDT, dữ liệu hướng tính loa, khảo sát cột/tường, chi tiết nối kín nước và tách tuyến điện/âm thanh, thử ban đêm và thử lời nói khi micro hoạt động; open-porch-light-sound.md",
       "blocks": "CONCEPT ngày 25/10/2026: 18 đèn lối đi, 36 đèn vòm, 18 loa A2; độ rọi trực tiếp lối đi 11,54–38,38 lx chưa đạt mục tiêu thử 100 lx; biên độ hú và độ rõ ở cánh vẫn không đạt. Chưa có sản phẩm, liên kết, kênh điều khiển hay duyệt thi công.",
       "answer": null
+    },
+    {
+      "id": "Q55",
+      "discipline": "Kiến trúc / kết cấu / điện",
+      "owner": "Kiến trúc sư / kỹ sư kết cấu / kỹ sư điện / cha xứ",
+      "question_vi": "Chủ đầu tư xác nhận phía trên phòng áo là khối bê tông đặc dày 3 m theo phương đứng. Khối đó bắt đầu và kết thúc ở cao độ nào, phạm vi theo mặt bằng, cấu tạo chịu lực, cốt thép và các hốc hoặc lỗ kỹ thuật được phép là gì? Đối chiếu kích thước 3.101 mm từ nền đến đường phía trên phòng trên mặt cắt S45 với trần mô hình +4,15 m; hốc Thánh giá hiện tại, tủ điện và các tuyến cáp có phù hợp không?",
+      "evidence": "Chỉ dẫn chủ đầu tư ngày 03/11/2026; CAD 23/10/2026 S45 tờ in 45, DIMENSION D7E741 (Y 0 đến +3.100,5 mm; nhãn 3.101 mm); hồ sơ thiết kế và hoàn công, khảo sát và xác nhận của kỹ sư kết cấu, kiến trúc và điện.",
+      "blocks": "ENGINEERING HOLD: mô hình đang có hốc Thánh giá sâu 1 m, trần +4,15 m khoét quanh hốc và khoảng trống phía trên; chưa xác nhận giao cắt với bê tông, cao độ, kết cấu, lối bảo trì hoặc tuyến cáp. Không được suy diễn việc cho phép đục khoét hay xây dựng từ mô hình.",
+      "answer": null
     }
   ]
 }

@@ -1,0 +1,67 @@
+{
+  "errors": [],
+  "metrics": [
+    {
+      "name": "nave",
+      "lighting": "day",
+      "frame": 47,
+      "calls": 278,
+      "triangles": 3923963,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "nave",
+      "lighting": "evening",
+      "frame": 67,
+      "calls": 278,
+      "triangles": 3923963,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "off-axis",
+      "lighting": "day",
+      "frame": 89,
+      "calls": 237,
+      "triangles": 3883138,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "off-axis",
+      "lighting": "evening",
+      "frame": 117,
+      "calls": 237,
+      "triangles": 3883138,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "detail",
+      "lighting": "day",
+      "frame": 147,
+      "calls": 136,
+      "triangles": 3748754,
+      "points": 296,
+      "lines": 0
+    },
+    {
+      "name": "detail",
+      "lighting": "evening",
+      "frame": 180,
+      "calls": 136,
+      "triangles": 3748754,
+      "points": 296,
+      "lines": 0
+    }
+  ],
+  "visit": {
+    "visitOnly": true,
+    "editing": false,
+    "engineeringStorageCalls": []
+  },
+  "sanctuarySHA256": "fa536e2fd2cbe919c63c8955391e00712dcc31f1bd5100b473a01c820fbf80c0",
+  "reviewedSourceSHA256": "4217ea3260400678c75ded94e6eca34c029c9cb812d2965ac05ae1696ff5b697",
+  "captureToReviewChange": "Comment and source-provenance text only after capture; geometry and materials identical."
+}

@@ -8,7 +8,7 @@ The simulator turns the existing 3D model into a working test bench. You can pla
 
 All values are transparent engineering estimates for comparing options. They are not certified lighting, acoustic, airflow or electrical calculations. Confirm the final choices with the professional tools and site measurements listed at the end.
 
-**Revision context, 7 October 2026:** the [6 October calculation audit](../../review/stats-audit-2026-10-06/README.md) records the earlier 380-seat model. The current sanctuary revision samples 368 seats; see [sanctuary results and limits](../sanctuary-model.md). Earlier tables and revision notes below retain historical results. Read [methods and limitations](methods-and-limitations.md) before using any estimate or claiming a design target has passed.
+**Revision context, 7 October 2026:** the [6 October calculation audit](../../review/stats-audit-2026-10-06/README.md) records the earlier 380-seat model. The earlier sanctuary revision sampled 368 seats; the 1 November entrance-row removal changes the two layouts and their receiver counts. See the [current seating plan](../interior-systems-plan.md) and [methods and limitations](methods-and-limitations.md). Earlier tables and revision notes below retain historical results. Read [methods and limitations](methods-and-limitations.md) before using any estimate or claiming a design target has passed.
 
 ---
 
@@ -58,7 +58,7 @@ Every fixture hangs from, stands on or is fixed to something the model actually 
 | Decorative (LD) | 3 brass chandeliers on chains from the ridge over the crossings, at +7.3 m since 19 October 2026 (were +6.3 m); a 12-lamp chandelier at the 9–10 crossing, hung at +9.2 m above the sanctuary frame's sightline; 14 brass sconces and 2 on the chamber walls | The character of the reference images |
 | Verandas, steps, façade (L4–L6) | 18 lanterns (2 000 lm), one at every veranda pier; brass sconces beside the main door; lanterns on the tower fronts over the platform and steps; side-door lanterns; cornice-coloured light bars and compact floods on the tower cornice ledges (+8.39 to +29.09 m) | Nothing stands on the courtyard, platform or steps where people walk; every exterior light is fixed to the building |
 | Air (F1) | 12 ceiling fans (1.42 m) mid-bay over the two side aisles, between the centre and outer blocks | Where parishes really hang fans: nothing over the processional aisle, quiet at speed 2, ~0.33 m/s at the seats |
-| Festival exterior (L7, off except at feasts) | Warm bulb strings along the roof ridge, the main and veranda eaves, the rear gable, the front terrace and the corners of the three lower tower stages; floods on the +23.14 m tower ledges (belfry and dome), on the terrace (central shrine) and on the rear veranda roofs (rear gable) | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
+| Festival exterior (L7, off except at feasts) | No bulb strings: the owner retired every festival string light on 3 November 2026 (the front-terrace string L219 on 2 November); the red lantern strings in the porch bays are retired too. Floods on the +23.14 m tower ledges (belfry and dome), on the terrace (central shrine) and on the rear veranda roofs (rear gable) | The church outlined in light for Christmas and feasts; switched on by the *Christmas & festivals* scene |
 | Sound (A1–A3) | 12 slim 0.6 m wall columns, painted the wall colour, in the corners where the side-wall piers (axes 4–9) meet the walls, at 3.45 m, turned toward the back; 4 veranda pendants; 2 courtyard horns on the tower fronts (off) | Barely visible and nothing on the timber columns; each speaker covers the rows behind it, time-aligned to the priest's voice |
 | Microphones | Ambo and altar gooseneck mics | The system runs at about 67 dBA, which keeps both microphones more than 3 dB inside the stability allowance |
 | Décor | Statues of Our Lady (left) and Saint Joseph (right) in the raised shrines on the column line, flowers at their feet and beside the tabernacle, Paschal candle beside the ambo, palms, banners. Christmas tree, nativity grotto, star, red lanterns, pennants and an aisle carpet are ready but hidden | Matches the reference interior; seasonal items are one switch away |
@@ -204,7 +204,7 @@ The calculation methods, measurement planes, assumptions and validation boundari
   gilded lines on the rafters and ridge. Lengthwise beams join the column
   heads on the D and E lines from axis 3 to the sanctuary frame; carved
   haunches stand under the beams. These lengthwise beams are a visual proxy
-  (0.24 × 0.45 m, engineering hold): no fitting hangs from them and the
+  (0.32 × 0.45 m since 8 Nov 2026, engineering hold): no fitting hangs from them and the
   analysis does not include them. The boarded roof lining stays ivory. *Settings → Structural timber
   tone* offers natural, light and dark timber as alternatives.
 - At night the centre of the sanctuary is lit lower than before, so the blue
@@ -256,7 +256,7 @@ block walking. Outdoor courtyard trees retain their separate Show trees switch.
 
 View settings → Timber frame, or Simulator → Settings → Structure.
 
-- **As drawn (PDF section 4).** Round shafts and a 0.30 × 0.59 m tie beam
+- **As drawn (PDF section 4).** Round shafts and a tie beam on the drawn levels (+8.59…+9.18 m; 0.40 × 0.59 m concept section since 8 Nov 2026, drawn proxy 0.30 m wide)
   across the nave at +8.59 m on every axis. This version also carries the
   concept ornament and members that are not on the drawing: carved capitals
   and haunches, cartouches, and the lengthwise column-line beams at
@@ -455,15 +455,22 @@ Use **Use reviewed lights and fans · B/H** only to adopt that side's held fixtu
 
 The current default has two small brass chandeliers, two above-window wall fans, one entrance-facing wall speaker and one Peter/Paul picture pair perwing. **Simulator→Wiring** compares the actual saved layout separately for lights/fans, sound and saints. Adopt only the desired scope with **Use reviewed lights and fans**, **Use reviewed speaker** or **Use reviewed saints ·B/H**. These local actions write full backups, preserve unrelated records and support Undo/Redo. Deleted/moved/retuned saved items are not silently reset; a first-issue artwork marker prevents later deletions being recreated. The source remains an engineering hold: some seats are too dark, speech/feedback/air/noise and physical concealment/product/fixings remain unresolved. See [the coordinated review](../engineering/wing-review.md). Peter/Paul textures are local native generated concepts; modeled frame dimensions/height are review proxies.
 
-## Cinematic tour · 9 October 2026
+## Cinematic tour · 9 October 2026, rebuilt 3 November 2026
 
-**Discover → ▶ Cinematic tour** plays a film of about five minutes. It replaces the earlier guided walk, which only moved in a straight line from the courtyard to the sanctuary.
+**Discover → ▶ Cinematic tour** plays a film of 8 min 28 s. It replaces the earlier guided walk, which only moved in a straight line from the courtyard to the sanctuary.
 
-| Part | Scenes | Light and roof |
-| --- | --- | --- |
-| I · Around the church | Opening aerial view, tower front, around the bell towers, along side B, the altar end, back over the roof | Day, roof on |
-| II · Inside | Through the central door, the nave, the timber roof, side aisle and windows, the two wings, the sanctuary, around the altar, looking back to the entrance | Day, roof on |
-| III · Evening | The lit nave, plan view from above with the roof hidden, a circle round the open church, a flight over the timber frames, the lit tower front | Evening; roof hidden for the three views from above |
+**Rebuilt 3 November 2026** at the owner's request: the five-minute film "flys too fast"; they asked to walk around the church and look closely at each part (tower, facade, veranda, nave, sanctuary), then go round the church after dark, "not only using flycam but also like a walking person". The film now moves at two paces:
+
+- **Walking** (marked `walk` in the shot list, 10 of 23 scenes): the eye is 1.60 m above the modelled floor (courtyard −2.080, forecourt −0.480, veranda −0.320, nave 0, side sanctuary +0.160, platform +0.800 m, from `church.data.levels`), at 0.5–0.9 m/s on average and below 1.4 m/s, with a 0.72 m step: the eye rises up to 25 mm in mid-stride and sways 15 mm to each side over a pair of steps, both fading out as the walker stops. The walker glances at windows, columns and pews while keeping an even pace.
+- **Camera crane and flight** for what a walker cannot reach: up the tower stage by stage at about 0.2–0.4 m/s, round a belfry, down the front, over the roof and round the outside at 1.3–2.7 m/s on average (3.9 m/s at most, on the wide night orbit about 40 m out). The earlier film reached 5–6 m/s.
+
+| Part | Scenes | Pace | Light and roof |
+| --- | --- | --- | --- |
+| I · Around the church (48 bars) | Opening aerial view; up the tower on side H stage by stage; round its belfry and dome; down the central front; walking up the forecourt steps; walking the side-B veranda; the red roof; the altar end; side H and the wider bay 9–10 | Flight, crane and walks | Day, roof on |
+| II · Inside (41 bars) | Walking in through the central door and up the nave; standing to look up, then rising into the carved beams; walking the side aisle; the two wings; walking up to the sanctuary; close at the altar, crucifix and side shrines; looking back | Mostly walked | Day, roof on |
+| III · Evening (38 bars) | Walking up to the lit front from the courtyard; up the lit tower on side B; walking the side-H veranda; a wide orbit round the lit church; walking up the nave; the closing crane back from the front | Walks and flights | Evening, roof on |
+
+The roof stays on throughout; the earlier plan view with the roof lifted away is no longer in the film (use **View settings → Roof** or the *Open roof overview* preset).
 
 Controls: **Space** or a click pauses and continues, **←** and **→** change scene, **M** switches the organ music, **F** fills the screen, **Esc** or **✕ Stop** ends the film. The buttons at the bottom appear when the pointer moves.
 
@@ -472,14 +479,14 @@ Controls: **Space** or a click pauses and continues, **←** and **→** change 
 - The film shows the layout that is open in the viewer, including any equipment you have moved or hidden. It changes nothing in the design and saves nothing.
 - While it plays, the film sets day or evening light, shows or hides the roof, opens the doors and changes the lens angle. Doors and lens are put back when it ends. A film that runs to its end also restores the light and roof you had and returns to the overview. If you stop it part-way, the view stays where it is so that you can continue in Explore; a message names any evening light or hidden roof that is still on (change them in View settings).
 - **The organ music is generated in the browser** on synthesised pipe tones with artificial reverberation, in three parts:
-  - *Homeland* (outside, 26 bars): an original melody on the five notes C D E G A, on a flute stop with tremulant over warm strings. It quotes no existing song.
-  - *Ave Maria* (41 bars, complete): Charles Gounod's melody of 1853 over J. S. Bach's Prelude in C, BWV 846. Both are in the public domain. The notes were transcribed from Mutopia Project edition no. 2167 (after Heugel, 1856) and checked against that edition's MIDI file. The prelude begins as the camera reaches the church door; the hush at bar 29 is the turn to evening; the "tutta forza" of bar 33 is the moment the roof is lifted away; the final tonic arrives as the circle round the open church begins.
-  - *Homeland* again on full organ over the timber frames, ending quietly under the closing card.
+  - *Homeland* (outside, 48 bars): an original melody on the five notes C D E G A, on a flute stop with tremulant over warm strings. It quotes no existing song.
+  - *Ave Maria* (41 bars, complete, the whole of the inside by day): Charles Gounod's melody of 1853 over J. S. Bach's Prelude in C, BWV 846. Both are in the public domain. The notes were transcribed from Mutopia Project edition no. 2167 (after Heugel, 1856) and checked against that edition's MIDI file. The prelude begins as the walker comes through the church door; the hush at bar 29 falls on the walk up to the altar; the "tutta forza" of bar 33 is the close view of the altar and crucifix.
+  - *Homeland* again, quietly, for the evening walks (28 bars), then on full organ for the closing view (10 bars), ending quietly under the closing card.
 
   It is presentation music. It does not pass through the modelled loudspeakers or the room model, and it is not a prediction of how an organ or the sound system will sound in the church. For the room-based listening preview use **Simulator → Sound → Listen in the church**.
 - Evening scenes show the proposed lighting as the viewer draws it. Screen brightness is not a lux measurement.
 - Some browsers hold sound back until the page is clicked. The film then shows "Click once to switch the organ music on".
-- The route is fixed: centre aisle below 4.3 m, 1.5–2 m beside the centreline at 6.4–7.1 m under the roof, and the side-B aisle at 2–2.4 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/`.
+- The route is fixed: the centre aisle and side-B aisle at eye height, the veranda centrelines (Z ±8.9 m), 1.5–2 m beside the centreline at 4–7.1 m under the roof, and the sanctuary platform to X 41.6 m. After placing equipment in those zones, run `CHURCH_CINEMA.audit()` in the browser console: it reports the nearest surface to the camera in each scene. On 3 November 2026 (recommended design, 127.0.0.1 scratch origin, 0.5 s steps, 1 m reach) the nearest surfaces were a tree's leaves at 0.32 m at the start of the roof flight, an open side-door leaf at 0.41–0.50 m on both veranda walks (a walker passing an open door), the Paschal candle at 0.54 m beside the altar and column 6/D at 0.73 m in the side aisle; every other scene had more than 1 m. `node scripts/verify_cinematic.cjs` checks the shot list, camera path, walking eye height and pace, scene changes and score without a browser. Record: `review/cinematic-tour-2026-10-09/` (the five-minute version).
 
 ### Short film removed · 11 October 2026
 

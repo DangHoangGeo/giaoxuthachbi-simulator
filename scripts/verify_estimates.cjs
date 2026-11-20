@@ -112,6 +112,9 @@ check('Fan airflow and cooling outputs have physically appropriate boundaries', 
 const sandbox = { console, performance, setTimeout: () => 0, clearTimeout() {},
   localStorage: { setItem() {}, getItem: () => null } };
 sandbox.window = sandbox;
+// The analytic checks use the flat nave floor of the engine's own levels: the sanctuary module
+// (a viewer geometry file) is replaced by a stub that reports no sanctuary floor and no dais.
+sandbox.CHURCH_SANCTUARY = { floorY: () => null, onDais: () => false, spec: { floor: { apron: { front: Infinity } } } };
 vm.createContext(sandbox);
 const viewer = path.join(__dirname, '..', 'Thach_Bi_Viewer', 'simulator');
 for (const file of ['physics', 'catalog', 'engine']) vm.runInContext(fs.readFileSync(path.join(viewer, file + '.js'), 'utf8'), sandbox, { filename: file });
