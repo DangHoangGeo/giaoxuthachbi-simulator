@@ -373,8 +373,9 @@
       for (const z of LT.z) tymp.holes.push(archOpening(z, LT.half, LT.sill, LT.spring));
       slab('Central bay tympanum wall', W, tymp, CB.tympanum);
       for (const z of LT.z) {
-        slab('Triple window arch moulding', S, band(z, LT.spring, LT.rings[1], LT.rings[2]), [3.12, CB.tympanum[0]]);
-        slab('Triple window arch moulding', S, band(z, LT.spring, LT.rings[0], LT.rings[1]), [3.17, CB.tympanum[0]]);
+        // Design excellence, 20 Nov 2026: stepped orders, outer 0.21 m proud of the tympanum (was 0.11), inner 0.12 (was 0.06).
+        slab('Triple window arch moulding', S, band(z, LT.spring, LT.rings[1], LT.rings[2]), [3.02, CB.tympanum[0]]);
+        slab('Triple window arch moulding', S, band(z, LT.spring, LT.rings[0], LT.rings[1]), [3.11, CB.tympanum[0]]);
         block('Triple window sill', S, [3.12, CB.tympanum[1]], [LT.sill - .05, LT.sill], [z - LT.half - .05, z + LT.half + .05]);
         // E01B shows eight rectangular fields and an 80 mm centre stile, rather than
         // the former uniformly spaced slats. Timber finish and unseen depth stay illustrative.

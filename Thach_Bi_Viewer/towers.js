@@ -902,12 +902,13 @@
           for (const e of [-1, 1]) block(label + 'paired louvre jamb', S, [xf - .11, xf + .01], [U.sill, WI.spring], [u + e * r, u + e * WI.rings[2]].sort((a, b) => a - b));
           const leaf = new T.Shape(); leaf.moveTo(u - r, U.sill); leaf.lineTo(u + r, U.sill);
           leaf.lineTo(u + r, WI.spring); leaf.absarc(u, WI.spring, r, 0, Math.PI, false); leaf.lineTo(u - r, U.sill); leaf.closePath();
-          uslab('paired louvre backing', WOOD, leaf, xf + .16, xf + .18, 'TRACED CAD APERTURE / SCHEMATIC CLOSED SHUTTER DEPTH');
+          // Design excellence, 20 Nov 2026: the louvres sit at the back of the wall so the opening reads as a deep reveal.
+          uslab('paired louvre backing', WOOD, leaf, xb - .02, xb, 'TRACED CAD APERTURE / SCHEMATIC CLOSED SHUTTER DEPTH');
           const clear = r * 2 - .03, stop = WI.spring - .14;
-          block(label + 'paired louvre timber frame', mat.wood, [xf + .07, xf + .14], [U.sill, stop], [u - r, u - r + .015]);
-          block(label + 'paired louvre timber frame', mat.wood, [xf + .07, xf + .14], [U.sill, stop], [u + r - .015, u + r]);
+          block(label + 'paired louvre timber frame', mat.wood, [xb - .13, xb - .05], [U.sill, stop], [u - r, u - r + .015]);
+          block(label + 'paired louvre timber frame', mat.wood, [xb - .13, xb - .05], [U.sill, stop], [u + r - .015, u + r]);
           for (let y = U.slats.first; y < stop - .001; y += U.slats.pitch)
-            block(label + 'paired louvre blade', mat.wood, [xf + .075, xf + .13], [y, Math.min(y + U.slats.height, stop)], [u - clear / 2, u + clear / 2], U.slats.status || 'TRACED CAD BLADE FACE / SCHEMATIC DEPTH AND ANGLE');
+            block(label + 'paired louvre blade', mat.wood, [xb - .125, xb - .07], [y, Math.min(y + U.slats.height, stop)], [u - clear / 2, u + clear / 2], U.slats.status || 'TRACED CAD BLADE FACE / SCHEMATIC DEPTH AND ANGLE');
           block(label + 'paired louvre sill', S, [xf - .12, xb], [U.sill - .05, U.sill], [u - WI.rings[2], u + WI.rings[2]]);
         }
         const RO = U.rose, major = (RO.rings[0] + RO.rings[1]) / 2, minor = (RO.rings[1] - RO.rings[0]) / 2;

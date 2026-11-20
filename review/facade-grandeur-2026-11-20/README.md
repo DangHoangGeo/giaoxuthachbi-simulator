@@ -35,3 +35,9 @@ The owner asked for the pinnacle crowns to be redrawn. The before column is the 
 [Close comparison](compare-spires.jpg) · [Wide comparison](compare-spires-wide.jpg)
 
 The base and apex of every pinnacle are unchanged. The crockets are small at courtyard distance; they read in the close and evening views.
+
+## Triple window orders and tower louvres
+
+The before column is `7bcd08b`; the after column steps the triple window's orders and sets the tower louvres at the back of the wall. The cameras are the triple window by day and in the evening from (−4, 10.2, −3) looking at (3.2, 11.6, 0), the tower louvres from (−5, 10.6, −14) looking at (0, 10.9, −10.15), and the tower stages from (−12, 14, −16) looking at (0, 15, −10). [Comparison](compare-window-louvres.jpg)
+
+The louvres now sit in deep, shadowed reveals behind the traced tracery. The triple window's change is smaller: about 10 cm of added projection, which reads best in raking light.
