@@ -1042,6 +1042,8 @@
     window.CHURCH_SANCTUARY_FURNISHINGS?.prepare(ctx);
     // Courtyard tree canopies, 20 Nov 2026 (presentation only, unsurveyed landscape).
     window.CHURCH_LANDSCAPE_TREES?.prepare(ctx);
+    // Plinth rubble, granite paving and the designed courtyard, 20 Nov 2026 (CONCEPT, site unsurveyed).
+    window.CHURCH_SITE_STONE?.prepare(ctx);
     applyJoineryColours();
     applyGlass();
     finish(true);

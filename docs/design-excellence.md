@@ -38,8 +38,8 @@ The judgement below comes from the desktop captures of 19–20 November ([wall s
 | 1 | This programme: principles, viewpoints, departure register, open questions | Done, 20 Nov 2026 |
 | 2 | **Sanctuary furnishings:** carved stone altar with marble veining, corner colonnettes and a gilded frieze; ambo with a matching column and a fall in the season's colour; red-and-gold credence table with vessels; brass altar candlesticks | Started, 20 Nov 2026: see [sanctuary furnishings](#stage-2-sanctuary-furnishings) |
 | 3 | **Nave timber and ceiling to the concept:** deeper carved capitals, lotus friezes on the ties, coffered ceiling panels, carved pew ends, a composed entrance wall | Pending |
-| 4 | **Exterior depth:** stone tones and trim, deeper reveals, window tracery and glass seen from outside, real jointed plinth stone, a richer rear elevation | Pending |
-| 5 | **Site and grounds:** tree species and canopies, courtyard paving pattern, gates and fence, garden and Marian grotto, grounds lighting | Tree canopies redrawn, 20 Nov 2026 (see [preview](#stage-5-preview-courtyard-tree-canopies)); the rest needs site survey information |
+| 4 | **Exterior depth:** stone tones and trim, deeper reveals, window tracery and glass seen from outside, real jointed plinth stone, a richer rear elevation | Plinth masonry done, 20 Nov 2026 (see [stages 4 and 5](#stages-4-and-5-plinth-masonry-and-courtyard)); the rest is pending |
+| 5 | **Site and grounds:** tree species and canopies, courtyard paving pattern, gates and fence, garden and Marian grotto, grounds lighting | Tree canopies, granite paving and a designed courtyard done, 20 Nov 2026 (see [stages 4 and 5](#stages-4-and-5-plinth-masonry-and-courtyard)); gates, garden, grotto and grounds lighting need site and engineering information |
 | 6 | **Rendering:** baked or approximate bounce light and soft shadow for the interior | Pending: technical study first |
 | Separate | Concealment of the fans (engineering item in the central-view constraint) | Engineering hold |
 
@@ -74,6 +74,7 @@ This register lists proposals that go beyond what the drawings show. Each item i
 | DX-02 | 20 Nov 2026 | Ambo | Pedestal and sloped desk (concept) | Fluted stone column, moulded desk edge, fall in the liturgical colour | Appearance review pending | Microphone and cable passage unchanged; furniture design open |
 | DX-03 | 20 Nov 2026 | Credence | Table (concept) | Red-lacquer and gilt table on turned legs with a carved apron; chalice, cruets and lavabo bowl shown | Appearance review pending | None |
 | DX-04 | 20 Nov 2026 | Altar candlesticks | Candle cups (concept) | Six brass baluster candlesticks with drip pans | Appearance review pending | Open flame; fire safety review open |
+| DX-05 | 20 Nov 2026 | Entrance courtyard | No paving design drawn; plain presentation ground | Granite courtyard: processional way, medallion with star and cross, diagonal field, banding, dark border | Appearance review pending | Levels, falls, drainage, sub-base, slip resistance and stone selection open; site unsurveyed |
 
 Earlier departures stay in their own records. Examples are the red cross ([sanctuary model](sanctuary-model.md)), the arches over the shrines and the restored outer porch wall ([façade model](facade-model.md)).
 
@@ -94,3 +95,13 @@ Recorded in [interior finish](interior-finish.md#sanctuary-furnishings--20-novem
 The two rows of eight presentation trees had crowns made of about 1,000 small faceted shapes each, and they read as toy trees. Each crown is now a fuller canopy that fills the same volume. It has a dark inner mass and about 230 leaf sprays drawn on transparent cards. The sunlit outer sprays are lighter than the shaded inner ones, and the cards cast shadows on the lawn. The positions, trunks, branches, soil beds, stone edging and lawn of the trees are unchanged (`Thach_Bi_Viewer/landscape-trees.js`, loaded after `realism.js` builds the rows).
 
 The species, mature size, planting, root protection and drainage are not designed. These trees are an unsurveyed presentation context, like the lawn. [Desktop before and after](../review/tree-canopies-2026-11-20/README.md)
+
+## Stages 4 and 5: plinth masonry and courtyard
+
+These changes are in `Thach_Bi_Viewer/site-stone.js`, which loads after the tree canopies. The tag `?sitestone=off` shows the previous finishes for comparison. [Desktop before and after](../review/site-stone-2026-11-20/README.md)
+
+- **Plinth (stage 4).** The rubble plinth chosen for the church read as flat patches of blue-grey and tan with a pale outline. It now shows coursed random rubble: courses 0.22–0.40 m high, stones 0.30–0.75 m long, grey to warm-grey granite, pillowed faces and recessed dark lime mortar, with a faint damp tone toward the foot. It is the same material and tile scale on the same plinth geometry, including the forecourt plinth. This is a display finish, not a stone or mortar specification.
+- **Grounds (stage 5).** The presentation ground now shows sawn granite slabs, 0.60 × 0.40 m in running bond, in place of the plain grey.
+- **Designed courtyard (DX-05).** The area in front of the entrance steps, from X −58 to −9.3 m and between the lawns (Z ±22.4 m), is a granite courtyard. It has a light processional way 6 m wide on the axis with red and dark edging. A medallion 8.4 m across sits 12 m in front of the lowest step, with rings, an eight-point star, a cross and radiating joints. A diagonal field, two transverse bands and a dark border complete the design. It is a surface finish 3 mm above the ground plane. The walking floor, the steps, the ramp and every analysis input are unchanged.
+
+The site is unsurveyed. Levels and falls, drainage, sub-base, kerbs, slip resistance, stone selection and the courtyard's real extent need the site design. Gates, fencing, a garden, a Marian grotto and grounds lighting were not added. They need the site plan (question 5), and any light fitting also needs the equipment registers and an electrical design.

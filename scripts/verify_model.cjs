@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js', 'interior-finish.js','sanctuary-furnishings.js','landscape-trees.js','sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js', 'interior-finish.js','sanctuary-furnishings.js','landscape-trees.js','site-stone.js','sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -886,6 +886,16 @@ const amboFoot=nodes.find(o=>o.name==='Proposed ambo foot'),altarFoot=nodes.find
 near(bounds(amboFoot).getCenter(new T.Vector3()).x,41.3,'Ambo position');
 assert(bounds(altarFoot).min.x-bounds(amboFoot).max.x>=2,'At least 2 m between the ambo and the altar');
 assert(bounds(amboFoot).min.x-39.345>=1,'Ambo stays 1 m back from the head of the sanctuary steps');
+// Designed courtyard and plinth rubble, design excellence stages 4-5 (20 Nov 2026): surface finishes only.
+{
+  const court=nodes.filter(o=>o.name==='Courtyard designed paving · DX-05 concept');
+  assert.equal(court.length,1,'One designed courtyard surface');
+  const c=bounds(court[0]),stairFront=sandbox.window.CHURCH_ENTRANCE_APPROACH.spec.stair.front;
+  assert(c.max.x<stairFront,'Courtyard paving stops in front of the lowest entrance step');
+  assert(Math.abs(c.max.z)<=22.4+1e-6&&Math.abs(c.min.z)<=22.4+1e-6,'Courtyard paving stays inside the paved strip between the lawns');
+  assert(c.min.y>-2.08&&c.max.y<-2.07,'Courtyard paving lies just above the courtyard level');
+  assert(/rubble/.test(mat.foundation.map?.name||''),'Plinth carries the coursed rubble finish');
+}
 // Sanctuary furnishings, design excellence stage 2 (20 Nov 2026): appearance only, footprints kept.
 {
   const one=name=>{const list=nodes.filter(o=>o.name===name);assert.equal(list.length,1,name+' exists once');return list[0];};
