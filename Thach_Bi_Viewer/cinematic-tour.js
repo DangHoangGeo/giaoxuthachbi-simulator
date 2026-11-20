@@ -69,7 +69,7 @@
   const SHOTS = [
     // I · Around the church by day: towers, front, forecourt and veranda.
     { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.2, 0.5],
-      card: { small: 'Giáo xứ Thạch Bi', title: 'Nhà thờ Thạch Bi', line: 'Một lời mời trở về quê nhà · An invitation to come home' },
+      card: { small: 'Giáo xứ Thạch Bi', title: 'Nhà thờ Thạch Bi', line: 'Một lời mời trở về quê nhà · An invitation to come home', until: 5.6 },
       keys: [[-50, 2.4, 13, 2, 15, 0, 40], [-45, 8.5, 11.5, 3, 15.5, 0, 41], [-39, 15, 9.5, 4, 15, 0, 43]] },
     { id: 'towers', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dissolve', ease: [0.2, 0.6],
       en: 'The bell towers', vi: 'Hai tháp chuông',
@@ -757,7 +757,8 @@
   // When a scene's caption and title card are on screen.
   function showing(shot, local) {
     const timed = shot.card?.at !== undefined;
-    const cardFrom = shot.card?.at ?? 1.2, cardTo = shot.card?.hold ? shot.duration + 1 : timed ? shot.duration - 2.4 : 9.5;
+    // A title clears at `until` when it has one, so that the picture behind it has the screen to itself.
+    const cardFrom = shot.card?.at ?? 1.2, cardTo = shot.card?.until ?? (shot.card?.hold ? shot.duration + 1 : timed ? shot.duration - 2.4 : 9.5);
     // The first scene of a chapter opens on the chapter's number and name; its caption follows.
     const chapter = !!shot.opens && local >= CHAPTER_CARD.from && local < CHAPTER_CARD.to;
     const captionFrom = shot.opens ? CHAPTER_CARD.to + 0.6 : 1;
@@ -804,9 +805,9 @@
     ['Am', 'A4:1 C5:1 E5:1 G5:1'], ['F', 'A5:2 G5:1 E5:1'], ['F G', 'C5:1 A4:1 G4:1 D5:1'], ['C', 'C5:4']];
   const HOMELAND = [
     // Under the bells: the open fifth, then the flute's first call.
-    { pad: 'celeste', solo: 'voice', level: 0.4, drone: true, folk: true, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1'], ['Am', 'A5:1 G5:.5 E5:.5 G5:2'], ['F G', 'A4:2 D5:2']] },
+    { pad: 'celeste', solo: 'voice', level: 0.46, drone: true, folk: true, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1'], ['Am', 'A5:1 G5:.5 E5:.5 G5:2'], ['F G', 'A4:2 D5:2']] },
     // Up the tower: the flute alone over the drone.
-    { pad: 'celeste', solo: 'voice', level: 0.54, drone: true, folk: true, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.62, drone: true, folk: true, bars: HOME_A },
     // Belfry and front: the strings join with the chords.
     { pad: 'celeste', solo: 'voice', level: 0.62, folk: true, bars: HOME_B },
     // Forecourt and veranda: the melody in the tenor, flutes flowing above.
@@ -1046,16 +1047,19 @@
   const VERANDA = new Set(['veranda', 'night-veranda']);
   const BELLS = { tenor: 392, treble: 523.25 }; // nominals G4 and C5, in the key of the music
   // A tuned bell's partials as fractions of its nominal: [ratio, level, seconds to die away].
-  const BELL_PARTIALS = [[0.25, 0.3, 7], [0.5, 0.4, 5.5], [0.6, 0.32, 4.5], [0.75, 0.12, 3.2], [1, 0.5, 3.6], [1.5, 0.18, 1.8], [2, 0.14, 1.3], [2.51, 0.07, 0.8], [2.66, 0.05, 0.7], [3.01, 0.04, 0.5]];
+  const BELL_PARTIALS = [[0.25, 0.22, 8.5], [0.2508, 0.12, 8.5], [0.5, 0.4, 6], [0.6, 0.32, 4.5], [0.75, 0.12, 3.2], [1, 0.5, 3.6], [1.5, 0.18, 1.8], [2, 0.14, 1.3], [2.51, 0.07, 0.8], [2.66, 0.05, 0.7], [3.01, 0.04, 0.5]];
   function composeSounds(of) {
     let seed = 20261121;
     const random = () => (seed = (seed * 1103515245 + 12345) >>> 0) / 4294967296;
     const between = (a, b) => a + (b - a) * random();
     const out = [];
     const inside = (shot, time) => INSIDE.has(shot.id) || (shot.id === 'enter' && pose(time, of).eye[0] > 1);
-    // The bells, from the first picture to the tower: tenor and treble in turn, the last strokes softer.
-    for (let i = 0, time = 0.3; time < 14.5; i++, time += 1.2) {
-      out.push({ time, length: 7, kind: 'bell', nominal: i % 2 ? BELLS.treble : BELLS.tenor, level: (i % 2 ? 0.3 : 0.36) * (time > 10.5 ? 0.7 : 1), pan: i % 2 ? 0.24 : -0.2, wet: 0.5 });
+    // The bells call from the first picture to the tower: the tenor alone, then tenor and treble in
+    // turn, a swinging bell's strokes a little uneven; they die away as the camera reaches the tower.
+    out.push({ time: 0.15, length: 9, kind: 'bell', nominal: BELLS.tenor, level: 0.5, pan: -0.2, wet: 0.5 });
+    for (let i = 1, time = 2.1; time < 15; i++, time += 1.22 + between(-0.06, 0.06)) {
+      const fading = Math.min(1, Math.max(0, (time - 10) / 5));
+      out.push({ time, length: 9, kind: 'bell', nominal: i % 2 ? BELLS.treble : BELLS.tenor, level: (i % 2 ? 0.42 : 0.5) * (1 - 0.55 * fading), pan: i % 2 ? 0.24 : -0.2, wet: 0.5 + 0.2 * fading });
     }
     for (const shot of of.shots) {
       const night = shot.light === 'evening', end = shot.start + shot.duration, indoor = INSIDE.has(shot.id);
@@ -1165,7 +1169,10 @@
     music.organ.connect(music.dry); music.organ.connect(music.send);
     music.ambience = ctx.createGain(); music.ambience.gain.value = music.ambienceOn ? 1 : 0; music.ambience.connect(music.master);
     music.ambienceWet = ctx.createGain(); music.ambienceWet.gain.value = music.ambienceOn ? 1 : 0; music.ambienceWet.connect(music.send);
-    music.ambienceMeter = ctx.createAnalyser(); music.ambienceMeter.fftSize = 4096; music.ambience.connect(music.ambienceMeter);
+    // The bells open the music as well as the scene: they ring when either switch is on.
+    music.bells = ctx.createGain(); music.bells.gain.value = music.on || music.ambienceOn ? 1 : 0; music.bells.connect(music.master);
+    music.bellsWet = ctx.createGain(); music.bellsWet.gain.value = music.bells.gain.value; music.bellsWet.connect(music.send);
+    music.ambienceMeter = ctx.createAnalyser(); music.ambienceMeter.fftSize = 4096; music.ambience.connect(music.ambienceMeter); music.bells.connect(music.ambienceMeter);
     // Tremulant for the solo stops.
     music.solo = ctx.createGain(); music.solo.gain.value = 0.94;
     music.solo.connect(music.organ);
@@ -1181,9 +1188,10 @@
   function musicCut() {
     const ctx = music.context, old = music.epoch;
     if (old) for (const node of old) { node.gain.setTargetAtTime(0, ctx.currentTime, 0.03); setTimeout(() => node.disconnect(), 400); }
-    const plain = ctx.createGain(), solo = ctx.createGain(), place = ctx.createGain(), placeWet = ctx.createGain();
+    const plain = ctx.createGain(), solo = ctx.createGain(), place = ctx.createGain(), placeWet = ctx.createGain(), bells = ctx.createGain(), bellsWet = ctx.createGain();
     plain.connect(music.organ); solo.connect(music.solo); place.connect(music.ambience); placeWet.connect(music.ambienceWet);
-    music.epoch = [plain, solo, place, placeWet];
+    bells.connect(music.bells); bellsWet.connect(music.bellsWet);
+    music.epoch = [plain, solo, place, placeWet, bells, bellsWet];
   }
   // Start the score at a film time: notes already sounding there come in held.
   function musicSeek(time) {
@@ -1209,8 +1217,9 @@
   function placed(ctx, event, cutoff) {
     const pan = ctx.createStereoPanner();
     pan.pan.value = event.pan || 0;
-    pan.connect(music.epoch[2]);
-    if (event.wet) { const send = ctx.createGain(); send.gain.value = event.wet; pan.connect(send); send.connect(music.epoch[3]); }
+    const bell = event.kind === 'bell' ? 2 : 0;
+    pan.connect(music.epoch[2 + bell]);
+    if (event.wet) { const send = ctx.createGain(); send.gain.value = event.wet; pan.connect(send); send.connect(music.epoch[3 + bell]); }
     if (!cutoff) return pan;
     const muffle = ctx.createBiquadFilter(); muffle.type = 'lowpass'; muffle.frequency.value = cutoff; muffle.connect(pan);
     return muffle;
@@ -1328,6 +1337,8 @@
     music.master.gain.setTargetAtTime(soundOn() && film.running ? MASTER : 0, now, seconds / 3);
     music.organ.gain.setTargetAtTime(music.on ? 1 : 0, now, seconds / 3);
     music.ambience.gain.setTargetAtTime(ambience, now, seconds / 3); music.ambienceWet.gain.setTargetAtTime(ambience, now, seconds / 3);
+    const bells = music.on || music.ambienceOn ? 1 : 0;
+    music.bells.gain.setTargetAtTime(bells, now, seconds / 3); music.bellsWet.gain.setTargetAtTime(bells, now, seconds / 3);
   }
 
   /* ---------------------------------------------------------------- film */
@@ -1355,7 +1366,7 @@
 <button data-cinema="pause" title="Pause or play (Space)" aria-label="Pause or play">⏸</button>
 <button data-cinema="next" title="Next scene (→)" aria-label="Next scene">⏭</button>
 <button data-cinema="music" title="Organ music on or off (M)" aria-pressed="true">♪ Organ</button>
-<button data-cinema="ambience" title="Sounds of the place on or off: bells, birds, footsteps, crickets (N)" aria-pressed="true">◌ Ambience</button>
+<button data-cinema="ambience" title="Sounds of the place on or off: birds, footsteps, crickets; the opening bells ring while the organ or the ambience is on (N)" aria-pressed="true">◌ Ambience</button>
 <button data-cinema="full" title="Full screen (F)">⛶ Full screen</button>
 <button data-cinema="record" title="Play from the start and save the film as a video file">● Save as video</button>
 <button data-cinema="stop" title="Stop the tour (Esc)">✕ Stop</button>

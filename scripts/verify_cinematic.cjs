@@ -46,6 +46,9 @@ for (const shot of openers) {
   assert(at(2).chapter && !at(2).caption && !at(5.3).chapter && at(6.2).caption && !at(6.2).note && at(7.5).note, `${shot.id}: chapter card, then the heading, then its note`);
 }
 const plainShot = shots.find(shot => shot.id === 'facade');
+// The opening title clears early, leaving the rising picture and the bells.
+const opening = shots.find(shot => shot.id === 'opening');
+assert(film.showing(opening, 2).card && !film.showing(opening, 6).card, 'opening title clears by 6 s');
 assert(film.showing(plainShot, 1.5).caption && !film.showing(plainShot, 1.5).note && film.showing(plainShot, 2.3).note, 'a heading first, its note a moment later');
 
 // Scene order asked for by the owner: outside and inside by day, then the
