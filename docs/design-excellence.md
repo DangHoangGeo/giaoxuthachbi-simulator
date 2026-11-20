@@ -1,0 +1,90 @@
+# Design excellence programme
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.**
+
+## Purpose
+
+On 20 November 2026 the owner set a new aim. The model is no longer only a 3D illustration of the 2D drawings. It should develop the real church, with the best architecture and art that the parish can build. Every detail should be resolved.
+
+This document turns that aim into a working plan. It sets the design principles, the order of work, the fixed viewpoints used to judge each round, and the register of proposed departures from the drawings. It does not change any engineering basis. Owner approval of appearance is not approval of structure, services, capacity or compliance (AGENTS.md rules 1, 2 and 4).
+
+## Starting point, 20 November 2026
+
+The judgement below comes from the desktop captures of 19–20 November ([wall stone](../review/wall-stone-2026-11-20/README.md), [material depth](../review/material-depth-2026-11-19/README.md), [portal relief](../review/portal-relief-2026-11-20/comparison.jpg)). It compares them with the approved nave concept of 9 November ([concept](../review/interior-concept-2026-11-09/README.md)). It is a visual assessment, not a measurement.
+
+| Area | What already works | What still looks unfinished |
+| --- | --- | --- |
+| Façade and towers | Drawn composition, tower stages, statues, evening floodlighting | One cream tone everywhere, shallow reveals, ornament dissolves at a distance, windows read as dark holes |
+| Side and rear elevations | Porches, arches, roses, roof line | Large blank wall fields, small openings, plinth stone reads as flat patches without joints |
+| Site | Forecourt stair, approach, tree rows | Simple trees, flat lawn, blank courtyard plane, no gates, garden, grotto or grounds lighting |
+| Nave | Red lacquered columns, timber frame, ceiling panels, stations | Carving thinner than the concept, bare entrance wall, fans and speakers prominent |
+| Sanctuary | Red-and-gold frame, niche, crucifix, shrines, tabernacle | Altar, ambo, credence, candlesticks and flowers are still simple shapes |
+| Rendering | Contact shading, display finish, evening balance | Real-time lighting has no bounce light; corners and furniture lack soft shadow |
+
+## Design principles
+
+1. **One coherent style.** The building is Vietnamese Catholic Gothic–Romanesque outside, with a northern Vietnamese red-lacquer and gilt timber hall inside. Each new element should belong to one of these two vocabularies. It should not borrow a third style.
+2. **A hierarchy of richness.** Ornament and the most precious materials increase toward the most sacred places. The order is: sanctuary and altar, crucifix and tabernacle, nave timber and ceiling, façade portals, towers, side and rear elevations, then the site. The altar is the finest object in the church.
+3. **Altar and ambo belong together.** Both use the same pale stone and gilt vocabulary. The ambo is dignified, but it stays subordinate to the altar.
+4. **Hidden equipment.** Each fitting is concealed or matched to its finish, while its function is kept. This follows [hidden fittings](engineering/hidden-fittings.md) and the [central-view constraint](engineering/central-view-constraint.md). Ceiling fans stay all white by the owner's decision of 10 November 2026.
+5. **Real materials, honestly shown.** Use stone with joints and veining, lacquer with a clear coat, gilding with sparkle, and linen with folds. Each finish is a display interpretation until the parish has seen and approved physical samples.
+6. **Liturgical correctness.** Furnishings follow normal Catholic practice. The altar has a linen cloth and candles. The ambo carries a fall in the colour of the season. The credence holds the vessels. The sanctuary lamp burns beside the tabernacle. Only the parish can confirm its own customs.
+7. **Footprints and engineering stay put unless decided.** Visual refinement keeps the existing positions, footprints and heights of furnishings, as well as the fitting envelopes, routes and analysis inputs. Changing any of these needs its own coordinated check.
+
+## Order of work
+
+| Stage | Scope | Status |
+| --- | --- | --- |
+| 1 | This programme: principles, viewpoints, departure register, open questions | Done, 20 Nov 2026 |
+| 2 | **Sanctuary furnishings:** carved stone altar with marble veining, corner colonnettes and a gilded frieze; ambo with a matching column and a fall in the season's colour; red-and-gold credence table with vessels; brass altar candlesticks | Started, 20 Nov 2026: see [sanctuary furnishings](#stage-2-sanctuary-furnishings) |
+| 3 | **Nave timber and ceiling to the concept:** deeper carved capitals, lotus friezes on the ties, coffered ceiling panels, carved pew ends, a composed entrance wall | Pending |
+| 4 | **Exterior depth:** stone tones and trim, deeper reveals, window tracery and glass seen from outside, real jointed plinth stone, a richer rear elevation | Pending |
+| 5 | **Site and grounds:** tree species and canopies, courtyard paving pattern, gates and fence, garden and Marian grotto, grounds lighting | Pending: needs site survey information |
+| 6 | **Rendering:** baked or approximate bounce light and soft shadow for the interior | Pending: technical study first |
+| Separate | Concealment of the fans (engineering item in the central-view constraint) | Engineering hold |
+
+The owner's working preference (10 November 2026) still applies. Each stage is built in full, and the owner then reviews it visually once. Each stage ends with captures from the fixed viewpoints below and a record of changes.
+
+## Fixed review viewpoints
+
+Every round is judged from the same views, by day and in the evening, on desktop in presentation mode with the drawn frame. The walking camera has its eye at 1.60 m and a 48° vertical field of view. Interior views follow the [interior baseline](../review/interior-baseline-2026-11-10/README.md).
+
+| # | View | Camera X, Z (m) | Looking |
+| --- | --- | --- | --- |
+| V1 | Entrance toward the altar | 3, 0 | +X |
+| V2 | Mid-nave | 22, 0 | +X |
+| V3 | Sanctuary | 37, 0 | +X |
+| V4 | Side aisle, B side | 10, −4.5 | +X |
+| V5 | Ceiling and trusses | 18, 0 | +X, pitched up 0.80 rad |
+| V6 | Back toward the entrance | 35, 0 | −X |
+| V7 | Altar close-up | 41.2, 0 | +X, eye 1.45 m |
+| V8 | Ambo and credence, B side | 42, 2.5 | toward −Z |
+| V9 | Front façade from the courtyard | orbit | front |
+| V10 | Three-quarter view of the church | orbit | from the H front corner |
+| V11 | Side porch elevation | orbit | side |
+| V12 | Rear elevation | orbit | rear |
+
+## Departures from the drawings
+
+This register lists proposals that go beyond what the drawings show. Each item is `CONCEPT` until the owner approves its appearance. A specialist must then design it, and the parish must approve it. The drawn version stays recorded in the owning document.
+
+| ID | Date | Element | Drawing basis | Proposal | Owner | Engineering |
+| --- | --- | --- | --- | --- | --- | --- |
+| DX-01 | 20 Nov 2026 | Altar | Plain altar in sanctuary sheets; pale stone kept by the owner on 3 Nov 2026 | Veined pale marble, corner colonnettes with gilded capitals, gilded frieze under the mensa, plinth step | Appearance review pending | Weight, stone, fixing and floor bearing open |
+| DX-02 | 20 Nov 2026 | Ambo | Pedestal and sloped desk (concept) | Fluted stone column, moulded desk edge, fall in the liturgical colour | Appearance review pending | Microphone and cable passage unchanged; furniture design open |
+| DX-03 | 20 Nov 2026 | Credence | Table (concept) | Red-lacquer and gilt table on turned legs with a carved apron; chalice, cruets and lavabo bowl shown | Appearance review pending | None |
+| DX-04 | 20 Nov 2026 | Altar candlesticks | Candle cups (concept) | Six brass baluster candlesticks with drip pans | Appearance review pending | Open flame; fire safety review open |
+
+Earlier departures stay in their own records. Examples are the red cross ([sanctuary model](sanctuary-model.md)), the arches over the shrines and the restored outer porch wall ([façade model](facade-model.md)).
+
+## Questions for the owner and parish
+
+1. **Patron saint and dedication of the parish.** The art programme for the windows, the façade niche and the sanctuary should centre on the patron. No document in this repository records the patron.
+2. **Art programme.** Which subjects should go in the stained glass of the nave windows, the rose windows and the Stations of the Cross? The current Marian art is on hold (H8).
+3. **Liturgical colour shown by default.** This revision shows green for Ordinary Time on the ambo fall.
+4. **Sanctuary carpet.** Many Vietnamese parishes lay a red carpet on the sanctuary steps and the dais. Does the parish want one?
+5. **Site information.** Before stage 5, a site plan is needed: boundaries, existing trees, the grotto location, gates and levels.
+
+## Stage 2: sanctuary furnishings
+
+Recorded in [interior finish](interior-finish.md#sanctuary-furnishings--20-november-2026).

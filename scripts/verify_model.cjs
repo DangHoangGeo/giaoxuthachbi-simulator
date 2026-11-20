@@ -14,7 +14,7 @@ const ctx = new Proxy({
 const document = {getElementById(){return null},createElement(){return {width:512,height:512,getContext(){return ctx}}}};
 const sandbox = {console,document,location:{search:''},URLSearchParams,Uint8ClampedArray,window:{}};
 vm.createContext(sandbox);
-for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js', 'interior-finish.js','sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
+for(const file of ['texture-memory.js', 'render-batches.js', 'references.js','glass-art.js','carving.js','exterior-ornament.js','tower-spandrel-profile.js','facade-crest-profile.js','detail-towers-profile.js','detail-front-profile.js','detail-rear-profile.js','detail-sides-profile.js','entrance-approach.js','decoration.js', 'interior-finish.js','sanctuary-furnishings.js','sanctuary.js', 'facade.js', 'marian-art.js','porches.js', 'stations.js', 'towers.js', 'roofline.js','realism.js','planning.js'])vm.runInContext(fs.readFileSync(path.join(root,'Thach_Bi_Viewer',file),'utf8'),sandbox);
 let src=fs.readFileSync(path.join(root,'Thach_Bi_Viewer/bundle.js'),'utf8');
 const begin=src.indexOf('    Us = document.getElementById("viewport"),');
 const end=src.indexOf('  var ce = {};',begin);
@@ -886,6 +886,28 @@ const amboFoot=nodes.find(o=>o.name==='Proposed ambo foot'),altarFoot=nodes.find
 near(bounds(amboFoot).getCenter(new T.Vector3()).x,41.3,'Ambo position');
 assert(bounds(altarFoot).min.x-bounds(amboFoot).max.x>=2,'At least 2 m between the ambo and the altar');
 assert(bounds(amboFoot).min.x-39.345>=1,'Ambo stays 1 m back from the head of the sanctuary steps');
+// Sanctuary furnishings, design excellence stage 2 (20 Nov 2026): appearance only, footprints kept.
+{
+  const one=name=>{const list=nodes.filter(o=>o.name===name);assert.equal(list.length,1,name+' exists once');return list[0];};
+  const base=bounds(one('Proposed altar stone base')),mensa=bounds(one('Proposed altar mensa'));
+  near(base.getCenter(new T.Vector3()).x,44.24,'Altar stays on its drawn centre');
+  assert(/marble/.test(one('Proposed altar stone base').material.name)&&!/lacquer/.test(one('Proposed altar stone base').material.name),'Altar base is pale marble, not lacquer');
+  const columns=bounds(one('Altar red marble colonnette'));
+  assert(columns.min.y>=base.min.y&&columns.max.y<=mensa.min.y,'Altar colonnettes stand under the mensa');
+  assert(columns.min.x>=mensa.min.x-.001&&columns.max.x<=mensa.max.x+.001&&Math.abs(columns.min.z)<=Math.abs(mensa.min.z)+.001,'Altar colonnettes stay inside the mensa overhang');
+  const lifted=nodes.filter(o=>o.name==='Proposed candle'&&o.userData.liftedBy);
+  assert.equal(lifted.length,6,'Six altar candles stand on candlesticks');
+  for(const o of lifted)assert(bounds(o).min.y>mensa.max.y+.2,'Altar candle stands on its stick');
+  const fall=bounds(one('Ambo fall · green silk')),socket=bounds(one('Proposed ambo microphone socket')),mic=bounds(one('Illustrative ambo microphone'));
+  assert(fall.max.x<socket.min.x&&fall.max.x<mic.min.x,'Ambo fall hangs clear in front of the microphone socket and microphone');
+  assert(fall.min.y>bounds(one('Ambo cross stem')).max.y,'Ambo fall leaves the ambo cross visible');
+  assert.equal(nodes.filter(o=>o.name==='Credence support').length,0,'Credence stone posts replaced by turned legs');
+  const top=bounds(one('Proposed credence table top')),legs=bounds(one('Credence turned leg · red lacquer'));
+  assert(legs.min.x>=top.min.x&&legs.max.x<=top.max.x&&legs.min.z>=top.min.z&&legs.max.z<=top.max.z,'Credence legs stay inside the table footprint');
+  for(const name of ['Credence gilded chalice','Credence gilded ciborium','Credence glass cruet','Credence brass lavabo bowl']){
+    const v=bounds(one(name));assert(v.min.y>=top.max.y&&v.min.z>=top.min.z&&v.max.z<=top.max.z,name+' stands on the credence');
+  }
+}
 // Dais and side floors at the levels of the CAD file of 23 Oct 2026 (sections 25 and 45),
 // with the free-standing furniture on the dais floor and the cross still on its niche base.
 {

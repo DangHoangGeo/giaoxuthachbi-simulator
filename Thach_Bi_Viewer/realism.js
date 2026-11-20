@@ -1038,6 +1038,8 @@
     window.CHURCH_DECORATION?.prepare(ctx);
     // Interior finish study, 10 Nov 2026: paving, skirting, cornice, ceiling panels, sanctuary details.
     window.CHURCH_INTERIOR_FINISH?.prepare(ctx);
+    // Design excellence stage 2, 20 Nov 2026: altar, ambo, credence and candlesticks (CONCEPT).
+    window.CHURCH_SANCTUARY_FURNISHINGS?.prepare(ctx);
     applyJoineryColours();
     applyGlass();
     finish(true);
