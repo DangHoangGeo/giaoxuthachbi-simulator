@@ -4,36 +4,20 @@
 (() => {
   const spec = {
     stair: { front: -9.219, side: 10.392, tread: .35, count: 10, lower: -2.08, upper: -.48, backB: -.499, backH: -3.159 },
-    ramp: { x: -.9396, z: 13.5423, radius: 2, inner: .18, zStart: 10.392, xStart: .4604, xTurn: 4.0, xEnd: 5.4, width: 1.4, lower: -2.08, upper: -.48 }
+    ramp: { x: -.9396, z: 13.5423, radius: 2, inner: .18, zStart: 10.392, landingStart: 4.0, xEnd: 5.4, lower: -2.08, upper: -.48 }
   };
   function rampLayout() {
-    const r=spec.ramp, first=r.z+r.inner, zStarts=[first, first+2, first+3.5, first+5, first+6.5];
-    const initial=r.z-r.zStart, transition=r.xStart-r.x, length=r.xTurn-r.xStart;
-    const slope=(r.upper-r.lower)/(initial+transition+5*length);
-    const turnY=r.upper-initial*slope, startY=turnY-transition*slope;
-    const lanes=zStarts.map((z,i)=>({z0:z,z1:z+r.width, from:startY-i*length*slope, to:startY-(i+1)*length*slope, forward:i%2===0}));
-    return {slope,turnY,lanes};
+    const r=spec.ramp, run=(r.z-r.zStart)+(r.landingStart-r.x);
+    const slope=(r.upper-r.lower)/run;
+    return {run,slope,turnY:r.upper-(r.z-r.zStart)*slope};
   }
   function rampHeight(x,z) {
-    const r=spec.ramp, {slope,turnY,lanes}=rampLayout();
+    const r=spec.ramp, {slope,turnY}=rampLayout();
     if(x>=r.x-r.radius && x<=r.x-r.inner && z>=r.zStart && z<=r.z) return r.upper-(z-r.zStart)*slope;
     const distance=Math.hypot(x-r.x,z-r.z);
     if(x<=r.x && z>=r.z && distance>=r.inner && distance<=r.radius) return turnY;
-    if(x>=r.x && x<=r.xStart){
-      const t=(x-r.x)/(r.xStart-r.x), outer=(r.z+r.radius)+(lanes[0].z1-(r.z+r.radius))*t;
-      if(z>=lanes[0].z0 && z<=outer) return turnY-(x-r.x)*slope;
-    }
-    for(let i=0;i<lanes.length;i++) {
-      const lane=lanes[i];
-      if(x>=r.xStart && x<=r.xTurn && z>=lane.z0 && z<=lane.z1) {
-        const t=lane.forward?(x-r.xStart)/(r.xTurn-r.xStart):(r.xTurn-x)/(r.xTurn-r.xStart);
-        return lane.from+(lane.to-lane.from)*t;
-      }
-      if(i<lanes.length-1) {
-        const end=lane.forward?x>=r.xTurn&&x<=r.xEnd:x>=r.x&&x<=r.xStart;
-        if(end && z>=lane.z0 && z<=lanes[i+1].z1)return lane.to;
-      } else if(x>=r.xTurn && x<=r.xEnd && z>=lane.z0 && z<=lane.z1)return r.lower;
-    }
+    if(x>=r.x && x<=r.xEnd && z>=r.z+r.inner && z<=r.z+r.radius)
+      return x>=r.landingStart ? r.lower : turnY-(x-r.x)*slope;
     return null;
   }
   function stairHeight(x,z) {
@@ -68,9 +52,8 @@
       box('Approach step · P05 side B',s.front,s.backB,-edge,-s.side,top,mat.floor,'P05 PLAN / RISER INFERRED / ACCESS HOLD');
       box('Approach step · P05 side H',s.front,s.backH,s.side,edge,top,mat.floor,'P05 PLAN / RISER INFERRED / ACCESS HOLD');
     }
-    const r=spec.ramp, {slope,turnY,lanes}=rampLayout(), positions=[], topIndices=[], supportIndices=[];
-    // P05 source curve is retained; five short switchback runs and all levels
-    // are a reversible circulation concept, awaiting coordinated design.
+    const r=spec.ramp, {turnY}=rampLayout(), positions=[], topIndices=[], supportIndices=[];
+    // P05 curve retained. Owner, 20 Nov 2026: one short ramp near the tower (no switchback). Slope about 1:5.1.
     function strip(rows) {
       const start=positions.length/3;
       for(const row of rows)for(const [x,z,y] of row)positions.push(x,y,z);
@@ -84,18 +67,15 @@
     }
     strip([[[r.x-r.radius,r.zStart,r.upper],[r.x-r.inner,r.zStart,r.upper]],[[r.x-r.radius,r.z,turnY],[r.x-r.inner,r.z,turnY]]]);
     const turn=[];for(let i=0;i<=24;i++){const a=Math.PI-i*Math.PI/48;turn.push([[r.x+r.radius*Math.cos(a),r.z+r.radius*Math.sin(a),turnY],[r.x+r.inner*Math.cos(a),r.z+r.inner*Math.sin(a),turnY]]);}strip(turn);
-    strip([[[r.x,r.z+r.radius,turnY],[r.x,lanes[0].z0,turnY]],[[r.xStart,lanes[0].z1,lanes[0].from],[r.xStart,lanes[0].z0,lanes[0].from]]]);
-    for(let i=0;i<lanes.length;i++){
-      const lane=lanes[i], y0=lane.forward?lane.from:lane.to, y1=lane.forward?lane.to:lane.from;
-      strip([[[r.xStart,lane.z1,y0],[r.xStart,lane.z0,y0]],[[r.xTurn,lane.z1,y1],[r.xTurn,lane.z0,y1]]]);
-      const back=lane.forward, x0=back?r.xTurn:r.x, x1=back?r.xEnd:r.xStart, z1=i<lanes.length-1?lanes[i+1].z1:lane.z1;
-      strip([[[x0,z1,lane.to],[x0,lane.z0,lane.to]],[[x1,z1,lane.to],[x1,lane.z0,lane.to]]]);
-    }
+    strip([r.x,r.landingStart,r.xEnd].map(x=>{
+      const y=x>=r.landingStart?r.lower:rampHeight(x,(r.z+r.inner+r.z+r.radius)/2);
+      return [[x,r.z+r.radius,y],[x,r.z+r.inner,y]];
+    }));
     function surface(index,material,name) {
       const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(positions,3));g.setIndex(index);g.computeVertexNormals();
-      const m=new T.Mesh(g,material);m.name=name;m.userData={status:'COMPACT SWITCHBACK / CONCEPT / ENGINEERING HOLD',source:'P05 D7CA4E–D7CA6A upper curve; switchbacks and levels proposed'};m.receiveShadow=true;m.castShadow=true;group.add(m);
+      const m=new T.Mesh(g,material);m.name=name;m.userData={status:'SHORT RAMP NEAR THE TOWER / CONCEPT / ENGINEERING HOLD',source:'P05 D7CA4E–D7CA6A; owner choice 20 Nov 2026; levels proposed; slope about 1:5.1'};m.receiveShadow=true;m.castShadow=true;group.add(m);
     }
-    surface(topIndices,mat.floor,'H tower ramp · compact switchback concept');
+    surface(topIndices,mat.floor,'H tower ramp · short ramp near the tower');
     surface(supportIndices,mat.foundation,'H ramp support · concept');
     const rails=new T.Group();rails.name='H ramp outside handrail · concept / engineering hold';group.add(rails);
     function rod(a,b,name) {
@@ -111,12 +91,11 @@
       }
       const end=path[path.length-1];rod(end,[end[0],end[1]+.9,end[2]],'Ramp outside handrail post · concept');
     }
-    const upperRail=[[r.x-r.radius,r.upper,r.zStart],[r.x-r.radius,turnY,r.z]];
-    for(let i=1;i<=12;i++){const a=Math.PI-i*Math.PI/24;upperRail.push([r.x+r.radius*Math.cos(a),turnY,r.z+r.radius*Math.sin(a)]);}handrail(upperRail);
-    const last=lanes[lanes.length-1];handrail([[r.xStart,last.from,last.z1],[r.xTurn,last.to,last.z1],[r.xEnd,last.to,last.z1]]);
-    // Disconnected exterior-only visual rails deliberately do not claim a safe
-    // continuous guard: inner edges and intermediate drops remain on hold.
-    data.assumptions.push('P05 approach has ten plan nosings and returns on both sides. Riser heights are inferred as 160 mm and may conflict with accessibility requirements. H-side ramp includes a compact five-run switchback concept ending at the tower rear. It connects the lower courtyard to the forecourt only. Church-floor connection, turn clearance, internal edge protection, handrail continuity, fixing and drainage remain unapproved.');
+    const outerRail=[[r.x-r.radius,r.upper,r.zStart],[r.x-r.radius,turnY,r.z]];
+    for(let i=1;i<=12;i++){const a=Math.PI-i*Math.PI/24;outerRail.push([r.x+r.radius*Math.cos(a),turnY,r.z+r.radius*Math.sin(a)]);}
+    for(const x of [r.landingStart,r.xEnd])outerRail.push([x,r.lower,r.z+r.radius]);
+    handrail(outerRail);
+    data.assumptions.push('P05 approach has ten plan nosings and returns on both sides. Riser heights are inferred as 160 mm. At the owner\'s choice (20 November 2026) the H side has one short ramp near the tower, from the P05 curve to the tower rear, with an outside handrail only; its slope is about 1:5.1. Accessible access, the forecourt-to-church connection, handrail, fixing and drainage remain open design items.');
   }
   window.CHURCH_ENTRANCE_APPROACH={spec,prepare,floorHeight,rampLayout};
 })();
