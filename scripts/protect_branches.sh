@@ -1,19 +1,19 @@
 #!/bin/sh
-# Protect the dev and main branches on GitHub so that changes arrive only
+# Protect the main branch on GitHub so that changes arrive only
 # through a reviewed pull request. Run as the repository owner with the
 # GitHub CLI:
 #
-#   sh scripts/protect_branches.sh            # apply to dev and main
+#   sh scripts/protect_branches.sh            # apply to main
 #   sh scripts/protect_branches.sh --show     # print the current protection
-#   BRANCHES=dev sh scripts/protect_branches.sh
+#   BRANCHES="main other" sh scripts/protect_branches.sh
 #
-# dev receives contributions; main receives only what the owner promotes from
-# dev. GitHub offers branch protection on public repositories, and on private
+# Pull requests go straight to main; the dev branch was retired on 21 November
+# 2026 (owner decision) and no longer exists. GitHub offers branch protection on public repositories, and on private
 # ones only with a paid plan. See docs/open-source/publication-checklist.md.
 set -eu
 
 REPO="${REPO:-DangHoangGeo/giaoxuthachbi-simulator}"
-BRANCHES="${BRANCHES:-dev main}"
+BRANCHES="${BRANCHES:-main}"
 
 if [ "${1:-}" = "--show" ]; then
   for BRANCH in $BRANCHES; do
