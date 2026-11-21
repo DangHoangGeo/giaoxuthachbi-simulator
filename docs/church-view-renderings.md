@@ -51,6 +51,8 @@ Views **10–14** add exterior and interior side-entrance details, a close look 
 
 **USER CONFIRMED appearance intent:** view **11** governs the side-window shutter design: paired solid warm dark-brown timber leaves with long carved foliate panels and restrained gilding. Views **10, 12 and 14** were revised to use that appearance outside as well. Earlier wide views remain earlier design studies and may show superseded shutter treatments; use these new details when coordinating future model changes.
 
+**Proposed change, 21 November 2026 (DX-09, owner confirmation pending):** so that the open shutters can lie flat against the wall, the model splits each leaf of the inner C/G windows into two folding halves with the same panel design, hung inside the glass. See [open doors and windows](design-excellence.md#open-doors-and-windows-21-november-2026).
+
 Keep the different opening types distinct. Side entrance double doors retain their round floral panels; tower louvers remain louvers; the five rear lower windows remain a separate glazing type. View **13** governs the rear elevation's opening count and appearance. The evening oblique view stylizes reflections and colored glazing; it is not a fabrication drawing. Side stair flights run parallel to the long walls, with no new doorway or stair flight across the rear end wall. The Assumption statue remains at the front facade only.
 
 ## Top-down roof and column connections
