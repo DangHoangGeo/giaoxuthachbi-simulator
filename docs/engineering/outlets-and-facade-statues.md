@@ -107,6 +107,21 @@ Each is its own switch on **Controls → Towers**. The Off / Evening / Festival 
 
 `Thach_Bi_Viewer/simulator/catalog.js` now builds figures from a lofted body with drapery folds, a modelled head (brow, eye sockets, nose, lips, chin), veil or hair and beard, sleeves, and hands with fingers. It replaces the earlier lathe-and-sphere figures of Our Lady, Saint Joseph (now carrying the Child) and the Sacred Heart, and adds the three façade figures. Positions, IDs and saved layouts are unchanged. The crucifix corpus is part of the building model and was **not** changed. These are generated approximations for viewing distance, not scans or sculptor's models.
 
+**Painted and enlarged façade figures, 21 November 2026 (owner request, CONCEPT).** The owner found the three façade statues too small and Our Lady not yet lifelike (no hair, no colour), and gave a painted Assumption as the reference. The figures were one ivory finish with hair and veil in the same tone; they now carry a painted scheme. Changes in `catalog.js`:
+
+| Figure | Before | Now |
+| --- | --- | --- |
+| Assumption (central niche) | Ivory, 2.20 m, arms raised high | 2.42 m on the same cloud plinth, filling the 2.92 m opening. Painted: white robe, blue mantle with a gold edge, short white veil set back to show the brown hair, gold girdle, flesh-tone face and hands with painted eyes and lips, star halo. Arms open and lowered, palms out, face turned up, as in the reference. |
+| Saint Peter (B side) | Ivory, 1.78 m | 2.00 m. Blue tunic, ochre mantle with a gold edge, grey hair and beard, gold keys, red book with gilt bands, brown sandals. |
+| Saint Paul (H side) | Ivory, 1.78 m | 2.00 m. Green tunic, red mantle with a gold edge, dark hair and beard, steel sword with a gold hilt, red book. |
+
+The lowered arms make the Assumption narrower than before: 1.20 m wide overall in the 1.422 m niche, where the raised arms measured 1.42 m. That relieves the tight fit noted in section 2. Envelopes (`review/facade-statues-2026-11-21/bounds-after.json`):
+
+- Assumption: top +19.550 (crown +19.604), back of figure X 4.51 (niche back 4.94).
+- Saints: 0.72 m wide in 1.198 m niches, top +12.421 (crown +12.907).
+
+Positions, IDs, the hidden lines and candles, circuits and saved layouts are unchanged. Paint on an exterior figure needs a UV- and weather-stable system, a repainting interval and safe access to the niche; sculptor, material, weight, anchorage and finish remain open. [Desktop views](../../review/facade-statues-2026-11-21/README.md)
+
 ## 6. Checks, results and what remains
 
 Software checks on the final source, 9 October 2026 (not construction approval):
