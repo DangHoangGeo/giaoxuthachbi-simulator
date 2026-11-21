@@ -99,6 +99,20 @@ for(const [part,predicate,handle] of [['rear',p=>p.x>50,'D902FD'],['wings',p=>Ma
 near(box(named('Porch parapet top rail')).max.y,Math.max(...roof('D99C62').elevation_m.map(p=>p[1])),'E02 parapet top');
 near(subset('Gable raking cornice',p=>p.x>50).max.y,12.471821785,'E03 native mitred cornice upper end');
 near(subset('Gable raking cornice',p=>Math.abs(p.z)>13).max.y,9.829528809,'EW native mitred cornice upper end');
+// Test actual solid relief at the formerly broken ends and the console-to-pier join.
+{
+  const ray=new T.Raycaster(new T.Vector3(),new T.Vector3(-1,0,0),0,4.8);
+  const hits=(name,z,y)=>{
+    ray.ray.origin.set(58,y,z);
+    return ray.intersectObjects(named(name),false).some(hit=>hit.point.x>53.24);
+  };
+  for(const side of [-1,1]){
+    for(const [z,y] of [[4.004,11.16],[3.94,10.67],[6.94,8.93],[7.07,8.42],[3.085,11.89],[3.235,11.2]])
+      assert(hits('Rear gable rake cresting solid · E03',side*z,y),`E03 crest end has solid relief at Z ${side*z}, Y ${y}`);
+    assert(!hits('Gable aedicule console acanthus · EW',side*2,13.668),'No unsupported EW fragment beside the E03 console');
+    assert(hits('Gable aedicule console',side*1.047,13.8)&&hits('Gable aedicule pier',side*1.047,13.8),'E03 console overlaps its niche pier');
+  }
+}
 // Review of 31 Oct 2026: front corner pier pedestal (E01B C45432..C45487, facade.csv F33–F35),
 // the traced cartouche frame (C449B8, C45767..C4577C) and the lantern crown silhouette.
 const H=p=>p.z>11&&p.x<2;

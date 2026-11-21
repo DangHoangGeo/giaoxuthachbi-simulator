@@ -166,3 +166,13 @@ Chủ đầu tư yêu cầu cho đầu nhà phía cung thánh: phần vàng dư�
   - Độ sâu, khung gỗ, màu kính và hình vẽ kính là **CONCEPT**. Vật liệu, cách lắp và thoát nước bậu chờ kiến trúc sư xác nhận.
 - **Tường dưới lan can đầu hiên:** giữa gờ tầng trệt (+6,323919) và dải lan can (+6,875776), u 7,640–10,240 mỗi bên, trước đây để trống, nhìn xuyên thấy mái hiên phía sau. E03 vẽ tường đặc ở đây, nên nay là khối tường hoàn thiện như tường, sâu từ mặt tường hồi (−0,44) tới +0,26 (DERIVED). Đèn pha lễ hội L220/L221 (X 52,415–52,778) vẫn nằm sau khối tường, cách 18 mm, chùm sáng hướng lên khám đỉnh vẫn đi qua phía trên; đèn nay được che khuất khi nhìn từ ngoài.
 - Cửa sổ chớp của hai tháp chuông không đổi trong lượt này: đó là cửa thoát âm của tháp, không thuộc đầu nhà phía cung thánh.
+
+### Khép các đoạn trang trí đầu hồi sau · 22/11/2026
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** Ảnh chủ đầu tư đánh dấu đoạn hoa lá trên hai mái dốc sát trụ D/E và C/G, cùng mảnh cuộn lá rời bên khám. Bộ lọc của lượt trước đã bỏ nét ở hai đầu dải dưới và tại đầu ngoài dải trên.
+
+- **Dải dưới:** bổ sung 58 cung E03 từ hai đoạn `D90904–D9092E` và `D9105C–D9107B`. Hai cung `D90912` và `D90918` trùng nhau, nên chỉ lấy `D90912`. Tổng cộng 485 dòng.
+- **Dải trên:** bổ sung chín cung ở chân công-xôn và sát trụ D/E (`D9096C`, `D9096F` và phần thiếu trong `D91135–D91145`). Tổng cộng 164 dòng. Hai dải giữ tọa độ E03 của phía H và đối xứng sang phía B.
+- **Tiếp giáp trong mô hình:** mặt đặc nối tới cạnh trụ và lấn 20 mm vào gờ dốc; các ô cong giữa chóp vẫn hở. Nền công-xôn khám lấn 20 mm vào trụ khám. Hai cung EW `DAB6C3` và `DAB6C4` nằm rời tấm nền và không có nét tương ứng trên E03, nên chỉ bỏ ở đầu hồi sau. Độ dày, mối tiếp giáp và gắn kết vẫn là **CONCEPT / ENGINEERING HOLD**.
+
+Đối chiếu DXF theo handle và kiểm tra mặt đặc bằng tia trên cả hai phía. Kiểm tra desktop trực diện, xiên từ hai phía và vào buổi tối. Mái và các dải EW ở hai cánh giữ hình học hiện có; thiết bị, hướng chiếu, tuyến điện và sổ khối lượng lấy cùng dữ liệu như trước. Ảnh hoặc bản PDF có hình đầu hồi cũ vẫn là ảnh của lượt trước. [Ảnh kiểm tra](../../review/rear-gable-2026-11-22/README.md)

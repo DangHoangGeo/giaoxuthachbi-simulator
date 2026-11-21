@@ -14,7 +14,7 @@
   // docs/exterior-23102026/roofline-witnesses.json, not from fitting a screenshot.
   const archProfiles = {"rear":{"inner":[{"c":[0.284145374,14.61770302],"r":0.23585353,"a":[0.0,87.86369654799267],"handle":"D9016B"},{"c":[-1.096e-06,14.852882856],"r":0.2929388,"a":[0.09970567773280142,179.9002943189322],"handle":"D90172"},{"c":[-0.284147566,14.61770302],"r":0.23585353,"a":[92.13630345200733,180.0],"handle":"D90178"}],"outer":[{"c":[0.284145374,14.61770302],"r":0.31585353,"a":[0.0,74.91446718982118],"handle":"D9016A"},{"c":[-1.096e-06,14.852882856],"r":0.3729388,"a":[10.78547138934081,169.2145286106592],"handle":"D90171"},{"c":[-0.284147566,14.61770302],"r":0.31585353,"a":[105.0855328101788,180.0],"handle":"D90170"}],"envelope":{"c":[-1.096e-06,14.852882856],"r":0.7089388,"a":[26.26471907744193,153.7352809225581],"handle":"D90176"}},"side":{"inner":[{"c":[0.284159941,11.975410069],"r":0.23585353,"a":[0.0,87.8636965446606],"handle":"DAB425"},{"c":[1.3471e-05,12.210589905],"r":0.2929388,"a":[0.09970568106790674,179.9002943222671],"handle":"DAB41F"},{"c":[-0.284132999,11.975410069],"r":0.23585353,"a":[92.13630345533939,180.0],"handle":"DAB418"}],"outer":[{"c":[0.284159941,11.975410069],"r":0.31585353,"a":[0.0,74.91446718985961],"handle":"DAB41D"},{"c":[1.3471e-05,12.210589905],"r":0.3729388,"a":[10.78547138816362,169.2145286118364],"handle":"DAB41E"},{"c":[-0.284132999,11.975410069],"r":0.31585353,"a":[105.0855328101404,180.0],"handle":"DAB417"}],"envelope":{"c":[1.3471e-05,12.210589905],"r":0.7089388,"a":[26.26471907895724,153.7352809210427],"handle":"DAB423"}}};
   const spec = {
-    revision: '2026-11-03-ew-decoration-2',
+    revision: '2026-11-22-e03-rake-cresting',
     // E02 LINE D99258 / D99C5F..D99C62; axis pinnacle ARC D9B1A6.
     parapet: { z: 10.6, y: [6.323919332, 7.073919332], plinth: .05, rail: .15,
       half: 0.12, pedestal: 0.25, pinnacle: .952407245, runs: [['2′', '9'], ['10', '12']] },
@@ -306,6 +306,12 @@
       };
       // Crowning aedicule: lobed niche between two piers with pinnacles, volutes, ball and cross.
       const aedicule = (E, d = GD) => {
+        const rear = E === spec.rear.aedicule;
+        const volute = window.CHURCH_FACADE_CREST_PROFILE.wingVolute;
+        // These two EW fragments are beyond the console backing and have no E03 counterpart.
+        const consoleRows = rear ? volute.filter(([handle]) => handle !== 'DAB6C3' && handle !== 'DAB6C4') : volute;
+        const consoleRelief = solid(consoleRows, rear ? 'rearVolute' : 'wingVolute', .025);
+        const consoleStrokes = rear ? towerSpandrel(consoleRows, .022, .001, 4) : ew('wingVolute', .022);
         const inner = profilePoints(E.arch.inner), outer = profilePoints(E.arch.outer);
         const envelope = arcPoints(E.arch.envelope);
         const outline = [[-E.pier[1], E.base], [E.pier[1], E.base], [E.pier[1], E.pierTop], ...envelope, [-E.pier[1], E.pierTop]];
@@ -346,13 +352,15 @@
           // the traced outline. The backing silhouette follows the traced outer curve: DERIVED.
           // Its foot follows the upper rake top (slope 0.7496 from |u| 1.425) to the inner pier cornice
           // (|u| 1.905), so it stands on the gable instead of floating over it; full pier depth.
-          const sil = [[1.06, 9.83], [1.425, 9.8295], [1.905, 9.4697], [1.905, 9.80], [2.02, 9.85], [2.02, 9.98], [1.85, 10.05], [1.74, 10.02], [1.78, 10.2], [1.76, 10.38], [1.66, 10.56], [1.52, 10.78], [1.38, 11.05], [1.29, 11.35], [1.25, 11.62], [1.26, 11.78], [1.2, 11.86], [1.06, 11.86]];
-          const c = poly(sil.map(([u, v]) => [e * u, v + dv]));
-          slab('Gable aedicule console', W, e > 0 ? c : poly(sil.map(([u, v]) => [e * u, v + dv]).reverse()), 0, d, EWD);
+          // Lap into the rear niche pier so a light gap cannot open along the joint.
+          const innerEdge = rear ? E.pier[1] - .02 : 1.06;
+          const sil = [[innerEdge, 9.83], [1.425, 9.8295], [1.905, 9.4697], [1.905, 9.80], [2.02, 9.85], [2.02, 9.98], [1.85, 10.05], [1.74, 10.02], [1.78, 10.2], [1.76, 10.38], [1.66, 10.56], [1.52, 10.78], [1.38, 11.05], [1.29, 11.35], [1.25, 11.62], [1.26, 11.78], [1.2, 11.86], [innerEdge, 11.86]];
+          const outline = sil.map(([u, v]) => [e * u, v + dv]);
+          slab('Gable aedicule console', W, poly(e > 0 ? outline : outline.reverse()), 0, d, EWD);
           // Owner, 3 Nov 2026 (clarity): a 25 mm solid leaf under the acanthus and a 22 mm stroke on top, so
           // the scroll reads at viewing distance instead of breaking into a dotted wire. Relief DERIVED.
-          addSolid('Gable aedicule console acanthus solid · EW', solid(window.CHURCH_FACADE_CREST_PROFILE.wingVolute, 'wingVolute', .025), at(0, dv, d, SC(e, 1, 1)), EW);
-          add('Gable aedicule console acanthus · EW', S, ew('wingVolute', .022), at(0, dv, d + .025, SC(e, 1, 1)), EW);
+          addSolid('Gable aedicule console acanthus solid · EW', consoleRelief, at(0, dv, d, SC(e, 1, 1)), EW);
+          add('Gable aedicule console acanthus · EW', S, consoleStrokes, at(0, dv, d + (rear ? .018 : .025), SC(e, 1, 1)), EW);
         }
         // Arch moulding over the niche, crest, ball and trefoil cross.
         slab('Gable aedicule arch moulding', S, poly([...outer, ...inner.slice().reverse()]), d - .02, d + .06);
@@ -560,14 +568,22 @@
         f.blk('Rear gable porch-end parapet', S, [c0, c1], [7.015776, C.band[1]], [0, .32], EWD);
         add('Rear gable porch-end cresting · E03', S, e03('rearPorchCrest', .009), f.at(0, 0, .25, m), E03C);
         addSolid('Rear gable porch-end cresting solid · E03', solid(window.CHURCH_DETAIL_PROFILE_REAR.rearPorchCrest, 'porch'), f.at(0, 0, .22, m), E03C);
-        // Scallops and finials on both rakes (crest=false drops the shared fleur crest).
-        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestLow', .016), f.at(0, 0, .21, m), E03C);
-        add('Rear gable rake cresting · E03', S, e03('rearRakeCrestUp', .016), f.at(0, 0, .21, m), E03C);
-        // The crest posts and swags are bands drawn by two edge curves about 0.1 m apart: a 50 mm closing
-        // fills each band, and the rake top (the polygon's upper edge, left out of the trace) closes the
-        // post feet; the arches between posts stay open.
-        for (const [k, P] of [['rearRakeCrestLow', RG.rakePolygons[0]], ['rearRakeCrestUp', RG.rakePolygons[1]]])
-          addSolid('Rear gable rake cresting solid · E03', solid([...window.CHURCH_DETAIL_PROFILE_REAR[k], ['rake top', 'L', P[2][0], P[2][1], P[3][0], P[3][1]]], k, .06, .01, .05), f.at(0, 0, .18, m), E03C);
+        // E03 terminates its contour lines against the piers. Close the display fill
+        // at those faces and seat its foot 20 mm into the cornice. Keep the swags open.
+        const rakeCrests = [
+          ['rearRakeCrestLow', RG.rakePolygons[0], 10.763936, 8.479768], // D9092D / D91079
+          ['rearRakeCrestUp', RG.rakePolygons[1], 12.471822, 11.225032], // band top / D91143
+        ];
+        for (const [key, [, , [u0, y0], [u1, y1]], end0, end1] of rakeCrests) {
+          const profile = window.CHURCH_DETAIL_PROFILE_REAR[key];
+          const foot = [
+            ['inner pier return', 'L', u0, end0, u0, y0 - .02],
+            ['rake foot', 'L', u0, y0 - .02, u1, y1 - .02],
+            ['outer pier return', 'L', u1, y1 - .02, u1, end1],
+          ];
+          add('Rear gable rake cresting · E03', S, e03(key, .016), f.at(0, 0, .21, m), E03C);
+          addSolid('Rear gable rake cresting solid · E03', solid([...profile, ...foot], key, .06, .01, .05), f.at(0, 0, .18, m), E03C);
+        }
         // Quarter fan on the wall beside the D/E pier, over the ground entablature (E03 ARCs D913BB–D913C9):
         // a raised quarter disc to the outer ring r 1.2317 (relief DERIVED) carrying the traced fan.
         const fan = new T.Shape(); fan.moveTo(0, 0); fan.absarc(0, 0, 1.2317, 0, Math.PI / 2, false); fan.lineTo(0, 0);
