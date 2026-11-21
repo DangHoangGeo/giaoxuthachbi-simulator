@@ -138,7 +138,8 @@ assert.equal(interior.lights.length, 0, 'legacy interior lights replaced');
 // --- Start with a stub viewer API ------------------------------------------
 const camera = new T.PerspectiveCamera(50, 1.6, 0.05, 500); camera.position.set(20, 1.6, 0);
 const church = { scene: sandbox.window.model.scene, renderer: sandbox.window.model.renderer, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } };
-SIM.start(church);
+// The design audit and electrical exports use the full-service reference load.
+SIM.start(church, { initialScene: 'Full service · evening' });
 assert(SIM.ready, 'simulator started');
 assert(SIM.state.items.length > 100, 'recommended design loaded: ' + SIM.state.items.length);
 // Owner, 3 Nov 2026: keep both statues back at the axis-11 shrine for depth.

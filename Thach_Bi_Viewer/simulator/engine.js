@@ -1057,7 +1057,11 @@
       this.stem = this.canopy = null;
       const proto = this.proto = prototypeFor(type, item.params);
       const glowKind = GLOW[type.glow] ? type.glow : 'warm';
-      this.glowMat = new T.MeshBasicMaterial({ color: 0x000000 });
+      // Exterior glass and lenses reflect daylight even when switched off.
+      // The lamp has a separate emissive channel so an unpowered lens casts no glow.
+      this.glowMat = exteriorVisitLevel(item) !== undefined && type.light
+        ? new T.MeshStandardMaterial({ color: glowKind === 'warm' ? '#ccc5b6' : '#6a6861', roughness: .38 })
+        : new T.MeshBasicMaterial({ color: 0x000000 });
       this.glowMat.name = 'Simulator glow · ' + glowKind;
       this.glowKind = glowKind;
       this.osc = proto.groups.osc || (proto.groups.head && type.fan?.oscillate) ? new T.Group() : null;
@@ -1123,8 +1127,9 @@
       const base = g.rgb || P.adaptedLightColor(this.item.cct || this.type.light?.cct || g.cct || 2700, envMode === 'day' ? 5600 : 3600);
       if (on) {
         const k = g.on * (this.item.dim ?? 1) * Math.sqrt(160 / Math.max(40, adaptNow)) * (0.25 + 0.75 * view) * (this.flicker || 1);
-        this.glowMat.color.setRGB(base[0] * k, base[1] * k, base[2] * k);
-      } else this.glowMat.color.setRGB(...g.off);
+        (this.glowMat.emissive || this.glowMat.color).setRGB(base[0] * k, base[1] * k, base[2] * k);
+      } else if (this.glowMat.emissive) this.glowMat.emissive.setRGB(0, 0, 0);
+      else this.glowMat.color.setRGB(...g.off);
     }
     forward() { return worldFrame(this.item).f; }
     dispose() {
@@ -1598,6 +1603,10 @@
     const before = JSON.stringify({ params: it.params, mount: it.mount });
     const normalized = normalizeItem({ ...it, ...patch });
     if (!normalized) return null;
+    if (visitScene(state.scene) && exteriorVisitLevel(it) !== undefined && ('on' in patch || 'dim' in patch)) {
+      state.scene = null; // Explicit exterior switches take precedence over the visit presets.
+      emit('scene', null);
+    }
     Object.assign(it, normalized);
     if (patch.pos && it.mount === 'pendant' && patch.anchorY === undefined) {
       const above = structureAbove(it.pos[0], it.pos[2], it.pos[1] + 0.05);
@@ -1764,10 +1773,11 @@
     const valid = obj.items.map(normalizeItem).filter(Boolean);
     if (!valid.length && obj.items.length) throw new Error('No recognisable fixtures in this file.');
     if (obj.settings) for (const k of Object.keys(defaults())) if (obj.settings[k] !== undefined) state.settings[k] = settingValue(k, obj.settings[k]);
+    if (record) state.scene = obj.scene || null;
     if (Array.isArray(obj.customScenes)) state.customScenes = obj.customScenes.filter(s => s && s.name && s.items).slice(0, 20);
     const prev = lastSnapshot;
     restore(JSON.stringify(valid));
-    if (record) { state.history.push({ label: 'Import layout', items: prev }); state.future.length = 0; emit('history'); }
+    if (record) { state.history.push({ label: 'Import layout', items: prev }); state.future.length = 0; emit('history'); emit('scene', state.scene); }
     applySettings();
     return valid.length;
   }
@@ -1776,7 +1786,7 @@
     const design = window.CHURCH_SIM_DESIGN.recommended(GEO, SIM);
     restore(JSON.stringify(design));
     state.history.push({ label: 'Recommended design', items: prev }); state.future.length = 0;
-    applyScene('Full service · evening', { record: false });
+    applyScene(environmentScene(), { record: false });
     alignDelays({ record: false });
     lastSnapshot = snapshot();
     emit('history');
@@ -2065,6 +2075,15 @@
   }
 
   /* ---------------------------------------------------------------- scenes */
+  const DAY_VISIT = 'Daytime visit', EVENING_VISIT = 'Evening visit';
+  const eveningExterior = { L4: 1, L5: 1, L6: .5, L7: 0, L9: .8, L10: .75, LW: .75 };
+  function exteriorVisitLevel(it) {
+    // The four outdoor service-door lanterns share L3 with the indoor sanctuary lights.
+    if (it.circuit === 'L3' && it.type === 'wallLantern') return 1;
+    return eveningExterior[it.circuit];
+  }
+  const visitScene = name => name === DAY_VISIT || name === EVENING_VISIT;
+  const environmentScene = () => document.body.dataset.lighting === 'evening' ? EVENING_VISIT : DAY_VISIT;
   const SCENES = {
     'Full service · evening': { L10: 1, L9: 1, L8: 1, L7: 0, L1: 1, L2: 1, L3: 1, L4: 1, LA: 1, LD: 1, L5: 1, L6: 1, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 1, A3: 0, A4: 1, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 1, LW: 1 },
     'Weekday Mass': { L10: 0.6, L9: 1, L8: 0.75, L7: 0, L1: 0.75, L2: 0.6, L3: 0.8, L4: 0.5, LA: 0.4, LD: 0.6, L5: 1, L6: 0, E1: 1, X1: 0, F1: 2, F2: 0, F3: 0, A1: 1, A2: 0, A3: 0, A4: 0, MIC: 1, F4: 0, V1: 1, V2: 1, V3: 1, A5: 0, DECOR: 1, F5: 1, LS: 0.6, LW: 0.6 },
@@ -2079,9 +2098,11 @@
     'Night security': { L10: 0, L9: 1, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0.3, LA: 0, LD: 0, L5: 1, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0, LW: 0 },
     'All off': { L10: 0, L9: 0, L8: 0, L7: 0, L1: 0, L2: 0, L3: 0, L4: 0, LA: 0, LD: 0, L5: 0, L6: 0, E1: 1, X1: 0, F1: 0, F2: 0, F3: 0, A1: 0, A2: 0, A3: 0, A4: 0, MIC: 0, F4: 0, V1: 0, V2: 0, V3: 0, A5: 0, DECOR: 1, F5: 0, LS: 0, LW: 0 }
   };
+  SCENES[EVENING_VISIT] = { ...SCENES['Full service · evening'], ...eveningExterior };
+  SCENES[DAY_VISIT] = { ...SCENES[EVENING_VISIT], ...Object.fromEntries(Object.keys(eveningExterior).map(c => [c, 0])) };
   SIM.SCENES = SCENES;
   // Reading light each scene is meant to give on the books (lux, maintained).
-  const SCENE_LUX = { 'Full service · evening': 200, 'Weekday Mass': 150, 'Prayer & adoration': 50, 'Christmas & festivals': 200, 'Festival · courtyard overflow': 200, 'Cleaning': 100 };
+  const SCENE_LUX = { [DAY_VISIT]: 200, [EVENING_VISIT]: 200, 'Full service · evening': 200, 'Weekday Mass': 150, 'Prayer & adoration': 50, 'Christmas & festivals': 200, 'Festival · courtyard overflow': 200, 'Cleaning': 100 };
   SIM.sceneLuxTarget = () => state.scene in SCENE_LUX ? SCENE_LUX[state.scene] : state.scene && !SCENES[state.scene] ? 150 : state.scene ? null : 200;
   // One item set from a scene value: lights 0–1 (dim), fans 1/2/3 (low/normal/high), anything else on or off.
   function sceneValue(it, v) {
@@ -2103,11 +2124,13 @@
       const sc = SCENES[name];
       if (!sc) return false;
       for (const it of state.items) {
-        let v = sc[it.circuit];
+        const exterior = visitScene(name) ? exteriorVisitLevel(it) : undefined;
+        let v = exterior === undefined ? sc[it.circuit] : name === DAY_VISIT ? 0 : exterior;
         if (v === undefined) continue;
         // A sub-board without power (feeder off on DB-1) cannot switch anything on.
         if (CIRCUITS[it.circuit]?.board === 'DB2' && state.settings.db2Feed === false) v = 0;
         sceneValue(it, v);
+        if (name === DAY_VISIT && exterior > 0) it.dim = exterior;
         fixtures.get(it.id)?.update();
       }
     }
@@ -2274,6 +2297,24 @@
   /* --------------------------------------------------------- environment */
   function applyEnvironment() {
     envMode = document.body.dataset.lighting === 'evening' ? 'evening' : 'day';
+    const next = environmentScene();
+    if (!rehearsalBase && visitScene(state.scene) && state.scene !== next &&
+        !state.customScenes.some(scene => scene.name === state.scene)) {
+      // Change only the exterior. Interior switches, dimmers and other systems
+      // can have individual edits even while the visit preset is selected.
+      for (const it of state.items) {
+        const level = exteriorVisitLevel(it);
+        if (level === undefined) continue;
+        const unpowered = CIRCUITS[it.circuit].board === 'DB2' && state.settings.db2Feed === false;
+        sceneValue(it, unpowered || next === DAY_VISIT ? 0 : level);
+      }
+      state.scene = next;
+      lastSnapshot = snapshot();
+      markDirty();
+      emit('items', {});
+      emit('scene', next);
+    }
+    lastPoolUpdate = -Infinity; // The first frame after the switch must use the new emitter list.
     lightDirty = true;
     for (const fx of fixtures.values()) fx.applyGlow();
   }
@@ -2617,7 +2658,7 @@
   function setOverlay(kind) { setSetting('overlay', kind); emit('overlay', kind); }
 
   /* --------------------------------------------------------------- start */
-  function start(api) {
+  function start(api, { initialScene = environmentScene() } = {}) {
     church = api;
     if (!church) return;
     computeSeats();
@@ -2633,7 +2674,7 @@
     } catch (e) { console.warn('Saved simulator layout ignored:', e.message); }
     if (!loaded) {
       for (const raw of window.CHURCH_SIM_DESIGN.recommended(GEO, SIM)) { const it = normalizeItem(raw); if (it) { state.items.push(it); instantiate(it); } }
-      applyScene('Full service · evening', { record: false });
+      applyScene(initialScene, { record: false });
       alignDelays({ record: false });
     }
     // Additive migration keeps the user's saved layout and circuit edits.

@@ -69,6 +69,25 @@ Each reading head on an axis beam belongs to the bay it lights: the head aimed t
 
 ## Quick modes
 
+### Exterior visit controls · 21 November 2026
+
+The default visit follows the viewer’s daylight and evening selection. Each transition changes the following outdoor lights. The other systems keep their current switch and dimmer states. The five E1 signs stay on in both visit presets.
+
+| Circuit | Exterior group | Daytime visit | Evening visit |
+| --- | --- | ---: | ---: |
+| L4 | Covered veranda paths and exterior arch floods | Off | 100% |
+| L5 | Side doors, side paths and rear approach | Off | 100% |
+| L6 | Façade and tower washes | Off | 50% |
+| L7 | Festival lighting | Off | Off |
+| L9 | Front doors and stage | Off | 80% |
+| L10 | Façade niches and electric candles | Off | 75% |
+| LW | Wing-gable uplights and statue candles | Off | 75% |
+| L3, fixtures L151–L154 | Service-door lanterns on the shared sanctuary circuit | Off | 100% |
+
+An explicit exterior switch or dimmer edit takes priority until a visit preset is recalled. A separate service, security, festival or saved custom scene keeps its settings when the sky changes. The built-in visit presets respect the DB-2 feeder. These are simulator settings. Hardware controls, daylight sensing, driver curves and commissioning remain on engineering hold. [Lighting study](../systems/lighting.md#exterior-visit-lighting--21-november-2026)
+
+### Service and event controls
+
 Use these existing web-app names as the starting operator vocabulary. Final setpoints and physical button locations are a coordinated design decision. Exact simulator values remain in `SCENES` in `engine.js`; validate them against current performance rather than copying historical tables.
 
 | Mode | Intended use |

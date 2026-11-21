@@ -197,9 +197,21 @@ sounds.forEach((event, i) => {
 const bells = sounds.filter(event => event.kind === 'bell');
 const belfryEnd = scene('belfry').start + scene('belfry').duration;
 assert(bells.length >= 25 && bells[0].time < 0.5 && bells.every(event => event.time + event.length < belfryEnd), 'bells ring from the first picture and die away before the front');
-assert(bells.some(event => event.time > scene('belfry').start + 12 && event.level > 0.25), 'bells still ring strongly round the belfry');
-assert(bells.every(event => event.nominal >= 380 && event.nominal <= 600 && (event.length >= 8 || event.time > scene('belfry').start + 10)), 'bronze bells struck at G4–C5 with a long ring');
-for (let i = 1; i < bells.length; i++) assert(bells[i].time - bells[i - 1].time > 1.1, 'heavy bell strokes at least 1.1 s apart');
+assert(bells.some(event => event.time > scene('belfry').start + 3 && event.level > 0.45), 'the bell rings fullest beside the belfry before the ringer lets go');
+assert(bells.every(event => event.nominal >= 380 && event.nominal <= 600 && (event.length >= 8 || event.time > scene('belfry').start + 10)), 'a bronze bell with a long ring');
+// One swinging bell, "Ding Dong Ding Dong" with a long ring (owner, 21 November
+// 2026, after a recording of a swinging tower bell): the clapper strikes the
+// bright and the dull side in turn, evenly (about 1.17 s, as recorded) and
+// without a break until the ringer lets go; then the bright side alone.
+assert(bells.every(event => event.nominal === 440), 'one bell, struck at A4');
+assert(bells.length >= 45, 'rung without a break from the opening to the belfry');
+const pulled = bells.filter(event => event.time < scene('belfry').start + 6);
+pulled.forEach((event, i) => { if (i) assert(event.bright !== pulled[i - 1].bright, 'bright and dull side in turn'); });
+const gaps = pulled.slice(1).map((event, i) => event.time - pulled[i].time);
+assert(gaps.every(gap => gap > 1.08 && gap < 1.27), 'an even swing, about 1.17 s a stroke');
+assert(Math.abs(gaps.reduce((a, b) => a + b, 0) / gaps.length - 1.175) < 0.03, 'the recorded pace');
+const tail = bells.slice(-2);
+assert(tail.every(event => event.bright) && tail[1].time - tail[0].time > 2.2 && tail[1].level < tail[0].level, 'the swing dies on the bright side');
 const steps = sounds.filter(event => event.kind === 'step');
 for (const event of steps) {
   const shot = shots.find(s => event.time >= s.start && event.time < s.start + s.duration);
