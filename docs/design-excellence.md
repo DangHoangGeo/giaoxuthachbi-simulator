@@ -97,9 +97,16 @@ Recorded in [interior finish](interior-finish.md#sanctuary-furnishings--20-novem
 
 ## Stage 5 preview: courtyard tree canopies
 
-The two rows of eight presentation trees had crowns made of about 1,000 small faceted shapes each, and they read as toy trees. Each crown is now a fuller canopy that fills the same volume. It has a dark inner mass and about 230 leaf sprays drawn on transparent cards. The sunlit outer sprays are lighter than the shaded inner ones, and the cards cast shadows on the lawn. The positions, trunks, branches, soil beds, stone edging and lawn of the trees are unchanged (`Thach_Bi_Viewer/landscape-trees.js`, loaded after `realism.js` builds the rows).
+**21 November 2026.** The owner asked for much more realistic trees. The canopies of 20 November were one round mass of leaf cards on a straight pole with five straight rods, and they still read as lollipops. Each of the 16 trees is now grown as a broad-leaved shade tree (`Thach_Bi_Viewer/landscape-trees.js`, revision `2026-11-21-shade-trees-2`):
 
-The species, mature size, planting, root protection and drainage are not designed. These trees are an unsurveyed presentation context, like the lawn. [Desktop before and after](../review/tree-canopies-2026-11-20/README.md)
+- a tapered, bark-textured trunk with a root flare and a slight lean, forking 2.2–2.8 m above the courtyard into four to six curved limbs, each with two secondary branches;
+- a crown of 13–16 leaf clusters at the branch ends, about 850 leaf-spray cards per tree, so the outline has lobes and gaps;
+- light that falls off into the crown: each card takes a shaded, middle or sunlit spray from a texture atlas by its depth and height in the crown, and the card normals point out of the crown so it shades as one canopy;
+- three slightly different leaf tints, and every tree a different shape.
+
+The trees are 6.4–7.6 m tall and spread about 6.5–7 m, so the crowns in each row just meet at the 6.9 m spacing. The positions, soil beds, edging and lawn are unchanged. The display batches keep no vertex colours, which is why the tones are in the texture. [Desktop before and after](../review/shade-trees-2026-11-21/README.md)
+
+The species, mature size, planting, root protection and drainage are not designed. These trees are an unsurveyed presentation context, like the lawn. The previous canopy pass is recorded in [tree canopies, 20 November](../review/tree-canopies-2026-11-20/README.md).
 
 ## Open doors and windows, 21 November 2026
 
