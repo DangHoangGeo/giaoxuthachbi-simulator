@@ -1543,7 +1543,7 @@
     return id;
   }
   function normalizeItem(raw) {
-    const type = CAT.byId[raw.type];
+    const type = CAT.byId[raw.type] || CAT.byId[CAT.retiredTypes?.[raw.type]];
     if (!type) return null;
     const num = (v, d) => Number.isFinite(Number(v)) ? Number(v) : d;
     const pos = Array.isArray(raw.pos) && raw.pos.length === 3 ? raw.pos.map(v => num(v, 0)) : null;
@@ -2700,7 +2700,7 @@
       ['sanctuaryPalmsRevision', D.sanctuaryPalmsRevision, '.before-sanctuary-palms', D.upgradeSanctuaryPalms],
       ['wingGableLightsRevision', D.wingGableLightsRevision, '.before-wing-gable-lights', D.upgradeWingGableLights],
       ['beamSectionRevision', D.beamSectionRevision, '.before-stronger-beams', D.upgradeBeamSections],
-      ['facadeGraceRevision', D.facadeGraceRevision, '.before-our-lady-of-grace', D.upgradeFacadeGrace]
+      ['facadeGraceRevision', D.facadeGraceRevision, '.before-our-lady-of-grace', (items, design) => D.upgradeFacadeGrace(items, design, state.settings.facadeGraceRevision)]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

@@ -81,7 +81,7 @@
     // Our Lady of Grace on the façade (owner's reference, 21 Nov 2026): teal-blue mantle, sea-green globe, dark serpent.
     mantleGrace: { color: '#2f6378', roughness: 0.55 },
     globeTeal: { color: '#5d8c8a', roughness: 0.5 },
-    serpent: { color: '#2f3a26', roughness: 0.45 },
+    serpent: { color: '#4a5e35', roughness: 0.45 },
     socketPlate: { color: '#f1eee6', roughness: 0.42 },
     socketDark: { color: '#33363a', roughness: 0.6 },
     enclosureGrey: { color: '#8f959b', metalness: 0.25, roughness: 0.55 },
@@ -601,12 +601,18 @@
     // Long folds with rounded ridges and sharp valleys, deeper towards the hem.
     const folds = (a, y, k1, k2, p) => 0.6 * Math.abs(Math.sin(k1 * a + p)) + 0.4 * Math.abs(Math.sin(k2 * a + 2.1 * p + 1.5 * y)) - 0.62;
     const levels = (y0, y1, n) => Array.from({ length: n + 1 }, (_, i) => y0 + (y1 - y0) * i / n);
-    function robe(T, female, hem = 1, slim = 1, top = 0.876) {
-      return memo('robe' + female + (hem === 1 && slim === 1 && top === 0.876 ? '' : '|' + hem + '|' + slim + '|' + top), () => surface(T, levels(0, top, 56).map(y => {
-        const [rx, rz, cx] = section(y, hem, slim), amp = 0.012 + 0.1 * smooth(0.6, 0.04, y) * smooth(0, 0.03, y + 0.02);
-        return Array.from({ length: 56 }, (_, j) => {
-          const a = j * TAU / 56, front = wrap(a);
-          let d = 1 + amp * folds(a, y, 3.5, 5.5, 0.6);
+    // drape (optional): finer, deeper folds round the robe and cloth bloused over a girdle,
+    // { n: points per ring, k1, k2: fold counts, amp: fold depth factor, blouse: fullness at the girdle }.
+    function robe(T, female, hem = 1, slim = 1, top = 0.876, drape = null) {
+      const plain = hem === 1 && slim === 1 && top === 0.876 && !drape, n = drape?.n || 56;
+      return memo('robe' + female + (plain ? '' : '|' + hem + '|' + slim + '|' + top + '|' + JSON.stringify(drape)), () => surface(T, levels(0, top, 56).map(y => {
+        // With drape the folds fall from the girdle; the bodice above it stays smooth.
+        const bodice = drape ? smooth(0.56, 0.62, y) : 0, fall = drape ? drape.amp * (1 - bodice) + 0.25 * bodice : 1;
+        const [rx, rz, cx] = section(y, hem, slim), amp = (0.012 + 0.1 * smooth(0.6, 0.04, y) * smooth(0, 0.03, y + 0.02)) * fall;
+        return Array.from({ length: n }, (_, j) => {
+          const a = j * TAU / n, front = wrap(a);
+          let d = 1 + amp * folds(a, y, drape?.k1 || 3.5, drape?.k2 || 5.5, 0.6);
+          if (drape?.blouse) d += drape.blouse * (bell(y, 0.625, 0.035) + 0.5 * bell(y, 0.545, 0.03));
           d += 0.1 * bell(y, 0.27, 0.075) * bell(front, 0.42, 0.33);            // one knee forward
           if (female) d += 0.05 * bell(y, 0.715, 0.035) * (bell(front, 0.5, 0.3) + bell(front, -0.5, 0.3));
           const w = female ? 1 - 0.07 * smooth(0.7, 0.8, y) * smooth(0.85, 0.8, y) : 1;
@@ -766,7 +772,7 @@
      * Returns unchanged hand anchors, used by the Child, keys and sword. */
     function figure(k, o) {
       const T = k.T, H = o.H, y0 = o.y0 || 0, ox = o.x || 0, oz = o.z || 0, at = { p: [ox, y0, oz], s: H }, skin = o.skin || 'skin';
-      k.add(robe(T, !!o.female, o.hem || 1, o.slim || 1, o.neckline || 0.876), o.robe, at);
+      k.add(robe(T, !!o.female, o.hem || 1, o.slim || 1, o.neckline || 0.876, o.drape || null), o.robe, at);
       if (o.neckline && o.edging) { // gilded neckline of the robe
         const [rx, rz, cx] = section(o.neckline, o.hem, o.slim), ring = Array.from({ length: 25 }, (_, j) => { const a = j * TAU / 24; return [ox + (cx + rx * Math.cos(a)) * H, y0 + o.neckline * H, oz + rz * Math.sin(a) * H]; });
         k.tube(ring, .0028 * H, 'gold', {}, 48, 5);
@@ -830,7 +836,9 @@
           k.add(wing(T, pose.arm, z, o.wings), o.mantle, at);
           if (o.edging) k.tube([[wrist[0] - .012, wrist[1] - .03, z * (Math.abs(wrist[2]) - .004)], [wrist[0] - .01, (wrist[1] + o.wings.bottom) / 2, z * (Math.abs(wrist[2]) + o.wings.flare + .03) / 2 + z * .01], [.12, o.wings.bottom + .03, z * (o.wings.flare + .03)]].map(p => [ox + p[0] * H, y0 + p[1] * H, oz + p[2] * H]), .0018 * H, 'gold', {}, 20, 5);
         }
-        k.add(limb(T, pose.arm, [0.04, 0.036, 0.033, 0.034, 0.044], (o.pose || 'prayer') + z), o.sleeve || o.robe, at);
+        // Slighter shoulders (slim) bring the shoulder joint in, so the sleeve stays under the mantle.
+        const arm = o.slim ? pose.arm.map((p, i) => i === 0 ? [p[0], p[1] - .012, p[2] * o.slim] : p) : pose.arm;
+        k.add(limb(T, arm, [0.04, 0.036, 0.033, 0.034, 0.044], (o.pose || 'prayer') + z + (o.slim ? '|' + o.slim : '')), o.sleeve || o.robe, at);
         const f = new T.Vector3(...pose.dir).normalize(), start = [wrist[0] - f.x * 0.004, wrist[1] - f.y * 0.004, wrist[2] - f.z * 0.004];
         hand(k, skin, start, pose.dir, pose.palm, H, y0, ox, oz, ['open', 'raised', 'sword'].includes(o.pose));
         hands[z < 0 ? 'right' : 'left'] = [ox + (wrist[0] + f.x * 0.045) * H, y0 + (wrist[1] + f.y * 0.045) * H, oz + (wrist[2] + f.z * 0.045) * H];
@@ -887,15 +895,15 @@
     // The serpent lies along the globe under her right foot (-z), its head raised at the front.
     const on = (t, f, lift) => [(R + lift) * Math.sin(t) * Math.cos(f), c + (R + lift) * Math.cos(t), (R + lift) * Math.sin(t) * Math.sin(f)];
     const path = [[1.3, 2.3], [1.2, 1.75], [1.1, 1.15], [1.03, 0.55], [1.02, -0.05], [1.1, -0.55], [1.2, -0.95], [1.12, -1.25]];
-    const radii = [0.005, 0.014, 0.022, 0.027, 0.028, 0.027, 0.024, 0.02];
-    const body = path.map(([t, f], i) => on(t, f, radii[i] * 0.75));
-    const head = on(0.98, -1.42, 0.07), tip = on(0.93, -1.5, 0.08);
-    k.add(SCULPT.limb(k.T, [...body, head], [...radii, 0.017], 'grace-serpent'), 'serpent');
+    const radii = [0.008, 0.022, 0.034, 0.04, 0.042, 0.04, 0.036, 0.03];
+    const body = path.map(([t, f], i) => on(t, f, radii[i] * 0.7));
+    const head = on(0.98, -1.42, 0.085), tip = on(0.93, -1.5, 0.1);
+    k.add(SCULPT.limb(k.T, [...body, head], [...radii, 0.024], 'grace-serpent-2'), 'serpent');
     const dir = new k.T.Vector3(tip[0] - head[0], tip[1] - head[1], tip[2] - head[2]).normalize();
     const q = new k.T.Quaternion().setFromUnitVectors(new k.T.Vector3(1, 0, 0), dir);
-    k.sph(1, 'serpent', { p: [head[0] + dir.x * 0.02, head[1] + dir.y * 0.02, head[2] + dir.z * 0.02], q, s: [0.045, 0.02, 0.028] }, 12, 8);
-    k.sph(1, 'robeRed', { p: [head[0] + dir.x * 0.058, head[1] + dir.y * 0.058 - 0.004, head[2] + dir.z * 0.058], q, s: [0.014, 0.005, 0.012] }, 8, 6);
-    SCULPT.figure(k, { ...PAINTED, H, y0, robe: 'robeWhite', sleeve: 'robeWhite', mantle: 'mantleGrace', veil: 'robeWhite', hair: 'hair', sash: 'gold', feet: 'skin', pose: 'open', female: true, look: -0.1, hem: 0.78, slim: 0.84,
+    k.sph(1, 'serpent', { p: [head[0] + dir.x * 0.025, head[1] + dir.y * 0.025, head[2] + dir.z * 0.025], q, s: [0.06, 0.028, 0.04] }, 12, 8);
+    k.sph(1, 'robeRed', { p: [head[0] + dir.x * 0.075, head[1] + dir.y * 0.075 - 0.006, head[2] + dir.z * 0.075], q, s: [0.02, 0.007, 0.016] }, 8, 6);
+    SCULPT.figure(k, { ...PAINTED, H, y0, robe: 'robeWhite', sleeve: 'robeWhite', mantle: 'mantleGrace', veil: 'robeWhite', hair: 'hair', sash: 'gold', feet: 'skin', pose: 'open', female: true, look: -0.1, hem: 0.78, slim: 0.84, drape: { n: 96, k1: 7, k2: 11, amp: 1.6, blouse: 0.03 },
       headScale: 1.08, soft: true, neck: 0.03,
       hairShape: { brow: 0.62, arch: 0.4, part: 0.08, sweep: 0.025, tuck: true },
       veilShape: { edge: 0.42, rise: 0.2, brow: 0.72, grow: 1.2, bottom: -2.0, spread: 7, tuck: true },
@@ -1380,6 +1388,10 @@
     { id: 'carpet', cat: DECOR, family: 'Fabric', name: 'Aisle carpet runner', mounts: ['floor'], params: { length: { label: 'Length (m)', min: 4, max: 34, step: 1, value: 26 } }, build: buildCarpet }
   ];
   const byId = Object.fromEntries(types.map(t => [t.id, t]));
+  // Retired figure types and the type a saved or imported item of that type now takes, so a
+  // layout never loses the item before its migration runs (owner, 21 Nov 2026: the façade
+  // Assumption became Our Lady of Grace on the globe).
+  const retiredTypes = { statueAssumption: 'statueOurLadyOfGrace' };
 
-  window.CHURCH_SIM_CATALOG = { MATERIALS, types, byId, makeKit, bulbCount };
+  window.CHURCH_SIM_CATALOG = { MATERIALS, types, byId, retiredTypes, makeKit, bulbCount };
 })();

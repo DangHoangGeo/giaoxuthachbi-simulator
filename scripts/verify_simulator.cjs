@@ -977,6 +977,15 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert(kept.type === 'statueOurLadyOfGrace' && plain(kept.pos).join() === '4,16.683,0.1', 'a moved statue is retyped where the user put it');
   assert.deepEqual(plain(D.upgradeFacadeGrace(up, design)), plain(up), 'applying it again changes nothing');
   assert(!SIM.CATALOG?.byId?.statueAssumption && !sandbox.CHURCH_SIM_CATALOG.byId.statueAssumption, 'the Assumption figure is retired from the catalogue');
+  // Loading keeps a statue of the retired type (issue 1 dropped it before migrating, emptying the niche).
+  const saved = JSON.parse(JSON.stringify(SIM.exportLayout()));
+  SIM.importLayout({ ...saved, items: saved.items.map(it => it.id === 'D-FACADE-C' ? oldStatue : it) }, { record: false });
+  assert.equal(SIM.state.items.find(it => it.id === 'D-FACADE-C')?.type, 'statueOurLadyOfGrace', 'a saved Assumption loads as Our Lady of Grace instead of vanishing');
+  SIM.importLayout(saved, { record: false });
+  // A layout that took issue 1 and lost the statue gets it back once; a deletion on any other path stays.
+  const lost = design.filter(it => it.id !== 'D-FACADE-C');
+  assert.deepEqual(plain(D.upgradeFacadeGrace(lost, design, D.facadeGraceLossy).find(it => it.id === 'D-FACADE-C')), plain(now.get('D-FACADE-C')), 'issue 2 restores the statue issue 1 lost');
+  assert(!D.upgradeFacadeGrace(lost, design, '').some(it => it.id === 'D-FACADE-C') && !D.upgradeFacadeGrace(lost, design, D.facadeGraceRevision).some(it => it.id === 'D-FACADE-C'), 'a statue deleted otherwise stays deleted');
   assert.equal(SIM.state.settings.facadeGraceRevision, D.facadeGraceRevision, 'the revision is stored in the saved settings');
 }
 // Parish priest's decisions of 25 Oct 2026: a saved layout still at the pre-meeting values takes
