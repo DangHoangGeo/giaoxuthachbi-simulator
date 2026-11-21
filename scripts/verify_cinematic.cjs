@@ -24,10 +24,32 @@ assert.equal(new Set(shots.map(shot => shot.id)).size, shots.length, 'scene ids 
 for (const shot of shots) {
   assert(Number.isInteger(shot.bars) && shot.bars >= 2, `${shot.id}: whole bars`);
   assert(shot.keys.length >= 2 && shot.keys.every(key => key.length >= 6 && key.every(Number.isFinite)), `${shot.id}: keys`);
-  assert(['day', 'evening'].includes(shot.light) && typeof shot.roof === 'boolean' && ['fade', 'dip', 'cut'].includes(shot.cut), `${shot.id}: scene state`);
+  assert(['day', 'evening'].includes(shot.light) && typeof shot.roof === 'boolean' && ['fade', 'dip', 'dissolve', 'cut'].includes(shot.cut), `${shot.id}: scene state`);
   if (shot.en) assert(shot.vi, `${shot.id}: caption in both languages`);
   if (shot.note) assert(shot.note.en && shot.note.vi, `${shot.id}: note in both languages`);
 }
+// Editing (21 November 2026): scenes of one chapter melt into each other in a
+// 1.6 s dissolve, never across a change of light or roof; a chapter opens
+// through black on its number and name, and its caption follows the card.
+shots.forEach((shot, i) => {
+  if (shot.cut !== 'dissolve') return;
+  const before = shots[i - 1];
+  assert(before && before.light === shot.light && before.roof === shot.roof && before.chapter === shot.chapter, `${shot.id}: a dissolve stays within one chapter, light and roof`);
+  assert(film.held(shot.start + 0.001) > 0.99 && film.held(shot.start + 0.8) > 0.2 && film.held(shot.start + 1.65) === 0 && film.black(shot.start) < 0.01, `${shot.id}: dissolves over 1.6 s without black`);
+});
+assert(shots.filter(shot => shot.cut === 'dissolve').length >= 10 && shots.filter(shot => shot.cut === 'dip').length === 0, 'scenes within a chapter dissolve; none blink through black');
+const openers = shots.filter(shot => shot.opens);
+assert.deepEqual(plain(openers.map(shot => shot.chapter)), ['inside', 'night'], 'each later chapter opens on a chapter card');
+for (const shot of openers) {
+  assert(shot.cut === 'fade', `${shot.id}: a chapter opens through black`);
+  const at = local => film.showing(shot, local);
+  assert(at(2).chapter && !at(2).caption && !at(5.3).chapter && at(6.2).caption && !at(6.2).note && at(7.5).note, `${shot.id}: chapter card, then the heading, then its note`);
+}
+const plainShot = shots.find(shot => shot.id === 'facade');
+// The opening title clears early, leaving the rising picture and the bells.
+const opening = shots.find(shot => shot.id === 'opening');
+assert(film.showing(opening, 2).card && !film.showing(opening, 6).card, 'opening title clears by 6 s');
+assert(film.showing(plainShot, 1.5).caption && !film.showing(plainShot, 1.5).note && film.showing(plainShot, 2.3).note, 'a heading first, its note a moment later');
 
 // Scene order asked for by the owner: outside and inside by day, then the
 // evening. Asked on 3 November 2026: towers, front, veranda, nave and
@@ -158,7 +180,40 @@ assert(bundle.includes('J?.cinema && window.CHURCH_CINEMA.rendered?.(n.domElemen
 assert(typeof film.still === 'function' && typeof film.play === 'function');
 // The 2 min 15 s short film was removed on 11 October 2026 (owner's request).
 assert.deepEqual(Object.keys(film.films), ['full', 'lighting', 'air', 'sound', 'grid'], 'the five-minute film and four technical tours');
-assert(!/bell|toccata/i.test(JSON.stringify(score.events.map(event => event.stops))), 'no bell strokes in the remaining score');
+assert(!/bell|toccata/i.test(JSON.stringify(score.events.map(event => event.stops))), 'no bell strokes in the organ score');
+
+// Sounds of the place (21 November 2026), under the music of the film only:
+// bells from the opening up the tower and round the belfry, never later (owner,
+// 9 October 2026: bells at the start, handing over to the organ; 21 November
+// 2026: keep them while the tower is shown), footsteps only where the camera
+// walks and at its pace, birds by day, crickets after dark.
+const sounds = film.sounds, kinds = new Set(sounds.map(event => event.kind));
+assert.deepEqual(plain([...kinds].sort()), ['bed', 'bell', 'bird', 'cricket', 'step'], 'bells, beds of air, birds, crickets and footsteps');
+sounds.forEach((event, i) => {
+  if (i) assert(event.time >= sounds[i - 1].time, 'sounds in time order');
+  assert(event.time >= 0 && event.time < film.length && event.length > 0 && event.level > 0 && event.level <= 1, `${event.kind} at ${event.time.toFixed(2)} s inside the film`);
+  assert(Math.abs(event.pan || 0) <= 1 && (event.wet || 0) <= 1, `${event.kind} at ${event.time.toFixed(2)} s: placement`);
+});
+const bells = sounds.filter(event => event.kind === 'bell');
+const belfryEnd = scene('belfry').start + scene('belfry').duration;
+assert(bells.length >= 25 && bells[0].time < 0.5 && bells.every(event => event.time + event.length < belfryEnd), 'bells ring from the first picture and die away before the front');
+assert(bells.some(event => event.time > scene('belfry').start + 12 && event.level > 0.25), 'bells still ring strongly round the belfry');
+assert(bells.every(event => event.nominal >= 380 && event.nominal <= 600 && (event.length >= 8 || event.time > scene('belfry').start + 10)), 'bronze bells struck at G4–C5 with a long ring');
+for (let i = 1; i < bells.length; i++) assert(bells[i].time - bells[i - 1].time > 1.1, 'heavy bell strokes at least 1.1 s apart');
+const steps = sounds.filter(event => event.kind === 'step');
+for (const event of steps) {
+  const shot = shots.find(s => event.time >= s.start && event.time < s.start + s.duration);
+  assert(shot.walk, `footstep at ${event.time.toFixed(2)} s is in a walking scene (${shot.id})`);
+}
+for (const shot of walks) {
+  const inShot = steps.filter(event => event.time >= shot.start && event.time < shot.start + shot.duration);
+  const walked = shot.walked[shot.walked.length - 1];
+  assert(Math.abs(inShot.length - walked / 0.72) <= 3, `${shot.id}: ${inShot.length} footsteps for ${walked.toFixed(1)} m walked`);
+  for (let i = 1; i < inShot.length; i++) assert(inShot[i].time - inShot[i - 1].time > 0.45, `${shot.id}: footsteps at a walking pace`);
+}
+const dusk = shots.find(shot => shot.light === 'evening').start;
+assert(sounds.filter(event => event.kind === 'bird').every(event => event.time < dusk) && sounds.filter(event => event.kind === 'cricket').every(event => event.time >= dusk), 'birds by day, crickets after dark');
+assert(['lighting', 'air', 'sound', 'grid'].every(id => !film.films[id].sounds), 'the technical tours keep only their quiet music');
 
 // ------------------------------------------------------- technical tours
 // Four separate tours: lighting, fans and air, sound, electrical grid. Each

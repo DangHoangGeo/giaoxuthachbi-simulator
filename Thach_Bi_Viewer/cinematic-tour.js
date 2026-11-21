@@ -42,8 +42,13 @@
    * the nave floor, Z negative toward side B. Each key is
    * [eyeX, eyeY, eyeZ, lookX, lookY, lookZ, lens°]; the lens angle is optional
    * and carries forward. Durations are whole bars of the music (4 s each).
-   *   cut   'fade' (chapter, 1.3 s each side) · 'dip' (0.55 s) · 'cut'
+   *   cut   'fade' (chapter, 1.3 s each side, through black) · 'dissolve'
+   *         (the last picture of the scene before melts into this one over
+   *         1.6 s; never across a change of light or roof) · 'dip' (0.55 s
+   *         through black) · 'cut'
    *   ease  [start, end] speed as a share of cruising speed (0 = from rest)
+   *   pan   how much a turn of the camera counts against travel in pacing a
+   *         flight (0.3 if not given); more makes a tilt or pan slower
    *   walk  a person walking: eye keys are 1.60 m above the modelled floor
    *         (courtyard −2.080, forecourt −0.480, veranda −0.320, nave 0,
    *         side sanctuary +0.160, platform +0.800 m), at 1.3 m/s or less, and
@@ -52,6 +57,10 @@
    * furnishings, ornament, lighting and sound equipment shown are proposals.
    */
   const BAR = 4;
+  // A cross-dissolve: the last picture of the scene before, held and faded out over this one.
+  const DISSOLVE = 1.6;
+  // A chapter opens on its number and name, before the first caption.
+  const CHAPTER_CARD = { from: 0.9, to: 5.2 };
   const CHAPTERS = {
     outside: { en: 'I · Around the church', vi: 'I · Quanh nhà thờ' },
     inside: { en: 'II · Inside', vi: 'II · Bên trong' },
@@ -60,29 +69,29 @@
   const SHOTS = [
     // I · Around the church by day: towers, front, forecourt and veranda.
     { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.2, 0.5],
-      card: { small: 'Giáo xứ Thạch Bi', title: 'Nhà thờ Thạch Bi', line: 'Một lời mời trở về quê nhà · An invitation to come home' },
-      keys: [[-90, 46, 52, 14, 12, 0, 40], [-72, 35, 41, 12, 12.5, 0, 42], [-54, 24, 30, 9, 13, 0, 44]] },
-    { id: 'towers', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dip', ease: [0.2, 0.6],
+      card: { small: 'Giáo xứ Thạch Bi', title: 'Nhà thờ Thạch Bi', line: 'Một lời mời trở về quê nhà · An invitation to come home', until: 5.6 },
+      keys: [[-50, 2.4, 13, 2, 15, 0, 40], [-45, 8.5, 11.5, 3, 15.5, 0, 41], [-39, 15, 9.5, 4, 15, 0, 43]] },
+    { id: 'towers', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dissolve', ease: [0.2, 0.6],
       en: 'The bell towers', vi: 'Hai tháp chuông',
       note: { en: 'Rising stage by stage up the tower on side H: four stages at +8.390, +15.840, +23.140 and +29.090 m above the nave floor.', vi: 'Đi lên từng tầng của tháp phía H: bốn tầng tháp ở +8,390, +15,840, +23,140 và +29,090 m so với nền lòng nhà thờ.' },
       keys: [[-15, 4.5, 13.5, 1.5, 8.4, 10.15, 46], [-14, 11, 12.5, 1.5, 14.5, 10.15, 44], [-13.5, 18, 11.5, 1.8, 21.5, 10.15, 42], [-14, 25, 10.8, 2.2, 28, 10.15, 40], [-16, 30, 9.5, 2.45, 32, 10.15, 40]] },
     { id: 'belfry', chapter: 'outside', bars: 6, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.3],
       en: 'Belfry and dome', vi: 'Lầu chuông và mái vòm',
       note: { en: 'Louvred belfry arches under each dome let the bells ring out over the village. Ornament depth is still schematic.', vi: 'Các vòm cửa chớp của lầu chuông dưới mỗi mái vòm để tiếng chuông vang khắp làng. Chiều sâu hoa văn còn là sơ phác.' },
-      keys: [[-16, 30, 9.5, 2.45, 32, 10.15, 40], [-11, 31.5, 21, 2.45, 31.5, 10.15, 44], [0, 32, 26.5, 2.45, 31, 10.15, 46], [11, 31.5, 23, 2.45, 30.5, 10.15, 46], [17, 30, 13, 2.45, 30, 8, 46]] },
-    { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0.3],
+      keys: [[-16, 30, 9.5, 2.45, 32, 10.15, 40], [-11, 30, 20.5, 2.45, 32.3, 10.15, 44], [0, 29.8, 25.8, 2.45, 32.6, 10.15, 46], [11, 30, 22.5, 2.45, 32.4, 10.15, 46], [17, 30, 13, 2.45, 31.8, 8, 46]] },
+    { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dissolve', ease: [0.3, 0.3],
       en: 'The tower front', vi: 'Mặt tiền hai tháp',
       note: { en: 'Twin bell towers frame three doors, with Our Lady of the Assumption between them. The cross apex is drawn at +36.920 m above the nave floor.', vi: 'Hai tháp chuông ôm lấy ba cửa chính, ở giữa là tượng Đức Mẹ Lên Trời. Đỉnh thánh giá theo bản vẽ ở cao độ +36,920 m so với nền lòng nhà thờ.' },
       keys: [[-17, 21, 1.5, 2.4, 21, 0, 40], [-16, 15, 0.8, 2.4, 14.5, 0, 42], [-15, 9, 0, 2.4, 8.5, 0, 44], [-15.5, 4, -0.8, 2.4, 4, 0, 46]] },
-    { id: 'forecourt', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
+    { id: 'forecourt', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'dissolve', ease: [0.4, 0.2], walk: true,
       en: 'Up the forecourt steps', vi: 'Bước lên sân trước',
       note: { en: 'At walking pace, as a parishioner arrives: from the courtyard at −2.080 m up the steps to the forecourt at −0.480 m, with the three doors ahead.', vi: 'Theo nhịp bước của người giáo dân đến nhà thờ: từ sân ở cao độ −2,080 m bước lên sân trước ở −0,480 m, ba cửa chính ở ngay phía trước.' },
       keys: [[-22, -0.48, -2.6, 2.4, 9, 0, 58], [-16.5, -0.48, -2.2, 2.4, 7, 0, 58], [-12.4, -0.42, -1.9, 2.4, 5.5, 0, 58], [-9.2, 1.12, -1.6, 2.4, 4.5, 0, 58], [-6, 1.12, -2.4, 2.4, 3.4, -6, 60]] },
-    { id: 'veranda', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
+    { id: 'veranda', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dissolve', ease: [0.4, 0.2], walk: true,
       en: 'Verandas for shade and breeze', vi: 'Hàng hiên che nắng, đón gió',
       note: { en: 'Open verandas in 4.50 m bays shade the walls and let the air through, their floor 0.320 m below the nave. The church is planned for fans and open windows, without air conditioning.', vi: 'Hàng hiên mở theo bước gian 4,50 m che nắng cho tường và đón gió, nền thấp hơn lòng nhà thờ 0,320 m. Nhà thờ được tính toán dùng quạt và cửa mở, không dùng điều hòa.' },
-      keys: [[7, 1.28, -8.9, 20, 1.6, -8.9, 60], [12.5, 1.28, -9, 15, 2.3, -7.36, 60], [18.5, 1.28, -8.9, 30, 1.7, -8.9, 60], [24, 1.28, -8.85, 25.7, 2.2, -10.414, 60], [30, 1.28, -8.9, 40, 1.7, -9, 60]] },
-    { id: 'roof', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0.6],
+      keys: [[7, 1.28, -9.55, 20, 1.6, -9.3, 58], [12.5, 1.28, -9.55, 17, 2.2, -7.5, 58], [18.5, 1.28, -9.6, 30, 1.7, -9.3, 58], [24, 1.28, -9.55, 27, 2.1, -10.6, 58], [30, 1.28, -9.55, 42, 1.7, -9.4, 58]] },
+    { id: 'roof', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'dissolve', ease: [0.3, 0.6],
       en: 'A roof of red clay tiles', vi: 'Mái ngói đỏ',
       note: { en: 'Ngói đỏ, fired-clay tiles: the red roof long familiar on Vietnamese village houses, communal halls and churches. A proposed finish, on one continuous roof with its ridge at +12.472 m.', vi: 'Ngói đỏ đất nung, màu mái thân quen của nhà làng, đình và nhà thờ Việt Nam. Đây là vật liệu đề xuất, trên một mái liên tục có nóc ở +12,472 m.' },
       keys: [[12, 3, -25, 18, 4, -10, 50], [24, 8, -29, 30, 6, -8, 48], [38, 13, -28, 42, 7, -4, 46]] },
@@ -104,19 +113,19 @@
       en: 'The nave', vi: 'Lòng nhà thờ',
       note: { en: 'Fourteen timber columns in red lacquer carry the roof frames above the pews. Pews, lamps, fans and loudspeakers are a design proposal.', vi: 'Mười bốn cột gỗ sơn son đỡ các vì kèo phía trên hàng ghế. Ghế, đèn, quạt và loa là phương án đề xuất.' },
       keys: [[7, 1.6, 0, 42, 2.4, 0, 58], [12, 1.6, 0.2, 24, 2.8, -4.5, 58], [17.5, 1.6, 0, 42, 2.6, 0, 58], [22.5, 1.6, -0.2, 32, 2.4, 4.5, 58], [27, 1.6, 0, 46, 2.8, 0, 58]] },
-    { id: 'timber', chapter: 'inside', bars: 6, light: 'day', roof: true, cut: 'dip', ease: [0, 0.3],
+    { id: 'timber', chapter: 'inside', bars: 6, light: 'day', roof: true, cut: 'dissolve', ease: [0, 0.3], pan: 0.8,
       en: 'Carved and gilded beams', vi: 'Xà kèo chạm khắc, thếp vàng',
       note: { en: 'Each tie beam carries a gilded bloom between leafy scrolls, under an ivory boarded lining that keeps the roof light. Member sizes and joints remain an engineering hold.', vi: 'Mỗi quá giang mang một bông hoa thếp vàng giữa hai dải lá cuốn, dưới lớp ván lót màu ngà giúp mái sáng và nhẹ. Tiết diện và mối nối còn chờ kỹ sư kết cấu.' },
-      keys: [[24, 1.6, 0, 36, 3, 0, 60], [24.2, 1.65, 0, 28, 8.5, 0, 64], [24.8, 4.2, 1, 21, 10.5, -0.8, 64], [25.6, 7, 2, 14, 11.8, -1, 62], [18.6, 7.1, 1.9, 7, 11, -0.6, 60]] },
-    { id: 'aisle', chapter: 'inside', bars: 5, light: 'day', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
+      keys: [[24, 1.6, 0, 36, 3, 0, 60], [24.2, 1.65, 0, 28, 8.5, 0, 64], [24.8, 4.2, 0.3, 21, 10.5, -0.6, 64], [25.6, 7, 0.4, 14, 11.8, -0.8, 62], [18.6, 7.1, 0.4, 7, 11, -0.4, 60]] },
+    { id: 'aisle', chapter: 'inside', bars: 5, light: 'day', roof: true, cut: 'dissolve', ease: [0.4, 0.2], walk: true,
       en: 'Light through two layers of windows', vi: 'Ánh sáng qua hai lớp cửa',
       note: { en: 'Inner and outer windows stand either side of the veranda, with coloured glass in the arched heads and timber shutters below.', vi: 'Hai lớp cửa sổ trong và ngoài nằm hai bên hiên, kính màu trên các vòm cửa và cánh cửa gỗ bên dưới.' },
-      keys: [[11, 1.6, -4.7, 22, 2.4, -4.8, 58], [16, 1.6, -4.7, 18, 2.8, -7.36, 58], [21.5, 1.6, -4.6, 32, 2.4, -5, 58], [26.5, 1.6, -4.7, 28.5, 3, -7.36, 58]] },
-    { id: 'wings', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.2, 0.2],
+      keys: [[11, 1.6, -4.7, 22, 2.4, -4.8, 58], [16, 1.6, -4.7, 19, 2.8, -7.2, 58], [21.5, 1.6, -4.6, 32, 2.4, -5, 58], [26.5, 1.6, -4.7, 40, 2.8, -6.5, 58]] },
+    { id: 'wings', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dissolve', ease: [0.2, 0.2],
       en: 'The two wings', vi: 'Hai cánh nhà thờ',
       note: { en: 'Saint Peter and Saint Paul face each other across the sanctuary steps, one in each wing.', vi: 'Thánh Phêrô và Thánh Phaolô đối diện nhau qua bậc cung thánh, mỗi vị ở một cánh.' },
       keys: [[36.5, 1.65, 1.4, 40.6, 3, -12.5, 58], [37, 1.7, 0, 46, 3, 0, 58], [37.5, 1.75, -1.4, 40.6, 3, 12.5, 58]] },
-    { id: 'sanctuary', chapter: 'inside', bars: 6, light: 'day', roof: true, cut: 'dip', ease: [0.3, 0], walk: true,
+    { id: 'sanctuary', chapter: 'inside', bars: 6, light: 'day', roof: true, cut: 'dissolve', ease: [0.3, 0], walk: true,
       en: 'The sanctuary in red and gold', vi: 'Cung thánh sơn son thếp vàng',
       note: { en: 'Red lacquer and gilded carving, in the spirit of sơn son thếp vàng, the timber craft of northern Vietnam, frame the altar under three arches. An art proposal on the drawn +0.800 m platform.', vi: 'Sơn son thếp vàng theo tinh thần nghề mộc truyền thống Bắc Bộ ôm lấy bàn thờ dưới ba vòm cung. Đây là đề xuất mỹ thuật trên bục cung thánh +0,800 m theo bản vẽ.' },
       keys: [[35, 1.65, 0, 48.8, 4.4, 0, 56], [37.5, 1.76, 0, 48.8, 4.5, 0, 54], [39.6, 2.2, 0, 48.8, 4.4, 0, 52], [41.2, 2.4, 0, 48.8, 4.2, 0, 50]] },
@@ -124,7 +133,7 @@
       en: 'Altar, tabernacle and crucifix', vi: 'Bàn thờ, nhà tạm và thánh giá',
       note: { en: 'The carved Christ hangs on a red cross in an azure niche above the gilded tabernacle, with Our Lady and Saint Joseph in the shrines on either side.', vi: 'Tượng Chúa chịu nạn chạm gỗ trên thánh giá đỏ, trong hốc tường xanh thiên thanh phía trên nhà tạm thếp vàng; Đức Mẹ và Thánh Giuse ở hai bàn thờ bên.' },
       keys: [[41.2, 2.4, 0, 48.8, 4.2, 0, 50], [41.3, 2.45, 0.6, 47, 2.4, -3.6, 50], [41.5, 2.55, 0, 47.5, 2.6, 0, 44], [41.6, 2.6, 0, 47.5, 4.6, 0, 38], [41.3, 2.45, -0.6, 47, 2.4, 3.6, 50]] },
-    { id: 'look-back', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dip', ease: [0.25, 0.1],
+    { id: 'look-back', chapter: 'inside', bars: 4, light: 'day', roof: true, cut: 'dissolve', ease: [0.25, 0.1],
       en: 'Looking back to the entrance', vi: 'Nhìn về phía cửa chính',
       note: { en: 'From the sanctuary steps, the whole length of the nave back to the doors.', vi: 'Từ bậc cung thánh nhìn suốt lòng nhà thờ về phía cửa chính.' },
       keys: [[40.6, 2.6, 0, 22, 3.8, 0, 56], [39.6, 4.8, 0, 12, 5.2, 0, 58], [38.7, 6.9, 0, 3, 6.4, 0, 60]] },
@@ -134,19 +143,19 @@
       en: 'Coming home after dark', vi: 'Về nhà khi trời tối',
       note: { en: 'The tower front in the evening, with the proposed concealed lighting on the statues and towers. Screen brightness is not a lux measurement.', vi: 'Mặt tiền về đêm với phương án chiếu sáng giấu đèn cho các tượng và hai tháp. Độ sáng màn hình không phải số đo lux.' },
       keys: [[-34, -0.48, 4.5, 2.4, 11, 0, 52], [-27, -0.48, 3.2, 2.4, 12, 0, 52], [-20, -0.48, 2, 2.4, 13.5, 0, 50], [-16.5, -0.48, 1.4, 2.4, 15, 0, 48]] },
-    { id: 'night-towers', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'dip', ease: [0.2, 0.5],
+    { id: 'night-towers', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'dissolve', ease: [0.2, 0.5],
       en: 'The towers at night', vi: 'Tháp chuông về đêm',
       note: { en: 'Concealed lights wash the tower stages from below. Fittings, aiming and outputs remain a proposal until product photometry is chosen.', vi: 'Đèn giấu kín hắt sáng các tầng tháp từ bên dưới. Loại đèn, hướng chiếu và công suất vẫn là đề xuất cho đến khi chọn được số liệu quang học của sản phẩm.' },
       keys: [[-20, 3, -3, 2.4, 11, 0, 48], [-22, 12, -11, 2.45, 19, -10.15, 46], [-20, 22, -15, 2.45, 27, -10.15, 44], [-18, 29, -16, 2.45, 31, -10.15, 44]] },
-    { id: 'night-veranda', chapter: 'night', bars: 6, light: 'evening', roof: true, cut: 'dip', ease: [0.4, 0.2], walk: true,
+    { id: 'night-veranda', chapter: 'night', bars: 6, light: 'evening', roof: true, cut: 'dissolve', ease: [0.4, 0.2], walk: true,
       en: 'Along the veranda at night', vi: 'Dọc hàng hiên về đêm',
       note: { en: 'Path lights guide the way along the veranda, and the windows glow from the nave inside. The lighting is the proposal as the viewer draws it.', vi: 'Đèn lối đi dẫn bước dọc hàng hiên, các cửa sổ sáng lên từ lòng nhà thờ bên trong. Ánh sáng là phương án đề xuất theo cách hiển thị của mô hình.' },
-      keys: [[7, 1.28, 8.9, 20, 1.6, 8.9, 60], [13, 1.28, 9, 15.3, 2.3, 7.36, 60], [19.5, 1.28, 8.9, 30, 1.7, 8.9, 60], [26, 1.28, 8.85, 28, 2.4, 7.36, 60]] },
-    { id: 'night-around', chapter: 'night', bars: 6, light: 'evening', roof: true, cut: 'dip', ease: [0.6, 0.6],
+      keys: [[7, 1.28, 9.55, 20, 1.6, 9.3, 58], [13, 1.28, 9.55, 17.5, 2.2, 7.5, 58], [19.5, 1.28, 9.6, 30, 1.7, 9.3, 58], [26, 1.28, 9.55, 40, 1.8, 9.4, 58]] },
+    { id: 'night-around', chapter: 'night', bars: 6, light: 'evening', roof: true, cut: 'dissolve', ease: [0.6, 0.6],
       en: 'Around the church at night', vi: 'Vòng quanh nhà thờ về đêm',
       note: { en: 'From the courtyard round toward the altar end: the lit towers, the glowing windows and the long red roof against the night sky.', vi: 'Từ sân trước vòng về phía cung thánh: hai tháp sáng đèn, những ô cửa ấm áp và mái ngói đỏ dài trên nền trời đêm.' },
       keys: [[-14, 14, 34, 14, 8, 0, 48], [10, 17, 44, 22, 6, 0, 48], [36, 18, 44, 26, 6, 0, 48], [60, 16, 30, 30, 6, 0, 48]] },
-    { id: 'evening-nave', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'dip', ease: [0.3, 0.1], walk: true,
+    { id: 'evening-nave', chapter: 'night', bars: 5, light: 'evening', roof: true, cut: 'dissolve', ease: [0.3, 0.1], walk: true,
       en: 'Inside after dark', vi: 'Bên trong khi đêm xuống',
       note: { en: 'Evening light: the sanctuary glows at the end of the nave. This is the proposed lighting as the viewer draws it; screen brightness is not a lux measurement.', vi: 'Ánh đèn buổi tối: cung thánh rực sáng cuối lòng nhà thờ. Đây là phương án chiếu sáng đề xuất theo cách hiển thị của mô hình; độ sáng màn hình không phải số đo lux.' },
       keys: [[5, 1.6, 0, 48.8, 3.8, 0, 56], [10.5, 1.6, 0, 48.8, 3.9, 0, 55], [16, 1.6, 0, 48.8, 4.1, 0, 54]] },
@@ -156,7 +165,7 @@
       card: { at: 24, small: 'Với tình yêu dành cho giáo xứ và quê hương\nWith love for our parish and our hometown', title: 'Nhà thờ Thạch Bi', line: 'Hẹn gặp lại ở quê nhà · Until we meet again at home',
         foot: ['Design-development model, not a construction-approved design · Mô hình phát triển thiết kế, chưa phải thiết kế được duyệt để thi công',
           'Music generated in the viewer: an original homeland theme and “Ave Maria” (Bach–Gounod) · Nhạc do mô hình tạo ra: giai điệu quê hương và “Ave Maria” (Bach–Gounod)'] },
-      keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-22, 3.4, 5, 2.4, 11, 0, 50], [-36, 8, 12, 4, 13, 0, 46], [-50, 14, 22, 8, 13, 0, 44], [-64, 21, 31, 10, 13, 0, 42]] }
+      keys: [[-12.5, 1.4, 1.2, 2.4, 9, 0, 54], [-21, 2.8, 4.2, 2.4, 13, 0, 50], [-30, 5.2, 7, 2.4, 18, 0, 46], [-40, 7.8, 9.5, 2.6, 22, 0, 44]] }
   ];
 
   /* ------------------------------------------------------ technical tours
@@ -664,6 +673,8 @@
       shot.start = reel.length; shot.duration = shot.bars * reel.bar; reel.length += shot.duration;
       // A technical caption stays for the whole scene: it is the explanation.
       shot.stay = !!reel.technical;
+      // The first scene of each later chapter of the film opens on a chapter card.
+      shot.opens = !reel.technical && index > 0 && !shot.card && reel.shots[index - 1].chapter !== shot.chapter;
       let lens = 48;
       shot.eye = shot.keys.map(k => k.slice(0, 3));
       shot.look = shot.keys.map(k => k.slice(3, 6));
@@ -675,7 +686,7 @@
         const q = i / STEPS, eye = along(shot.eye, q), look = along(shot.look, q);
         // A pan with a still camera is paced by the movement of the point it
         // looks at; a walker keeps an even step while glancing about.
-        shot.travel.push(shot.travel[i - 1] + dist(eye, previousEye) + (shot.walk ? 0.03 : 0.3) * dist(look, previousLook) + 1e-5);
+        shot.travel.push(shot.travel[i - 1] + dist(eye, previousEye) + (shot.walk ? 0.03 : shot.pan ?? 0.3) * dist(look, previousLook) + 1e-5);
         shot.walked.push(shot.walked[i - 1] + Math.hypot(eye[0] - previousEye[0], eye[2] - previousEye[2]));
         previousEye = eye; previousLook = look;
       }
@@ -746,18 +757,32 @@
   // When a scene's caption and title card are on screen.
   function showing(shot, local) {
     const timed = shot.card?.at !== undefined;
-    const cardFrom = shot.card?.at ?? 1.2, cardTo = shot.card?.hold ? shot.duration + 1 : timed ? shot.duration - 2.4 : 9.5;
+    // A title clears at `until` when it has one, so that the picture behind it has the screen to itself.
+    const cardFrom = shot.card?.at ?? 1.2, cardTo = shot.card?.until ?? (shot.card?.hold ? shot.duration + 1 : timed ? shot.duration - 2.4 : 9.5);
+    // The first scene of a chapter opens on the chapter's number and name; its caption follows.
+    const chapter = !!shot.opens && local >= CHAPTER_CARD.from && local < CHAPTER_CARD.to;
+    const captionFrom = shot.opens ? CHAPTER_CARD.to + 0.6 : 1;
     // A caption stays long enough to read, and clears before a title card.
-    const captionTo = timed ? shot.card.at - 1.2 : shot.stay ? shot.duration - 1.2 : Math.min(shot.duration - 1.2, 14.5);
-    return { card: !!shot.card && local >= cardFrom && local < cardTo, caption: !!shot.en && local > 1 && local < captionTo };
+    const captionTo = timed ? shot.card.at - 1.2 : shot.stay ? shot.duration - 1.2 : Math.min(shot.duration - 1.2, captionFrom + 13.5);
+    const caption = !!shot.en && local > captionFrom && local < captionTo;
+    // In the film the heading comes first and its note a moment later; a technical tour shows both at once.
+    return { card: !!shot.card && local >= cardFrom && local < cardTo, chapter, caption, note: caption && (shot.stay || local > captionFrom + 1.1) };
+  }
+  // How much of the scene before still shows through a dissolve (1 at the cut, 0 when it has melted away).
+  function heldAt(time, of = reel) {
+    const shot = shotAt(time, of), local = time - shot.start;
+    return shot.cut === 'dissolve' && shot.index > 0 && local < DISSOLVE ? 1 - smooth(local / DISSOLVE) : 0;
   }
 
   /* --------------------------------------------------------------- music
    * 4/4 at 60 beats a minute: one bar for every four seconds of film.
    *
    *  1. "Homeland" (film bars 1–48, outside). An original melody on the five
-   *     notes C D E G A, the scale of much Vietnamese folk song, on a flute
-   *     stop over warm strings. It quotes no existing song.
+   *     notes C D E G A, the scale of much Vietnamese folk song. It quotes no
+   *     existing song. It grows as the camera goes round: an open fifth under
+   *     the bells, the flute alone over a drone with the small slides of folk
+   *     singing, the strings joining, the melody in the tenor under flowing
+   *     flutes, full organ at the roof and the altar end, then the flute again.
    *  2. "Ave Maria" (bars 49–89, inside, from the church door to the look
    *     back from the sanctuary). Charles Gounod's melody of 1853 over
    *     J. S. Bach's Prelude in C, BWV 846, complete in 41 bars. Both are in
@@ -765,8 +790,13 @@
    *     edition no. 2167 (after Heugel, 1856; released into the public domain
    *     by its editor). Its "tutta forza" bar falls on the close view of the
    *     altar and crucifix.
-   *  3. "Homeland" quietly in the evening (bars 90–117), then on full organ
-   *     for the closing view (bars 118–127), ending quietly.
+   *  3. "Homeland" quietly in the evening (bars 90–117), first the flute
+   *     over a drone as in the morning, then on full organ for the closing
+   *     view (bars 118–127), ending quietly.
+   * Sections may set: drone (an open fifth C–G under the melody instead of the
+   * chords), folk (long notes slide up into pitch, as a voice does), tenor
+   * (the melody an octave lower, under the quavers), doubled (the melody also
+   * an octave higher, or 'below').
    */
   // Homeland: [chords sharing the bar equally, melody as note:beats].
   const HOME_A = [['C', 'E4:1 G4:1 A4:2'], ['Am', 'C5:1.5 A4:.5 G4:2'], ['F', 'A4:1 C5:1 D5:1.5 C5:.5'], ['G', 'D5:4'],
@@ -774,18 +804,24 @@
   const HOME_B = [['Am', 'E5:2 G5:1 E5:1'], ['F', 'D5:1 C5:1 A4:2'], ['C/E', 'G4:1 C5:1 E5:1.5 D5:.5'], ['G', 'D5:3 G4:1'],
     ['Am', 'A4:1 C5:1 E5:1 G5:1'], ['F', 'A5:2 G5:1 E5:1'], ['F G', 'C5:1 A4:1 G4:1 D5:1'], ['C', 'C5:4']];
   const HOMELAND = [
-    { pad: 'celeste', solo: 'voice', level: 0.52, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1'], ['Am', 'A5:1 G5:.5 E5:.5 G5:2'], ['F G', 'A4:2 D5:2']] },
-    { pad: 'celeste', solo: 'voice', level: 0.62, bars: HOME_A },
-    { pad: 'celeste', solo: 'voice', level: 0.7, quavers: true, bars: HOME_B },
-    { pad: 'celeste', solo: 'voice', level: 0.56, bars: HOME_A },
-    { pad: 'celeste', solo: 'voice', level: 0.6, bars: HOME_B },
-    { pad: 'celeste', solo: 'voice', level: 0.66, quavers: true, bars: HOME_A },
-    { pad: 'celeste', solo: 'voice', level: 0.48, bars: [['F', 'A4:2 C5:2'], ['G', 'D5:4'], ['C', 'E5:1 G5:1 A5:2'], ['C', 'G5:4']] }
+    // Under the bells: the open fifth, then the flute's first call.
+    { pad: 'celeste', solo: 'voice', level: 0.46, drone: true, folk: true, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1'], ['Am', 'A5:1 G5:.5 E5:.5 G5:2'], ['F G', 'A4:2 D5:2']] },
+    // Up the tower: the flute alone over the drone.
+    { pad: 'celeste', solo: 'voice', level: 0.62, drone: true, folk: true, bars: HOME_A },
+    // Belfry and front: the strings join with the chords.
+    { pad: 'celeste', solo: 'voice', level: 0.62, folk: true, bars: HOME_B },
+    // Forecourt and veranda: the melody in the tenor, flutes flowing above.
+    { pad: 'celeste', solo: 'song', level: 0.62, quavers: true, tenor: true, bars: HOME_A },
+    // Roof: fuller organ, the melody doubled an octave below.
+    { pad: 'principals', solo: 'song', pedal: 'pedal', level: 0.72, quavers: true, doubled: 'below', bars: HOME_B },
+    // Round the altar end: the flute again, quieter.
+    { pad: 'celeste', solo: 'voice', level: 0.56, folk: true, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.46, folk: true, bars: [['F', 'A4:2 C5:2'], ['G', 'D5:4'], ['C', 'E5:1 G5:1 A5:2'], ['C', 'G5:4']] }
   ];
   // Evening, before the finale: the same melody quietly, as the camera walks in the dark.
   const NOCTURNE = [
-    { pad: 'celeste', solo: 'voice', level: 0.4, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1']] },
-    { pad: 'celeste', solo: 'voice', level: 0.46, bars: HOME_A },
+    { pad: 'celeste', solo: 'voice', level: 0.38, drone: true, folk: true, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1']] },
+    { pad: 'celeste', solo: 'voice', level: 0.44, drone: true, folk: true, bars: HOME_A },
     { pad: 'celeste', solo: 'voice', level: 0.5, bars: HOME_B },
     { pad: 'celeste', solo: 'voice', level: 0.44, bars: HOME_A },
     { pad: 'celeste', solo: 'voice', level: 0.4, bars: [['Am', 'E5:2 D5:2'], ['F', 'C5:2 A4:2']] }
@@ -897,19 +933,28 @@
       for (const section of sections) {
         for (const [chords, melody] of section.bars) {
           const start = bar * BAR, list = chords.split(' '), share = BAR / list.length;
-          const sung = tune(melody, start);
+          const sung = tune(melody, start).map(note => (section.tenor ? { ...note, note: note.note - 12 } : note));
           for (const note of sung) {
-            add(part, 'melody', note.time, note.length - 0.05, note.note, section.solo, section.level);
+            const event = add(part, 'melody', note.time, note.length - 0.05, note.note, section.solo, section.level);
+            // A long note slides up into its pitch, as a folk singer's voice does.
+            if (section.folk && note.length >= 1.5) event.slide = -45;
             // On full organ the melody is doubled at the octave above.
-            if (section.doubled) add(part, 'melody', note.time, note.length - 0.05, note.note + 12, 'song', section.level * 0.7);
+            if (section.doubled) add(part, 'melody', note.time, note.length - 0.05, note.note + (section.doubled === 'below' ? -12 : 12), 'song', section.level * 0.7);
           }
           let top = 96;
           list.forEach((symbol, k) => {
             const c = chord(symbol), time = start + k * share;
+            if (section.drone) {
+              // An open fifth held under the melody, and the low C in the pedal.
+              for (const note of [48, 55]) tie(part, 'inner', `drone:${note}`, time, share, note, 'held', section.level * 0.8);
+              tie(part, 'bass', 'bass', time, share, 36, 'softPedal', section.level * 0.9);
+              return;
+            }
             const above = sung.filter(n => n.time < time + share && n.time + n.length > time).map(n => n.note);
             if (above.length) top = Math.min(...above);
-            // Inner parts in close position round D4, kept below the melody.
-            c.tones.map(pc => place(pc, 62)).map(n => (n > top - 2 ? n - 12 : n))
+            // Inner parts in close position round D4, kept below the melody; none
+            // under a tenor melody, which the quavers above accompany alone.
+            if (!section.tenor) c.tones.map(pc => place(pc, 62)).map(n => (n > top - 2 ? n - 12 : n))
               .forEach((note, i) => tie(part, 'inner', `inner${i}:${note}`, time, share, note, section.pad, section.level * 0.8));
             tie(part, 'bass', 'bass', time, share, 36 + c.bass, section.pedal || 'softPedal', section.level);
             if (section.quavers) {
@@ -987,7 +1032,117 @@
   FILMS.full.score = score;
   for (const tour of [FILMS.lighting, FILMS.air, FILMS.sound, FILMS.grid]) tour.score = composeQuiet(tour.length / BAR);
 
-  const music = { context: null, on: true, epoch: null, next: 0, zero: 0, synced: false, waking: 0, timer: 0, waves: {} };
+  /* ------------------------------------------------------------ ambience
+   * The sounds of the place under the music of the film (the technical tours
+   * have none): two village bells calling to Mass from the opening, up the
+   * tower and round the belfry, then handing over to the organ; birds and a breeze outside by day; footsteps at the walker's
+   * own pace (stone outside, tiles on the veranda and inside, where the room
+   * answers them); a quiet room tone inside; crickets after dark, faint
+   * through the open doors once inside. Synthesised here from a fixed seed,
+   * so every playing is the same. Presentation sound only: it predicts
+   * nothing about this church's acoustics or noise (see simulator/audio.js
+   * and the sound tour for the room-based estimates).
+   */
+  const INSIDE = new Set(['nave', 'timber', 'aisle', 'wings', 'sanctuary', 'altar', 'look-back', 'evening-nave']);
+  const VERANDA = new Set(['veranda', 'night-veranda']);
+  // Two cast-bronze bells struck at G4 and C5, in the key of the music: an octave brighter than a
+  // big Western tower bell, with the long, wavering ring (ngân) of a bronze village bell.
+  const BELLS = { tenor: 392, treble: 523.25 };
+  // Partials as fractions of the struck note: [ratio, level, seconds to die away]. Hum, strike note
+  // and minor-third tierce each come as a close pair whose slow beat makes the ring waver; a strong
+  // nominal an octave up and a few bright, quick upper partials for the clang of the strike.
+  const BELL_PARTIALS = [[0.5, 0.3, 12], [0.5021, 0.16, 12], [1, 0.42, 9], [1.0034, 0.2, 9], [1.19, 0.3, 7], [1.1935, 0.12, 7], [1.5, 0.12, 4.5],
+    [2, 0.34, 5], [2.5, 0.12, 3], [2.66, 0.1, 2.5], [3.01, 0.08, 2], [4.07, 0.05, 1.2], [5.43, 0.035, 0.6], [6.84, 0.025, 0.35]];
+  const BELL_RING = Math.max(...BELL_PARTIALS.map(partial => partial[2]));
+  // Where the bells ring: from the first picture up the tower and round the belfry.
+  const BELL_SCENES = ['opening', 'towers', 'belfry'];
+  function composeSounds(of) {
+    let seed = 20261121;
+    const random = () => (seed = (seed * 1103515245 + 12345) >>> 0) / 4294967296;
+    const between = (a, b) => a + (b - a) * random();
+    const out = [];
+    const inside = (shot, time) => INSIDE.has(shot.id) || (shot.id === 'enter' && pose(time, of).eye[0] > 1);
+    // The bells ring from the first picture, up the tower and round the belfry (owner, 21 November
+    // 2026: keep the bells while the tower is shown). The lower bell alone, then the two in turn in
+    // phrases of eight strokes with a breath between, as a village church rings for Mass; quieter
+    // under the tower's caption, fuller beside the belfry, dying away before the front.
+    const bellScenes = BELL_SCENES.map(id => of.shots.find(shot => shot.id === id));
+    const towers = bellScenes[1], belfry = bellScenes[2], silent = belfry.start + belfry.duration - 0.5, last = silent - 8.5;
+    const swell = time => time < towers.start - 1 ? 1
+      : time < towers.start + 3 ? 1 - 0.45 * (time - towers.start + 1) / 4
+      : time < belfry.start - 2 ? 0.55
+      : time < belfry.start + 4 ? 0.55 + 0.25 * (time - belfry.start + 2) / 6
+      : 0.8 * (1 - 0.55 * Math.max(0, Math.min(1, (time - last + 6) / 6)));
+    // The last strokes are damped so that nothing still rings as the front comes into view.
+    const ring = time => Math.min(1, (silent - time) / BELL_RING);
+    out.push({ time: 0.15, length: BELL_RING, ring: 1, kind: 'bell', nominal: BELLS.tenor, level: 0.56, pan: -0.2, wet: 0.45 });
+    for (let i = 0, time = 2.6; time < last; i++) {
+      const high = i % 2 === 1;
+      out.push({ time, length: BELL_RING * ring(time), ring: ring(time), kind: 'bell', nominal: high ? BELLS.treble : BELLS.tenor, level: (high ? 0.46 : 0.54) * swell(time), pan: high ? 0.24 : -0.2, wet: 0.45 });
+      time += (i % 8 === 7 ? 2.6 : 1.3) + between(-0.05, 0.05);
+    }
+    for (const shot of of.shots) {
+      const night = shot.light === 'evening', end = shot.start + shot.duration, indoor = INSIDE.has(shot.id);
+      // A bed of air under each scene, overlapping its neighbours so that they cross-fade.
+      const from = Math.max(0, shot.start - 0.8), to = Math.min(of.length, end + 0.8);
+      out.push({ time: from, length: to - from, kind: 'bed', bed: indoor ? 'room' : night ? 'night' : 'breeze', level: 1, fade: shot.index ? 0.8 : 2.5 });
+      // Birds by day: near outside, rare and muffled inside.
+      if (!night) {
+        const every = indoor ? 8 : 2.8;
+        for (let time = shot.start + between(0.8, every); time < end - 0.6; time += between(0.5, 1.5) * every) out.push(bird(time, inside(shot, time), between));
+      }
+      // Footsteps where the camera walks: one at each step of 0.72 m, at the walker's pace.
+      if (shot.walk) {
+        const segments = shot.keys.length - 1, metresAt = local => table(shot.walked, placeAt(shot, Math.min(1, Math.max(0, local))) / segments);
+        const samples = Math.round(shot.duration * 60);
+        let step = Math.floor(metresAt(0) / STRIDE), foot = 0;
+        for (let i = 1; i <= samples; i++) {
+          const local = i / samples, metres = metresAt(local);
+          if (Math.floor(metres / STRIDE) <= step) continue;
+          step = Math.floor(metres / STRIDE);
+          const time = shot.start + local * shot.duration, span = 0.25 / shot.duration;
+          const pace = (metresAt(local + span) - metresAt(local - span)) / 0.5;
+          if (pace < 0.2 || time > end - 0.05) continue;
+          const roofed = inside(shot, time), veranda = VERANDA.has(shot.id);
+          out.push({ time, length: 0.3, kind: 'step', surface: roofed || veranda ? 'tile' : 'stone', level: Math.min(1, pace / 0.9) * between(0.82, 1),
+            pan: foot++ % 2 ? 0.06 : -0.06, wet: roofed ? 0.5 : veranda ? 0.14 : 0.03 });
+        }
+      }
+    }
+    // Crickets from dusk to the end: a few singers, each at its own steady rate and pitch, faint once inside.
+    const dusk = of.shots.find(shot => shot.light === 'evening')?.start;
+    if (dusk !== undefined) for (let v = 0; v < 4; v++) {
+      const period = between(0.45, 0.95), pitch = between(4300, 5300), pan = between(-0.75, 0.75), level = between(0.55, 1);
+      for (let time = dusk + between(0, period); time < of.length - 0.2; time += period * between(0.97, 1.03)) {
+        const shot = shotAt(time, of), indoor = inside(shot, time);
+        if (indoor && v > 1) continue;
+        out.push({ time, length: 0.12, kind: 'cricket', pitch, pulses: 3 + (v % 2), level: level * (indoor ? 0.22 : 1), pan, cutoff: indoor ? 2400 : 0 });
+      }
+    }
+    return out.filter(event => event.time >= 0 && event.time < of.length).sort((a, b) => a.time - b.time);
+  }
+  // A bird's call: two to twelve syllables, each a quick slide in pitch. Muffled when heard from inside.
+  function bird(time, indoor, between) {
+    const kind = between(0, 3), notes = [];
+    let at = 0;
+    if (kind < 1) { // a whistle of two or three slow slides
+      const base = between(1700, 2600);
+      for (let i = 0, n = 2 + Math.round(between(0, 1)); i < n; i++) { const length = between(0.12, 0.24), rise = between(0.82, 1.35); notes.push([at, length, base, base * rise, between(0.7, 1)]); at += length + between(0.05, 0.12); }
+    } else if (kind < 2) { // quick falling chirps
+      for (let i = 0, n = 3 + Math.round(between(0, 3)); i < n; i++) { const high = between(3600, 5000), length = between(0.035, 0.07); notes.push([at, length, high, high * between(0.62, 0.8), between(0.6, 1)]); at += length + between(0.04, 0.09); }
+    } else { // a trill
+      const pitch = between(3200, 4400);
+      for (let i = 0, n = 8 + Math.round(between(0, 4)); i < n; i++) { notes.push([at, 0.026, pitch * (1 + i * 0.006), pitch * (1.05 + i * 0.006), 0.75 + 0.25 * Math.sin(i)]); at += 0.042; }
+    }
+    return { time, length: at + 0.05, kind: 'bird', notes, level: between(0.45, 1) * (indoor ? 0.3 : 1), pan: between(-0.8, 0.8), cutoff: indoor ? 1900 : 0, wet: indoor ? 0.4 : 0.06 };
+  }
+  FILMS.full.sounds = composeSounds(FILMS.full);
+
+  // Output level: the film's mix sat near −26 dBFS; this brings it to about −22, peaks held by the limiter.
+  const MASTER = 1.4;
+  const music = { context: null, on: true, ambienceOn: true, epoch: null, next: 0, nextSound: 0, zero: 0, synced: false, waking: 0, timer: 0, waves: {} };
+  // Some sound is wanted: the organ, or the sounds of the place in a film that has them.
+  const soundOn = () => music.on || (music.ambienceOn && !!reel.sounds?.length);
   // Resuming sound takes a moment: the picture waits for it instead of running ahead.
   const wake = () => { music.waking = performance.now(); return music.context.resume(); };
   function musicGraph() {
@@ -1006,8 +1161,9 @@
     music.meter = ctx.createAnalyser(); music.meter.fftSize = 4096;
     music.master.connect(limiter); limiter.connect(music.meter); music.meter.connect(ctx.destination);
     music.dry = ctx.createGain(); music.dry.gain.value = 0.58; music.dry.connect(music.master);
-    // Artificial reverberation: decaying noise, darker as it dies away. A
-    // generic large-church tail for the film; not this church's predicted response.
+    // Artificial reverberation: a few early reflections, then decaying noise,
+    // darker as it dies away, a little different in each ear. A generic
+    // large-church tail for the film; not this church's predicted response.
     const seconds = 5.5, rate = ctx.sampleRate, impulse = ctx.createBuffer(2, Math.floor(seconds * rate), rate);
     let seed = 20261009;
     const random = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 2147483648) - 1;
@@ -1017,26 +1173,45 @@
       for (let i = 0; i < data.length; i++) {
         const t = i / rate, keep = 0.5 * Math.exp(-t * 0.8) + 0.05;
         low += (random() - low) * keep;
-        data[i] = low * Math.exp(-t * 6.9 / 4.4) * Math.min(1, t / 0.014);
+        data[i] = low * Math.exp(-t * 6.9 / 4.4) * Math.min(1, t / 0.03);
+      }
+      for (let k = 0; k < 14; k++) {
+        const t = 0.006 + (k / 14) * 0.075 + Math.abs(random()) * 0.006;
+        data[Math.floor(t * rate)] += random() * 0.9 * Math.exp(-t * 14);
       }
     }
     const hall = ctx.createConvolver(); hall.buffer = impulse;
+    const gap = ctx.createDelay(0.1); gap.delayTime.value = 0.022;
     music.wet = ctx.createGain(); music.wet.gain.value = 0.6;
-    music.send = ctx.createGain(); music.send.connect(hall); hall.connect(music.wet); music.wet.connect(music.master);
+    music.send = ctx.createGain(); music.send.connect(gap); gap.connect(hall); hall.connect(music.wet); music.wet.connect(music.master);
+    // The organ and the sounds of the place each have a switch.
+    music.organ = ctx.createGain(); music.organ.gain.value = music.on ? 1 : 0;
+    music.organ.connect(music.dry); music.organ.connect(music.send);
+    music.ambience = ctx.createGain(); music.ambience.gain.value = music.ambienceOn ? 1 : 0; music.ambience.connect(music.master);
+    music.ambienceWet = ctx.createGain(); music.ambienceWet.gain.value = music.ambienceOn ? 1 : 0; music.ambienceWet.connect(music.send);
+    // The bells open the music as well as the scene: they ring when either switch is on.
+    music.bells = ctx.createGain(); music.bells.gain.value = music.on || music.ambienceOn ? 1 : 0; music.bells.connect(music.master);
+    music.bellsWet = ctx.createGain(); music.bellsWet.gain.value = music.bells.gain.value; music.bellsWet.connect(music.send);
+    music.ambienceMeter = ctx.createAnalyser(); music.ambienceMeter.fftSize = 4096; music.ambience.connect(music.ambienceMeter); music.bells.connect(music.ambienceMeter);
     // Tremulant for the solo stops.
     music.solo = ctx.createGain(); music.solo.gain.value = 0.94;
-    music.solo.connect(music.dry); music.solo.connect(music.send);
+    music.solo.connect(music.organ);
     const wave = ctx.createOscillator(), depth = ctx.createGain();
     wave.frequency.value = 5.3; depth.gain.value = 0.085;
     wave.connect(depth); depth.connect(music.solo.gain); wave.start();
+    // Three seconds of noise for wind, footsteps, the clapper and the breath of the pipes.
+    music.noise = ctx.createBuffer(1, 3 * rate, rate);
+    const noise = music.noise.getChannelData(0);
+    for (let i = 0; i < noise.length; i++) noise[i] = random();
     return ctx;
   }
   function musicCut() {
     const ctx = music.context, old = music.epoch;
     if (old) for (const node of old) { node.gain.setTargetAtTime(0, ctx.currentTime, 0.03); setTimeout(() => node.disconnect(), 400); }
-    const plain = ctx.createGain(), solo = ctx.createGain();
-    plain.connect(music.dry); plain.connect(music.send); solo.connect(music.solo);
-    music.epoch = [plain, solo];
+    const plain = ctx.createGain(), solo = ctx.createGain(), place = ctx.createGain(), placeWet = ctx.createGain(), bells = ctx.createGain(), bellsWet = ctx.createGain();
+    plain.connect(music.organ); solo.connect(music.solo); place.connect(music.ambience); placeWet.connect(music.ambienceWet);
+    bells.connect(music.bells); bellsWet.connect(music.bellsWet);
+    music.epoch = [plain, solo, place, placeWet, bells, bellsWet];
   }
   // Start the score at a film time: notes already sounding there come in held.
   function musicSeek(time) {
@@ -1044,9 +1219,96 @@
     if (!ctx) return;
     musicCut();
     music.zero = ctx.currentTime + 0.06 - time;
-    music.next = 0;
+    music.next = 0; music.nextSound = 0;
     musicPump();
   }
+  // Organ pipes stand on two chests, C side and C♯ side: neighbouring notes come from either side.
+  const organPan = event => (event.voice === 'bass' ? 0 : (event.note % 2 ? -1 : 1) * (event.voice === 'melody' ? 0.1 : 0.16 + 0.3 * Math.min(1, Math.max(0, (event.note - 48) / 36))));
+  // A short breath of noise: the "chiff" of a pipe as it speaks, a clapper, a footfall.
+  function breath(ctx, into, at, seconds, frequency, q, level) {
+    const source = ctx.createBufferSource(), band = ctx.createBiquadFilter(), gain = ctx.createGain();
+    source.buffer = music.noise;
+    band.type = 'bandpass'; band.frequency.value = Math.min(9000, frequency); band.Q.value = q;
+    gain.gain.setValueAtTime(0, at); gain.gain.linearRampToValueAtTime(level, at + 0.003); gain.gain.setTargetAtTime(0, at + 0.003, seconds / 3);
+    source.connect(band); band.connect(gain); gain.connect(into);
+    source.start(at, (at * 0.7919) % 2.5); source.stop(at + seconds * 2 + 0.05);
+  }
+  // Where a sound of the place goes: placed left or right, with some of it into the room's echo.
+  function placed(ctx, event, cutoff) {
+    const pan = ctx.createStereoPanner();
+    pan.pan.value = event.pan || 0;
+    const bell = event.kind === 'bell' ? 2 : 0;
+    pan.connect(music.epoch[2 + bell]);
+    if (event.wet) { const send = ctx.createGain(); send.gain.value = event.wet; pan.connect(send); send.connect(music.epoch[3 + bell]); }
+    if (!cutoff) return pan;
+    const muffle = ctx.createBiquadFilter(); muffle.type = 'lowpass'; muffle.frequency.value = cutoff; muffle.connect(pan);
+    return muffle;
+  }
+  const SOUNDS = {
+    bell(ctx, event, begin) {
+      const out = placed(ctx, event, 6500);
+      for (let [ratio, amp, seconds] of BELL_PARTIALS) {
+        const tone = ctx.createOscillator(), gain = ctx.createGain(), peak = amp * event.level * 1.05;
+        seconds *= event.ring ?? 1;
+        tone.frequency.value = event.nominal * ratio;
+        gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(peak, begin + 0.004);
+        gain.gain.setTargetAtTime(0, begin + 0.004, seconds / 6.9);
+        tone.connect(gain); gain.connect(out); tone.start(begin); tone.stop(begin + seconds + 0.1);
+      }
+      // The clapper on bronze: a hard click and a short metallic clang.
+      breath(ctx, out, begin, 0.025, 3200, 0.9, event.level * 0.3);
+      breath(ctx, out, begin, 0.12, event.nominal * 2.66, 6, event.level * 0.22);
+    },
+    bird(ctx, event, begin) {
+      const out = placed(ctx, event, event.cutoff), voice = ctx.createOscillator(), gain = ctx.createGain(), level = event.level * 0.05;
+      voice.frequency.setValueAtTime(event.notes[0][2], begin); gain.gain.setValueAtTime(0, begin);
+      for (const [at, length, from, to, amp] of event.notes) {
+        const t = begin + at;
+        voice.frequency.setValueAtTime(from, t); voice.frequency.exponentialRampToValueAtTime(to, t + length);
+        gain.gain.setValueAtTime(0, t); gain.gain.linearRampToValueAtTime(amp * level, t + Math.min(0.01, length / 3));
+        gain.gain.setValueAtTime(amp * level, t + length * 0.7); gain.gain.linearRampToValueAtTime(0, t + length);
+      }
+      voice.connect(gain); gain.connect(out); voice.start(begin); voice.stop(begin + event.length + 0.05);
+    },
+    cricket(ctx, event, begin) {
+      const out = placed(ctx, event, event.cutoff), voice = ctx.createOscillator(), gain = ctx.createGain(), level = event.level * 0.018;
+      voice.frequency.value = event.pitch; gain.gain.setValueAtTime(0, begin);
+      for (let i = 0; i < event.pulses; i++) {
+        const t = begin + i * 0.026;
+        gain.gain.setValueAtTime(0, t); gain.gain.linearRampToValueAtTime(level, t + 0.003); gain.gain.setValueAtTime(level, t + 0.012); gain.gain.linearRampToValueAtTime(0, t + 0.016);
+      }
+      voice.connect(gain); gain.connect(out); voice.start(begin); voice.stop(begin + event.pulses * 0.026 + 0.03);
+    },
+    step(ctx, event, begin) {
+      const out = placed(ctx, event), stone = event.surface === 'stone', level = event.level * 0.2;
+      // Heel, then the ball of the foot; on stone, a soft thud under it.
+      breath(ctx, out, begin, 0.05, stone ? 950 : 1700, stone ? 0.8 : 1.1, level);
+      breath(ctx, out, begin + 0.065, 0.035, stone ? 1300 : 2400, 1.2, level * 0.45);
+      if (stone) {
+        const thud = ctx.createOscillator(), gain = ctx.createGain();
+        thud.frequency.value = 78; gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(level * 0.35, begin + 0.004); gain.gain.setTargetAtTime(0, begin + 0.004, 0.02);
+        thud.connect(gain); gain.connect(out); thud.start(begin); thud.stop(begin + 0.2);
+      }
+    },
+    bed(ctx, event, begin, end) {
+      const shape = { breeze: [['bandpass', 480, 0.5], 0.05, 0.4], room: [['lowpass', 210, 0.7], 0.035, 0], night: [['lowpass', 360, 0.7], 0.03, 0.25] }[event.bed];
+      const [[type, frequency, q], level, sway] = shape, out = placed(ctx, event);
+      const source = ctx.createBufferSource(), tone = ctx.createBiquadFilter(), gust = ctx.createGain(), gain = ctx.createGain();
+      source.buffer = music.noise; source.loop = true;
+      tone.type = type; tone.frequency.value = frequency; tone.Q.value = q;
+      // The breeze rises and falls slowly.
+      if (sway) {
+        const swell = ctx.createOscillator(), depth = ctx.createGain();
+        swell.frequency.value = 0.06 + (event.time % 7) * 0.008; depth.gain.value = sway;
+        swell.connect(depth); depth.connect(gust.gain); swell.start(begin); swell.stop(end + 0.1);
+      }
+      const fade = Math.min(event.fade, (end - begin) / 2);
+      gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(level * event.level, begin + fade);
+      gain.gain.setValueAtTime(level * event.level, end - fade); gain.gain.linearRampToValueAtTime(0, end);
+      source.connect(tone); tone.connect(gust); gust.connect(gain); gain.connect(out);
+      source.start(begin, (event.time * 0.37) % 2.5); source.stop(end + 0.05);
+    }
+  };
   function musicPump() {
     const ctx = music.context;
     if (!ctx || ctx.state !== 'running' || !music.synced || !music.epoch) return;
@@ -1056,30 +1318,56 @@
       const event = events[music.next++];
       const begin = Math.max(ctx.currentTime + 0.01, music.zero + event.time), end = music.zero + event.time + event.length;
       if (end - begin < 0.05) continue;
-      const frequency = 440 * Math.pow(2, (event.note - 69) / 12), out = music.epoch[TREMULANT.has(event.stops) ? 1 : 0];
+      // A hair of drift in each note's tuning, the same every time it is played.
+      const drift = ((event.note * 7919 + Math.round(event.time * 1000)) % 13 - 6) * 0.25;
+      const frequency = 440 * Math.pow(2, (event.note - 69) / 12 + drift / 1200);
+      const pan = ctx.createStereoPanner();
+      pan.pan.value = organPan(event); pan.connect(music.epoch[TREMULANT.has(event.stops) ? 1 : 0]);
+      let loudest = 0;
       STOPS[event.stops].forEach(([tone, pitch, level, cents = 0], rank) => {
         const pipe = ctx.createOscillator(), gain = ctx.createGain(), peak = level * event.level * 0.2;
+        loudest += peak;
         // Strings speak slowly; flutes and principals promptly.
         const attack = tone === 'string' ? 0.14 : 0.045;
         pipe.setPeriodicWave(music.waves[tone]);
         // Ranks are tuned a hair apart, as real pipes are.
-        pipe.frequency.value = frequency * pitch * Math.pow(2, (cents + (rank - 1) * 1.5) / 1200);
+        const hz = frequency * pitch * Math.pow(2, (cents + (rank - 1) * 1.5) / 1200);
+        // A sung note slides up into pitch (folk sections only).
+        if (event.slide && begin - (music.zero + event.time) < 0.02) { pipe.frequency.setValueAtTime(hz * Math.pow(2, event.slide / 1200), begin); pipe.frequency.exponentialRampToValueAtTime(hz, begin + 0.2); } else pipe.frequency.value = hz;
         gain.gain.setValueAtTime(0, begin);
         gain.gain.linearRampToValueAtTime(peak, begin + Math.min(attack, (end - begin) * 0.5));
         gain.gain.setValueAtTime(peak, Math.max(begin + Math.min(attack, (end - begin) * 0.5) + 0.005, end - 0.02));
         gain.gain.linearRampToValueAtTime(0, end + 0.1);
-        pipe.connect(gain); gain.connect(out);
+        pipe.connect(gain); gain.connect(pan);
         pipe.start(begin); pipe.stop(end + 0.13);
       });
+      // Flue pipes speak with a little breath of wind.
+      if (event.length >= 0.2 && event.stops !== 'held' && !/Pedal$/.test(event.stops) && event.stops !== 'celeste' && begin - (music.zero + event.time) < 0.02) breath(ctx, pan, begin, 0.04, frequency * 3, 3, loudest * 0.3);
+    }
+    // The sounds of the place, on the same clock.
+    const sounds = reel.sounds || [];
+    while (music.nextSound < sounds.length && sounds[music.nextSound].time < horizon) {
+      const event = sounds[music.nextSound++], at = music.zero + event.time;
+      const begin = Math.max(ctx.currentTime + 0.01, at), end = at + event.length;
+      // A short sound already under way when the film was joined is left out; a bed comes in where it is.
+      if (end - begin < 0.05 || (event.kind !== 'bed' && begin - at > 0.03)) continue;
+      SOUNDS[event.kind](ctx, event, begin, end);
     }
   }
   function musicLevel(seconds = 0.25) {
     if (!music.context) return;
-    music.master.gain.setTargetAtTime(music.on && film.running ? 0.9 : 0, music.context.currentTime, seconds / 3);
+    const now = music.context.currentTime, ambience = music.ambienceOn ? 1 : 0;
+    music.master.gain.setTargetAtTime(soundOn() && film.running ? MASTER : 0, now, seconds / 3);
+    music.organ.gain.setTargetAtTime(music.on ? 1 : 0, now, seconds / 3);
+    music.ambience.gain.setTargetAtTime(ambience, now, seconds / 3); music.ambienceWet.gain.setTargetAtTime(ambience, now, seconds / 3);
+    const bells = music.on || music.ambienceOn ? 1 : 0;
+    music.bells.gain.setTargetAtTime(bells, now, seconds / 3); music.bellsWet.gain.setTargetAtTime(bells, now, seconds / 3);
   }
 
   /* ---------------------------------------------------------------- film */
-  const film = { running: false, paused: false, time: 0, shot: null, before: null, church: null, layer: null, lastMove: 0, status: '', text: null, key: null, marks: [], points: [], live: null, states: [], dirty: false, rehearsing: false, livePainted: null };
+  const film = { running: false, paused: false, time: 0, shot: null, before: null, church: null, layer: null, lastMove: 0, status: '', text: null, key: null, marks: [], points: [], live: null, states: [], dirty: false, rehearsing: false, livePainted: null,
+    // The picture held for a dissolve: `of` is the scene it dissolves into, `want` the scene whose picture is being kept now.
+    hold: { of: -1, want: -1 } };
   // What the next start plays: set by the buttons, used once.
   const wanted = { film: 'full', record: false, save: true };
   const byId = id => document.getElementById(id);
@@ -1088,7 +1376,8 @@
     if (film.layer) return film.layer;
     const layer = film.layer = document.createElement('div');
     layer.id = 'cinemaLayer'; layer.className = 'cinema-layer'; layer.hidden = true;
-    layer.innerHTML = `<div class="cinema-marks"></div><div class="cinema-fade"></div>
+    layer.innerHTML = `<canvas class="cinema-hold" hidden></canvas><div class="cinema-vignette"></div><div class="cinema-marks"></div><div class="cinema-fade"></div>
+<div class="cinema-chapter-card"><span></span><h2></h2></div>
 <div class="cinema-bar cinema-bar-top"></div><div class="cinema-bar cinema-bar-bottom"></div>
 <div class="cinema-card"><small></small><h1></h1><p></p><p class="cinema-second"></p><footer></footer></div>
 <div class="cinema-caption" aria-live="polite"><span class="cinema-chapter"></span><strong></strong><em></em><p class="cinema-note"></p><p class="cinema-note cinema-note-vi"></p></div>
@@ -1100,6 +1389,7 @@
 <button data-cinema="pause" title="Pause or play (Space)" aria-label="Pause or play">⏸</button>
 <button data-cinema="next" title="Next scene (→)" aria-label="Next scene">⏭</button>
 <button data-cinema="music" title="Organ music on or off (M)" aria-pressed="true">♪ Organ</button>
+<button data-cinema="ambience" title="Sounds of the place on or off: birds, footsteps, crickets; the tower bells ring while the organ or the ambience is on (N)" aria-pressed="true">◌ Ambience</button>
 <button data-cinema="full" title="Full screen (F)">⛶ Full screen</button>
 <button data-cinema="record" title="Play from the start and save the film as a video file">● Save as video</button>
 <button data-cinema="stop" title="Stop the tour (Esc)">✕ Stop</button>
@@ -1115,11 +1405,12 @@
       else if (action === 'previous') skip(-1);
       else if (action === 'next') skip(1);
       else if (action === 'music') setMusic(!music.on);
+      else if (action === 'ambience') setAmbience(!music.ambienceOn);
       else if (action === 'full') fullScreen();
       else if (action === 'stop') film.church.stopTour();
       else if (action === 'pause' || !action) {
         // A first click also unlocks sound when the browser held it back.
-        if (music.on && music.context?.state === 'suspended' && !film.paused) void wake();
+        if (soundOn() && music.context?.state === 'suspended' && !film.paused) void wake();
         else setPaused(!film.paused);
       }
     });
@@ -1555,7 +1846,14 @@
       }));
     }
     if (key.mark) { part('.cinema-key-mark b').textContent = key.mark.en; part('.cinema-key-mark em').textContent = key.mark.vi; }
-    tape.fx.caption = tape.fx.card = 0;
+    tape.fx.caption = tape.fx.card = tape.fx.chapter = tape.fx.note = 0;
+    if (shot.opens) {
+      // "II · Inside": the number above, the name below, in the language on screen.
+      const [number, ...name] = text.chapter.split(' · ');
+      text.chapterCard = { number, name: name.join(' · ') };
+      part('.cinema-chapter-card span').textContent = number;
+      part('.cinema-chapter-card h2').textContent = text.chapterCard.name;
+    }
     const caption = part('.cinema-caption');
     part('.cinema-chapter').textContent = text.chapter;
     caption.querySelector('strong').textContent = text.en;
@@ -1585,8 +1883,17 @@
     controls.target.set(...p.look);
     const on = showing(p.shot, film.time - p.shot.start), black = blackAt(film.time);
     layer.querySelector('.cinema-fade').style.opacity = black.toFixed(3);
+    // A dissolve: the held last picture of the scene before, fading out over this one.
+    const held = film.hold.of === p.shot.index ? heldAt(film.time) : 0, hold = part('.cinema-hold');
+    hold.hidden = held <= 0.002;
+    if (!hold.hidden) hold.style.opacity = held.toFixed(3);
+    // While the end of a scene that dissolves into the next is drawn, each frame is kept (see rendered).
+    const next = reel.shots[p.shot.index + 1];
+    film.hold.want = next?.cut === 'dissolve' && p.shot.start + p.shot.duration - film.time < 0.5 ? next.index : -1;
     part('.cinema-card').classList.toggle('visible', on.card);
+    part('.cinema-chapter-card').classList.toggle('visible', on.chapter);
     part('.cinema-caption').classList.toggle('visible', on.caption);
+    part('.cinema-caption').classList.toggle('noted', on.note);
     drawLive(on.caption && black < 0.5 && !on.card);
     // The map key and the rings belong to the picture: they leave with it and with the closing card.
     part('.cinema-key').classList.toggle('visible', !!(film.key?.map || film.key?.mark) && black < 0.5 && !on.card);
@@ -1604,14 +1911,15 @@
   }
   function status() {
     // "Blocked" only once the browser has clearly declined to start sound.
-    const blocked = music.on && film.running && !film.paused && music.context?.state === 'suspended' && performance.now() - music.waking > 1500;
-    const text = tape.on ? '● Recording · keep this window in front until the film ends' : tape.error ? tape.error : film.paused ? 'Paused · Space to continue' : blocked ? 'Click once to switch the organ music on' : !music.context && music.on ? 'This browser has no sound output for the organ music' : '';
-    const signature = `${text}|${film.paused}|${music.on}|${tape.on}`;
+    const blocked = soundOn() && film.running && !film.paused && music.context?.state === 'suspended' && performance.now() - music.waking > 1500;
+    const text = tape.on ? '● Recording · keep this window in front until the film ends' : tape.error ? tape.error : film.paused ? 'Paused · Space to continue' : blocked ? 'Click once to switch the sound on' : !music.context && soundOn() ? 'This browser has no sound output for the organ music' : '';
+    const signature = `${text}|${film.paused}|${music.on}|${music.ambienceOn}|${tape.on}`;
     if (signature === film.status) return;
     film.status = signature;
     part('.cinema-status').textContent = text;
     part('[data-cinema="pause"]').textContent = film.paused ? '▶' : '⏸';
     part('[data-cinema="music"]').setAttribute('aria-pressed', String(music.on));
+    part('[data-cinema="ambience"]').setAttribute('aria-pressed', String(music.ambienceOn));
     film.layer.classList.toggle('paused', film.paused);
     film.layer.classList.toggle('recording', tape.on);
   }
@@ -1656,6 +1964,9 @@
     window.CHURCH_REALISM?.setOpenings('open');
     film.running = true; film.paused = false; film.time = 0; film.shot = null; film.lastMove = performance.now(); film.status = '';
     film.key = null; film.marks = []; film.points = []; film.live = null; film.states = []; film.dirty = false; film.livePainted = null;
+    film.hold = { of: -1, want: -1 };
+    film.layer.classList.toggle('feature', !reel.technical);
+    film.layer.classList.toggle('no-ambience', !reel.sounds?.length);
     // The switches of a technical tour are borrowed from the simulator and given back when it ends.
     film.rehearsing = !!(reel.technical && sim?.rehearsal?.begin());
     // Keys now belong to the film, not to the button that started it.
@@ -1755,6 +2066,7 @@
   function seek(time) {
     if (!film.running) return;
     film.time = Math.min(reel.length - 0.05, Math.max(0, time));
+    film.hold = { of: -1, want: -1 };
     if (music.synced) musicSeek(film.time);
     draw(); film.church.render();
   }
@@ -1766,7 +2078,12 @@
   }
   function setMusic(value) {
     music.on = !!value;
-    if (music.on && music.context?.state === 'suspended' && !film.paused) void wake();
+    if (soundOn() && music.context?.state === 'suspended' && !film.paused) void wake();
+    musicLevel(0.3); status();
+  }
+  function setAmbience(value) {
+    music.ambienceOn = !!value;
+    if (soundOn() && music.context?.state === 'suspended' && !film.paused) void wake();
     musicLevel(0.3); status();
   }
   function fullScreen() {
@@ -1775,7 +2092,7 @@
   }
   function keys(event) {
     if (!film.running || document.querySelector('dialog[open]')) return;
-    const action = tape.on ? { Escape: () => film.church.stopTour() }[event.code] : { Space: () => setPaused(!film.paused), ArrowRight: () => skip(1), ArrowLeft: () => skip(-1), KeyM: () => setMusic(!music.on), KeyF: fullScreen, Escape: () => film.church.stopTour() }[event.code];
+    const action = tape.on ? { Escape: () => film.church.stopTour() }[event.code] : { Space: () => setPaused(!film.paused), ArrowRight: () => skip(1), ArrowLeft: () => skip(-1), KeyM: () => setMusic(!music.on), KeyN: () => setAmbience(!music.ambienceOn), KeyF: fullScreen, Escape: () => film.church.stopTour() }[event.code];
     // The film owns the keyboard while it plays; browser shortcuts pass through.
     event.stopPropagation();
     if (!action || event.metaKey || event.ctrlKey || event.altKey) return;
@@ -1798,7 +2115,7 @@
    * anywhere.
    */
   const VIDEO = { width: 1920, height: 1080, fps: 30, bits: 14e6 };
-  const tape = { on: false, canvas: null, g: null, recorder: null, chunks: [], type: '', ratio: 0, fx: { caption: 0, card: 0, key: 0, live: 0 }, last: 0, result: null, save: true, error: '' };
+  const tape = { on: false, canvas: null, g: null, recorder: null, chunks: [], type: '', ratio: 0, fx: { caption: 0, note: 0, card: 0, chapter: 0, key: 0, live: 0 }, last: 0, result: null, save: true, error: '' };
   const SANS = 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif', SERIF = 'Georgia, "Times New Roman", serif';
   function tapeCanvas() {
     if (!tape.canvas) {
@@ -1806,7 +2123,7 @@
       tape.g = tape.canvas.getContext('2d');
     }
     tape.g.fillStyle = '#000'; tape.g.fillRect(0, 0, VIDEO.width, VIDEO.height);
-    tape.fx.caption = tape.fx.card = tape.fx.key = tape.fx.live = 0; tape.last = 0;
+    tape.fx.caption = tape.fx.note = tape.fx.card = tape.fx.chapter = tape.fx.key = tape.fx.live = 0; tape.last = 0;
     return tape.canvas;
   }
   // Enough pixels behind the 16:9 crop for a 1920 × 1080 picture; put back when the film stops.
@@ -1883,7 +2200,7 @@
     }
     return lines;
   }
-  function paintCaption(g, text, alpha) {
+  function paintCaption(g, text, alpha, noteAlpha = alpha) {
     const W = VIDEO.width, H = VIDEO.height, x = 96, width = 1080;
     const rows = [];
     const row = (value, font, height, colour, spacing = '0px') => {
@@ -1896,8 +2213,10 @@
     row(vi ? '' : text.en, `400 66px ${SERIF}`, 78, '#f6f2e6');
     row(vi ? text.vi : '', `italic 400 37px ${SANS}`, 52, '#f6f2e6');
     if (text.note) rows.push({ gap: 12 });
+    const notes = rows.length;
     row(vi ? '' : text.note, `400 32px ${SANS}`, 45, '#f6f2e6ee');
     row(vi ? text.noteVi : '', `400 29px ${SANS}`, 41, '#f6f2e6cc');
+    rows.slice(notes).forEach(r => { r.note = true; });
     const height = rows.reduce((sum, r) => sum + (r.gap || r.height), 0), top = H - 84 - height;
     g.save(); g.globalAlpha = alpha;
     const shade = g.createLinearGradient(x - 30, 0, x + width + 150, 0);
@@ -1909,10 +2228,34 @@
     for (const r of rows) {
       if (r.gap) { y += r.gap; continue; }
       g.font = r.font; g.letterSpacing = r.spacing; g.fillStyle = r.colour;
+      g.globalAlpha = alpha * (r.note ? Math.min(1, noteAlpha / Math.max(alpha, 1e-3)) : 1);
       g.fillText(r.line, x, y + (r.height - parseInt(r.font.match(/(\d+)px/)[1], 10)) / 2);
       y += r.height;
     }
     g.restore();
+  }
+  // The chapter's number and name, centred, as the chapter opens.
+  function paintChapter(g, card, alpha) {
+    const W = VIDEO.width, H = VIDEO.height;
+    g.save(); g.globalAlpha = alpha;
+    // Dark enough behind the words to read them over white stone in daylight.
+    const shade = g.createRadialGradient(W / 2, H / 2, 60, W / 2, H / 2, W * 0.4);
+    shade.addColorStop(0, 'rgba(0,0,0,.66)'); shade.addColorStop(0.55, 'rgba(0,0,0,.4)'); shade.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = shade; g.fillRect(0, 0, W, H);
+    g.textAlign = 'center'; g.textBaseline = 'middle'; g.shadowColor = 'rgba(0,0,0,.9)'; g.shadowBlur = 24;
+    g.font = `400 44px ${SERIF}`; g.letterSpacing = '18px'; g.fillStyle = '#e6cf93'; g.fillText(card.number, W / 2 + 9, H / 2 - 66);
+    g.fillStyle = '#d9b96a'; g.shadowBlur = 0; g.fillRect(W / 2 - 40, H / 2 - 30, 80, 3); g.shadowBlur = 24;
+    g.font = `400 96px ${SERIF}`; g.letterSpacing = '3px'; g.fillStyle = '#f6f2e6'; g.fillText(card.name, W / 2, H / 2 + 36);
+    g.restore();
+  }
+  // A soft darkening toward the corners of the picture, as a lens gives.
+  function paintVignette(g) {
+    const W = VIDEO.width, H = VIDEO.height, shade = tape.vignette ||= (() => {
+      const v = g.createRadialGradient(W / 2, H / 2, H * 0.42, W / 2, H / 2, W * 0.62);
+      v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,.30)');
+      return v;
+    })();
+    g.fillStyle = shade; g.fillRect(0, 0, W, H);
   }
   function paintCard(g, card, alpha) {
     const W = VIDEO.width, H = VIDEO.height, width = W * 0.8;
@@ -2045,7 +2388,17 @@
   }
   // The viewer calls this straight after it has drawn a frame of the film.
   function rendered(source) {
-    if (tape.on && film.running) paint(source);
+    if (!film.running) return;
+    keep(source);
+    if (tape.on) paint(source);
+  }
+  // Copy the frame just drawn into the dissolve's canvas while the end of a scene that dissolves is on screen.
+  function keep(source) {
+    if (film.hold.want < 0 || !source.width) return;
+    const canvas = part('.cinema-hold');
+    if (canvas.width !== source.width || canvas.height !== source.height) { canvas.width = source.width; canvas.height = source.height; }
+    canvas.getContext('2d').drawImage(source, 0, 0);
+    film.hold.of = film.hold.want;
   }
   /* One finished frame of the paused film at a given time: for exporting the
    * film frame by frame at an exact frame rate, however slow the computer. The
@@ -2059,6 +2412,7 @@
     window.CHURCH_REALISM?.update('explore');
     window.CHURCH_SIMULATOR?.frame(1 / VIDEO.fps, 'explore', church.camera);
     church.renderer.render(church.scene, church.camera);
+    keep(church.renderer.domElement);
     paint(church.renderer.domElement);
     return tape.canvas;
   }
@@ -2068,10 +2422,17 @@
     if (h > source.height) { h = source.height; w = h * target; }
     g.drawImage(source, (source.width - w) / 2, (source.height - h) / 2, w, h, 0, 0, W, H);
     const p = pose(film.time), on = showing(p.shot, film.time - p.shot.start);
+    const held = film.hold.of === p.shot.index ? heldAt(film.time) : 0, hold = part('.cinema-hold');
+    if (held > 0.002 && hold.width === source.width && hold.height === source.height) {
+      g.globalAlpha = held; g.drawImage(hold, (source.width - w) / 2, (source.height - h) / 2, w, h, 0, 0, W, H); g.globalAlpha = 1;
+    }
+    if (!reel.technical) paintVignette(g);
     // Text fades in and out, except in the film's first moments, where it is simply there.
     const step = film.time < 0.3 ? 1 : Math.min(1, Math.abs(film.time - tape.last) / 0.4); tape.last = film.time;
     tape.fx.caption += ((on.caption ? 1 : 0) - tape.fx.caption) * step;
+    tape.fx.note += ((on.note ? 1 : 0) - tape.fx.note) * step;
     tape.fx.card += ((on.card ? 1 : 0) - tape.fx.card) * step;
+    tape.fx.chapter += ((on.chapter ? 1 : 0) - tape.fx.chapter) * step;
     // Rings on the marked fittings, in the cropped picture and under the fades.
     for (const [x, y] of film.points) {
       const px = ((x + 1) / 2 * source.width - (source.width - w) / 2) / w * W, py = ((1 - y) / 2 * source.height - (source.height - h) / 2) / h * H;
@@ -2084,7 +2445,8 @@
     tape.fx.live += ((shown ? 1 : 0) - tape.fx.live) * step;
     if (tape.fx.key > 0.01 && film.key) paintKey(g, film.key, tape.fx.key);
     if (tape.fx.live > 0.01 && film.live) paintLive(g, film.live, tape.fx.live);
-    if (tape.fx.caption > 0.01 && film.text?.en) paintCaption(g, film.text, tape.fx.caption);
+    if (tape.fx.caption > 0.01 && film.text?.en) paintCaption(g, film.text, tape.fx.caption, tape.fx.note);
+    if (tape.fx.chapter > 0.01 && film.text?.chapterCard) paintChapter(g, film.text.chapterCard, tape.fx.chapter);
     if (tape.fx.card > 0.01 && film.text?.card) paintCard(g, film.text.card, tape.fx.card);
   }
 
@@ -2140,20 +2502,24 @@
   // the mix neither clips nor falls silent; not an acoustic level.
   function musicOutput() {
     if (!music.meter || music.context.state !== 'running') return null;
-    const data = new Float32Array(music.meter.fftSize);
-    music.meter.getFloatTimeDomainData(data);
-    let squares = 0, peak = 0;
-    for (const v of data) { squares += v * v; peak = Math.max(peak, Math.abs(v)); }
-    const dB = v => +(20 * Math.log10(Math.max(v, 1e-6))).toFixed(1);
-    return { rmsDbfs: dB(Math.sqrt(squares / data.length)), peakDbfs: dB(peak) };
+    const read = meter => {
+      const data = new Float32Array(meter.fftSize);
+      meter.getFloatTimeDomainData(data);
+      let squares = 0, peak = 0;
+      for (const v of data) { squares += v * v; peak = Math.max(peak, Math.abs(v)); }
+      const dB = v => +(20 * Math.log10(Math.max(v, 1e-6))).toFixed(1);
+      return { rmsDbfs: dB(Math.sqrt(squares / data.length)), peakDbfs: dB(peak) };
+    };
+    // The whole mix, and the sounds of the place alone (before the master level and the echo).
+    return { ...read(music.meter), ambience: read(music.ambienceMeter) };
   }
 
   // The technical tours' buttons in the Discover menu name their film.
   for (const button of document.querySelectorAll?.('[data-film]') || []) button.addEventListener('click', () => play(button.dataset.film));
 
   window.CHURCH_CINEMA = {
-    start, stop, frame, rendered, still, play, pose, black: blackAt, seek, skip, audit, setPaused, setMusic, musicOutput, figures: modelFigures, maps: MAPS, wires: WIRES,
-    shots: SHOTS, score, films: FILMS,
+    start, stop, frame, rendered, still, play, pose, black: blackAt, held: heldAt, seek, skip, audit, setPaused, setMusic, setAmbience, musicOutput, showing, figures: modelFigures, maps: MAPS, wires: WIRES,
+    shots: SHOTS, score, sounds: FILMS.full.sounds, films: FILMS,
     get length() { return FILMS.full.length; },
     get video() { return tape.result; },
     stats: STATS, rehearseAll,
