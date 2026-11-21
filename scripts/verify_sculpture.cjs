@@ -16,6 +16,9 @@ vm.runInContext(source.slice(0, cut) + '    Us=null;window.T=Ec;})();', sandbox)
 vm.runInContext(fs.readFileSync(path.join(root, 'Thach_Bi_Viewer/simulator/catalog.js'), 'utf8'), sandbox);
 const T = sandbox.window.T, catalog = sandbox.window.CHURCH_SIM_CATALOG, makeKit = catalog.makeKit(T);
 const previous = JSON.parse(fs.readFileSync(path.join(root, 'review/sculpture-detail-2026-10-25/bounds-before.json'), 'utf8'));
+// Owner, 21 Nov 2026: the three façade figures were enlarged to their niches and painted, so
+// their envelopes are frozen anew; the interior figures keep the October baseline.
+Object.assign(previous, JSON.parse(fs.readFileSync(path.join(root, 'review/facade-statues-2026-11-21/bounds-after.json'), 'utf8')));
 const figures = ['statueMary', 'statueJoseph', 'statueSacredHeart', 'statueAssumption', 'statuePeter', 'statuePaul'];
 function inspect(id) {
   const kit = makeKit(); catalog.byId[id].build(kit, {});

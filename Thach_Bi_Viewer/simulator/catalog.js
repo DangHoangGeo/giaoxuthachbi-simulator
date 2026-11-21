@@ -75,6 +75,9 @@
     statueIvoryShade: { color: '#d9cdb4', roughness: 0.62 },
     statueEye: { color: '#2e211a', roughness: 0.35 },
     statueLip: { color: '#b56a62', roughness: 0.5 },
+    // Painted façade figures (owner, 21 Nov 2026): grey hair for Saint Peter, a steel blade for Saint Paul.
+    hairGrey: { color: '#a8a39b', roughness: 0.8 },
+    statueSteel: { color: '#b8bcc2', metalness: 0.85, roughness: 0.3 },
     socketPlate: { color: '#f1eee6', roughness: 0.42 },
     socketDark: { color: '#33363a', roughness: 0.6 },
     enclosureGrey: { color: '#8f959b', metalness: 0.25, roughness: 0.55 },
@@ -736,7 +739,7 @@
       const headAt = { p: [neck[0] + Math.sin(-look) * .062 * F, neck[1] + Math.cos(look) * .062 * F, oz], r: [0, 0, look], s: F };
       k.add(head(T), skin, headAt);
       if (o.veil) {
-        k.add(hood(T, { bottom: -1.5, edge: 0.34, rise: 0.25, brow: 0.6, grow: 1.13, spread: 0.55 }), o.veil, headAt);
+        k.add(hood(T, { bottom: -1.5, edge: o.veilEdge ?? 0.34, rise: 0.25, brow: 0.6, grow: 1.13, spread: 0.55 }), o.veil, headAt); // veilEdge: lower sets the veil back to show the hair
         k.add(mantle(T, { y0: 0.5, y1: 0.862, open0: 0.6, open1: 1.3, base: 0.03, flow: 0.012, arms: 0.05, back: 0.1, taper: 0.3, ...o.veilDrape }), o.veil, at);
       }
       if (o.hair) k.add(hood(T, { bottom: o.female ? -2 : -1.35, edge: 0.3, rise: 0.4, brow: 0.56, grow: 1.08, spread: 0.3, wave: 0.03 }), o.hair, headAt);
@@ -802,17 +805,24 @@
     ring(10, (i, a) => k.rod([0.165, 2.24, 0], [0.165, 2.24 + Math.cos(a) * 0.09, Math.sin(a) * 0.09], 0.004, 'gold', 4));
   }
   /* Façade niche figures stand on the modelled niche pedestals, so they carry
-   * no pedestal of their own. One ivory finish, as on the approved church views. */
-  const IVORY = { robe: 'statueIvory', mantle: 'statueIvory', sleeve: 'statueIvory', skin: 'statueIvory', hair: 'statueIvoryShade', feet: 'statueIvory' };
+   * no pedestal of their own. Until 21 Nov 2026 they were one ivory finish, as on the
+   * approved church views; the owner then asked for larger, painted figures with hair
+   * and colour (reference: a painted Assumption in a white robe, blue mantle with gold
+   * edge, white veil over brown hair, gold girdle, arms open). Sizes fill the drawn
+   * niches; paint scheme and sizes are CONCEPT, sculptor and finish pending. */
+  const PAINTED = { painted: true, edging: true, skin: 'skin' };
   function buildAssumption(k) {
-    // Cloud plinth, then Our Lady with open raised arms and upturned face.
+    // Cloud plinth, then Our Lady with open arms and upturned face.
     let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
     for (let i = 0; i < 16; i++) { const a = i * 2.39996, r = 0.1 + 0.14 * rnd(); k.sph(0.11 + 0.06 * rnd(), 'statueIvory', { p: [Math.cos(a) * r * 0.55, 0.11 + 0.12 * rnd(), Math.sin(a) * r * 1.1], s: [1, 0.72, 1] }, 12, 8); }
-    SCULPT.figure(k, { ...IVORY, H: 2.2, y0: 0.26, veil: 'statueIvory', sash: 'statueIvoryShade', pose: 'raised', female: true, look: 0.42, cloak: { open0: 0.55, open1: 0.8, arms: 0.07, flow: 0.035, back: 0.04 }, veilDrape: { back: 0.04 } });
-    starHalo(k, [-0.12, 2.42, 0], 0.3, 0.35, 'gold', 0.045);
+    const H = 2.42, y0 = 0.2;
+    SCULPT.figure(k, { ...PAINTED, H, y0, robe: 'robeWhite', sleeve: 'robeWhite', mantle: 'robeBlue', veil: 'robeWhite', hair: 'hair', sash: 'gold', feet: 'skin', pose: 'open', female: true, look: 0.42, veilEdge: 0.06,
+      cloak: { open0: 0.55, open1: 0.8, arms: 0.025, flow: 0.035, back: 0.04 }, veilDrape: { y0: 0.74, arms: 0, back: 0.03 } });
+    starHalo(k, [-0.055 * H, y0 + 0.98 * H, 0], 0.27, 0.35, 'gold', 0.042);
   }
   function buildPeter(k) {
-    const h = SCULPT.figure(k, { ...IVORY, H: 1.78, y0: 0.03, beard: true, pose: 'keys', cloak: { open0: 0.5, open1: 0.9 } });
+    // Saint Peter: blue tunic, ochre mantle, grey hair and beard, gold keys.
+    const h = SCULPT.figure(k, { ...PAINTED, H: 2.0, y0: 0.03, robe: 'robeBlue', sleeve: 'robeBlue', mantle: 'robeOchre', hair: 'hairGrey', feet: 'robeBrown', beard: true, pose: 'keys', cloak: { open0: 0.5, open1: 0.9 } });
     k.box(0.3, 0.03, 0.44, 'statueIvory', { p: [0, 0.015, 0] });
     // Two keys in the right hand, a book in the left.
     for (const [dz, tilt] of [[-0.02, 0.25], [0.03, -0.2]]) {
@@ -824,11 +834,12 @@
     sculptureBook(k, [h.left[0] + .01, h.left[1] + .05, h.left[2] + .02], [0, .2, -.15]);
   }
   function buildPaul(k) {
-    const h = SCULPT.figure(k, { ...IVORY, H: 1.78, y0: 0.03, beard: true, pose: 'sword', cloak: { open0: 0.5, open1: 0.9 } });
+    // Saint Paul: green tunic, red mantle, dark hair and beard, steel sword with a gold hilt.
+    const h = SCULPT.figure(k, { ...PAINTED, H: 2.0, y0: 0.03, robe: 'robeGreen', sleeve: 'robeGreen', mantle: 'robeRed', hair: 'hair', feet: 'robeBrown', beard: true, pose: 'sword', cloak: { open0: 0.5, open1: 0.9 } });
     k.box(0.3, 0.03, 0.44, 'statueIvory', { p: [0, 0.015, 0] });
     // The sword rests point down under the right hand; a book lies on the left arm.
     const [x, y, z] = h.right;
-    k.box(0.012, y - 0.1, 0.055, 'statueIvoryShade', { p: [x + 0.01, 0.05 + (y - 0.1) / 2, z] });
+    k.box(0.012, y - 0.1, 0.055, 'statueSteel', { p: [x + 0.01, 0.05 + (y - 0.1) / 2, z] });
     k.box(0.03, 0.03, 0.24, 'gold', { p: [x + 0.01, y - 0.04, z] });
     k.rod([x + 0.01, y - 0.04, z], [x + 0.01, y + 0.13, z], 0.016, 'gold', 8);
     k.sph(0.026, 'gold', { p: [x + 0.01, y + 0.14, z] }, 8, 6);
@@ -839,10 +850,11 @@
     // Recessed leaves and spine bands make the attribute legible up close.
     const T = k.T, q = new T.Quaternion().setFromEuler(new T.Euler(...r));
     const at = (x, y, z) => ({p:new T.Vector3(x, y, z).applyQuaternion(q).add(new T.Vector3(...p)).toArray(), q});
-    for (const sign of [-1, 1]) k.box(.006, .24, .17, 'statueIvoryShade', at(sign * .022, 0, 0));
-    k.box(.038, .214, .146, 'statueIvory', at(0, 0, .003));
-    k.box(.044, .24, .012, 'statueIvoryShade', at(0, 0, -.079));
-    for (const y of [-.075, 0, .075]) k.box(.046, .008, .014, 'statueIvoryShade', at(0, y, -.078));
+    // Painted since 21 Nov 2026: red leather covers, ivory leaves, gilt spine bands.
+    for (const sign of [-1, 1]) k.box(.006, .24, .17, 'robeRed', at(sign * .022, 0, 0));
+    k.box(.038, .214, .146, 'ivory', at(0, 0, .003));
+    k.box(.044, .24, .012, 'robeRed', at(0, 0, -.079));
+    for (const y of [-.075, 0, .075]) k.box(.046, .008, .014, 'gold', at(0, y, -.078));
     for (const y of [-.065, -.03, .012, .052, .085]) k.box(.034, .001, .001, 'statueIvoryShade', at(0, y, .0765));
   }
   function bouquet(k, x, y, z, s = 1, colors = ['flowerWhite', 'flowerCream']) {
@@ -1253,11 +1265,11 @@
     { id: 'statueJoseph', cat: DECOR, family: 'Statues', name: 'Statue · Saint Joseph', mounts: ['floor'], footprint: [0.7, 0.7], build: buildJoseph },
     { id: 'statueSacredHeart', cat: DECOR, family: 'Statues', name: 'Statue · Sacred Heart', mounts: ['floor'], footprint: [0.7, 0.7], build: buildSacredHeart },
     { id: 'statueAssumption', cat: DECOR, family: 'Statues', name: 'Statue · Assumption of Our Lady (Đức Mẹ Hồn Xác Lên Trời) · concept', mounts: ['floor'], footprint: [0.7, 1.5],
-      desc: 'Ivory figure 2.2 m on a cloud plinth, open raised arms and upturned face, for the central façade niche. Generated concept: the sculptor, size, material, weight and fixing are pending.', build: buildAssumption },
+      desc: 'Painted figure 2.42 m on a cloud plinth (white robe, blue mantle, white veil over brown hair), open arms and upturned face, for the central façade niche. Generated concept: the sculptor, size, material, weight and fixing are pending.', build: buildAssumption },
     { id: 'statuePeter', cat: DECOR, family: 'Statues', name: 'Statue · Saint Peter (Thánh Phêrô) · niche figure · concept', mounts: ['floor'], footprint: [0.5, 0.8],
-      desc: 'Ivory figure 1.78 m with keys and book, for a side façade niche. Generated concept: subject, sculptor, size, material, weight and fixing are pending.', build: buildPeter },
+      desc: 'Painted figure 2.0 m (blue tunic, ochre mantle, grey hair) with keys and book, for a side façade niche. Generated concept: subject, sculptor, size, material, weight and fixing are pending.', build: buildPeter },
     { id: 'statuePaul', cat: DECOR, family: 'Statues', name: 'Statue · Saint Paul (Thánh Phaolô) · niche figure · concept', mounts: ['floor'], footprint: [0.5, 0.8],
-      desc: 'Ivory figure 1.78 m with sword and book, for a side façade niche. Generated concept: subject, sculptor, size, material, weight and fixing are pending.', build: buildPaul },
+      desc: 'Painted figure 2.0 m (green tunic, red mantle) with sword and book, for a side façade niche. Generated concept: subject, sculptor, size, material, weight and fixing are pending.', build: buildPaul },
     { id: 'flowerStand', cat: DECOR, family: 'Flowers', name: 'Tall flower stand · white lilies', mounts: ['floor'], footprint: [0.5, 0.5], build: buildFlowerStand },
     { id: 'floorFlowers', cat: DECOR, family: 'Flowers', name: 'Low flower arrangement', mounts: ['floor'], footprint: [0.5, 0.5], build: buildFloorFlowers },
     { id: 'palm', cat: DECOR, family: 'Plants', name: 'Potted palm', mounts: ['floor'], footprint: [0.6, 0.6], build: buildPalm },

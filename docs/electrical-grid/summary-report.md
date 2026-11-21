@@ -1,6 +1,6 @@
 # Equipment quantities, usage and quality report
 
-Generated 8 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
+Generated 21 November 2026 from the category registers and their matched model snapshots. [Category files](categories/README.md) share the same four-sheet structure. Each equipment ID, route ID and route vertex belongs to exactly one category. This report is a saved snapshot; refresh it after changing the workbooks.
 
 ## Total quantities
 
@@ -72,7 +72,7 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: c24c88aa60318b23d20e837d96748990a5bc2f88a8cba26f81e75e6179050352.
+- [Layout snapshot](equipment-layout.json), SHA-256: d833b8e5d197d2801e1e3ae9b19352a08ac6421e3e198becd171c11658c018b3.
 - [Electrical snapshot](electrical-systems.json), SHA-256: e59ab20906df2a248b9efcf88b837637e145feb6c2f52ef9eeaad857e2172df6.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.

@@ -87,7 +87,7 @@ Contact reach is 0.18 m and the blur samples within 0.09 m along each axis. Stre
 
 ## Nave, entrance and sanctuary walls · 20 November 2026
 
-The nave-facing walls, entrance wall, sanctuary spandrel and sanctuary back wall have a light yellow-cream paint tint (#f4e4bd). The mineral-finished nave columns match. The outer faces retain the cream-grey stone palette. The lacquer, devotional artwork and gilding retain their own finishes. In the display pass, paired sample directions and a blur reach of 0.036 m per axis reduce uneven gray shading beside narrow relief. [Interior comparison and finish basis](../review/wall-stone-2026-11-20/README.md)
+The nave-facing walls, entrance wall, sanctuary spandrel and sanctuary back wall have a light yellow-cream paint tint (#f4e4bd). The mineral-finished nave columns match. The exterior elevations retain the cream-grey stone palette. On 21 November the owner extended the nave cream across both verandas, including the inner walls, column bases, arch mouldings and soffits. [Veranda finish](decoration-finishes.md#veranda-columns-and-overhead-plaster--21-november-2026) The lacquer, devotional artwork and gilding retain their own finishes. In the display pass, paired sample directions and a blur reach of 0.036 m per axis reduce uneven gray shading beside narrow relief. [Interior comparison and finish basis](../review/wall-stone-2026-11-20/README.md)
 
 ## Sanctuary furnishings · 20 November 2026
 

@@ -202,3 +202,31 @@ Owner, 4 Nov 2026: the corner pinnacle crowns go back to cream, like the pinnacl
 ### Tower wall and shutter colour · 20 November 2026
 
 The base enclosures and upper wall faces on both towers use the church-wide continuous stone-grey colour. The piers share the wall tint. The mouldings and caps use closely related stone tones, with a muted sandstone accent on the designated carved work. Each paired shutter backing now uses the timber finish of its frame and blades, including the outer, inner and rear faces. [Courtyard and tower comparisons](../../review/wall-stone-2026-11-20/README.md)
+
+### Belfry openings, base course and great-arch colonnettes · 21 November 2026
+
+**CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** Owner feedback, 21 November 2026, on a desktop view of a tower stage:
+
+- the columns under the great arch were too faint to see and did not come down to a base;
+- the louvre timber looked flat;
+- the arched head over the louvres looked as if it floated.
+
+Each point had a cause in the model:
+
+- The supports under the great arch were 0.11 m strips, 0.10 m proud, starting at the sill with nothing under them.
+- The blades were upright boxes in one plane, 5 cm in front of a timber backing of the same finish.
+- The traced head tracery stood 40 mm inside the wall face, with a 0.22 m empty gap between it and the louvres.
+
+All twelve upper faces of each tower (front, outer, inner, rear × stages 2–4) now use one shared assembly, `belfry()` in `towers.js`:
+
+| Part | Basis | Model |
+| --- | --- | --- |
+| Base course under each upper sill | E01B DRAWN: a 0.20 m band at +8.85–9.05, +16.30–16.50, +23.60–23.80, with torus returns at the stepped supports (stage 2 also at the great-arch support) | Band 0.05 m proud plus a 0.065 m half-round torus, between the corner piers. Profile and projection CONCEPT |
+| Great-arch supports | E01B draws a shaft with a necking band and two abaci. Plan +10.128 (PT10) draws a rectangular step 0.11 m wide, 0.10 m proud (Z 8.434–8.544) | Owner-directed departure **DX-07**: an engaged round colonnette (r 0.085, stage 4 r 0.095) on a square plinth and torus base sitting on the course. The drawn step stays behind it as a 0.05 m dosseret. The traced impost bands now stand 0.03–0.05 m proud of the colonnette |
+| Window jambs | E01B DRAWN: a band (+11.42–11.50 on stage 2) and a capital (+11.75–11.87) under each archivolt | Band and capital added at the same offsets from each springing on every stage |
+| Louvres | Blade face height 0.20 m and pitch 0.278 m TRACED (stage 4 illustrative). The angle is not drawn | Blades raked 50°, front edge down, between timber stiles 0.16 m deep. Each still shows the drawn 0.20 m face height. A dark belfry-interior panel at the back of the 0.28 m wall shows between the blades. Rake, depth and finish CONCEPT |
+| Arched head | Tracery TRACED (`windowHead`, `windowHead4`) | A timber transom at the springing, 0.08 m high, carries a timber tympanum 0.175–0.20 m inside the face. The tracery is set on the tympanum, so nothing floats. Whether the head is open, glazed or boarded is not drawn: CONCEPT |
+
+The inner, outer and rear faces now share the front's deep reveal (their louvres were 7–18 cm inside the face). The great-arch rings and window archivolts keep their earlier depths on each face. Levels, arch radii, window centres, sills and blade pitch are unchanged, and `verify_exterior_dwg.cjs` still checks them against the drawing.
+
+**Not designed:** louvre product, timber species and treatment, bird and rain screens, sound transmission of the bells through the raked blades, colonnette material (cast stone or rendered), fixings and drainage of the base course. These stay on engineering hold. [Before and after](../../review/belfry-niche-2026-11-21/README.md)

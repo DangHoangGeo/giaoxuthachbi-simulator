@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-21",
+  "viewer": "Thach_Bi_Viewer/OPEN_CHURCH.html on 127.0.0.1:8765 (scratch origin, recommended design)",
+  "before": "commit 4d871b1",
+  "after": "commit 4d871b1 + facade.js (niche recess) + towers.js (belfry assembly); visit-only mode",
+  "render": "church.render() at pixel ratio 1, resized with ffmpeg into the sheets",
+  "cameras": [
+    { "name": "niche oblique", "position": [-6, 18.5, 3.5], "target": [4, 18.0, 0], "fov": 30, "size": [1000, 1000] },
+    { "name": "niche frontal", "position": [-9, 18.2, 0.8], "target": [4, 17.8, 0], "fov": 24, "size": [1000, 1000] },
+    { "name": "tower H stage 2 frontal", "position": [-16, 12.0, 10.15], "target": [3, 12.0, 10.15], "fov": 25, "size": [1000, 1100] },
+    { "name": "tower H stage 2 oblique", "position": [-10, 10.5, 4.0], "target": [3, 11.6, 11.2], "fov": 30, "size": [1000, 1100] },
+    { "name": "stage 2 foot (before)", "position": [-3.5, 9.6, 6.6], "target": [0.2, 9.2, 8.6], "fov": 34, "size": [1000, 800] },
+    { "name": "outer great-arch colonnette foot (after)", "position": [-2.6, 9.9, 10.6], "target": [0, 9.3, 11.8], "fov": 40, "size": [1000, 800] },
+    { "name": "tower H stage 3 outer face", "position": [3, 19.5, 22], "target": [2.45, 19.5, 12.5], "fov": 32, "size": [1000, 1100] },
+    { "name": "evening front", "position": [-24, 15, 6], "target": [3, 15.5, 4], "fov": 34, "size": [1200, 1000], "lighting": "evening" }
+  ]
+}

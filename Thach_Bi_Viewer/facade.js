@@ -81,7 +81,7 @@
       fanPad: { x: 6.095, half: 0.2, y: [3.82, 4.38], z: [7.07, 7.25] } },
     aedicule: {
       pier: { z: 1.68, half: 0.30 }, front: 3.805, wall: 3.915, back: 5.046,
-      niche: { half: 0.711, floor: 15.997, spring: 18.893, x: 4.225, rings: [0.799, 1.112] },
+      niche: { half: 0.711, floor: 15.997, spring: 18.893, x: 4.225, rings: [0.799, 1.112], face: 4.115, recess: 1.33 },
       pedestal: [15.997, 16.683], rake: [20.42, 21.07], cross: { ball: 22.921, top: 24.648 },
     },
   };
@@ -548,8 +548,24 @@
       const r = AE.rake, run = 1.316 - .36, slope = (r[1] - r[0]) / run, top = z => r[0] + (1.316 - Math.abs(z)) * slope;
       const wall = new T.Shape();
       wall.moveTo(-1.40, E[1]); wall.lineTo(1.40, E[1]); wall.lineTo(1.40, top(1.40)); wall.lineTo(.36, r[1]); wall.lineTo(-.36, r[1]); wall.lineTo(-1.40, top(1.40)); wall.lineTo(-1.40, E[1]);
-      wall.holes.push(archOpening(0, AN.half, AN.floor, AN.spring));
+      // Plan +15.840 (PT15 D80D91–D80D9C): beside the niche the face steps back to X 4.115 for
+      // |Z| 0.711–1.33, and the two column plinths (|Z| 0.906–1.112) come forward to 3.915. Until
+      // 21 Nov 2026 the whole wall stood at 3.915 and hid the columns (owner). The recess runs from
+      // the niche floor to the springing, where the archivolt rests on the capitals; above it the
+      // face stays at 3.915. Elevation and plan DRAWN; height of the recess DERIVED.
+      const recess = new T.Path();
+      recess.moveTo(-AN.recess, AN.floor); recess.lineTo(AN.recess, AN.floor); recess.lineTo(AN.recess, AN.spring); recess.lineTo(AN.half, AN.spring);
+      recess.absarc(0, AN.spring, AN.half, 0, Math.PI, false); recess.lineTo(-AN.recess, AN.spring); recess.lineTo(-AN.recess, AN.floor);
+      wall.holes.push(recess);
       slab('Central aedicule wall', W, wall, [AE.wall, AE.back]);
+      // The niche keeps a jamb strip as wide as its inner arch ring (E01B draws the ring's legs down to
+      // the floor); its side face carries the hidden jamb lights (simulator L-STATUE-C-JAMB-1/2).
+      both(s => {
+        const [z0, z1] = [s * AN.half, s * AN.recess].sort((a, b) => a - b);
+        block('Central aedicule recess back', W, [AN.face, AE.back], [AN.floor, AN.spring], [z0, z1]);
+        const [j0, j1] = [s * AN.half, s * AN.rings[0]].sort((a, b) => a - b);
+        block('Central aedicule niche jamb', S, [AE.wall, AN.face], [AN.floor, AN.spring], [j0, j1]);
+      });
       block('Central aedicule floor step', S, [3.80, AE.back], [E[1], AN.floor], [-1.206, 1.206]);
       hood('Central aedicule niche', 0, AN.half, [AN.floor, AN.spring], AN.x);
       block('Central aedicule niche back', W, [AN.x + AN.half, AE.back + .05], [AN.floor, AN.spring + AN.half], [-AN.half, AN.half]);
