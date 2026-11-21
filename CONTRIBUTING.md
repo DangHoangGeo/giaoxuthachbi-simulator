@@ -41,7 +41,7 @@ Send pull requests to the **`dev`** branch. It is the default branch, so GitHub 
 Both branches are protected. Nobody pushes to them directly, and pull requests opened against `main` will be asked to target `dev`.
 
 1. For anything larger than a small fix, open an issue first so the approach can be agreed.
-2. Fork the repository and create a branch from `dev`. Use a short name such as `fix/plan-export-units`, `docs/sound-method` or `eng/12-topic`.
+2. Fork the repository, bring your copy of `main` up to date with this repository's `main`, and create a branch from it. Use a short name such as `fix/plan-export-units`, `docs/sound-method` or `eng/12-topic`.
 3. Read [AGENTS.md](AGENTS.md). Its rules apply to people and to AI agents alike. The most important ones:
    - Trace important claims to a source, with units and revision.
    - Keep unknown engineering values pending. Do not invent a plausible number.
