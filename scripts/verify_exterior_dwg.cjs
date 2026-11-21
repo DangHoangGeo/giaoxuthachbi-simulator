@@ -17,6 +17,7 @@ function near(value,expected,label,tolerance=.002){assert(Math.abs(value-expecte
 function named(name){const found=nodes.filter(o=>o.name===name);assert(found.length,'Missing '+name);return found;}
 function box(list){const b=new T.Box3();list.forEach(o=>b.union(new T.Box3().setFromObject(o)));return b;}
 function subset(name,predicate){const b=new T.Box3(),p=new T.Vector3();for(const o of named(name)){const a=o.geometry.attributes.position;for(let i=0;i<a.count;i++){p.fromBufferAttribute(a,i).applyMatrix4(o.matrixWorld);if(predicate(p))b.expandByPoint(p);}}assert(!b.isEmpty(),name);return b;}
+assert(!nodes.some(o=>o.name==='Tower lower band'),'Legacy accent bands must not share the upper tower wall planes');
 for(const [side,s] of [['H',1],['B',-1]])for(const stage of [2,3,4]){
   const prefix=`Tower ${side} stage ${stage} · `;
   const arch=F(`upper-${stage}-great-outer`),rose=F(`upper-${stage}-rose-outer`);
@@ -27,6 +28,7 @@ for(const [side,s] of [['H',1],['B',-1]])for(const stage of [2,3,4]){
   near((rb.min.z+rb.max.z)/2,s*rose.centreZY[0],prefix+'rose centre Z');
   const sill=F(`upper-${stage}-sill`),pane=box(named(prefix+'paired louvre backing'));
   near(pane.min.y,Math.min(...sill.pointsZY.map(p=>p[1])),prefix+'louvre sill');
+  near(box(named(prefix+'stage base course')).max.y,pane.min.y-.008,prefix+'base course under sill');
   const window=F(`upper-${stage}-louvre-inner-H`);
   const walls=named(prefix+'wall with paired louvre apertures');
   const y=(window.centreZY[1]+pane.min.y)/2;
@@ -44,6 +46,7 @@ for(const [side,s] of [['H',1],['B',-1]])for(const stage of [2,3,4])for(const fa
   const rb=box(named(prefix+'rose ring'));
   near(rb.max.y,SP.roseY+SP.roseOuterR,prefix+'rose top');
   near(box(named(prefix+'paired louvre backing')).min.y,SP.sillY,prefix+'sill');
+  near(box(named(prefix+'stage base course')).max.y,SP.sillY-.008,prefix+'base course under sill');
   if(face!=='rear') near((rb.min.x+rb.max.x)/2,SP.roseX,prefix+'native X centre');
   const walls=named(prefix+'wall with paired louvre apertures'), y=(SP.sillY+SP.windowSpringY)/2;
   const ray=new T.Raycaster();
