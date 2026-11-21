@@ -72,6 +72,32 @@ const dimensions=o=>bounds(o).getSize(new T.Vector3());
   }
   const naveColumn = nodes.find(o => o.name === 'Side column — illustrative shaft width');
   assert.equal(naveColumn.material.color.getHexString(), 'f4e4bd', 'Interior support matches the cream nave paint');
+  const sharedBases = nodes.filter(o => o.name === 'Side column base');
+  const jambFeet = nodes.filter(o => o.name === 'Column base' && o.parent.name.startsWith('Inner wall '));
+  assert.equal(sharedBases.length, 20, 'Ten C/G supports per side');
+  assert.equal(jambFeet.length, 12, 'Two jamb feet at each of six veranda doors');
+  const paving = nodes.filter(o => o.name.startsWith('Open veranda floor at'));
+  for (const foot of [...sharedBases, ...jambFeet]) {
+    const box = bounds(foot), centre = box.getCenter(new T.Vector3());
+    // Sample just outside the C/G wall on the veranda slab at this support.
+    const down = new T.Raycaster(new T.Vector3(centre.x + .02, 1, centre.z + Math.sign(centre.z) * .14), new T.Vector3(0, -1, 0));
+    const slab = down.intersectObjects(paving)[0];
+    assert(slab, 'Veranda paving present beside the foot');
+    near(box.min.y, slab.point.y, 'Foot meets the modelled paving');
+    assert.equal(foot.material, naveColumn.material);
+    if (foot.name === 'Side column base') {
+      near(box.max.y, .6, 'S021 base top above nave floor');
+      near(box.max.x - box.min.x, .84, 'C/G base footprint width');
+      near(box.max.z - box.min.z, .84, 'C/G base footprint depth');
+    } else {
+      near(box.max.y, .24, 'Door jamb foot meets the shaft at its original level');
+    }
+  }
+  for (const name of ['Inner C/G wall with opening', 'Porch cross arch C–B / G–H · cast concrete, plastered',
+    'Porch arch moulding', 'Porch roof slab · cast concrete 130 mm, plastered soffit', 'Porch outer opening inner band']) {
+    const parts = nodes.filter(o => o.name === name);
+    assert(parts.length && parts.every(o => o.material === naveColumn.material), name + ' matches the nave cream');
+  }
   assert.equal(stoneWall, mat.wall, 'Walls and mineral-finished column shafts share their tint');
   assert.equal(mat.trim.color.getHexString(), 'c5c1b7', 'Mouldings remain in the stone-grey range');
   const finishMap=mat.wall.bumpMap;

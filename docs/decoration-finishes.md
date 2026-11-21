@@ -91,3 +91,11 @@ Parish/artist review is still required for the station narratives, statue sculpt
 ## Continuous stone wall colour · 20 November 2026
 
 The owner chose pale yellow cream for interior walls and mineral-finished nave supports, with cream-grey stone colours outside. The surfaces are continuous. Muted warm sandstone picks out the carved detail. [Desktop comparisons](../review/wall-stone-2026-11-20/README.md)
+
+## Veranda columns and overhead plaster · 21 November 2026
+
+**USER CONFIRMED** finish intent. The inner walls on C/G, their columns and opening surrounds, and the passage faces of the B/H arcade use the nave’s pale yellow cream (`#f4e4bd`). The same paint continues over the pointed cross-arches, their mouldings and the sloping soffit. The outer face of the B/H arcade retains the exterior stone palette. [Desktop detail and upward view](../review/veranda-finish-2026-11-21/veranda.jpg)
+
+The 20 C/G pedestals have a square foot, shallow stepped mouldings and one small six-petal rosette facing each side. The profile fits inside the previous 0.84 m square model footprint. Each foot meets the veranda paving at −0.320 m and rises through nave floor level to +0.600 m. The 12 smaller feet beside the six doorways use the plain moulding and meet the same paving. The base-top dimension is **DRAWING SHOWN**, from nave finished floor to the top of the side column base, printed section sheet 4, S021. The profile and relief are **CONCEPT** interpretations of the exterior E02/EW pedestal. Substrate, fixings, moisture detailing and final finish samples remain for design review. [Dimension register, Dimensions!A326](layout_design/Thach_Bi_Church_Dimensions.xlsx) · [Side elevation and porch geometry](exterior-23102026/sides.md)
+
+The review image uses the desktop visit-only model by day. The left view looks from the veranda to axis 5/C. The right looks up the same passage. The review session masked the artwork under publication hold H8. The model check measures each foot against the veranda paving mesh, verifies its top and checks the paint on the walls and overhead plaster. Equipment layout, control, route and register fields retain their existing values. [Publication record](open-source/publication-checklist.md)

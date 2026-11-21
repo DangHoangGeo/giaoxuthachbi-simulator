@@ -4,7 +4,7 @@
  * See docs/decoration-finishes.md for provenance and remaining artwork holds. */
 (() => {
   'use strict';
-  const revision = '2026-11-20-wall-limestone';
+  const revision = '2026-11-21-veranda-bases';
   window.CHURCH_DECORATION = { revision, prepare };
 
   function prepare({ THREE: T, building, mat, interior, renderer, palettes, data }) {
@@ -103,14 +103,13 @@
       const mesh = building.getObjectByName(name);
       if (mesh) mesh.material = portalLeafStone;
     }
-    // Select the nave-facing triangles of the shared C/G and entrance walls.
-    // These meshes have both inside and outside faces and must retain their openings.
+    // C/G walls share this finish throughout. Outer walls take cream on the room side.
     const cream = mat.wall.clone();
     cream.name = 'Interior wall paint · pale yellow cream';
     surface(cream, {}, '#f4e4bd');
     palettes.set(cream, { color: cream.color.clone(), map: null, bump: cream.bumpMap });
-    function twoSidedPaint(name, inward) {
-      const paint = mat.wall.clone();
+    function twoSidedPaint(name, inward, stone = mat.wall) {
+      const paint = stone.clone();
       paint.name = name;
       const base = paint.color.clone();
       const ratio = cream.color.clone();
@@ -125,18 +124,76 @@
            if (${inward} && distance(diffuse, vec3(${base.r}, ${base.g}, ${base.b})) < 0.001) diffuseColor.rgb *= wallCreamRatio;`);
       };
       paint.customProgramCacheKey = () => name;
-      palettes.set(paint, { color: paint.color.clone(), map: null, bump: paint.bumpMap });
+      palettes.set(paint, { color: paint.color.clone(), map: paint.map, bump: paint.bumpMap });
       return paint;
     }
     const entrancePaint = twoSidedPaint('Entrance · cream nave face', 'wallNormal.x > 0.5');
     const sidePaint = twoSidedPaint('Side walls · cream room face', 'wallNormal.z * sign(wallPoint.z) < -0.5');
     const wingReturnPaint = twoSidedPaint('Wing returns · cream room face', 'wallNormal.x * sign(wallPoint.x - 40.575) < -0.5');
     const rearPaint = twoSidedPaint('Rear wall · cream room face', 'wallNormal.x < -0.5');
+    // B/H piers wrap the outer wall. Carry cream around their passage-side
+    // returns and relief, up to the axis where the exterior stone resumes.
+    const passage = `abs(wallPoint.z) < ${Math.abs(data.transverse.B)}`;
+    const porchPier = twoSidedPaint('Arcade · cream passage face', passage);
+    const porchTrim = twoSidedPaint('Arcade mouldings · cream passage face', passage, mat.trim);
+
+    // Square section with small eased steps, like the E02 outer pedestal.
+    // Profile pairs are [level above nave datum, half-width] in metres.
+    const K = window.CHURCH_CARVING.create(T);
+    function squareMoulding(profile) {
+      const section = profile.map(([y, half]) => [half * Math.SQRT2, y]);
+      const geometry = K.turned(section, 4).rotateY(Math.PI / 4).toNonIndexed();
+      geometry.computeVertexNormals(); // crisp square corners at the four mitres
+      return geometry;
+    }
+    const floor = data.levels.veranda;
+    const baseTop = .6, baseHalf = .42, die = .356;
+    const body = squareMoulding([
+      [floor, 0], [floor, baseHalf], [floor + .09, baseHalf], [floor + .115, .398],
+      [.045, .398], [.066, .382], [.085, .382], [.104, die],
+      [.465, die], [.48, .371], [.496, .377], [.514, .377],
+      [.53, .363], [.545, .34], [.566, .323], [baseTop, .323], [baseTop, 0]
+    ]);
+    const flower = K.bloom({ r: .085, petals: 6, rings: 1, seg: 4 });
+    const carvedBase = K.merge([[body, null], ...[-1, 1].map(side => [flower,
+      K.place(K.SC(1, 1, .42), K.RY(side < 0 ? Math.PI : 0), K.TR(0, .285, side * die))])]);
     building.traverse(o => {
-      if (!o.isMesh || o.material !== mat.wall) return;
+      if (!o.isMesh) return;
+      if (o.name === 'Side column base') {
+        o.geometry = carvedBase;
+        o.position.y = 0;
+        o.material = cream;
+        return;
+      }
+      if (o.parent.name.startsWith('Inner wall ')) {
+        if (o.name === 'Column base') {
+          // The little door responds formerly stopped above even the nave datum.
+          // Fit the plain moulded profile within each jamb's width and top.
+          o.geometry.computeBoundingBox();
+          const bounds = o.geometry.boundingBox;
+          const top = o.position.y + bounds.max.y;
+          const size = bounds.getSize(new T.Vector3());
+          o.geometry = body;
+          o.scale.set(size.x / (2 * baseHalf), (top - floor) / (baseTop - floor), size.z / (2 * baseHalf));
+          o.position.y = floor * (1 - o.scale.y);
+        }
+        // Includes the arch mouldings, jambs, sill and door head in this bay.
+        if ([mat.wall, mat.trim, mat.darkTrim].includes(o.material)) o.material = cream;
+      }
+      if (/^(Porch cross arch |Porch arch moulding|Porch roof slab |Porch outer opening inner band|Side-bay end wall)/.test(o.name)) {
+        o.material = cream;
+        return;
+      }
+      if (/^(Porch column · E02 pier|Porch entablature ·|Porch outer sill$)/.test(o.name) ||
+          (o.name === 'Porch rose window frame' && o.material === mat.trim)) {
+        o.material = o.material === mat.wall ? porchPier : porchTrim;
+        return;
+      }
+      if (o.material !== mat.wall) return;
       if (/^(Side column —|Sanctuary back wall|Sanctuary arch spandrel)/.test(o.name)) o.material = cream;
+      else if (o.name.startsWith('Porch outer wall ·')) o.material = porchPier;
       else if (o.name.startsWith('Entrance door wall')) o.material = entrancePaint;
-      else if (/^(Inner C\/G wall with opening|Outer arcade wall with arched openings|Side gable wall · CAD)/.test(o.name)) o.material = sidePaint;
+      else if (/^(Outer arcade wall with arched openings|Side gable wall · CAD)/.test(o.name)) o.material = sidePaint;
       else if (o.name === 'Side-gable return wall') o.material = wingReturnPaint;
       else if (o.name === 'Rear gable wall · CAD silhouette') o.material = rearPaint;
     });
@@ -167,7 +224,7 @@
       source: 'Approved project concepts; docs/decoration-finishes.md', textureSize: size };
     building.userData.decoration = record;
     data.decoration = record;
-    data.assumptions.push('Decoration surface study: continuous warm grey stone-coloured walls, mineral plaster, honed stone, satin red lacquer and gold-leaf roughness. Display-only maps, not measured optical/acoustic materials or selected construction products; geometry, equipment, routes and engineering holds unchanged.');
+    data.assumptions.push('Decoration surface study: continuous warm grey stone-coloured walls, mineral plaster, honed stone, satin red lacquer and gold-leaf roughness. The shared C/G walls and grounded, moulded veranda pedestals use the nave cream. Profiles and colours are visual concepts. Equipment, routes and engineering holds are unchanged.');
     window.CHURCH_DECORATION.stats = record;
   }
 })();
