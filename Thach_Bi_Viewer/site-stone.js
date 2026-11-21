@@ -17,9 +17,13 @@
 (() => {
   'use strict';
   const spec = {
-    revision: '2026-11-20-site-stone-1',
+    revision: '2026-11-21-site-stone-2',
     status: 'CONCEPT · design excellence stages 4–5 · appearance only',
     plinthTile: 2.4,            // realism.js UV scale of mat.foundation
+    // Rock-faced ashlar (21 Nov 2026): one canvas covers 4.8 m; course joints at these world levels
+    // (m). The plinth tops are −0.40 (main and side projections) and ±0.00 (towers); the courtyard
+    // is at −2.077. Foot course 0.64 m, then 0.52 m, then a 0.40 m tower course.
+    plinth: { tile: 4.8, courses: [0, -0.40, -0.92, -1.44, -2.08], ground: 2.077, joint: .012, draft: .035, proud: .035, chamfer: .02 },
     groundTile: 4.8,            // realism.js UV scale of mat.ground
     courtyard: { x0: -58, x1: -9.3, z: 22.4, y: -2.077, axis: 3.0, medallion: { x: -21, r: 4.2 }, bands: [-33, -46], border: .6 }
   };
@@ -37,9 +41,9 @@
       if (repeat) t.wrapS = t.wrapT = T.RepeatWrapping;
       return t;
     }
-    const pair = (size) => { const a = document.createElement('canvas'), b = document.createElement('canvas'); a.width = a.height = b.width = b.height = size; return [a, b, a.getContext('2d'), b.getContext('2d')]; };
-    function speckle(g, n, count, alpha) {
-      for (let i = 0; i < count; i++) { const v = rand() > .5 ? 255 : 0; g.fillStyle = `rgba(${v},${v},${v},${alpha * rand()})`; g.fillRect(rand() * n, rand() * n, 1 + rand() * 2, 1 + rand() * 2); }
+    const pair = (w, h = w) => { const a = document.createElement('canvas'), b = document.createElement('canvas'); a.width = b.width = w; a.height = b.height = h; return [a, b, a.getContext('2d'), b.getContext('2d')]; };
+    function speckle(g, n, count, alpha, h = n) {
+      for (let i = 0; i < count; i++) { const v = rand() > .5 ? 255 : 0; g.fillStyle = `rgba(${v},${v},${v},${alpha * rand()})`; g.fillRect(rand() * n, rand() * h, 1 + rand() * 2, 1 + rand() * 2); }
     }
     function replace(material, map, bump, bumpScale, color, roughness) {
       material.map = map; material.bumpMap = bump; material.bumpScale = bumpScale;
@@ -50,48 +54,227 @@
       if (p) { p.map = map; p.bump = bump; if (color) p.color = material.color.clone(); }
     }
 
-    /* ------------------------------------------------ stage 4: coursed random rubble */
+    /* ------------------------------------------------ stage 4: rock-faced granite ashlar */
+    // Owner, 21 Nov 2026: the coursed rubble looked busy ("silly"); the base should be simpler and
+    // read steady and strong, like rock. Large rock-faced blocks in level courses set to the plinth's
+    // own levels, one granite tone, thin recessed joints, a heavier course at the foot.
     if (off !== 'off' && off !== 'noplinth') {
-      const N = 1024, px = N / spec.plinthTile, [cc, bc, g, b] = pair(N);
-      g.fillStyle = '#5d584f'; g.fillRect(0, 0, N, N);           // recessed lime mortar, in shade
-      b.fillStyle = '#262626'; b.fillRect(0, 0, N, N);
-      // Courses 0.22–0.40 m that add up exactly to the tile height.
-      const rows = []; let y = 0;
-      while (y < N - .2 * px) { const h = Math.round((.22 + rand() * .18) * px); rows.push([y, Math.min(h, N - y)]); y += h; }
-      rows[rows.length - 1][1] += N - y;
-      const joint = .022 * px;
-      for (const [y0, h] of rows) {
-        let x = -rand() * .5 * px; const start = x;
-        while (x < N + start) {
-          const w = Math.round((.3 + rand() * .45) * px), tone = rand(), warm = rand();
-          // Rough rectangle: jittered corners and mid-points, inset by half a joint.
-          const j = () => (rand() - .5) * .05 * px, pts = [
-            [x + joint + j(), y0 + joint + j()], [x + w / 2 + j(), y0 + joint + j() * .6], [x + w - joint + j(), y0 + joint + j()],
-            [x + w - joint + j() * .6, y0 + h / 2 + j()], [x + w - joint + j(), y0 + h - joint + j()], [x + w / 2 + j(), y0 + h - joint + j() * .6],
-            [x + joint + j(), y0 + h - joint + j()], [x + joint + j() * .6, y0 + h / 2 + j()]];
-          const cx = x + w / 2, cy = y0 + h / 2;
-          for (const dx of [-N, 0, N]) {
-            const path = (ctx, k = 1) => { ctx.beginPath(); pts.forEach(([u, v], i) => { const X = cx + (u - cx) * k + dx, Y = cy + (v - cy) * k; i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y); }); ctx.closePath(); };
-            // Granite greys with some warmer stones; never the saturated blue/tan of the old map.
-            const v = 150 + tone * 42, r = v + (warm > .7 ? 14 : warm < .2 ? -4 : 4), gg = v + (warm > .7 ? 6 : 0), bb = v - (warm > .7 ? 10 : -2);
-            const face = g.createLinearGradient(0, y0, 0, y0 + h);
-            face.addColorStop(0, `rgb(${r + 16},${gg + 16},${bb + 14})`); face.addColorStop(.55, `rgb(${r},${gg},${bb})`); face.addColorStop(1, `rgb(${r - 26},${gg - 26},${bb - 24})`);
-            g.fillStyle = face; path(g); g.fill();
-            g.strokeStyle = 'rgba(40,36,30,.35)'; g.lineWidth = 2; path(g); g.stroke();
-            // Pillowed face for the relief: dark rim, raised centre.
-            b.fillStyle = '#8a8a8a'; path(b); b.fill();
-            b.fillStyle = '#b4b4b4'; path(b, .86); b.fill();
-            b.fillStyle = '#c8c8c8'; path(b, .62); b.fill();
+      const P = spec.plinth, W = 2048, H = 1024, sx = W / P.tile, sy = H / P.tile, [cc, bc, g, b] = pair(W, H);
+      // realism.js maps V = world Y / 2.4; the map repeats every P.tile m, so canvas row y holds
+      // world Y = −y / sy (0 at the top of the canvas, the plinth's top levels just below it).
+      const row = Y => -Y * sy, joint = P.joint * sx, draft = P.draft * sx;
+      g.fillStyle = '#57534d'; g.fillRect(0, 0, W, H);           // recessed joint, in shade
+      b.fillStyle = '#202020'; b.fillRect(0, 0, W, H);
+      const levels = P.courses.concat([-P.tile]);
+      for (let k = 0; k < levels.length - 1; k++) {
+        const y0 = row(levels[k]), y1 = row(levels[k + 1]), base = levels[k + 1] <= P.courses[P.courses.length - 1] + 1e-6;
+        // Blocks fill the 4.8 m repeat exactly, in running bond from course to course.
+        const lengths = []; let left = W;
+        while (left > 0) { const L = Math.round(((base ? 1.25 : .95) + rand() * .55) * sx); lengths.push(Math.min(L, left)); left -= L; }
+        if (lengths.length > 1 && lengths[lengths.length - 1] < .6 * sx) { const last = lengths.pop(); lengths[lengths.length - 1] += last; }
+        let x = (k % 2 ? .5 : .15 + rand() * .2) * sx;
+        for (const L of lengths) {
+          const tone = 146 + (rand() - .5) * 12, warm = (rand() - .5) * 2;
+          for (const dx of [-W, 0, W]) {
+            const X0 = x + dx + joint / 2, X1 = x + dx + L - joint / 2, Y0 = y0 + joint / 2, Y1 = y1 - joint / 2;
+            if (X1 < 0 || X0 > W) continue;
+            // Colour: one granite family, lighter tooled margin, rock face slightly darker below.
+            const face = g.createLinearGradient(0, Y0, 0, Y1);
+            face.addColorStop(0, `rgb(${tone + 8 + warm},${tone + 7},${tone + 3 - warm})`);
+            face.addColorStop(1, `rgb(${tone - 10 + warm},${tone - 11},${tone - 14 - warm})`);
+            g.fillStyle = face; g.fillRect(X0, Y0, X1 - X0, Y1 - Y0);
+            g.strokeStyle = `rgba(255,252,245,.16)`; g.lineWidth = draft * .9; g.strokeRect(X0 + draft / 2, Y0 + draft / 2, X1 - X0 - draft, Y1 - Y0 - draft);
+            // Relief: the drafted margin is a flat band; the rock face inside it bulges and breaks.
+            b.fillStyle = '#7a7a7a'; b.fillRect(X0, Y0, X1 - X0, Y1 - Y0);
+            b.fillStyle = '#9c9c9c'; b.fillRect(X0 + draft, Y0 + draft, X1 - X0 - 2 * draft, Y1 - Y0 - 2 * draft);
+            g.save(); g.beginPath(); g.rect(X0 + draft, Y0 + draft, X1 - X0 - 2 * draft, Y1 - Y0 - 2 * draft); g.clip();
+            b.save(); b.beginPath(); b.rect(X0 + draft, Y0 + draft, X1 - X0 - 2 * draft, Y1 - Y0 - 2 * draft); b.clip();
+            const lumps = Math.round((X1 - X0) * (Y1 - Y0) / (sx * sy) * 70);
+            let s2 = Math.round(tone * 977 + L) >>> 0;   // same lumps in each wrap copy
+            const r2 = () => ((s2 = (Math.imul(s2, 1664525) + 1013904223) >>> 0) / 4294967296);
+            for (let i = 0; i < lumps; i++) {
+              const cx = X0 + r2() * (X1 - X0), cy = Y0 + r2() * (Y1 - Y0), rad = (.03 + r2() * .09) * sx, up = r2();
+              const bump = b.createRadialGradient(cx, cy, 0, cx, cy, rad), v = Math.round(150 + up * 90);
+              bump.addColorStop(0, `rgba(${v},${v},${v},.55)`); bump.addColorStop(1, `rgba(${v},${v},${v},0)`);
+              b.fillStyle = bump; b.fillRect(cx - rad, cy - rad, 2 * rad, 2 * rad);
+              const shade = g.createRadialGradient(cx, cy, 0, cx, cy, rad), d = up > .5 ? 255 : 0;
+              shade.addColorStop(0, `rgba(${d},${d},${d},.05)`); shade.addColorStop(1, `rgba(${d},${d},${d},0)`);
+              g.fillStyle = shade; g.fillRect(cx - rad, cy - rad, 2 * rad, 2 * rad);
+            }
+            g.restore(); b.restore();
+            // The bed joint casts a thin shadow under each block's top arris.
+            g.fillStyle = 'rgba(30,27,22,.18)'; g.fillRect(X0, Y0, X1 - X0, Math.max(2, joint * .6));
           }
           stats.plinthStones++;
-          x += w;
+          x += L;
         }
       }
-      // Weathering: a faint darker wash toward each tile's foot reads as splash and damp at the base.
-      const wash = g.createLinearGradient(0, 0, 0, N); wash.addColorStop(0, 'rgba(0,0,0,0)'); wash.addColorStop(1, 'rgba(35,30,22,.08)');
-      g.fillStyle = wash; g.fillRect(0, 0, N, N);
-      speckle(g, N, 26000, .12); speckle(b, N, 9000, .1);
-      replace(mat.foundation, texture(cc, 'Site stone · coursed random rubble', true), texture(bc, 'Site stone · coursed rubble relief', false), .045, '#ffffff', .9);
+      // Damp and splash darken the foot course a little.
+      const foot = g.createLinearGradient(0, row(P.courses[P.courses.length - 2]), 0, row(-P.ground));
+      foot.addColorStop(0, 'rgba(40,36,30,0)'); foot.addColorStop(1, 'rgba(40,36,30,.12)');
+      g.fillStyle = foot; g.fillRect(0, row(P.courses[P.courses.length - 2]), W, row(-P.ground) - row(P.courses[P.courses.length - 2]));
+      speckle(g, W, 60000, .1, H); speckle(b, W, 30000, .14, H);
+      const map = texture(cc, 'Site stone · rock-faced granite ashlar', true), relief = texture(bc, 'Site stone · ashlar rock-face relief', false);
+      // One canvas covers P.tile metres; realism.js UVs count 2.4 m per unit.
+      for (const t of [map, relief]) t.repeat.set(spec.plinthTile / P.tile, spec.plinthTile / P.tile);
+      replace(mat.foundation, map, relief, .07, '#ffffff', .93);
+    }
+
+    /* ------------------------------------------------ stage 4b: real stones on the plinth */
+    // Owner, 21 Nov 2026: a texture still reads "like a paper drawing". The large plinth faces get
+    // real blocks: each stone stands 35 mm proud with 20 mm chamfered arrises, so the joints are
+    // shadowed grooves. Courses follow spec.plinth.courses; blocks are skipped where another plinth
+    // body covers the face. Stair risers and slivers under 0.15 m keep the textured finish.
+    // Display geometry only: the plinth boxes, walking floor and analysis inputs are unchanged.
+    if (off !== 'off' && off !== 'noplinth' && off !== 'flat') {
+      const P = spec.plinth, D = P.proud, C = P.chamfer, J = P.joint, sources = [];
+      building.updateMatrixWorld(true);
+      building.traverse(o => {
+        if (!o.isMesh || o.material !== mat.foundation || o.geometry.type !== 'BoxGeometry' || /riser/i.test(o.name)) return;
+        const e = o.matrixWorld.elements;
+        if (Math.abs(e[1]) + Math.abs(e[2]) + Math.abs(e[4]) + Math.abs(e[6]) + Math.abs(e[8]) + Math.abs(e[9]) > 1e-6) return; // axis-aligned only
+        sources.push({ o, box: new T.Box3().setFromObject(o) });
+      });
+      const covered = (p, self) => sources.some(({ box }) => box !== self && p.x > box.min.x - .005 && p.x < box.max.x + .005
+        && p.y > box.min.y && p.y < box.max.y && p.z > box.min.z - .005 && p.z < box.max.z + .005);
+      // Rock face: a tileable 2 m × 1 m patch of broken granite, multiplied by a per-stone tone.
+      const RW = 1024, RH = 512, [rc, rb, g, b] = pair(RW, RH);
+      g.fillStyle = 'rgb(160,159,155)'; g.fillRect(0, 0, RW, RH); b.fillStyle = '#808080'; b.fillRect(0, 0, RW, RH);
+      for (let i = 0; i < 900; i++) {
+        const cx = rand() * RW, cy = rand() * RH, rad = (.025 + rand() * .11) * RH, up = rand();
+        for (const dx of [-RW, 0, RW]) for (const dy of [-RH, 0, RH]) {
+          const X = cx + dx, Y = cy + dy; if (X < -rad || X > RW + rad || Y < -rad || Y > RH + rad) continue;
+          const v = Math.round(80 + up * 175), bump = b.createRadialGradient(X, Y, 0, X, Y, rad);
+          bump.addColorStop(0, `rgba(${v},${v},${v},.5)`); bump.addColorStop(1, `rgba(${v},${v},${v},0)`);
+          b.fillStyle = bump; b.fillRect(X - rad, Y - rad, 2 * rad, 2 * rad);
+          const d = up > .5 ? 255 : 70, sh = g.createRadialGradient(X, Y, 0, X, Y, rad);
+          sh.addColorStop(0, `rgba(${d},${d},${d},.035)`); sh.addColorStop(1, `rgba(${d},${d},${d},0)`);
+          g.fillStyle = sh; g.fillRect(X - rad, Y - rad, 2 * rad, 2 * rad);
+        }
+      }
+      speckle(g, RW, 50000, .13, RH); speckle(b, RW, 30000, .2, RH);
+      const rockMap = texture(rc, 'Site stone · rock-faced granite block face', true), rockBump = texture(rb, 'Site stone · rock-faced block relief', false);
+      // Four close granite tones; the display batches keep only position, normal and uv, so tone is
+      // a material per group rather than a vertex colour.
+      const TONES = ['#f2f1ee', '#e8e7e3', '#e0dfdb', '#eeeeec'];
+      const buckets = TONES.map((c, i) => ({ mat: new T.MeshStandardMaterial({ name: `Rock-faced granite ashlar · plinth blocks ${i + 1} (concept)`, map: rockMap, bumpMap: rockBump,
+        bumpScale: .09, roughness: .92, metalness: 0, color: c, envMapIntensity: mat.foundation.envMapIntensity ?? .45 }), pos: [], nor: [], uv: [], idx: [] }));
+      // Quad from four corners (counter-clockwise seen from outside) with one flat normal.
+      const quad = (a, b2, c, d, n, B, uvOf) => {
+        const base = B.pos.length / 3;
+        for (const q of [a, b2, c, d]) { B.pos.push(...q); B.nor.push(...n); B.uv.push(...uvOf(q)); }
+        B.idx.push(base, base + 1, base + 2, base, base + 2, base + 3);
+      };
+      let stones = 0;
+      // One stone on a face: [s0, s1] along it, [y0, y1] up, chamfered and standing D proud.
+      const stone = (axis, fixed, sgn, s0, s1, y0, y1) => {
+        const W3 = (u, v, w) => axis === 0 ? [u, v, fixed + sgn * w] : [fixed + sgn * w, v, u];
+        const N3 = (nu, nv, nw) => { const v3 = axis === 0 ? [nu, nv, sgn * nw] : [sgn * nw, nv, nu]; const l = Math.hypot(...v3); return v3.map(x => x / l); };
+        const ou = rand() * 4, ov = rand() * 4, uvOf = q => [((axis === 0 ? q[0] : q[2]) + ou) / 2, (q[1] + ov) / 1];
+        const tone = buckets[Math.floor(rand() * buckets.length)], c = Math.min(C, (y1 - y0) / 3, (s1 - s0) / 3);
+        const back = -.004, bl = W3(s0, y0, back), br = W3(s1, y0, back), tr = W3(s1, y1, back), tl = W3(s0, y1, back);
+        const fbl = W3(s0 + c, y0 + c, D), fbr = W3(s1 - c, y0 + c, D), ftr = W3(s1 - c, y1 - c, D), ftl = W3(s0 + c, y1 - c, D);
+        // Winding depends on which way the face looks along its axis.
+        const ccw = (axis === 0 ? sgn > 0 : sgn < 0);
+        const Q = (a, b2, cc, d, n) => ccw ? quad(a, b2, cc, d, n, tone, uvOf) : quad(a, d, cc, b2, n, tone, uvOf);
+        Q(fbl, fbr, ftr, ftl, N3(0, 0, 1));                 // rock face
+        Q(tl, ftl, ftr, tr, N3(0, c, D));                    // top chamfer
+        Q(bl, br, fbr, fbl, N3(0, -c, D));                   // bottom chamfer
+        Q(bl, fbl, ftl, tl, N3(-c, 0, D));                   // left chamfer
+        Q(br, tr, ftr, fbr, N3(c, 0, D));                    // right chamfer
+        stones++;
+      };
+      // Courses on one face. top(t) is the face's top at t along it: constant on a plinth box, the
+      // tread of the riser there on a stair cheek, where the top course is cut at each step (cuts).
+      const layFace = ({ axis, fixed, sgn, a0, a1, yb, yt, top, cuts, self, ext }) => {
+        const levels = P.courses.filter(y => y < yt - 1e-6 && y > yb + 1e-6);
+        const rows = [yt, ...levels, yb].map((y, i, all) => [all[i + 1], y]).slice(0, -1).filter(([lo, hi]) => hi - lo >= .15);
+        rows.forEach(([lo, hi], k) => {
+          const foot = lo <= -P.ground + .01;
+          let t = a0 - ext, first = true;
+          while (t < a1 + ext - .05) {
+            let L = (foot ? 1.25 : .95) + rand() * .55;
+            if (first) { L *= ((k + (axis === 0 ? 0 : 1)) % 2) ? .5 : 1; first = false; }   // running bond
+            let t1 = Math.min(t + L, a1 + ext); if (a1 + ext - t1 < .45) t1 = a1 + ext;
+            const marks = [t, ...cuts.filter(m => m > t + .05 && m < t1 - .05), t1];
+            const pieces = marks.slice(0, -1).map((m, i) => [m, marks[i + 1]]);
+            const stepped = pieces.some(([p0, p1]) => top((p0 + p1) / 2) < hi - 1e-6);
+            for (const [p0, p1] of stepped ? pieces : [[t, t1]]) {
+              const h = Math.min(hi, top((p0 + p1) / 2));
+              if (h - lo < .1) continue;
+              const s0 = p0 + J / 2, s1 = p1 - J / 2, y0 = lo + (foot ? 0 : J / 2), y1 = h - J / 2;
+              const mid = new T.Vector3(), out = .02 * sgn;
+              if (axis === 0) mid.set((s0 + s1) / 2, (y0 + y1) / 2, fixed + out); else mid.set(fixed + out, (y0 + y1) / 2, (s0 + s1) / 2);
+              if (!covered(mid, self)) stone(axis, fixed, sgn, s0, s1, y0, y1);
+            }
+            t = t1;
+          }
+        });
+      };
+      for (const { box } of sources) {
+        const yb = Math.max(box.min.y, -P.ground - .003), yt = box.max.y;
+        // Faces: axis along the face (0 = X, 2 = Z), fixed coordinate, outward sign.
+        for (const [axis, fixed, sgn] of [[2, box.min.x, -1], [2, box.max.x, 1], [0, box.min.z, -1], [0, box.max.z, 1]]) {
+          const [a0, a1] = axis === 0 ? [box.min.x, box.max.x] : [box.min.z, box.max.z];
+          if (a1 - a0 >= .8) layFace({ axis, fixed, sgn, a0, a1, yb, yt, top: () => yt, cuts: [], self: box, ext: D });
+        }
+      }
+      // Owner, 21 Nov 2026: the towers' lower columns (towers.js, traced E02/E01B, plastered with strips)
+      // take the same stone, so the base of each tower reads as one rock foot with the plinth. Faces
+      // against the tower core are inside the plinth and skipped; the band course above stays.
+      const lower = (window.CHURCH_TOWERS?.lowerColumns || []).map(c => new T.Box3(new T.Vector3(c.x[0], c.y[0], c.z[0]), new T.Vector3(c.x[1], c.y[1], c.z[1])));
+      for (const box of lower) {
+        const yb = Math.max(box.min.y, -P.ground - .003), yt = box.max.y;
+        for (const [axis, fixed, sgn] of [[2, box.min.x, -1], [2, box.max.x, 1], [0, box.min.z, -1], [0, box.max.z, 1]]) {
+          const [a0, a1] = axis === 0 ? [box.min.x, box.max.x] : [box.min.z, box.max.z];
+          layFace({ axis, fixed, sgn, a0, a1, yb, yt, top: () => yt, cuts: [], self: box, ext: D });
+        }
+      }
+      stats.towerColumnFaces = lower.length;
+      // Owner, 21 Nov 2026: the outer faces of the side stairs get the same stones. Each flight's risers
+      // (boxes stepping along X) form one cheek wall on each side; the inner cheek, inside the plinth,
+      // is skipped by the cover test.
+      const risers = [];
+      building.traverse(o => {
+        if (!o.isMesh || o.material !== mat.foundation || o.geometry.type !== 'BoxGeometry' || !/riser/i.test(o.name)) return;
+        const box = new T.Box3().setFromObject(o);
+        if (box.max.x - box.min.x < box.max.z - box.min.z) risers.push(box);   // flights running along X
+      });
+      const flights = new Map();
+      for (const r of risers) {
+        const key = `${r.min.z.toFixed(2)}|${r.max.z.toFixed(2)}`;
+        if (!flights.has(key)) flights.set(key, []);
+        flights.get(key).push(r);
+      }
+      for (const list of flights.values()) {
+        list.sort((p, q) => p.min.x - q.min.x);
+        // Split into contiguous runs (two flights can share a Z band).
+        const runs = [[list[0]]];
+        for (const r of list.slice(1)) { const run = runs[runs.length - 1]; if (r.min.x - run[run.length - 1].max.x > .05) runs.push([r]); else run.push(r); }
+        for (const run of runs) {
+          const a0 = run[0].min.x, a1 = run[run.length - 1].max.x, yt = Math.max(...run.map(r => r.max.y));
+          // Riser boxes overlap a little: the cheek top is the highest riser at t, and the course is cut
+          // wherever that height changes (flights rise either way along X).
+          const top = t => Math.max(-Infinity, ...run.filter(q => t >= q.min.x - 1e-6 && t <= q.max.x + 1e-6).map(q => q.max.y));
+          const marks = [...new Set(run.flatMap(r => [r.min.x, r.max.x]).map(v => +v.toFixed(4)))].sort((p, q) => p - q);
+          const cuts = marks.slice(1, -1).filter((m, i) => Math.abs(top((marks[i] + m) / 2) - top((m + marks[i + 2]) / 2)) > 1e-6);
+          for (const [fixed, sgn] of [[run[0].min.z, -1], [run[0].max.z, 1]])
+            layFace({ axis: 0, fixed, sgn, a0, a1, yb: -P.ground - .003, yt, top, cuts, self: null, ext: 0 });
+        }
+      }
+      for (const B of stones ? buckets : []) {
+        if (!B.idx.length) continue;
+        const geo = new T.BufferGeometry();
+        geo.setAttribute('position', new T.Float32BufferAttribute(B.pos, 3)); geo.setAttribute('normal', new T.Float32BufferAttribute(B.nor, 3));
+        geo.setAttribute('uv', new T.Float32BufferAttribute(B.uv, 2)); geo.setIndex(B.idx);
+        const mesh = new T.Mesh(geo, B.mat), parent = sources[0].o.parent;
+        mesh.name = 'Plinth rock-faced ashlar blocks · concept';
+        mesh.castShadow = sources[0].o.castShadow; mesh.receiveShadow = true;
+        mesh.userData = { status: 'CONCEPT · display stone on the plinth faces; plinth geometry unchanged', revision: spec.revision };
+        // Built in world coordinates: undo the parent's transform.
+        parent.updateMatrixWorld(true); mesh.applyMatrix4(new T.Matrix4().copy(parent.matrixWorld).invert()); parent.add(mesh);
+      }
+      stats.plinthBlocks = stones;
     }
 
     /* ------------------------------------------------ stage 5: granite slab paving */

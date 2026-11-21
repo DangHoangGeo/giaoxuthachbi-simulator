@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-21T10:32:52.846Z",
+  "savedAt": "2026-11-21T11:35:58.244Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -70,7 +70,7 @@
     "wingGableLightsRevision": "2026-11-07-wing-gable-lights-1",
     "beamSectionRevision": "2026-11-08-stronger-beams-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
-    "facadeGraceRevision": "2026-11-21-facade-our-lady-of-grace-1",
+    "facadeGraceRevision": "2026-11-21-facade-our-lady-of-grace-2",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
   },

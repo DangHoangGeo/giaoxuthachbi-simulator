@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "status": "DERIVED / CONCEPT / ENGINEERING HOLD · comparison screens only",
- "model_git_revision": "8dfce711a3c85e498530dfe15cd4a3eb0537c657",
+ "model_git_revision": "0addaba22a2611ada6cede28ef7aaa7540ce4007",
  "source_sha256": {
   "Thach_Bi_Viewer/texture-memory.js": "72577d7b26b047e98c1477db7982836bd3798edf6c8e3d136150a50e8a43b5f0",
   "Thach_Bi_Viewer/render-batches.js": "3cb7d3a4a956d730174683067314edc81484d88d6ee1055bfaf5cc07db5725e1",
@@ -20,34 +20,34 @@
   "Thach_Bi_Viewer/interior-finish.js": "c435f619f905b24a2b7379313eaa29966c0383fb898530f6e6b10ffc0ba4c70c",
   "Thach_Bi_Viewer/sanctuary-furnishings.js": "6d43535c66db5f1206384a3a9a3bec51b787907ffb5ec1b43582e31fd5be0dfb",
   "Thach_Bi_Viewer/landscape-trees.js": "35210c71bc9082117a3e4eab1bea01c57ecdcb8059116d3cf89fbd1955e49b84",
-  "Thach_Bi_Viewer/site-stone.js": "a10b5a5767823025adbad4777b728134de774a740097001ac3a683cf01455b0c",
+  "Thach_Bi_Viewer/site-stone.js": "4de07d04cdc0e0f53d9f24e8b038724744fc77a7477d87d71231be73a2295aff",
   "Thach_Bi_Viewer/facade-grandeur.js": "a4fe505fcc59918ce842c908754b1b27bc9904c51ac6ee268584f4ca1a64e77d",
   "Thach_Bi_Viewer/sanctuary.js": "406b5a7cffa455fabb01a710f1f6c2172c6d02b516c9a7305bf043899dc5695a",
   "Thach_Bi_Viewer/facade.js": "d5138c97bd195680f927463f9aaa0c5d388977d3ebfbb520e197e04ef2896e5e",
   "Thach_Bi_Viewer/marian-art.js": "cbbba54c0d5f34676bd93d1ccc2a6237ee635dd578c32d8624295f54438dcc79",
   "Thach_Bi_Viewer/porches.js": "7369386ae582a2d2bd1c0158cd30cee322d60d097e4013cfeb1caee425afe067",
   "Thach_Bi_Viewer/stations.js": "17979bbe379cc9b5286e5ec4f090708bdf75e20e544dc44f6c777251a35bb625",
-  "Thach_Bi_Viewer/towers.js": "e8f09e89f2c1228398d852a73cf5583e0ccc86c9fff2c959ee74f86acee52428",
+  "Thach_Bi_Viewer/towers.js": "ec2f29a3161fc759e3de7b71449491b2a98e62f82ec2ab38b03b3a87efd2376a",
   "Thach_Bi_Viewer/roofline.js": "fe6484d1a330f4d6616b6dfef6b440cfdc9612263b6c6d34c7244c37d7812d78",
   "Thach_Bi_Viewer/realism.js": "646b51f1fde602736c425c40cbe16b722dc398889b3108543d4947f0bcd3973b",
   "Thach_Bi_Viewer/planning.js": "392b799e84ad7f54c42c0219fc5cd4c777c241d884bcc45be86d7c125f5e5d09",
   "Thach_Bi_Viewer/simulator/physics.js": "c93a4a920d3f481cbb5e1c86fbeabb28f7fdb8203173d5b94f83f1016068074d",
-  "Thach_Bi_Viewer/simulator/catalog.js": "72a255efb8e22d5b8a93d755332d2e4ff78657fe75ffd62ab143da34441726f1",
+  "Thach_Bi_Viewer/simulator/catalog.js": "7430f9f7cde950cd24718c734a8ebdc718ffcfacaca8e996ac563811be187664",
   "Thach_Bi_Viewer/simulator/veranda-review.js": "cda63e962a9dc9a3ec8f18ed267752a0e32f4872d3e69a54ef344f3a5fc5c622",
   "Thach_Bi_Viewer/simulator/doorhead-review.js": "00422219053377979f9294b2691a05acff5819289297b14d433912b0358b48fe",
-  "Thach_Bi_Viewer/simulator/engine.js": "53b97eba44b0a71570e6900ad5fc541d3d56e8b2db09f543fe1139bd5e944ac6",
+  "Thach_Bi_Viewer/simulator/engine.js": "c0c63c3e9eb6029fe2d56866dcbb4ef381f566fc898c07d9de88dc55a9c8bf7a",
   "Thach_Bi_Viewer/simulator/light-grid.js": "b6cf76a1acb902a46d58daf7c2bbcf70b0e615d9e5f9fb8108c8cf37c4110eb4",
   "Thach_Bi_Viewer/simulator/persistent-lighting.js": "85e2ebee44574c098529aabea21ee6a9f5558bd4beee8b8ad6d6aa09311ce899",
-  "Thach_Bi_Viewer/simulator/design.js": "84f240736b3d3d3a1e8ffeca9eba3ce76863338a97af748776cc34a16ea77b7e",
+  "Thach_Bi_Viewer/simulator/design.js": "949042f4c94ada6127367b681c5384aa641dbdf2e0bb97c1dc52bcaa392832e0",
   "Thach_Bi_Viewer/simulator/analysis.js": "5245fad1537146093b03cf4aff74c62673f766134b082de59e796d5f8d3e17db",
   "Thach_Bi_Viewer/simulator/electrical.js": "6137d3c6bf80d07d6ddaa05bf3ba2eee68da0a50fb828462216e9e9fef1562c6",
   "Thach_Bi_Viewer/simulator/installation-review.js": "57ef9d55066bbdad167495ac70e74974fcf00da1e1ca7a43b74bb14399256b83",
   "Thach_Bi_Viewer/bundle.js": "52b830d56cac5fa23879f2c84a4b5d84b5d10d7fb6ba93fe50c3a65c4a6f9081",
-  "scripts/lib/study_model.cjs": "d37c03ffe4ffa7ef1c3541d81888ff471dd134d0d9156d5f8cf869d1dd84d939",
+  "scripts/lib/study_model.cjs": "eaad1fc9f74707949b9c439353f43e390007941c928ecc544fa461ebc54d3ad1",
   "scripts/export_electrical_loads.cjs": "066af5453cb3e782abe4cfaf585b6cd9b04ebafad050e18c73615e7ca6fdca2b",
   "docs/electrical-grid/electrical-systems.json": "9fa38718d33a71797872ea7a498d749e95df3032bc033cc63f6c8d0b0da323aa",
-  "docs/electrical-grid/equipment-layout.json": "da3b268634a778f0a9712dbc22f4ddab9f693345bf3027d1e00b044ae71f3276",
-  "docs/electrical-grid/categories/manifest.json": "86bad83c1c2b9a094fb91eaba02a4657c96fece5ab7587a54d493e7290c0ae5f"
+  "docs/electrical-grid/equipment-layout.json": "1550e9e89018fafebaf730611c5b3e65b1be2bdbfc7e70e336f4a1ce7b5fe90c",
+  "docs/electrical-grid/categories/manifest.json": "2b166b1dfd0bf03a3139e8c1ebdcc71d186630cf48723e1c4614904073edbc36"
  },
  "default_scene": "Full service · evening",
  "assumptions": {
@@ -3723,7 +3723,9 @@
    "Festival · courtyard overflow": 5,
    "Cleaning": 5,
    "Night security": 5,
-   "All off": 5
+   "All off": 5,
+   "Evening visit": 5,
+   "Daytime visit": 5
   },
   "source": [
    "DB1"
@@ -4770,6 +4772,38 @@
     "by_category_w": {
      "light": 15,
      "fan": 0,
+     "sound": 0,
+     "decor": 0,
+     "power": 0
+    }
+   },
+   {
+    "scene": "Evening visit",
+    "watts": 5210.617057,
+    "kwh_per_service": 7.815926,
+    "kwh_per_month": 312.637023,
+    "cost_per_month_at_model_tariff": 687801.451546,
+    "interior_lumens": 266070,
+    "exterior_lumens": 179030,
+    "by_category_w": {
+     "light": 3861.262444,
+     "fan": 1156,
+     "sound": 0,
+     "decor": 0,
+     "power": 0
+    }
+   },
+   {
+    "scene": "Daytime visit",
+    "watts": 3623.793279,
+    "kwh_per_service": 5.43569,
+    "kwh_per_month": 217.427597,
+    "cost_per_month_at_model_tariff": 478340.712879,
+    "interior_lumens": 264470,
+    "exterior_lumens": 0,
+    "by_category_w": {
+     "light": 2274.438667,
+     "fan": 1156,
      "sound": 0,
      "decor": 0,
      "power": 0

@@ -683,6 +683,8 @@
     'Church average · seating': 'Trung bình nhà thờ · ghế ngồi',
     'estimates': 'ước tính',
     'updating estimates': 'đang cập nhật ước tính',
+    'Daytime visit': 'Tham quan ban ngày',
+    'Evening visit': 'Tham quan buổi tối',
     'Full service · evening': 'Thánh lễ đầy đủ · buổi tối',
     'Weekday Mass': 'Thánh lễ ngày thường',
     'Prayer & adoration': 'Cầu nguyện & chầu Thánh Thể',

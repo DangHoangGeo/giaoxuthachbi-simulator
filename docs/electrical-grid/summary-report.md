@@ -72,7 +72,7 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: da3b268634a778f0a9712dbc22f4ddab9f693345bf3027d1e00b044ae71f3276.
+- [Layout snapshot](equipment-layout.json), SHA-256: 1550e9e89018fafebaf730611c5b3e65b1be2bdbfc7e70e336f4a1ce7b5fe90c.
 - [Electrical snapshot](electrical-systems.json), SHA-256: 9fa38718d33a71797872ea7a498d749e95df3032bc033cc63f6c8d0b0da323aa.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
