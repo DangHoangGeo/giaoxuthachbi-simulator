@@ -77,6 +77,7 @@ This register lists proposals that go beyond what the drawings show. Each item i
 | DX-06 | 20 Nov 2026 | Pinnacle crowns (gable and tower corners) | E01B traced crown: clustered mini-spires with fleurs | Single crocketed spire on a gabled die, carved finial; same base footprint and apex heights | Owner asked for the redraw on 20 Nov 2026; appearance review pending | Carving, stone, fixing and wind loading on ENGINEERING HOLD |
 | DX-05 | 20 Nov 2026 | Entrance courtyard | No paving design drawn; plain presentation ground | Granite courtyard: processional way, medallion with star and cross, diagonal field, banding, dark border | Appearance review pending | Levels, falls, drainage, sub-base, slip resistance and stone selection open; site unsurveyed |
 | DX-07 | 21 Nov 2026 | Tower great-arch supports (all upper faces) | E01B shaft with necking band and abaci; plan +10.128 draws a rectangular step 0.11 m wide | Engaged round colonnette on a plinth and torus base, standing on the drawn base course; the step stays as a dosseret | Owner asked for round columns on 21 Nov 2026; appearance review pending | Material, fixing and weathering open |
+| DX-08 | 21 Nov 2026 | Tower lower columns (under the corner piers) and plinth face | E02/E01B: plastered columns with flat strips from −2.08 to −0.203; plinth finish not drawn | Rock-faced granite ashlar blocks standing 35 mm proud on the column faces, the plinth and the side-stair cheeks; the band course above stays | Owner asked on 21 Nov 2026; appearance review pending | Stone, thickness, anchorage, damp-proofing and drainage open |
 
 Earlier departures stay in their own records. Examples are the red cross ([sanctuary model](sanctuary-model.md)), the arches over the shrines and the restored outer porch wall ([façade model](facade-model.md)).
 
@@ -103,6 +104,15 @@ The species, mature size, planting, root protection and drainage are not designe
 These changes are in `Thach_Bi_Viewer/site-stone.js`, which loads after the tree canopies. The tag `?sitestone=off` shows the previous finishes for comparison. [Desktop before and after](../review/site-stone-2026-11-20/README.md)
 
 - **Plinth (stage 4).** The rubble plinth chosen for the church read as flat patches of blue-grey and tan with a pale outline. It now shows coursed random rubble: courses 0.22–0.40 m high, stones 0.30–0.75 m long, grey to warm-grey granite, pillowed faces and recessed dark lime mortar, with a faint damp tone toward the foot. It is the same material and tile scale on the same plinth geometry, including the forecourt plinth. This is a display finish, not a stone or mortar specification.
+- **Plinth, second pass (21 November 2026, owner).** The owner found the rubble busy, "like a paper drawing", and asked for a simpler base that looks steady and strong, like rock. The plinth now has rock-faced granite ashlar:
+  - **Courses:** level courses set to the plinth's own levels, with joints at +0.00, −0.40, −0.92, −1.44 and −2.08 m. The main plinth shows three courses: a 0.64 m foot course and two of 0.52 m. The towers add a 0.40 m course at the top.
+  - **Blocks:** 0.95–1.8 m long in running bond, in one neutral granite grey with four close tones.
+  - **Real stones:** each block on the plinth faces is real geometry, standing 35 mm proud with 20 mm chamfered arrises, so the 12 mm joints are shadowed grooves.
+  - **Side stairs:** the outer cheeks of the side stairs carry the same stones, and the top course is cut at each step.
+  - **Tower bases:** the towers' lower columns (DX-08) carry the same stones.
+  - **Small parts:** stair risers and slivers under 0.15 m keep a matching textured finish with the same course levels.
+
+  About 860 blocks add about 8,600 triangles. The plinth boxes, levels, walking floor and every analysis input are unchanged (`site-stone.js`; `?sitestone=flat` shows the textured finish only). [Before and after](../review/plinth-stone-2026-11-21/README.md)
 - **Grounds (stage 5).** The presentation ground now shows sawn granite slabs, 0.60 × 0.40 m in running bond, in place of the plain grey.
 - **Designed courtyard (DX-05).** The area in front of the entrance steps, from X −58 to −9.3 m and between the lawns (Z ±22.4 m), is a granite courtyard. It has a light processional way 6 m wide on the axis with red and dark edging. A medallion 8.4 m across sits 12 m in front of the lowest step, with rings, an eight-point star, a cross and radiating joints. A diagonal field, two transverse bands and a dark border complete the design. It is a surface finish 3 mm above the ground plane. The walking floor, the steps, the ramp and every analysis input are unchanged.
 

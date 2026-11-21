@@ -631,6 +631,8 @@
       louvre: 'TRACED CAD APERTURE / TRANSOM, TYMPANUM AND FRAME CONCEPT',
       blade: 'TRACED CAD BLADE FACE HEIGHT AND PITCH / 50° RAKE AND DEPTH CONCEPT' };
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
+    // World boxes of the lower columns under the corner piers, for the plinth stone (site-stone.js).
+    const lowerColumns = window.CHURCH_TOWERS.lowerColumns = [];
 
     // ---- Shared carving (also used by roofline.js) ----
     const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField, solidOutline, spandrelRelief } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
@@ -775,6 +777,7 @@
           const body = { x: [...c.x], t: [...c.t] };
           for (const f of faces) body[f.axis][f.end] -= f.out * inset;
           block('Tower lower column · under the corner pier', W, body.x, y, body.t, LOW);
+          lowerColumns.push({ x: [...c.x], y: [...y], z: [Z(c.t[0]), Z(c.t[1])].sort((p, q) => p - q) });
           for (const f of faces) {
             const u = f.axis === 'x' ? 't' : 'x', [u0, u1] = c[u], plane = c[f.axis][f.end];
             const cornerAtStart = u === 't' ? c.side < 0 : c.front, L = u1 - u0;

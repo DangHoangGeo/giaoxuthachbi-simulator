@@ -929,7 +929,14 @@ assert(bounds(amboFoot).min.x-39.345>=1,'Ambo stays 1 m back from the head of th
   assert(c.max.x<stairFront,'Courtyard paving stops in front of the lowest entrance step');
   assert(Math.abs(c.max.z)<=22.4+1e-6&&Math.abs(c.min.z)<=22.4+1e-6,'Courtyard paving stays inside the paved strip between the lawns');
   assert(c.min.y>-2.08&&c.max.y<-2.07,'Courtyard paving lies just above the courtyard level');
-  assert(/rubble/.test(mat.foundation.map?.name||''),'Plinth carries the coursed rubble finish');
+  // Owner, 21 Nov 2026: rock-faced granite ashlar replaces the coursed rubble; real stones stand on the
+  // plinth faces and the side-stair cheeks, inside the plinth's own height range.
+  assert(/ashlar/.test(mat.foundation.map?.name||''),'Plinth carries the rock-faced ashlar finish');
+  const stones=nodes.filter(o=>o.isMesh&&o.name==='Plinth rock-faced ashlar blocks · concept');
+  assert(stones.length>=1,'Plinth stone blocks exist');
+  for(const o of stones){const b=bounds(o);
+    assert(o.geometry.index,'Plinth stones are indexed for the display batches');
+    assert(b.min.y>=-2.081&&b.max.y<=.001,'Plinth stones stay between the courtyard and ±0.000');}
 }
 // Sanctuary furnishings, design excellence stage 2 (20 Nov 2026): appearance only, footprints kept.
 {
