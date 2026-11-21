@@ -622,6 +622,14 @@
     // False-door timber (owner, 3 Nov 2026): the blind arches carry fixed timber facings in the main
     // doors' wood, with a darker inset for the sunk panels.
     const WOOD = mat.wood || S, WOOD_INSET = (() => { const m = WOOD.clone(); m.color?.multiplyScalar(.78); m.name = 'False-door inset timber'; return m; })();
+    // Unlit belfry interior seen between the louvre blades (appearance only, CONCEPT).
+    const SHADOW = (() => { const m = WOOD.clone(); m.color?.multiplyScalar(.2); m.name = 'Belfry interior shadow'; return m; })();
+    // Belfry openings (owner, 21 Nov 2026): wall depth, blade rake and status labels. See belfry() below.
+    const BELFRY = { wall: .28, bladeTilt: 50 * Math.PI / 180,
+      course: 'E01B TRACED BASE COURSE LEVELS / TORUS PROFILE AND PROJECTION CONCEPT',
+      column: 'OWNER DIRECTION 21 NOV 2026: ROUND ENGAGED COLONNETTE ON THE TRACED SUPPORT (PLAN +10.128 DRAWS A RECTANGULAR STEP) / CONCEPT',
+      louvre: 'TRACED CAD APERTURE / TRANSOM, TYMPANUM AND FRAME CONCEPT',
+      blade: 'TRACED CAD BLADE FACE HEIGHT AND PITCH / 50° RAKE AND DEPTH CONCEPT' };
     const stats = { piers: 0, blindArches: 0, upperFronts: 0, removedBundleMeshes: remove.length };
 
     // ---- Shared carving (also used by roofline.js) ----
@@ -872,6 +880,60 @@
         }
       }
 
+      // ---- Belfry openings and great-arch supports, shared by every upper face ----
+      // Owner, 21 Nov 2026: the great arch should stand on round columns that come down to a base,
+      // and the louvres should not look flat, with no arched head floating in front of them.
+      // E01B draws a 0.20 m base course under each upper sill (+8.85–9.05, +16.30–16.50,
+      // +23.60–23.80) with torus returns at the stepped supports (C4 sill band, stage 2 torus at
+      // the great-arch support). The plan at +10.128 draws those supports as rectangular steps; the
+      // round engaged colonnettes are an owner-directed departure. Profiles, louvre angle and
+      // depths are CONCEPT. Lengths along a face (u) and levels (v) are the traced ones.
+      // api.box(name, m, [u0, u1], [v0, v1], [d0, d1], status) and api.slab(name, m, shape, [d0, d1], status)
+      // take d out of the wall face (0) toward the street, −BELFRY.wall at its back;
+      // api.put(name, m, geometry, u, v, d, status, mirror) places a part built facing +Z.
+      const belfry = (api, U, cg, centres, half, headStatus) => {
+        const WI = U.windows, r = WI.rings[0], B = BELFRY;
+        api.box('stage base course', S, [-half, half], [U.sill - .2, U.sill - .008], [-.02, .05], B.course);
+        api.put('stage base course torus', S, new T.CylinderGeometry(.065, .065, 2 * half, 20).rotateZ(Math.PI / 2), 0, U.sill - .1, .05, B.course);
+        for (const e of [-1, 1]) {
+          const outer = U.stage === 4 ? U.great.rings[U.great.rings.length - 1] : U.great.rings[1];
+          const [a, b] = [cg + e * U.great.rings[0], cg + e * outer].sort((m, n) => m - n), uc = (a + b) / 2;
+          const rad = Math.min(.095, (b - a) / 2 + .03), dc = .05, front = dc + rad, foot = U.sill + .07;
+          api.box('great arch pilaster', S, [a, b], [U.sill, U.great.y], [-.01, .05]);
+          api.box('great arch colonnette plinth', S, [uc - rad * 1.35, uc + rad * 1.35], [U.sill - .008, foot], [dc - rad * 1.35, dc + rad * 1.35], B.column);
+          api.put('great arch colonnette base', S, new T.TorusGeometry(rad * 1.1, rad * .3, 8, 24).rotateX(Math.PI / 2), uc, foot + rad * .3, dc, B.column);
+          api.put('great arch colonnette', S, new T.CylinderGeometry(rad * .96, rad, U.great.y - foot, 24), uc, (foot + U.great.y) / 2, dc, B.column);
+          for (const [[b0, b1], out, depth] of impostBands(U.stage))
+            api.box('great arch impost band', S, [a - out, b + out], [U.great.y + b0, U.great.y + b1], [-.01, front + depth]);
+        }
+        for (const u of centres) {
+          for (const e of [-1, 1]) {
+            const [a, b] = [u + e * r, u + e * WI.rings[2]].sort((m, n) => m - n);
+            api.box('paired louvre jamb', S, [a, b], [U.sill, WI.spring], [-.01, .11]);
+            // E01B: a band and a capital under each window archivolt (stage 2: +11.42–11.50, +11.75–11.87).
+            api.box('paired louvre jamb capital', S, [a - .025, b + .025], [WI.spring - .12, WI.spring], [-.01, .14], DRAWN);
+            api.box('paired louvre jamb band', S, [a - .012, b + .012], [WI.spring - .45, WI.spring - .38], [-.01, .125], DRAWN);
+          }
+          const leaf = new T.Shape(); leaf.moveTo(u - r, U.sill); leaf.lineTo(u + r, U.sill);
+          leaf.lineTo(u + r, WI.spring); leaf.absarc(u, WI.spring, r, 0, Math.PI, false); leaf.lineTo(u - r, U.sill); leaf.closePath();
+          // Dark belfry interior at the back of the reveal, seen between the blades.
+          api.slab('paired louvre backing', SHADOW, leaf, [-B.wall, -B.wall + .02], 'TRACED CAD APERTURE / BELFRY INTERIOR BEHIND OPEN LOUVRES · CONCEPT');
+          // Arched head: a timber tympanum on a transom at the springing; the traced tracery is set on it.
+          const head = new T.Shape(); head.moveTo(u + r, WI.spring); head.absarc(u, WI.spring, r, 0, Math.PI, false); head.lineTo(u + r, WI.spring);
+          api.slab('paired louvre tympanum', WOOD_INSET, head, [-.20, -.175], B.louvre);
+          api.put('paired louvre head tracery · traced', S, U.stage === 4 ? TG.head4 : TG.head, u, WI.spring, -.168, headStatus, true);
+          const transom = WI.spring - .08;
+          api.box('paired louvre transom', WOOD, [u - r, u + r], [transom, WI.spring], [-.23, -.10], B.louvre);
+          for (const e of [-1, 1])
+            api.box('paired louvre timber frame', WOOD, [u + e * r, u + e * (r - .05)].sort((m, n) => m - n), [U.sill, transom], [-.25, -.09], B.louvre);
+          // Raked blades, front edge down: each shows the traced blade-face height and sheds rain.
+          const clear = 2 * (r - .05), tilt = B.bladeTilt, width = U.slats.height / Math.sin(tilt);
+          for (let y = U.slats.first; y + U.slats.height <= transom + .001; y += U.slats.pitch)
+            api.put('paired louvre blade', WOOD, new T.BoxGeometry(clear, .018, width).rotateX(tilt), u, y + U.slats.height / 2, -.17, U.slats.status ? U.slats.status + ' / RAKE CONCEPT' : B.blade);
+          api.box('paired louvre sill', S, [u - WI.rings[2], u + WI.rings[2]], [U.sill - .05, U.sill], [-B.wall, .12]);
+        }
+      };
+
       // ---- Upper front elevations: native E01B arcs, window sills and rose circles ----
       for (const U of spec.upperFront) {
         const F = upperFronts.find(f => f.side === s && f.stage === U.stage);
@@ -888,36 +950,21 @@
         // All radial boundaries are source arcs; only relief depths are illustrative.
         for (let i = 0; i < U.great.rings.length - 1; i++)
           uslab('great arch ring', i % 2 ? W : S, ring(cg, U.great.y, U.great.rings[i], U.great.rings[i + 1]), xf - .10 - .045 * i, xf + .01); // stepped orders, 45 mm each (was 12 mm)
-        for (const e of [-1, 1]) {
-          const r0 = U.great.rings[0], r1 = U.great.rings[1];
-          const shaft = [cg + e * r0, cg + e * (U.stage === 4 ? U.great.rings[U.great.rings.length - 1] : r1)].sort((a, b) => a - b);
-          block(label + 'great arch pilaster', S, [xf - .10, xf + .01], [U.sill, U.great.y], shaft);
-          for (const [[b0, b1], out, depth] of impostBands(U.stage))
-            block(label + 'great arch impost band', S, [xf - .10 - depth, xf + .01], [U.great.y + b0, U.great.y + b1], [shaft[0] - out, shaft[1] + out]);
-        }
-        for (const centre of WI.centres) {
-          const u = centre - spec.centre, r = WI.rings[0];
+        const centres = WI.centres.map(c => c - spec.centre);
+        for (const u of centres)
           for (let i = 0; i < WI.rings.length - 1; i++)
             uslab('paired louvre archivolt', S, ring(u, WI.spring, WI.rings[i], WI.rings[i + 1]), xf - .13 - .045 * i, xf + .01);
-          for (const e of [-1, 1]) block(label + 'paired louvre jamb', S, [xf - .11, xf + .01], [U.sill, WI.spring], [u + e * r, u + e * WI.rings[2]].sort((a, b) => a - b));
-          const leaf = new T.Shape(); leaf.moveTo(u - r, U.sill); leaf.lineTo(u + r, U.sill);
-          leaf.lineTo(u + r, WI.spring); leaf.absarc(u, WI.spring, r, 0, Math.PI, false); leaf.lineTo(u - r, U.sill); leaf.closePath();
-          // Design excellence, 20 Nov 2026: the louvres sit at the back of the wall so the opening reads as a deep reveal.
-          uslab('paired louvre backing', WOOD, leaf, xb - .02, xb, 'TRACED CAD APERTURE / SCHEMATIC CLOSED SHUTTER DEPTH');
-          const clear = r * 2 - .03, stop = WI.spring - .14;
-          block(label + 'paired louvre timber frame', mat.wood, [xb - .13, xb - .05], [U.sill, stop], [u - r, u - r + .015]);
-          block(label + 'paired louvre timber frame', mat.wood, [xb - .13, xb - .05], [U.sill, stop], [u + r - .015, u + r]);
-          for (let y = U.slats.first; y < stop - .001; y += U.slats.pitch)
-            block(label + 'paired louvre blade', mat.wood, [xb - .125, xb - .07], [y, Math.min(y + U.slats.height, stop)], [u - clear / 2, u + clear / 2], U.slats.status || 'TRACED CAD BLADE FACE / SCHEMATIC DEPTH AND ANGLE');
-          block(label + 'paired louvre sill', S, [xf - .12, xb], [U.sill - .05, U.sill], [u - WI.rings[2], u + WI.rings[2]]);
-        }
+        // The louvres sit at the back of the wall so the opening reads as a deep reveal (20 Nov 2026).
+        belfry({
+          box: (name, m, us, vs, [d0, d1], status) => block(label + name, m, [xf - d1, xf - d0], vs, us, status),
+          slab: (name, m, shape, [d0, d1], status) => uslab(name, m, shape, xf - d1, xf - d0, status),
+          put: (name, m, g, u, v, d, status, mirror) => add(label + name, m, g, place(...(mirror ? [SC(s, 1, 1)] : []), RY(-Math.PI / 2), TR(xf - d, v, Z(u))), status),
+        }, U, cg, centres, F.half, U.stage === 2 ? TRACED_REPEAT : TRACED);
         const RO = U.rose, major = (RO.rings[0] + RO.rings[1]) / 2, minor = (RO.rings[1] - RO.rings[0]) / 2;
         const roseMatrix = place(RY(-Math.PI / 2), TR(xf - .055, RO.y, Z(cg)));
         add(label + 'rose ring', ACCENT, new T.TorusGeometry(major, minor, 10, 64), roseMatrix);
         add(label + 'rose-window infill', F.roseMaterial || mat.glass, new T.CircleGeometry(RO.inner, 64), place(RY(-Math.PI / 2), TR(xf - .012, RO.y, Z(cg))), 'TRACED CAD CIRCLE / EXISTING CHOSEN COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
         add(label + 'rose tracery · traced', ACCENT, U.stage === 4 ? TG.roseSmall : TG.rose, place(RY(-Math.PI / 2), TR(xf - .025, RO.y, Z(cg))), U.stage === 3 || U.stage === 4 ? TRACED : TRACED_REPEAT);
-        for (const centre of WI.centres)
-          add(label + 'paired louvre head tracery · traced', S, U.stage === 4 ? TG.head4 : TG.head, place(SC(s, 1, 1), RY(-Math.PI / 2), TR(xf + .04, WI.spring, Z(centre - spec.centre))), U.stage === 2 ? TRACED_REPEAT : TRACED);
         stats.upperFronts++;
       }
 
@@ -942,30 +989,18 @@
         fs('wall with paired louvre apertures', W, face, -.14, .14);
         for (let i=0; i<U.great.rings.length-1; i++)
           fs('great arch ring', i%2 ? W:S, ring(cg,U.great.y,U.great.rings[i],U.great.rings[i+1]), .13,.24+.012*i);
-        for (const e of [-1,1]) {
-          const r0=U.great.rings[0], r1=U.great.rings[1], xs=[cg+e*r0,cg+e*r1].sort((a,b)=>a-b);
-          const shaft=U.stage===4?[cg+e*r0,cg+e*U.great.rings[U.great.rings.length-1]].sort((a,b)=>a-b):xs;
-          fb('great arch pilaster',S,shaft,[U.sill,U.great.y],[.13,.24]);
-          for(const [[b0,b1],out,depth] of impostBands(U.stage)) fb('great arch impost band',S,[shaft[0]-out,shaft[1]+out],[U.great.y+b0,U.great.y+b1],[.13,.24+depth]);
-        }
-        for (const u of centres) {
-          const r=WI.rings[0];
+        for (const u of centres)
           for(let i=0;i<WI.rings.length-1;i++) fs('paired louvre archivolt',S,ring(u,WI.spring,WI.rings[i],WI.rings[i+1]),.13,.27+.025*i);
-          for(const e of [-1,1]) fb('paired louvre jamb',S,[u+e*r,u+e*WI.rings[2]].sort((a,b)=>a-b),[U.sill,WI.spring],[.13,.25]);
-          const leaf=new T.Shape();leaf.moveTo(u-r,U.sill);leaf.lineTo(u+r,U.sill);leaf.lineTo(u+r,WI.spring);
-          leaf.absarc(u,WI.spring,r,0,Math.PI,false);leaf.lineTo(u-r,U.sill);leaf.closePath();
-          fs('paired louvre backing',WOOD,leaf,-.04,-.02,status+' / CLOSED SHUTTER DEPTH PROXY');
-          const stop=WI.spring-.14,clear=2*r-.03;
-          for(const xs of [[u-r,u-r+.015],[u+r-.015,u+r]]) fb('paired louvre timber frame',mat.wood,xs,[U.sill,stop],[0,.07]);
-          for(let y=U.slats.first;y<stop-.001;y+=U.slats.pitch)
-            fb('paired louvre blade',mat.wood,[u-clear/2,u+clear/2],[y,Math.min(y+U.slats.height,stop)],[.01,.065],status+' / BLADE ANGLE AND DEPTH PROXY');
-          fb('paired louvre sill',S,[u-WI.rings[2],u+WI.rings[2]],[U.sill-.05,U.sill],[-.14,.26]);
-        }
+        // Wall face at w 0.14; d is measured from it.
+        belfry({
+          box: (name, m, us, vs, [d0, d1], state) => fb(name, m, us, vs, [.14 + d0, .14 + d1], state),
+          slab: (name, m, shape, [d0, d1], state) => fs(name, m, shape, .14 + d0, .14 + d1, state),
+          put: (name, m, g, u, v, d, state = status) => add(label + name, m, g, fm(u, v, .14 + d), state),
+        }, U, cg, centres, F.half, F.kind === 'outer' ? TRACED_REPEAT : status + ' / TRACED E01B HEAD REPEATED');
         const RO=U.rose,rm=fm(roseU,RO.y,.195);
         add(label+'rose ring',ACCENT,new T.TorusGeometry((RO.rings[0]+RO.rings[1])/2,(RO.rings[1]-RO.rings[0])/2,10,64),rm,status);
         add(label+'rose-window infill',F.roseMaterial||mat.glass,new T.CircleGeometry(RO.inner,64),fm(roseU,RO.y,.152),status+' / EXISTING COLOURED FINISH; GLAZING AND OPENING UNCONFIRMED');
         add(label+'rose tracery · traced',ACCENT,U.stage===4?TG.roseSmall:TG.rose,fm(roseU,RO.y,.165),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B ROSE REPEATED');
-        for(const u of centres) add(label+'paired louvre head tracery · traced',S,U.stage===4?TG.head4:TG.head,fm(u,WI.spring,.10),F.kind==='outer'?TRACED_REPEAT:status+' / TRACED E01B HEAD REPEATED');
         stats.upperOtherFaces=(stats.upperOtherFaces||0)+1;
       }
 

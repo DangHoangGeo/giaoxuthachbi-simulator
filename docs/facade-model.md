@@ -236,3 +236,35 @@ The six E01B T12 leaves above the three entrance arches sit in the assembled wal
 **CONCEPT · In development / Đang phát triển · Not for construction / Không dùng để thi công.** After the owner found the front still too flat, this pass deepens the relief, the central cornice and the tower arch orders, warms the carving tone and gives the exterior a raking late-morning sun. Traced outlines and levels are unchanged. [Design excellence, façade grandeur](design-excellence.md#façade-grandeur)
 
 The pinnacle crowns on the gable piers and the tower corners are redrawn as single crocketed spires (departure DX-06, owner, 20 November 2026), with the same base and apex. [Design excellence](design-excellence.md#façade-grandeur)
+
+## Central niche columns uncovered · 21 November 2026
+
+**In development / Đang phát triển · Not for construction / Không dùng để thi công.** Owner, 21 November 2026: the two round columns beside the Assumption statue were missing.
+
+**Cause.** Since 24 October 2026 the model had both niche columns, with plinths, capitals and abaci (centre X 4.015, |Z| 1.009, r 0.10). The aedicule wall, however, ran at the column front (X 3.915) across its full width, so it buried the shafts; only the capitals showed.
+
+**Basis.** The plan at +15.840 (PT15, DWG handles D80D91–D80D9C) shows the following, read from the niche outward:
+
+| Feature | |Z| (m) | Face X (m) |
+| --- | --- | --- |
+| Niche jamb | 0.711 | 4.115 to the niche mouth at 4.225 |
+| Recessed face beside the niche | 0.711–1.33 | 4.115 |
+| Quarter round | 0.822–0.906 | — |
+| Column plinth (F30) | 0.906–1.112 | 3.915 |
+| Pier return | 1.33–1.439 | 3.915 |
+
+E01B draws the columns standing free from the niche floor (+15.997) to the springing (+18.893), with the archivolt on their capitals.
+
+**Change (`facade.js`).**
+
+- Between the niche floor and the springing, the aedicule wall is cut back to X 4.115 for |Z| up to 1.33. Above the springing the face stays at 3.915.
+- The niche keeps a jamb strip, |Z| 0.711–0.799, at the face. E01B draws the legs of the inner arch ring down to the floor. The strip also carries the hidden jamb lights `L-STATUE-C-JAMB-1/2`, which stay where they were.
+- The columns are unchanged and now stand 0.2 m clear of the recess.
+
+Status:
+
+- Plan faces: DRAWN.
+- Recess height and jamb strip: DERIVED.
+- Quarter round: not modelled.
+
+`verify_model.cjs` still finds the aedicule face at 3.915. No simulator item moved, and the statue, candles, arch light and washes keep their places. [Before and after](../review/belfry-niche-2026-11-21/README.md)
