@@ -78,6 +78,7 @@ This register lists proposals that go beyond what the drawings show. Each item i
 | DX-05 | 20 Nov 2026 | Entrance courtyard | No paving design drawn; plain presentation ground | Granite courtyard: processional way, medallion with star and cross, diagonal field, banding, dark border | Appearance review pending | Levels, falls, drainage, sub-base, slip resistance and stone selection open; site unsurveyed |
 | DX-07 | 21 Nov 2026 | Tower great-arch supports (all upper faces) | E01B shaft with necking band and abaci; plan +10.128 draws a rectangular step 0.11 m wide | Engaged round colonnette on a plinth and torus base, standing on the drawn base course; the step stays as a dosseret | Owner asked for round columns on 21 Nov 2026; appearance review pending | Material, fixing and weathering open |
 | DX-08 | 21 Nov 2026 | Tower lower columns (under the corner piers) and plinth face | E02/E01B: plastered columns with flat strips from −2.08 to −0.203; plinth finish not drawn | Rock-faced granite ashlar blocks standing 35 mm proud on the column faces, the plinth and the side-stair cheeks; the band course above stays | Owner asked on 21 Nov 2026; appearance review pending | Stone, thickness, anchorage, damp-proofing and drainage open |
+| DX-09 | 21 Nov 2026 | Open doors and window shutters | Inner C/G windows: two 1.10 m panelled shutters swinging to the porch (owner-confirmed paired leaves, [view 11](church-view-renderings.md)); main and side doors open to about 80° | Fully open, back against the wall ([record below](#open-doors-and-windows-21-november-2026)): each inner-window leaf becomes a pair of 0.55 m folding leaves hung inside the glass, folding flat on the nave face; wing-end shutters and four main door leaves swing a half turn flat on the outer face; the two outer main leaves stop at 100° against the tower piers | Owner asked on 21 Nov 2026 for the leaves to touch the walls; the change from two to four leaves per window needs the owner's confirmation | Hinges that throw the leaves clear of the mouldings, stays, weather sealing and security on JOINERY HOLD; side exit doors unchanged (fire/egress) |
 
 Earlier departures stay in their own records. Examples are the red cross ([sanctuary model](sanctuary-model.md)), the arches over the shrines and the restored outer porch wall ([façade model](facade-model.md)).
 
@@ -88,6 +89,7 @@ Earlier departures stay in their own records. Examples are the red cross ([sanct
 3. **Liturgical colour shown by default.** This revision shows green for Ordinary Time on the ambo fall.
 4. **Sanctuary carpet.** Many Vietnamese parishes lay a red carpet on the sanctuary steps and the dais. Does the parish want one?
 5. **Site information.** Before stage 5, a site plan is needed: boundaries, existing trees, the grotto location, gates and levels.
+6. **Side doors fully open.** The six C/G side doors cannot lie against the wall as drawn: they are exit doors, the 1.10 m leaves are longer than the 0.83 m of wall before the side column, and the jamb colonnettes stand in front of the hinge. Options: keep them at about 80° (current), or redesign the door bays (colonnettes set back, door lanterns moved) so the leaves can swing a half turn. Which does the parish prefer?
 
 ## Stage 2: sanctuary furnishings
 
@@ -98,6 +100,24 @@ Recorded in [interior finish](interior-finish.md#sanctuary-furnishings--20-novem
 The two rows of eight presentation trees had crowns made of about 1,000 small faceted shapes each, and they read as toy trees. Each crown is now a fuller canopy that fills the same volume. It has a dark inner mass and about 230 leaf sprays drawn on transparent cards. The sunlit outer sprays are lighter than the shaded inner ones, and the cards cast shadows on the lawn. The positions, trunks, branches, soil beds, stone edging and lawn of the trees are unchanged (`Thach_Bi_Viewer/landscape-trees.js`, loaded after `realism.js` builds the rows).
 
 The species, mature size, planting, root protection and drainage are not designed. These trees are an unsurveyed presentation context, like the lawn. [Desktop before and after](../review/tree-canopies-2026-11-20/README.md)
+
+## Open doors and windows, 21 November 2026
+
+The owner asked that, when the church is walked through the veranda, all windows and doors stand fully open so that people can see inside, with the leaves touching the walls. Before this change the open leaves stood straight out across the veranda (shutters at 86°, side doors at 83°, main doors at about 77°) and hid the openings from anyone walking along it. The doors and shutters open when walking, in the film, and when **Doors & windows → Open** is chosen (`realism.js`).
+
+| Opening | Before | Now | Why |
+| --- | --- | --- | --- |
+| 12 inner C/G windows (2.25 m) | Two 1.10 m shutters swinging out into the veranda | Four 0.55 m leaves, two folding pairs hung on the nave arris inside the glass; open, each pair folds flat on the nave face beside the window, 0.22 m deep | Only 0.83 m of wall stands between the opening and the side column, so a 1.10 m leaf cannot lie flat. Folding inward leaves the veranda clear; the pews stand 0.47 m from the wall and the wall fitting 1.71 m from the window centre is clear |
+| 4 wing-end windows (1.0 m) | 0.49 m shutters at 86° | A half turn, flat on the outside face in front of the jamb mouldings | There is room on the wall |
+| 4 main door leaves (central door, inner leaves of the side doorways) | About 77° | A half turn, flat on the outer face of the door wall, just in front of its jamb moulding | There is room on the wall |
+| 2 outer main door leaves | About 77° | 100°, resting just off the tower corner pier plinth | Only 0.40 m of wall before the pier |
+| 6 C/G side doors | 83° | Unchanged | See below |
+
+The six C/G side doors are exit doors. Folding or sliding leaves are generally not accepted on escape routes, so they stay single side-hung leaves (the fire and egress check is still open). Their 1.10 m leaves are longer than the 0.83 m of wall before the side column, and the jamb colonnettes stand flush with the opening in front of the hinge, so a leaf meets them at about 80°. The earlier 83° already touches the colonnette slightly, as it did before this change. Letting these leaves lie flat would need the door bays redesigned (question 6 above).
+
+The window change departs from the owner-confirmed paired-leaf design of [view 11](church-view-renderings.md): each leaf is now two folding halves with the same panel design, the diamond and lancet mouldings now repeat four times across a window instead of twice, and the closed shutters stand inside the glass. It is recorded as DX-09 for the owner's confirmation. Hinges that throw the leaves clear of the mouldings, stays, weather sealing and night security are on **JOINERY HOLD**.
+
+Checks: a ray test of every open leaf against the model found no clash except the side doors' existing contact with the colonnettes. `node scripts/verify_model.cjs` checks the 56 shutter leaves, the folded position of the 48 inner-window leaves and the four flat main leaves. [Desktop before and after](../review/open-leaves-2026-11-21/README.md)
 
 ## Stages 4 and 5: plinth masonry and courtyard
 

@@ -261,16 +261,40 @@ for(const o of clearBodies){
     group.traverse(o=>{if(o.isMesh)parts.push(o);});
     const shutters=parts.filter(o=>o.name==='Shutter inset panel');
     const beads=parts.filter(o=>o.name==='Shutter shaped timber moulding');
-    assert.equal(beads.length,32*2,'One moulded lower apron on both faces of all shutters');
-    assert.equal(parts.filter(o=>o.name==='Shutter lattice bar').length,32*4,'Two uprights on each face');
-    for(const name of ['Shutter diamond moulding','Shutter lancet moulding'])assert.equal(parts.filter(o=>o.name===name).length,64);
-    assert.equal(parts.filter(o=>o.name==='Shutter recessed solid field').length,32);
+    // 21 Nov 2026: the twelve 2.25 m inner windows have four folding leaves each (two per side), the
+    // four wing-end windows two each: 12×4 + 4×2 = 56 leaves.
+    const leaves=56;
+    assert.equal(beads.length,leaves*2,'One moulded lower apron on both faces of all shutters');
+    assert.equal(parts.filter(o=>o.name==='Shutter lattice bar').length,leaves*4,'Two uprights on each face');
+    for(const name of ['Shutter diamond moulding','Shutter lancet moulding'])assert.equal(parts.filter(o=>o.name===name).length,leaves*2);
+    assert.equal(parts.filter(o=>o.name==='Shutter recessed solid field').length,leaves);
     for(const panel of shutters)assert(panel.geometry.parameters.height<.7,'Only the lower apron is solid');
     assert(shutters.every(o=>o.material===doorPanel),'The shutter inset uses the door panel finish');
     for(const o of beads){
       o.geometry.computeBoundingBox();
       assert(Math.abs(o.position.z)+o.geometry.boundingBox.max.z<=.055,'Shutter trim stays behind its stiles');
     }
+  }
+  // Owner, 21 Nov 2026: open leaves stand back against the wall. Inner window leaves fold flat on the
+  // nave face beside their window, clear of the porch and of the pews; main door leaves lie on the
+  // outer face of the door wall.
+  {
+    const open=nodes.find(o=>o.userData.doorState==='open');open.updateMatrixWorld(true);
+    const inner=[],front=[];
+    open.traverse(o=>{
+      if(o.isMesh&&o.name==='Window timber shutter leaf'){const b=bounds(o);if(Math.abs((b.min.z+b.max.z)/2)<9)inner.push(b);}
+      if(o.isMesh&&o.name==='Open timber door leaf')front.push(bounds(o));
+    });
+    assert.equal(inner.length,48,'Four folding leaves at each of the twelve inner windows');
+    for(const b of inner){
+      assert(Math.abs(b.max.z)<7.25+.001&&Math.abs(b.min.z)>7.36-.11-.23,'Folded leaf lies on the nave face, inside the glass line');
+      const x=(b.min.x+b.max.x)/2,bay=[7.72,12.22,21.23,25.73,30.23,46.42].reduce((a,c)=>Math.abs(c-x)<Math.abs(a-x)?c:a);
+      const off=Math.abs(x-bay);assert(off>1.125&&off<1.125+.56,'Folded beside the opening, before the wall fitting');
+    }
+    const EN=sandbox.window.CHURCH_FACADE.spec.entrance;
+    assert.equal(front.length,6);
+    for(const b of front)assert(b.max.x<EN.wall[0]-.05+.001,'Open main leaves stand in front of the door wall and its jamb moulding');
+    assert.equal(front.filter(b=>b.max.x-b.min.x<.3).length,4,'Four main leaves lie flat against the wall');
   }
 }
 for(const o of colouredHeads){

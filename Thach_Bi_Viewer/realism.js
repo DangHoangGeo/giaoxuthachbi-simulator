@@ -15,6 +15,8 @@
   const doorGroups = {};
   const api = window.CHURCH_REALISM = { prepare, lighting, finish, floorHeight, walkAllowed, bindBatches, update, setOpenings, setGlass, stainedTimber, paintTimber };
   let doorBatches, lastMode, openings = 'auto', glassKind = 'stained', lightMode = 'day';
+  // Opening of the C/G side doors when open (rad): limited by the jamb colonnettes (see the door bays below).
+  const SIDE_DOOR_OPEN = 1.45;
   function bindBatches(batches) {
     doorBatches = {closed:batches.get(doorGroups.closed), open:batches.get(doorGroups.open)};
     // Glass passes daylight: no glazed batch casts a shadow.
@@ -340,11 +342,21 @@
     }
     // Reuse each traced main-door hinge, preserving its exact facade transform.
     building.updateMatrixWorld(true);
+    // Owner, 21 Nov 2026: open doors and windows stand fully open, back against the wall, so the
+    // church can be seen into from the porches. The main leaves swing a half turn out and lie flat
+    // on the door wall: facade.js later moves every hinge to 0.198 m behind its outer face (45 % of
+    // the 0.44 m wall), so the pivot steps out 0.198 m, plus the 50 mm jamb moulding, half the carved
+    // leaf (0.11 m) and a 7 mm gap. Hinge hardware that throws the leaf clear: JOINERY HOLD.
+    // The two outermost leaves have only 0.40 m of wall before the tower corner piers: from the same
+    // pivot they swing 1.745 rad (100°) and rest just off the pier plinth and the hall side return.
     for(const hinge of all.filter(o=>o.name==='Open entry door leaf')) {
       const angle=hinge.rotation.y;
+      hinge.updateWorldMatrix(true,false);
+      const outermost=Math.abs(new T.Vector3().setFromMatrixPosition(hinge.matrixWorld).z)>5.5;
       for(const state of ['closed','open']) {
-        hinge.rotation.y=state==='closed'?0:angle;hinge.updateWorldMatrix(true,true);
+        hinge.rotation.y=state==='closed'?0:Math.sign(angle||1)*(outermost?1.745:Math.PI);hinge.updateWorldMatrix(true,true);
         const copy=hinge.clone(true);copy.matrix.copy(hinge.matrixWorld);copy.matrix.decompose(copy.position,copy.quaternion,copy.scale);
+        if(state==='open'){copy.position.x-=.198+.05+.11+.007;copy.userData.fullyOpen=outermost?'against the tower corner pier':'flat on the outer face of the door wall';}
         doorGroups[state].add(copy);
         copy.traverse(o=>{if(o.isMesh&&/Door panel|door leaf/.test(o.name))o.material=mat.wood;});
       }
@@ -603,10 +615,16 @@
       paneZ=inner?0:.10;const jz=inner?.07:.13,hz=inner?.07:.10;
       if(door) {
         // Inner doorway: its fixed fanlight is the bundle's (coloured above); leaves open to the porch.
+        // Owner, 21 Nov 2026 asked for every leaf back against the wall. These cannot be, as drawn:
+        // they are exit doors, so they stay single side-hung leaves (folding or sliding leaves are
+        // generally not accepted on escape routes: fire/egress check pending); a 1.10 m leaf cannot
+        // lie on the 0.83 m of wall before the side column; and the jamb colonnettes stand flush with
+        // the opening, in front of the hinge, so the leaf already meets them at about 80°. They keep
+        // their earlier 1.45 rad (83°); the open question is recorded in docs/design-excellence.md.
         for(const state of ['closed','open']) {
           const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
           for(const sign of [-1,1]) {
-            const hinge=new T.Group();hinge.position.set(sign*1.125,0,hz);hinge.rotation.y=state==='closed'?0:sign*1.45;frame.add(hinge);
+            const hinge=new T.Group();hinge.position.set(sign*1.125,0,hz);hinge.rotation.y=state==='closed'?0:sign*SIDE_DOOR_OPEN;frame.add(hinge);
             const leaf=new T.Group();leaf.position.x=-sign*.551;hinge.add(leaf);
             box(1.102,2.951,.095,0,1.4755,0,mat.wood,leaf,'Exterior timber door leaf');panels(leaf,1.102,2.951);
             rod([-sign*.40,1.1,.12],[-sign*.40,1.45,.12],.025,mat.metal,leaf,'Bronze door pull');
@@ -614,7 +632,7 @@
         }
       } else if(big) {
         // One 2.25 m window: clear glass body to the 0.22 m head band, then the silver M lunette on
-        // both faces (church concept picture); a pair of panelled timber shutters swings to the porch.
+        // both faces (church concept picture); panelled timber shutters inside the glass.
         const P=profile,half=P.width/2;
         const body=new T.Shape();body.moveTo(-half,P.bottom);body.lineTo(half,P.bottom);body.lineTo(half,P.leafTop);body.lineTo(-half,P.leafTop);body.closePath();
         pane(body,bay,sashGlass,'Inner window clear glass body').castShadow=false;
@@ -625,13 +643,20 @@
           lun.position.z=face*.05;if(face<0)lun.rotation.y=Math.PI;lun.castShadow=false;
           lun.userData={status:window.CHURCH_MARIAN_ART.STATUS,source:window.CHURCH_MARIAN_ART.SOURCE};
         }
+        // Owner, 21 Nov 2026: open shutters fold right back so the veranda looks straight into the
+        // nave. A 1.10 m leaf cannot lie flat on the 0.83 m of wall before the side column, so each
+        // side is a pair of 0.55 m leaves hinged together (four per window), hung on the nave arris
+        // (−0.11) inside the glass. Open, each pair folds back flat on the nave face beside the window,
+        // 0.22 m deep, clear of the pews (−0.47), of the wall fitting 1.71 m from the centre and of the
+        // stone sill. Closed, they stand 6 mm inside the glass. Hinges and stays: JOINERY HOLD.
+        const h=P.leafTop-P.bottom,w=(half-.02)/2,arris=-.11,closedZ=-.058,pitch=.11;
         for(const state of ['closed','open']) {
           const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
-          for(const sign of [-1,1]) {
-            const hinge=new T.Group();hinge.position.set(sign*half,P.bottom,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
-            const leaf=new T.Group();leaf.position.x=-sign*half/2;hinge.add(leaf);
-            const h=P.leafTop-P.bottom,w=half-.02;
-            latticeShutter(leaf,w,h);
+          for(const sign of [-1,1])for(const k of [0,1]) {
+            const leaf=new T.Group();frame.add(leaf);
+            if(state==='closed')leaf.position.set(sign*(half-(k+.5)*w),P.bottom,closedZ);
+            else{leaf.position.set(sign*(half+w/2),P.bottom,2*arris-closedZ-k*pitch);leaf.userData.fullyOpen='folded flat on the nave face';}
+            latticeShutter(leaf,w-.006,h);
           }
         }
       } else {
@@ -649,8 +674,12 @@
           for(const state of ['closed','open']) {
             const frame=new T.Group();frame.position.copy(bay.position);frame.rotation.copy(bay.rotation);doorGroups[state].add(frame);
             for(const sign of [-1,1]) {
-              const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,hz);hinge.rotation.y=state==='closed'?0:sign*1.5;frame.add(hinge);
-              const leaf=new T.Group();leaf.position.x=-sign*.25;hinge.add(leaf);
+              // Owner, 21 Nov 2026: fully open, a half turn back flat against the outside of the wall,
+              // in front of the jamb mouldings (+0.30): a projecting hinge on the axis +0.2325 carries
+              // the 0.49 m leaf from its closed plane (+0.10) to +0.365. Hardware: JOINERY HOLD.
+              const axisZ=(hz+.365)/2;
+              const hinge=new T.Group();hinge.position.set(x+sign*.5,.85,axisZ);hinge.rotation.y=state==='closed'?0:sign*Math.PI;frame.add(hinge);
+              const leaf=new T.Group();leaf.position.set(-sign*.25,0,hz-axisZ);hinge.add(leaf);
               const shutterHeight=profile?leafTop-.85:2.1;
               latticeShutter(leaf,.49,shutterHeight);
             }
