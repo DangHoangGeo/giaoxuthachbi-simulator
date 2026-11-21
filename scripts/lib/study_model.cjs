@@ -35,7 +35,8 @@ function loadStudyModel({ storageEntries = [], rejectStorage = () => false } = {
   vm.runInContext(source, sandbox, { timeout: 120000, filename: 'bundle.js' });
   const model = sandbox.model, T = model.THREE, SIM = sandbox.CHURCH_SIMULATOR;
   const camera = new T.PerspectiveCamera(50, 1.6, .05, 500); camera.position.set(20, 1.6, 0);
-  SIM.start({ scene: model.scene, renderer: model.renderer, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } });
+  // Studies compare the full-service reference layout unless they apply another scene.
+  SIM.start({ scene: model.scene, renderer: model.renderer, colliders: [], walkCamera: { aspect: 1.6, fov: 68, updateProjectionMatrix() {} }, walk: { eyeHeight: 1.65, speed: 2.05 }, places: {}, goTo() {}, setMode() {}, uiState: () => ({ roof: true }), camera, controls: { target: new T.Vector3(), update() {} } }, { initialScene: 'Full service · evening' });
   assert(SIM.ready, 'simulator failed to initialise');
   return { SIM, model, storage, towers: sandbox.CHURCH_TOWERS, P: sandbox.CHURCH_SIM_PHYSICS, CAT: sandbox.CHURCH_SIM_CATALOG, verandaReview: sandbox.CHURCH_VERANDA_REVIEW, doorheadReview: sandbox.CHURCH_DOORHEAD_REVIEW, planning: sandbox.CHURCH_PLANNING,
     dispose() { for (const timer of timers) clearTimeout(timer); timers.clear(); },

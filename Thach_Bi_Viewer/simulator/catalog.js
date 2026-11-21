@@ -254,6 +254,11 @@
     k.box(0.03, 0.22, 0.1, 'lanternFrame', { p: [0.015, 0, 0] });
     k.tube([[0.02, 0, 0], [0.18, 0.05, 0], [0.3, 0.02, 0]], 0.012, 'lanternFrame', {}, 10, 5);
     k.cone(0.12, 0.09, 'lanternFrame', { p: [0.3, -0.04, 0] }, 6);
+    // Small bronze collar and folded rims pick out the hexagonal cap and foot.
+    // They stay inside the existing lantern envelope and around the same optic.
+    k.cyl(.019, .024, .026, 'bronze', { p: [.3, .01, 0] }, 12);
+    k.cyl(.112, .118, .014, 'bronze', { p: [.3, -.083, 0] }, 6);
+    k.cyl(.088, .098, .016, 'bronze', { p: [.3, -.305, 0] }, 6);
     k.cyl(0.08, 0.08, 0.22, 'glow', { p: [0.3, -0.2, 0] }, 6);
     ring(6, (i, a) => k.box(0.012, 0.24, 0.012, 'lanternFrame', { p: [0.3 + Math.cos(a) * 0.09, -0.2, Math.sin(a) * 0.09] }));
     k.cyl(0.1, 0.1, 0.02, 'lanternFrame', { p: [0.3, -0.32, 0] }, 6);

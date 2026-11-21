@@ -1,5 +1,18 @@
 # Lighting system · Thạch Bi church
 
+## Exterior visit lighting · 21 November 2026
+
+The owner requested that the exterior lamps default to off in daylight. Across seven exterior circuits and four lanterns on the shared sanctuary circuit, 133 fixtures now draw **0 W** and contribute zero electric-light emitters during a fresh daytime visit. Lantern glass reflects the sky and the hexagonal bronze rim is visible with the lamp off. Each evening visit keeps the porch and path lights at full output, with a softer wash on the towers, front terrace and niches. Estimated exterior operating power is **1.59 kW** against **2.12 kW** in the full-service scene. Festival floods stay off in both scenes. [Visit control levels](../electrical-grid/controls.md#exterior-visit-controls--21-november-2026) · [Desktop views](../../review/exterior-lighting-2026-11-21/exterior-lighting.jpg)
+
+| Horizontal walking-plane samples | Points | Full service, minimum / mean (lx) | Evening visit, minimum / mean (lx) |
+| --- | ---: | ---: | ---: |
+| B/H verandas | 162 | 11.6 / 33.6 | 11.6 / 33.6 |
+| Front arrival and terrace | 18 | 132.0 / 182.5 | 105.1 / 141.2 |
+| B/H side paths | 54 | 2.4 / 25.6 | 2.4 / 25.5 |
+| Rear approach | 5 | 17.6 / 34.2 | 17.6 / 34.2 |
+
+Run `node scripts/study_exterior_visit_lighting.cjs` from the repository root to reproduce the comparison. It uses the recommended model, all active emitters, model occluders, upward-facing samples 20 mm above the modeled walking surface and a maintenance factor of 0.80. The covered verandas remain below the 100 lx trial target. The darkest sampled side-path point lies at X 31.575 m, Y −2.060 m, Z −14.500 m. The route needs a night walk-through and product photometry to check the spaces between fittings, glare and spill. These figures are direct-light estimates. The desktop images use the visit viewer with the H8 artwork masked for publication.
+
 **3 November 2026 sanctuary study:** shrine lights L115–L118 are relocated along the side-vault ribs and dimmed for the lower vault; the modelled arrangement, direct maintained probe estimates and remaining sightline and installation holds are recorded in the [sanctuary model](../sanctuary-model.md#sanctuary-ornament-study--3-november-2026). Product photometry and measured lighting are still required.
 
 > **Rear lights relocated, 2 November 2026:** At the owner's request, L59–L62 stay in service but move away from the main door to two symmetric pairs on the side walls beside axis 3. The wall-plaster projectors are below the fan blades, at X 9.25 / 9.60 m, Y 3.65 m, Z ±7.25 m; each remains on L2. The outer-row heads retain the 6,000 lm / 44° concept; the centre heads use 6,000 lm / 36° instead of 3,300 lm / 50°. The 50 W per head remains a catalogue planning allowance; these are not selected product ratings. See [review record](../../review/rear-side-lights-2026-11-02/README.md) for modeled results, exclusions and the required engineering review. The entrance-wall description below is historical.
