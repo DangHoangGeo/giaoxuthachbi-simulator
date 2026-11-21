@@ -266,6 +266,7 @@ PRODUCTS = {
 
 NAME_PARTS = {
     'Assumption of Our Lady': 'Đức Mẹ Lên Trời',
+    'Our Lady of Grace': 'Đức Mẹ Ban Ơn',
     'Saint Peter': 'Thánh Phêrô',
     'Saint Paul': 'Thánh Phaolô',
     'B side': 'phía B',

@@ -954,6 +954,31 @@ assert(!church.colliders.some(c => /^(Statue ·|Shrine flowers ·)/.test(c.label
   assert.deepEqual(plain(D.upgradeFacadeCad(up, design)), plain(up), 'applying it again changes nothing');
   assert.equal(SIM.state.settings.facadeCadRevision, D.facadeCadRevision, 'the revision is stored in the saved settings');
 }
+// Our Lady of Grace, owner 21 Nov 2026: the central statue is retyped once, and it and its candles
+// leave the removed pedestal for the niche floor; the arch light re-aims at the new face height.
+// Only fittings still at the previous recommended place, aim or name change.
+{
+  const D = sandbox.CHURCH_SIM_DESIGN, plain = v => JSON.parse(JSON.stringify(v));
+  const design = D.recommended(SIM.GEO, SIM), now = new Map(design.map(it => [it.id, it])), R = D.facadeNicheAssumption;
+  const oldStatue = { ...now.get('D-FACADE-C'), type: 'statueAssumption', name: 'Façade statue · Assumption of Our Lady', pos: [R[10], R[4], R[3]] };
+  const oldCandle = { ...now.get('L-STATUE-C-CANDLE-1'), name: 'Statue candle light · Assumption of Our Lady · B side', pos: [R[10] - 0.36, R[4], R[3] - 0.30] };
+  const movedCandle = { ...now.get('L-STATUE-C-CANDLE-2'), pos: [3.7, 16.683, 0.2] };
+  const was = D.aim([R[11], R[5] + 0.01, R[3]], [R[10] - 0.09, R[6], R[3]]);
+  const oldArch = { ...now.get('L-STATUE-C-ARCH'), name: 'Hidden arch light · Assumption of Our Lady', yaw: was.yaw, tilt: was.tilt };
+  const reaimed = { ...oldArch, yaw: was.yaw + 4 };
+  const up = D.upgradeFacadeGrace([oldStatue, oldCandle, movedCandle, oldArch], design);
+  assert.equal(up[0].type, 'statueOurLadyOfGrace', 'the Assumption figure becomes Our Lady of Grace');
+  assert.deepEqual(plain(up[0]), plain(now.get('D-FACADE-C')), 'an untouched statue takes the globe place, name and note');
+  assert.deepEqual(plain(up[1]), plain(now.get('L-STATUE-C-CANDLE-1')), 'its candle moves to the niche floor');
+  assert.deepEqual(plain(up[2]), plain(movedCandle), 'a candle the user moved stays');
+  assert.deepEqual(plain(up[3]), plain(now.get('L-STATUE-C-ARCH')), 'the arch light re-aims at the new face and is renamed');
+  assert.deepEqual(plain(D.upgradeFacadeGrace([reaimed], design)[0]), plain({ ...reaimed, name: now.get('L-STATUE-C-ARCH').name }), 'a re-aimed arch light keeps its aim');
+  const moved = { ...oldStatue, pos: [4.0, 16.683, 0.1] }, kept = D.upgradeFacadeGrace([moved], design)[0];
+  assert(kept.type === 'statueOurLadyOfGrace' && plain(kept.pos).join() === '4,16.683,0.1', 'a moved statue is retyped where the user put it');
+  assert.deepEqual(plain(D.upgradeFacadeGrace(up, design)), plain(up), 'applying it again changes nothing');
+  assert(!SIM.CATALOG?.byId?.statueAssumption && !sandbox.CHURCH_SIM_CATALOG.byId.statueAssumption, 'the Assumption figure is retired from the catalogue');
+  assert.equal(SIM.state.settings.facadeGraceRevision, D.facadeGraceRevision, 'the revision is stored in the saved settings');
+}
 // Parish priest's decisions of 25 Oct 2026: a saved layout still at the pre-meeting values takes
 // the new places, circuits and outputs once; user changes and deletions are kept, retired items
 // that are still untouched go, and new items are added once.

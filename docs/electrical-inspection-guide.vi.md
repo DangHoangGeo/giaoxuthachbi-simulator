@@ -76,7 +76,7 @@ Mở **Controls → Towers**. Mỗi nút là một công tắc riêng tại DB-2
 
 | Công tắc | Chiếu sáng gì |
 | --- | --- |
-| **L10 · Façade statues & candles** | Tượng Đức Mẹ Hồn Xác Lên Trời giữa hai tháp và hai tượng thánh: dải sáng giấu trong mỗi hốc tượng và hai đèn nến trên mỗi bệ |
+| **L10 · Façade statues & candles** | Tượng Đức Mẹ Ban Ơn giữa hai tháp và hai tượng thánh: dải sáng giấu trong mỗi hốc tượng và hai đèn nến trên mỗi bệ |
 | **L6 · Façade & towers** | Đèn pha chiếu hai tháp và mặt tiền |
 | **L9 · Front stage & central door** | Khoảng sân trống trước nhà thờ và cửa chính |
 | **L7 · Festival exterior** | Dây đèn và đèn pha lễ hội, dùng dịp lễ lớn |

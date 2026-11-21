@@ -19,7 +19,13 @@ const previous = JSON.parse(fs.readFileSync(path.join(root, 'review/sculpture-de
 // Owner, 21 Nov 2026: the three façade figures were enlarged to their niches and painted, so
 // their envelopes are frozen anew; the interior figures keep the October baseline.
 Object.assign(previous, JSON.parse(fs.readFileSync(path.join(root, 'review/facade-statues-2026-11-21/bounds-after.json'), 'utf8')));
-const figures = ['statueMary', 'statueJoseph', 'statueSacredHeart', 'statueAssumption', 'statuePeter', 'statuePaul'];
+// Owner, 21 Nov 2026 (later the same day): the central figure becomes Our Lady of Grace on the
+// globe, replacing the Assumption; its envelope is frozen in its own record. --record prints the
+// figure's envelope for that file instead of checking it.
+const GRACE_BOUNDS = path.join(root, 'review/facade-our-lady-of-grace-2026-11-21/bounds-after.json');
+const record = process.argv.includes('--record');
+if (!record) Object.assign(previous, JSON.parse(fs.readFileSync(GRACE_BOUNDS, 'utf8')));
+const figures = ['statueMary', 'statueJoseph', 'statueSacredHeart', 'statueOurLadyOfGrace', 'statuePeter', 'statuePaul'];
 function inspect(id) {
   const kit = makeKit(); catalog.byId[id].build(kit, {});
   assert.equal(kit.glows?.length || 0, 0, 'Sculpture creates no lamp: ' + id);
@@ -44,7 +50,7 @@ function inspect(id) {
     geometry.dispose();
   }
   assert(triangles < 70000, id + ': sculpture triangle budget, ' + triangles);
-  for (const end of ['min', 'max']) for (let i = 0; i < 3; i++) {
+  if (!(record && id === 'statueOurLadyOfGrace')) for (const end of ['min', 'max']) for (let i = 0; i < 3; i++) {
     assert(Math.abs(bounds[end].getComponent(i) - previous[id][end][i]) < 1e-6, id + ': retained envelope ' + end + ' axis ' + i);
   }
   return { min: bounds.min.toArray(), max: bounds.max.toArray(), triangles, fingerprint: hash.digest('hex') };
@@ -55,4 +61,5 @@ for (const id of figures) {
   assert.equal(first.fingerprint, second.fingerprint, id + ': deterministic geometry and transforms');
   results[id] = first;
 }
+if (record) fs.writeFileSync(GRACE_BOUNDS, JSON.stringify({ statueOurLadyOfGrace: { min: results.statueOurLadyOfGrace.min, max: results.statueOurLadyOfGrace.max } }, null, 2) + '\n');
 console.log(JSON.stringify({ checks: 'passed', envelopeToleranceMetres: 1e-6, figures: results }, null, 2));

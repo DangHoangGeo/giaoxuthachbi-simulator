@@ -57,7 +57,7 @@ A socket has no load of its own. The operating estimate uses the **test load** e
 
 | ID | Subject | Base position X / Y / Z | Modelled size | Status |
 | --- | --- | --- | --- | --- |
-| `D-FACADE-C` | Assumption of Our Lady | 4.080 / 16.683 / 0 | 2.20 m figure on a 0.26 m cloud, 2.75 m to the fingertips; 0.72 m deep, 1.42 m wide | Subject and place `USER CONFIRMED`; form `CONCEPT` |
+| `D-FACADE-C` | Our Lady of Grace (Đức Mẹ Ban Ơn) on the globe; until 21 Nov 2026 the Assumption | 4.180 / 15.997 / 0 (niche floor; was 4.080 / 16.683 / 0 on the drawn pedestal) | 2.76 m figure on a 0.68 m globe and 0.12 m plinth, 3.55 m overall; 1.06 m deep, 1.36 m wide | Subject and place `USER CONFIRMED` (owner, 21 Nov 2026); form `CONCEPT`; pedestal removal is a `USER CONFIRMED` departure from the drawing |
 | `D-FACADE-B` | Saint Peter (keys, book) | 4.150 / 10.391 / −5.350 | 1.78 m figure; 0.61 m deep, 0.64 m wide | Subject **proposed, not confirmed** |
 | `D-FACADE-H` | Saint Paul (sword, book) | 4.150 / 10.391 / +5.350 | 1.78 m figure; 0.61 m deep, 0.64 m wide | Subject **proposed, not confirmed** |
 
@@ -77,7 +77,7 @@ Circuit **L10 · Façade statues & candles**, DB-2, 15 records, 34 W connected.
 | --- | --- | --- | --- |
 | 1 hidden arch line (`L-STATUE-*-ARCH`) | Linear LED in a slot behind a matching lip under the arch crown, aimed at the face | Central X 3.950 / Y 19.614; sides X 4.050 / Y 12.917 | 440 lm central, 300 lm sides, 60° |
 | 2 hidden jamb lines (`L-STATUE-*-JAMB-1/2`) | Upright linear LED behind a matching lip at the front edge of each jamb, aimed across and back | 20 mm inside each jamb face; 2.0 m long central, 1.3 m sides | 260 lm central, 140 lm sides, 80° |
-| 2 candle lights (`L-STATUE-*-CANDLE-1/2`) | Electric candle in a brass holder, 0.46 m tall, on the pedestal top at the statue's feet | Central: front corners of the 0.93 m pedestal, X 3.72, Z ±0.30 (were beside the feet, Z ±0.47); sides ±0.31 from the niche centre | about 40 lm, 1 W each |
+| 2 candle lights (`L-STATUE-*-CANDLE-1/2`) | Electric candle in a brass holder, 0.46 m tall, at the statue's feet | Central: since 21 Nov 2026 on the niche floor +15.997 beside the globe, X 3.82, Z ±0.47 (were on the front corners of the drawn pedestal, X 3.72, Y 16.683, Z ±0.30); sides on the pedestal top, ±0.31 from the niche centre | about 40 lm, 1 W each |
 
 Intent: the niche glows and the figure stands in soft relief; from the forecourt only the light and the candles are seen. The model draws each hidden line as its finish-matched lip, without lens or lamp body. An earlier version of this revision used visible spotlights at the feet and head; the owner rejected them and they were removed before issue.
 
@@ -121,6 +121,23 @@ The lowered arms make the Assumption narrower than before: 1.20 m wide overall i
 - Saints: 0.72 m wide in 1.198 m niches, top +12.421 (crown +12.907).
 
 Positions, IDs, the hidden lines and candles, circuits and saved layouts are unchanged. Paint on an exterior figure needs a UV- and weather-stable system, a repainting interval and safe access to the niche; sculptor, material, weight, anchorage and finish remain open. [Desktop views](../../review/facade-statues-2026-11-21/README.md)
+
+**Our Lady of Grace on the globe, 21 November 2026 (owner request, CONCEPT).** Later the same day the owner found the Assumption's face and hair out of balance with the body and asked for the square pedestal to be replaced by the globe, so that the statue could be larger. Asked which subject to build, the owner chose **Our Lady of Grace (Đức Mẹ Ban Ơn)**. The reference is a painted devotional statue: white veil over parted hair, white robe with a gold neckline and girdle, a teal-blue mantle edged in gold that hangs from the lowered, open arms, a gentle downward gaze, and the serpent under her foot on the globe. The record's subject changes from the Assumption to Our Lady of Grace. The Assumption remains on the main-door relief (Marian art 9).
+
+| Item | Before (the Assumption) | Now (Our Lady of Grace) |
+| --- | --- | --- |
+| Base | Drawn pedestal 0.93 × 0.686 m, top +16.683; 0.20 m cloud plinth | Pedestal left out (`facade.js`); 0.12 m octagonal plinth with a gilt fillet on the niche floor +15.997, then a sea-green globe of 0.68 m diameter with the serpent coiled on it |
+| Figure | 2.42 m, feet at +16.883 | 2.76 m (+14 %), feet at +16.547 |
+| Head and face | Upturned face; veil set back so the hair showed as a thin dark ring; the robe's neck rose as a white column under the chin | Head 8 % larger in proportion, with the crown at the same height. Softer jaw and cheeks, fine arched brows and one small mouth. Bare neck with a gilt neckline. The veil frames the face over parted hair and falls behind the shoulders. Gaze slightly down. |
+| Body and mantle | Broad, straight body; mantle close to it | Shoulders 16 % narrower; the robe narrows onto the globe. The mantle opens wide, and its front edges hang from the forearms nearly to the hem, as in the reference. |
+| Halo | 12 gilt stars, centre +19.255 | Unchanged height and size |
+| Envelope | Top +19.550, back X 4.51, 1.20 m wide | Top +19.547 (arch crown +19.604), back X 4.74 (niche back 4.94), 1.36 m wide in the 1.422 m niche, front of the globe X 3.84 over the floor edge 3.80 |
+
+The statue record moves 0.10 m back and down to the niche floor. Its two candles move to the floor beside the globe, and the arch light re-aims at the new face height (+19.15). The L10 routes and lengths change with them. Saved layouts take this once (`facadeGraceRevision`, backup `.before-our-lady-of-grace`). The statue is always retyped, because the Assumption figure is retired from the catalogue. Positions, aims, names and notes change only where they still hold the previous recommended values, so a moved, re-aimed or renamed fitting keeps the user's choice, and a deleted one stays deleted.
+
+The shared sculpture options added for this figure are opt-in. They cover the head scale, soft face, bare neck, neckline, hem and shoulder taper, hanging mantle edges, a tucked and blended veil edge, and a parted, arched hairline. A fingerprint comparison against `main` shows Our Lady, Saint Joseph, the Sacred Heart, Saint Peter and Saint Paul are byte-identical.
+
+Open: the globe and figure together weigh far more than the old proposal; nothing is sized. Sculptor, material (cast stone, GRC or resin), weight, anchorage through the globe to the niche floor, drainage of the niche floor without the pedestal, exterior paint system and access remain `ENGINEERING HOLD`. The serpent and the open hands at +18.1 need a bird-deterrent and cleaning plan. [Desktop views](../../review/facade-our-lady-of-grace-2026-11-21/README.md)
 
 ## 6. Checks, results and what remains
 
