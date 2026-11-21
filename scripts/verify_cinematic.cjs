@@ -183,8 +183,9 @@ assert.deepEqual(Object.keys(film.films), ['full', 'lighting', 'air', 'sound', '
 assert(!/bell|toccata/i.test(JSON.stringify(score.events.map(event => event.stops))), 'no bell strokes in the organ score');
 
 // Sounds of the place (21 November 2026), under the music of the film only:
-// bells over the opening and never again (owner, 9 October 2026: bells only at
-// the opening, handing over to the organ), footsteps only where the camera
+// bells from the opening up the tower and round the belfry, never later (owner,
+// 9 October 2026: bells at the start, handing over to the organ; 21 November
+// 2026: keep them while the tower is shown), footsteps only where the camera
 // walks and at its pace, birds by day, crickets after dark.
 const sounds = film.sounds, kinds = new Set(sounds.map(event => event.kind));
 assert.deepEqual(plain([...kinds].sort()), ['bed', 'bell', 'bird', 'cricket', 'step'], 'bells, beds of air, birds, crickets and footsteps');
@@ -194,7 +195,11 @@ sounds.forEach((event, i) => {
   assert(Math.abs(event.pan || 0) <= 1 && (event.wet || 0) <= 1, `${event.kind} at ${event.time.toFixed(2)} s: placement`);
 });
 const bells = sounds.filter(event => event.kind === 'bell');
-assert(bells.length >= 8 && bells.every(event => event.time < 16 && event.time + event.length < scene('towers').start + scene('towers').duration), 'bells toll over the opening only');
+const belfryEnd = scene('belfry').start + scene('belfry').duration;
+assert(bells.length >= 25 && bells[0].time < 0.5 && bells.every(event => event.time + event.length < belfryEnd), 'bells ring from the first picture and die away before the front');
+assert(bells.some(event => event.time > scene('belfry').start + 12 && event.level > 0.25), 'bells still ring strongly round the belfry');
+assert(bells.every(event => event.nominal >= 380 && event.nominal <= 600 && (event.length >= 8 || event.time > scene('belfry').start + 10)), 'bronze bells struck at G4–C5 with a long ring');
+for (let i = 1; i < bells.length; i++) assert(bells[i].time - bells[i - 1].time > 1.1, 'heavy bell strokes at least 1.1 s apart');
 const steps = sounds.filter(event => event.kind === 'step');
 for (const event of steps) {
   const shot = shots.find(s => event.time >= s.start && event.time < s.start + s.duration);

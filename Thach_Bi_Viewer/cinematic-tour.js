@@ -1034,8 +1034,8 @@
 
   /* ------------------------------------------------------------ ambience
    * The sounds of the place under the music of the film (the technical tours
-   * have none): two bells calling to Mass over the opening, then handing over
-   * to the organ; birds and a breeze outside by day; footsteps at the walker's
+   * have none): two village bells calling to Mass from the opening, up the
+   * tower and round the belfry, then handing over to the organ; birds and a breeze outside by day; footsteps at the walker's
    * own pace (stone outside, tiles on the veranda and inside, where the room
    * answers them); a quiet room tone inside; crickets after dark, faint
    * through the open doors once inside. Synthesised here from a fixed seed,
@@ -1045,21 +1045,41 @@
    */
   const INSIDE = new Set(['nave', 'timber', 'aisle', 'wings', 'sanctuary', 'altar', 'look-back', 'evening-nave']);
   const VERANDA = new Set(['veranda', 'night-veranda']);
-  const BELLS = { tenor: 392, treble: 523.25 }; // nominals G4 and C5, in the key of the music
-  // A tuned bell's partials as fractions of its nominal: [ratio, level, seconds to die away].
-  const BELL_PARTIALS = [[0.25, 0.22, 8.5], [0.2508, 0.12, 8.5], [0.5, 0.4, 6], [0.6, 0.32, 4.5], [0.75, 0.12, 3.2], [1, 0.5, 3.6], [1.5, 0.18, 1.8], [2, 0.14, 1.3], [2.51, 0.07, 0.8], [2.66, 0.05, 0.7], [3.01, 0.04, 0.5]];
+  // Two cast-bronze bells struck at G4 and C5, in the key of the music: an octave brighter than a
+  // big Western tower bell, with the long, wavering ring (ngân) of a bronze village bell.
+  const BELLS = { tenor: 392, treble: 523.25 };
+  // Partials as fractions of the struck note: [ratio, level, seconds to die away]. Hum, strike note
+  // and minor-third tierce each come as a close pair whose slow beat makes the ring waver; a strong
+  // nominal an octave up and a few bright, quick upper partials for the clang of the strike.
+  const BELL_PARTIALS = [[0.5, 0.3, 12], [0.5021, 0.16, 12], [1, 0.42, 9], [1.0034, 0.2, 9], [1.19, 0.3, 7], [1.1935, 0.12, 7], [1.5, 0.12, 4.5],
+    [2, 0.34, 5], [2.5, 0.12, 3], [2.66, 0.1, 2.5], [3.01, 0.08, 2], [4.07, 0.05, 1.2], [5.43, 0.035, 0.6], [6.84, 0.025, 0.35]];
+  const BELL_RING = Math.max(...BELL_PARTIALS.map(partial => partial[2]));
+  // Where the bells ring: from the first picture up the tower and round the belfry.
+  const BELL_SCENES = ['opening', 'towers', 'belfry'];
   function composeSounds(of) {
     let seed = 20261121;
     const random = () => (seed = (seed * 1103515245 + 12345) >>> 0) / 4294967296;
     const between = (a, b) => a + (b - a) * random();
     const out = [];
     const inside = (shot, time) => INSIDE.has(shot.id) || (shot.id === 'enter' && pose(time, of).eye[0] > 1);
-    // The bells call from the first picture to the tower: the tenor alone, then tenor and treble in
-    // turn, a swinging bell's strokes a little uneven; they die away as the camera reaches the tower.
-    out.push({ time: 0.15, length: 9, kind: 'bell', nominal: BELLS.tenor, level: 0.5, pan: -0.2, wet: 0.5 });
-    for (let i = 1, time = 2.1; time < 15; i++, time += 1.22 + between(-0.06, 0.06)) {
-      const fading = Math.min(1, Math.max(0, (time - 10) / 5));
-      out.push({ time, length: 9, kind: 'bell', nominal: i % 2 ? BELLS.treble : BELLS.tenor, level: (i % 2 ? 0.42 : 0.5) * (1 - 0.55 * fading), pan: i % 2 ? 0.24 : -0.2, wet: 0.5 + 0.2 * fading });
+    // The bells ring from the first picture, up the tower and round the belfry (owner, 21 November
+    // 2026: keep the bells while the tower is shown). The lower bell alone, then the two in turn in
+    // phrases of eight strokes with a breath between, as a village church rings for Mass; quieter
+    // under the tower's caption, fuller beside the belfry, dying away before the front.
+    const bellScenes = BELL_SCENES.map(id => of.shots.find(shot => shot.id === id));
+    const towers = bellScenes[1], belfry = bellScenes[2], silent = belfry.start + belfry.duration - 0.5, last = silent - 8.5;
+    const swell = time => time < towers.start - 1 ? 1
+      : time < towers.start + 3 ? 1 - 0.45 * (time - towers.start + 1) / 4
+      : time < belfry.start - 2 ? 0.55
+      : time < belfry.start + 4 ? 0.55 + 0.25 * (time - belfry.start + 2) / 6
+      : 0.8 * (1 - 0.55 * Math.max(0, Math.min(1, (time - last + 6) / 6)));
+    // The last strokes are damped so that nothing still rings as the front comes into view.
+    const ring = time => Math.min(1, (silent - time) / BELL_RING);
+    out.push({ time: 0.15, length: BELL_RING, ring: 1, kind: 'bell', nominal: BELLS.tenor, level: 0.56, pan: -0.2, wet: 0.45 });
+    for (let i = 0, time = 2.6; time < last; i++) {
+      const high = i % 2 === 1;
+      out.push({ time, length: BELL_RING * ring(time), ring: ring(time), kind: 'bell', nominal: high ? BELLS.treble : BELLS.tenor, level: (high ? 0.46 : 0.54) * swell(time), pan: high ? 0.24 : -0.2, wet: 0.45 });
+      time += (i % 8 === 7 ? 2.6 : 1.3) + between(-0.05, 0.05);
     }
     for (const shot of of.shots) {
       const night = shot.light === 'evening', end = shot.start + shot.duration, indoor = INSIDE.has(shot.id);
@@ -1226,15 +1246,18 @@
   }
   const SOUNDS = {
     bell(ctx, event, begin) {
-      const out = placed(ctx, event, 4200);
-      for (const [ratio, amp, seconds] of BELL_PARTIALS) {
-        const tone = ctx.createOscillator(), gain = ctx.createGain(), peak = amp * event.level * 0.8;
+      const out = placed(ctx, event, 6500);
+      for (let [ratio, amp, seconds] of BELL_PARTIALS) {
+        const tone = ctx.createOscillator(), gain = ctx.createGain(), peak = amp * event.level * 1.05;
+        seconds *= event.ring ?? 1;
         tone.frequency.value = event.nominal * ratio;
         gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(peak, begin + 0.004);
         gain.gain.setTargetAtTime(0, begin + 0.004, seconds / 6.9);
         tone.connect(gain); gain.connect(out); tone.start(begin); tone.stop(begin + seconds + 0.1);
       }
-      breath(ctx, out, begin, 0.03, event.nominal * 6, 1.4, event.level * 0.12);
+      // The clapper on bronze: a hard click and a short metallic clang.
+      breath(ctx, out, begin, 0.025, 3200, 0.9, event.level * 0.3);
+      breath(ctx, out, begin, 0.12, event.nominal * 2.66, 6, event.level * 0.22);
     },
     bird(ctx, event, begin) {
       const out = placed(ctx, event, event.cutoff), voice = ctx.createOscillator(), gain = ctx.createGain(), level = event.level * 0.05;
@@ -1366,7 +1389,7 @@
 <button data-cinema="pause" title="Pause or play (Space)" aria-label="Pause or play">⏸</button>
 <button data-cinema="next" title="Next scene (→)" aria-label="Next scene">⏭</button>
 <button data-cinema="music" title="Organ music on or off (M)" aria-pressed="true">♪ Organ</button>
-<button data-cinema="ambience" title="Sounds of the place on or off: birds, footsteps, crickets; the opening bells ring while the organ or the ambience is on (N)" aria-pressed="true">◌ Ambience</button>
+<button data-cinema="ambience" title="Sounds of the place on or off: birds, footsteps, crickets; the tower bells ring while the organ or the ambience is on (N)" aria-pressed="true">◌ Ambience</button>
 <button data-cinema="full" title="Full screen (F)">⛶ Full screen</button>
 <button data-cinema="record" title="Play from the start and save the film as a video file">● Save as video</button>
 <button data-cinema="stop" title="Stop the tour (Esc)">✕ Stop</button>
