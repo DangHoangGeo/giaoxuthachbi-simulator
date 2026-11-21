@@ -1040,6 +1040,18 @@
   // A steel channel spanning the 4.50 m bay between two tie beams (HVLS support).
   const spreaderGeo = () => (spreaderGeo.g ||= new T.BoxGeometry(4.5, 0.2, 0.16).translate(0, -0.1, 0));
 
+  function isTowerLedgeLight(item) {
+    const tower = window.CHURCH_TOWERS?.spec;
+    if (!tower || (item.type !== 'ledgeBar' && item.type !== 'ledgeFlood')) return false;
+    const [x, y, z] = item.pos;
+    if (x < tower.pier.front[0] || x > tower.pier.back[1] || Math.abs(Math.abs(z) - tower.centre) > tower.pier.t[1]) return false;
+    return tower.stages.some(stage => Math.abs(y - stage.y[0]) < .03) || Math.abs(y - tower.dome.y0) < .03;
+  }
+  function showTowerLedgeLights() {
+    const ui = document.body.classList;
+    return SIM.electrical?.view.mode === 'systems' || (!VISIT_ONLY && ui.contains('sim-open') && !ui.contains('presentation'));
+  }
+
   class Fixture {
     constructor(item) {
       this.item = item;
@@ -1053,6 +1065,7 @@
     build() {
       const { type, item } = this;
       this.root.clear();
+      this.ledgeModelVisible = true;
       this.glowMat?.dispose();
       this.stem = this.canopy = null;
       const proto = this.proto = prototypeFor(type, item.params);
@@ -1116,9 +1129,19 @@
         this.canopy.position.set(0, len, 0);
       }
       r.visible = fixtureVisible(it);
+      this.onTowerLedge = isTowerLedgeLight(it);
+      this.updateLedgeModel(showTowerLedgeLights());
       r.updateMatrixWorld(true);
       for (const g of this.glows) g.world.set(...g.p).applyMatrix4(this.group(g.group).matrixWorld);
       this.applyGlow();
+    }
+    // Only the display bodies and their halos are concealed. The original transforms
+    // still drive emitters, aiming guides and electrical review.
+    updateLedgeModel(show) {
+      const visible = show || !this.onTowerLedge;
+      if (this.ledgeModelVisible === visible) return;
+      this.ledgeModelVisible = visible;
+      for (const part of this.root.children) part.visible = visible;
     }
     lit() { const it = this.item; return !it.hidden && it.on && (it.dim ?? 1) > 0 && (this.type.light || this.type.glow); }
     applyGlow(view = 1) {
@@ -1514,7 +1537,7 @@
     const cam = camera.position, strength = state.settings.halos;
     const base = Math.sqrt(160 / Math.max(40, adaptNow)) * strength;
     for (const fx of fixtures.values()) {
-      if (!fx.lit() || !fx.glows.length) continue;
+      if (!fx.lit() || !fx.glows.length || !fx.ledgeModelVisible) continue;
       const kind = GLOW[fx.glowKind];
       const c = kind.rgb || P.adaptedLightColor(fx.item.cct || fx.type.light?.cct || kind.cct || 2700, envMode === 'day' ? 5600 : 3600);
       let view = 1;
@@ -2799,8 +2822,10 @@
     watchFrameRate(dt);
     if (entranceSlats) entranceSlats.visible = state.settings.entranceFinish === 'slats' && ctx.roofs.visible !== false;
     environmentFrame(dt || 0, camera);
+    const showLedgeModels = showTowerLedgeLights();
     // Fans: blades at real speed (capped visually), wall fans oscillate.
     for (const fx of fixtures.values()) {
+      if (fx.onTowerLedge) fx.updateLedgeModel(showLedgeModels);
       const f = fx.type.fan;
       if (f && fx.rotor) {
         const it = fx.item, running = it.on && !it.hidden && (it.speed ?? 0) > 0;

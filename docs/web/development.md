@@ -32,7 +32,7 @@ Public text routes omit a streaming loading boundary: under slower rendering, it
 
 ## Dependency decisions
 
-Next **16.4.0** and React **19.3.0** were checked against [Next's active support policy](https://nextjs.org/support-policy), [16.4 release](https://nextjs.org/blog/next-16-4) and [React versions](https://react.dev/versions). Node 22 remains a supported LTS line; use the patched [22.23.3 release](https://nodejs.org/en/blog/release/v22.23.3). Reassess its support window before launch and during maintenance.
+The web app pins Next.js **16.4.6** and React **19.3.0**. The Next.js pin includes the November 2026 security fixes that first shipped in 16.4.5 and clears the build-time security check that stopped 16.4.4. The Node pin remains **22.23.3**. [November security release](https://nextjs.org/blog/november-2026-security-release) · [Next.js 16.4.6 release](https://github.com/vercel/next.js/releases/tag/v16.4.6) · [Node.js 22.23.3 release](https://nodejs.org/en/blog/release/v22.23.3)
 
 TypeScript **6.0.3** is pinned and verified with the framework. [Biome **2.5.15**](https://biomejs.dev/installation/quick-start/) provides lint, accessibility/React rules, import organization and formatting. The initial ESLint configuration required either incompatible React/accessibility plugin peers on ESLint 10 or [end-of-life ESLint 9](https://eslint.org/version-support/). It also introduced an unpatched development-only braces advisory. Replace that stack with supported Biome rather than shipping peer overrides or an unsupported linter. The final full and runtime audits are recorded with the lockfile in the evidence package; no automatic force fix was used.
 

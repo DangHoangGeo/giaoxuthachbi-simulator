@@ -559,6 +559,9 @@
       tower.traverse(o => {
         if (!o.isMesh) return;
         if (oldBalcony.has(o.name)) remove.push(o);
+        // The bundle's lower accent band is flush with the replacement walls.
+        // The traced sill course above it is the visible base trim on every face.
+        if (o.name === 'Tower lower band') remove.push(o);
         if (o.name === 'Cross — apex is source height') crossMaterial = o.material;
         box3.setFromObject(o);
         if (o.name === 'Tower continuous cornice' && box3.max.y < 8.6) remove.push(o);

@@ -105,6 +105,12 @@ Measured ledge lines (tower B; H mirrored):
 
 Medians across the faces are about the same; the higher averages come from bright bands just above each bar. The physics module has no tower geometry as occluder, so shading by columns, cornices and the balustrade is not counted in either column. The central façade coverage check (`facadeCoverage` in `verify_simulator.cjs`) passes.
 
+### Tower ledge display · 22 November 2026
+
+In the ordinary desktop viewer, presentation mode and public visit, the cornice-mounted bars and compact floods on both towers are represented by the light they cast. The 28 bodies and their lens halos are drawn when the local Simulator panel is open outside presentation mode or when **Electrical systems only** is active. The belfry's internal uplights and the four wing-gable uplights keep their regular display. A ledge fitting moved away from the tower mounting area appears as usual.
+
+The concealment is a rendering choice. The lighting layout, emitter positions and aim, output, switching, L6/L9 circuit assignments, electrical routes and saved-layout records retain their current values. The category registers and summary use those engineering records, so there are no quantities or data fields to refresh. Product selection, physical concealment, glare, fixing, weather protection and safe maintenance access remain on **ENGINEERING HOLD**. [Tower detail](../exterior-23102026/towers.md#cornice-and-ledge-cleanup--22-november-2026) · [Desktop review](../../review/tower-ledges-2026-11-22/README.md)
+
 ## 3. Loudspeakers in the pier–wall corners
 
 | Records | Before | After |
