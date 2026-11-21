@@ -117,7 +117,7 @@
     occupancy: 0.6, openings: 1, roofFinish: 'mixed', entranceFinish: 'slats', tempC: 28, rh: 75, ambientDbA: 40,
     lensDeg: 75, eyeHeight: 1.6, walkSpeed: 1.4, showTruss: false, frameStyle: 'drawn', timberTone: 'reference',
     overlay: 'none', snap: true, edit: true, talker: false, micDistance: 0.4, talkerDbA: 62,
-    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', wingGableLightsRevision: '', beamSectionRevision: '', eveningExposureRevision: ''
+    serviceHours: 1.5, servicesPerMonth: 40, tariff: 2200, mixerDb: 0, seatingPlane: 0.8, servicePanelsUpgraded: false, lightingRevision: '', facadeRevision: '', entranceRevision: '', sanctuaryRevision: '', stableLightingRevision: '', wingReviewRevision: '', wingSoundRevision: '', wingArtRevision: '', naveFanRevision: '', outletRevision: '', facadeStatueRevision: '', exhaustSplitRevision: '', hiddenFittingsRevision: '', finishChandelierRevision: '', fanBeamRevision: '', daisLevelRevision: '', facadeCadRevision: '', parishMeetingRevision: '', towerPierRevision: '', naveWingLightingRevision: '', entranceFitRevision: '', sideVaultLightsRevision: '', wingRoofLightingRevision: '', columnWashRevision: '', centreReadingRevision: '', entranceInteriorRevision: '', rearSideLightsRevision: '', festivalTerraceRevision: '', festivalStringsRevision: '', goldCoveRevision: '', sanctuaryPalmsRevision: '', wingGableLightsRevision: '', beamSectionRevision: '', eveningExposureRevision: '', facadeGraceRevision: ''
   });
   const state = { items: [], settings: defaults(), selectedId: null, history: [], future: [], scene: null, customScenes: [] };
   const estimateLimits = {
@@ -1548,7 +1548,7 @@
     return id;
   }
   function normalizeItem(raw) {
-    const type = CAT.byId[raw.type];
+    const type = CAT.byId[raw.type] || CAT.byId[CAT.retiredTypes?.[raw.type]];
     if (!type) return null;
     const num = (v, d) => Number.isFinite(Number(v)) ? Number(v) : d;
     const pos = Array.isArray(raw.pos) && raw.pos.length === 3 ? raw.pos.map(v => num(v, 0)) : null;
@@ -2740,7 +2740,8 @@
       ['goldCoveRevision', D.goldCoveRevision, '.before-gold-cove', D.upgradeGoldCove],
       ['sanctuaryPalmsRevision', D.sanctuaryPalmsRevision, '.before-sanctuary-palms', D.upgradeSanctuaryPalms],
       ['wingGableLightsRevision', D.wingGableLightsRevision, '.before-wing-gable-lights', D.upgradeWingGableLights],
-      ['beamSectionRevision', D.beamSectionRevision, '.before-stronger-beams', D.upgradeBeamSections]
+      ['beamSectionRevision', D.beamSectionRevision, '.before-stronger-beams', D.upgradeBeamSections],
+      ['facadeGraceRevision', D.facadeGraceRevision, '.before-our-lady-of-grace', (items, design) => D.upgradeFacadeGrace(items, design, state.settings.facadeGraceRevision)]
     ]) {
       if (!loaded) { state.settings[field] = revision; continue; }
       if (state.settings[field] === revision) continue;

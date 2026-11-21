@@ -82,7 +82,8 @@
     aedicule: {
       pier: { z: 1.68, half: 0.30 }, front: 3.805, wall: 3.915, back: 5.046,
       niche: { half: 0.711, floor: 15.997, spring: 18.893, x: 4.225, rings: [0.799, 1.112], face: 4.115, recess: 1.33 },
-      pedestal: [15.997, 16.683], rake: [20.42, 21.07], cross: { ball: 22.921, top: 24.648 },
+      pedestal: [15.997, 16.683], // drawn pedestal, not built since 21 Nov 2026 (globe statue instead)
+      rake: [20.42, 21.07], cross: { ball: 22.921, top: 24.648 },
     },
   };
   window.CHURCH_FACADE = { spec, prepare };
@@ -573,12 +574,10 @@
       slab('Central aedicule arch moulding', S, band(0, AN.spring, AN.half, AN.rings[0]), [3.95, AE.wall + .1]);
       nicheCrest(crestGeo.central, AE.wall, 0); // E01B C49BF8–C49CC4
       for (const e of [-1, 1]) column('Central aedicule niche column', 4.015, e * 1.009, .1, [AN.floor, AN.spring], .3);
-      // Pedestal of the drawing: 930 mm wide at its mouldings, 686 mm high.
-      const [p0, p1] = AE.pedestal;
-      block('Central niche statue pedestal base', S, [3.60, 4.60], [p0, p0 + .106], [-.465, .465]);
-      block('Central niche statue pedestal', W, [3.68, 4.52], [p0 + .106, p1 - .106], [-.374, .374]);
-      block('Central niche statue pedestal cap', S, [3.60, 4.60], [p1 - .079, p1], [-.465, .465]);
-      block('Central niche statue pedestal cap', S, [3.64, 4.56], [p1 - .106, p1 - .079], [-.43, .43]);
+      // The drawing's pedestal (930 mm wide at its mouldings, 686 mm high, AE.pedestal) is left out
+      // at the owner's request of 21 Nov 2026: Our Lady of Grace stands on a globe on the niche floor
+      // instead (simulator item D-FACADE-C), so the figure can be larger under the same arch.
+      // DEPARTURE FROM THE DRAWING, USER CONFIRMED; globe support and fixing on ENGINEERING HOLD.
       // Raking cornice of the pediment, 0.36 m deep on the face.
       both(s => {
         const rake = new T.Shape(), z0 = s * 1.40, z1 = s * .36;

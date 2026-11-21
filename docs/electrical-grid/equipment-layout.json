@@ -2,7 +2,7 @@
   "app": "Thạch Bi church simulator",
   "schema": 1,
   "designVersion": "2026-10-16-tower-board",
-  "savedAt": "2026-11-21T06:26:30.983Z",
+  "savedAt": "2026-11-21T11:35:58.244Z",
   "scene": "Full service · evening",
   "settings": {
     "adaptLux": 160,
@@ -70,6 +70,7 @@
     "wingGableLightsRevision": "2026-11-07-wing-gable-lights-1",
     "beamSectionRevision": "2026-11-08-stronger-beams-1",
     "eveningExposureRevision": "2026-10-09-evening-160",
+    "facadeGraceRevision": "2026-11-21-facade-our-lady-of-grace-2",
     "verandaReviewRevision": "2026-10-25-open-porch-light-sound-1",
     "doorheadReviewRevision": "2026-10-25-doorheads-no-sconces-1"
   },
@@ -6373,13 +6374,13 @@
     },
     {
       "id": "D-FACADE-C",
-      "type": "statueAssumption",
-      "name": "Façade statue · Assumption of Our Lady",
+      "type": "statueOurLadyOfGrace",
+      "name": "Façade statue · Our Lady of Grace",
       "circuit": "DECOR",
       "mount": "floor",
       "pos": [
-        4.08,
-        16.683,
+        4.18,
+        15.997,
         0
       ],
       "yaw": 180,
@@ -6389,12 +6390,12 @@
       "hidden": false,
       "dim": 1,
       "params": {},
-      "note": "USER CONFIRMED subject and place. Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending."
+      "note": "USER CONFIRMED subject (owner, 21 Nov 2026: Our Lady of Grace after a reference statue) and place. Generated figure on a globe standing on the niche floor in place of the drawn pedestal. Sculptor, siz"
     },
     {
       "id": "L-STATUE-C-ARCH",
       "type": "nicheArchLine",
-      "name": "Hidden arch light · Assumption of Our Lady",
+      "name": "Hidden arch light · Our Lady of Grace",
       "circuit": "L10",
       "mount": "wall",
       "pos": [
@@ -6403,7 +6404,7 @@
         0
       ],
       "yaw": 0,
-      "tilt": -86.3899092780562,
+      "tilt": -73.21016962881538,
       "mountYaw": 180,
       "on": true,
       "hidden": false,
@@ -6419,7 +6420,7 @@
     {
       "id": "L-STATUE-C-JAMB-1",
       "type": "nicheJambLine",
-      "name": "Hidden jamb light · Assumption of Our Lady · B side",
+      "name": "Hidden jamb light · Our Lady of Grace · B side",
       "circuit": "L10",
       "mount": "wall",
       "pos": [
@@ -6427,7 +6428,7 @@
         17.79,
         -0.691
       ],
-      "yaw": 67.23310247717708,
+      "yaw": 60.5596424110646,
       "tilt": 0,
       "mountYaw": 90,
       "on": true,
@@ -6444,13 +6445,13 @@
     {
       "id": "L-STATUE-C-CANDLE-1",
       "type": "nicheCandle",
-      "name": "Statue candle light · Assumption of Our Lady · B side",
+      "name": "Statue candle light · Our Lady of Grace · B side",
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        3.72,
-        16.683,
-        -0.3
+        3.82,
+        15.997,
+        -0.47
       ],
       "yaw": 180,
       "tilt": 0,
@@ -6465,7 +6466,7 @@
     {
       "id": "L-STATUE-C-JAMB-2",
       "type": "nicheJambLine",
-      "name": "Hidden jamb light · Assumption of Our Lady · H side",
+      "name": "Hidden jamb light · Our Lady of Grace · H side",
       "circuit": "L10",
       "mount": "wall",
       "pos": [
@@ -6473,7 +6474,7 @@
         17.79,
         0.691
       ],
-      "yaw": -67.23310247717708,
+      "yaw": -60.5596424110646,
       "tilt": 0,
       "mountYaw": -90,
       "on": true,
@@ -6490,13 +6491,13 @@
     {
       "id": "L-STATUE-C-CANDLE-2",
       "type": "nicheCandle",
-      "name": "Statue candle light · Assumption of Our Lady · H side",
+      "name": "Statue candle light · Our Lady of Grace · H side",
       "circuit": "L10",
       "mount": "floor",
       "pos": [
-        3.72,
-        16.683,
-        0.3
+        3.82,
+        15.997,
+        0.47
       ],
       "yaw": 180,
       "tilt": 0,

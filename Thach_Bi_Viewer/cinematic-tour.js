@@ -81,7 +81,7 @@
       keys: [[-16, 30, 9.5, 2.45, 32, 10.15, 40], [-11, 30, 20.5, 2.45, 32.3, 10.15, 44], [0, 29.8, 25.8, 2.45, 32.6, 10.15, 46], [11, 30, 22.5, 2.45, 32.4, 10.15, 46], [17, 30, 13, 2.45, 31.8, 8, 46]] },
     { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dissolve', ease: [0.3, 0.3],
       en: 'The tower front', vi: 'Mặt tiền hai tháp',
-      note: { en: 'Twin bell towers frame three doors, with Our Lady of the Assumption between them. The cross apex is drawn at +36.920 m above the nave floor.', vi: 'Hai tháp chuông ôm lấy ba cửa chính, ở giữa là tượng Đức Mẹ Lên Trời. Đỉnh thánh giá theo bản vẽ ở cao độ +36,920 m so với nền lòng nhà thờ.' },
+      note: { en: 'Twin bell towers frame three doors, with Our Lady of Grace between them. The cross apex is drawn at +36.920 m above the nave floor.', vi: 'Hai tháp chuông ôm lấy ba cửa chính, ở giữa là tượng Đức Mẹ Ban Ơn. Đỉnh thánh giá theo bản vẽ ở cao độ +36,920 m so với nền lòng nhà thờ.' },
       keys: [[-17, 21, 1.5, 2.4, 21, 0, 40], [-16, 15, 0.8, 2.4, 14.5, 0, 42], [-15, 9, 0, 2.4, 8.5, 0, 44], [-15.5, 4, -0.8, 2.4, 4, 0, 46]] },
     { id: 'forecourt', chapter: 'outside', bars: 5, light: 'day', roof: true, cut: 'dissolve', ease: [0.4, 0.2], walk: true,
       en: 'Up the forecourt steps', vi: 'Bước lên sân trước',

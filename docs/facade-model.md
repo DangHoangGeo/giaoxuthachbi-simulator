@@ -38,7 +38,7 @@ The overlay of the DWG linework on a straight-on render of the model matches wit
 | Side bays end at ±7.128 m (corrected 26 October 2026) | Former D01 extension to ±7.5 removed; the rebuilt tower inner rear pier begins at ±7.103, giving 25 mm model overlap. |
 | Ground-storey central piers (owner review 31 October 2026) | Rebuilt on the axis of the upper piers (±2.979): E01B shaft Z ±2.489–3.469 with three flutes, P05 front X 1.561 (wall 2.225), and a stepped pedestal to +1.848 with the tower piers' projections; only its four lowest band levels differ (0.18 / 0.24 / 0.348 / 0.408). A rosette panel sits on the die (+0.54–0.90). The cornice-level frieze block and capital now break forward with the pier. The bundle's 0.44 m pilasters at ±3.6 are removed. The main-door lanterns L137/L138 move from \|Z\| 2.40 to 2.30 m to clear the piers. The pedestal profile is illustrative; the cyma mouldings are one mean step. The pilasters at ±7.1–7.6 beside the towers are kept but not checked. |
 | Room behind the triple window (X 3.67–4.72) | Shown in plan; the model draws a dark closed backing behind the louvres, not the room |
-| Statues in the three niches | The drawing shows empty niches with pedestals. The owner's statues (9 October 2026) stand on the drawn pedestals (D03). |
+| Statues in the three niches | The drawing shows empty niches with pedestals. The owner's statues (9 October 2026) stand on the drawn pedestals (D03). **Departure, 21 Nov 2026 (USER CONFIRMED):** the central pedestal is left out; Our Lady of Grace stands on a globe on the niche floor. |
 | Structure, materials, fixings, drainage of the terraces at +9.741 and +15.840, access for maintenance | Not designed: `ENGINEERING HOLD` |
 
 ## Entrance on the axis-2 line and the front steps · 1 November 2026
@@ -268,3 +268,11 @@ Status:
 - Quarter round: not modelled.
 
 `verify_model.cjs` still finds the aedicule face at 3.915. No simulator item moved, and the statue, candles, arch light and washes keep their places. [Before and after](../review/belfry-niche-2026-11-21/README.md)
+
+## Central niche: Our Lady of Grace on the globe · 21 November 2026
+
+**In development / Đang phát triển · Not for construction / Không dùng để thi công.** Owner, 21 November 2026: the square block under Our Lady should become the globe, so that she stands above the earth and can be larger. The owner chose Our Lady of Grace (Đức Mẹ Ban Ơn) after a reference statue.
+
+**Change (`facade.js`).** The four blocks of the drawn central pedestal (E01B, 930 mm wide at its mouldings, 686 mm high, +15.997 to +16.683) are no longer built. `spec.aedicule.pedestal` keeps the drawn levels as the record. The niche floor step, jambs, columns, recess and arch are unchanged.
+
+Status: **departure from the drawing, USER CONFIRMED.** The figure, globe and plinth are a simulator decoration record (`D-FACADE-C`, catalogue `statueOurLadyOfGrace`), described in [outlets and façade statues](engineering/outlets-and-facade-statues.md#5-more-realistic-statues). The arch crown (+19.604) limits the top, so the halo keeps its height. The figure gains height downward, into the space the pedestal took. Support, anchorage, weight and niche-floor drainage are `ENGINEERING HOLD`.

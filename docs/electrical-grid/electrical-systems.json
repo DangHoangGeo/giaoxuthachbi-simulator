@@ -31521,7 +31521,7 @@
     },
     {
       "id": "drop:DB2:L10:light:-1:L-STATUE-C-ARCH",
-      "name": "L10 → Hidden arch light · Assumption of Our Lady",
+      "name": "L10 → Hidden arch light · Our Lady of Grace",
       "source": "DB2",
       "board": "DB2",
       "circuit": "L10",
@@ -31573,7 +31573,7 @@
     },
     {
       "id": "drop:DB2:L10:light:-1:L-STATUE-C-JAMB-1",
-      "name": "L10 → Hidden jamb light · Assumption of Our Lady · B side",
+      "name": "L10 → Hidden jamb light · Our Lady of Grace · B side",
       "source": "DB2",
       "board": "DB2",
       "circuit": "L10",
@@ -31625,7 +31625,7 @@
     },
     {
       "id": "drop:DB2:L10:light:-1:L-STATUE-C-CANDLE-1",
-      "name": "L10 → Statue candle light · Assumption of Our Lady · B side",
+      "name": "L10 → Statue candle light · Our Lady of Grace · B side",
       "source": "DB2",
       "board": "DB2",
       "circuit": "L10",
@@ -31636,11 +31636,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:-1",
       "color": "#dc9e29",
-      "upstreamLength": 27.750000000000004,
+      "upstreamLength": 27.85,
       "homeRun": false,
       "points": [
         [
-          3.72,
+          3.82,
           6.140000000000001,
           -7.36
         ],
@@ -31652,23 +31652,23 @@
         [
           2.35,
           7.65,
-          -0.3
+          -0.47
         ],
         [
           2.35,
-          16.683,
-          -0.3
+          15.997,
+          -0.47
         ],
         [
-          3.72,
-          16.683,
-          -0.3
+          3.82,
+          15.997,
+          -0.47
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 19.50187223729198,
+      "length": 18.814368026710092,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -31997,7 +31997,7 @@
     },
     {
       "id": "drop:DB2:L10:light:1:L-STATUE-C-JAMB-2",
-      "name": "L10 → Hidden jamb light · Assumption of Our Lady · H side",
+      "name": "L10 → Hidden jamb light · Our Lady of Grace · H side",
       "source": "DB2",
       "board": "DB2",
       "circuit": "L10",
@@ -32049,7 +32049,7 @@
     },
     {
       "id": "drop:DB2:L10:light:1:L-STATUE-C-CANDLE-2",
-      "name": "L10 → Statue candle light · Assumption of Our Lady · H side",
+      "name": "L10 → Statue candle light · Our Lady of Grace · H side",
       "source": "DB2",
       "board": "DB2",
       "circuit": "L10",
@@ -32060,11 +32060,11 @@
       ],
       "trunkId": "trunk:DB2:L10:light:1",
       "color": "#dc9e29",
-      "upstreamLength": 13.030000000000001,
+      "upstreamLength": 13.130000000000003,
       "homeRun": false,
       "points": [
         [
-          3.72,
+          3.82,
           6.140000000000001,
           7.36
         ],
@@ -32076,23 +32076,23 @@
         [
           2.35,
           7.65,
-          0.3
+          0.47
         ],
         [
           2.35,
-          16.683,
-          0.3
+          15.997,
+          0.47
         ],
         [
-          3.72,
-          16.683,
-          0.3
+          3.82,
+          15.997,
+          0.47
         ]
       ],
       "method": "entrance-wall",
       "installation": "Concealed entrance wall band, solid pier and local termination.",
       "coverPaths": [],
-      "length": 19.50187223729198,
+      "length": 18.814368026710092,
       "specification": "Cable type / conductors / cross-section / conduit: pending electrical design",
       "coordinationStatus": "CONCEPT · concealed routing / installation details pending",
       "drawnDiameter": 0.048,
@@ -43319,7 +43319,7 @@
     },
     {
       "id": "L-STATUE-C-ARCH",
-      "name": "Hidden arch light · Assumption of Our Lady",
+      "name": "Hidden arch light · Our Lady of Grace",
       "type": "nicheArchLine",
       "product": "Concealed light line · niche arch",
       "circuit": "L10",
@@ -43344,7 +43344,7 @@
     },
     {
       "id": "L-STATUE-C-JAMB-1",
-      "name": "Hidden jamb light · Assumption of Our Lady · B side",
+      "name": "Hidden jamb light · Our Lady of Grace · B side",
       "type": "nicheJambLine",
       "product": "Concealed light line · niche jamb",
       "circuit": "L10",
@@ -43369,7 +43369,7 @@
     },
     {
       "id": "L-STATUE-C-CANDLE-1",
-      "name": "Statue candle light · Assumption of Our Lady · B side",
+      "name": "Statue candle light · Our Lady of Grace · B side",
       "type": "nicheCandle",
       "product": "Statue candle light · electric flame",
       "circuit": "L10",
@@ -43386,15 +43386,15 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        3.72,
-        16.683,
-        -0.3
+        3.82,
+        15.997,
+        -0.47
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },
     {
       "id": "L-STATUE-C-JAMB-2",
-      "name": "Hidden jamb light · Assumption of Our Lady · H side",
+      "name": "Hidden jamb light · Our Lady of Grace · H side",
       "type": "nicheJambLine",
       "product": "Concealed light line · niche jamb",
       "circuit": "L10",
@@ -43419,7 +43419,7 @@
     },
     {
       "id": "L-STATUE-C-CANDLE-2",
-      "name": "Statue candle light · Assumption of Our Lady · H side",
+      "name": "Statue candle light · Our Lady of Grace · H side",
       "type": "nicheCandle",
       "product": "Statue candle light · electric flame",
       "circuit": "L10",
@@ -43436,9 +43436,9 @@
       "specs": "40 lm · 2200 K",
       "hiddenAlternative": false,
       "position": [
-        3.72,
-        16.683,
-        0.3
+        3.82,
+        15.997,
+        0.47
       ],
       "procurementStatus": "Planning category; manufacturer / model / IP / final rating pending"
     },

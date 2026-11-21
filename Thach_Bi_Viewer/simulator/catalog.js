@@ -78,6 +78,10 @@
     // Painted façade figures (owner, 21 Nov 2026): grey hair for Saint Peter, a steel blade for Saint Paul.
     hairGrey: { color: '#a8a39b', roughness: 0.8 },
     statueSteel: { color: '#b8bcc2', metalness: 0.85, roughness: 0.3 },
+    // Our Lady of Grace on the façade (owner's reference, 21 Nov 2026): teal-blue mantle, sea-green globe, dark serpent.
+    mantleGrace: { color: '#2f6378', roughness: 0.55 },
+    globeTeal: { color: '#5d8c8a', roughness: 0.5 },
+    serpent: { color: '#4a5e35', roughness: 0.45 },
     socketPlate: { color: '#f1eee6', roughness: 0.42 },
     socketDark: { color: '#33363a', roughness: 0.6 },
     enclosureGrey: { color: '#8f959b', metalness: 0.25, roughness: 0.55 },
@@ -592,20 +596,28 @@
     const BODY = [[0, 0.118, 0.152, 0], [0.025, 0.116, 0.149, 0], [0.13, 0.104, 0.134, 0.002], [0.28, 0.092, 0.118, 0.006], [0.42, 0.087, 0.112, 0.004],
       [0.52, 0.086, 0.114, 0], [0.585, 0.074, 0.098, 0.002], [0.66, 0.08, 0.108, 0.008], [0.73, 0.086, 0.118, 0.01], [0.785, 0.079, 0.124, 0.004],
       [0.815, 0.064, 0.118, 0], [0.834, 0.05, 0.08, -0.002], [0.848, 0.038, 0.046, -0.004], [0.876, 0.031, 0.033, -0.002]];
-    function section(y) {
+    // hem < 1 draws the skirt in towards the feet (a figure standing on a globe); slim < 1
+    // narrows the shoulders and upper body across the figure for sloping, slighter shoulders.
+    function section(y, hem = 1, slim = 1) {
       let i = 0; while (i < BODY.length - 2 && y > BODY[i + 1][0]) i++;
-      const a = BODY[i], b = BODY[i + 1], t = smooth(a[0], b[0], y);
-      return [1, 2, 3].map(k => a[k] + (b[k] - a[k]) * t);
+      const a = BODY[i], b = BODY[i + 1], t = smooth(a[0], b[0], y), narrow = 1 - (1 - hem) * smooth(0.45, 0, y), across = 1 - (1 - slim) * smooth(0.55, 0.8, y);
+      return [1, 2, 3].map(k => (a[k] + (b[k] - a[k]) * t) * (k === 1 ? narrow : k === 2 ? narrow * across : 1));
     }
     // Long folds with rounded ridges and sharp valleys, deeper towards the hem.
     const folds = (a, y, k1, k2, p) => 0.6 * Math.abs(Math.sin(k1 * a + p)) + 0.4 * Math.abs(Math.sin(k2 * a + 2.1 * p + 1.5 * y)) - 0.62;
     const levels = (y0, y1, n) => Array.from({ length: n + 1 }, (_, i) => y0 + (y1 - y0) * i / n);
-    function robe(T, female) {
-      return memo('robe' + female, () => surface(T, levels(0, 0.876, 56).map(y => {
-        const [rx, rz, cx] = section(y), amp = 0.012 + 0.1 * smooth(0.6, 0.04, y) * smooth(0, 0.03, y + 0.02);
-        return Array.from({ length: 56 }, (_, j) => {
-          const a = j * TAU / 56, front = wrap(a);
-          let d = 1 + amp * folds(a, y, 3.5, 5.5, 0.6);
+    // drape (optional): finer, deeper folds round the robe and cloth bloused over a girdle,
+    // { n: points per ring, k1, k2: fold counts, amp: fold depth factor, blouse: fullness at the girdle }.
+    function robe(T, female, hem = 1, slim = 1, top = 0.876, drape = null) {
+      const plain = hem === 1 && slim === 1 && top === 0.876 && !drape, n = drape?.n || 56;
+      return memo('robe' + female + (plain ? '' : '|' + hem + '|' + slim + '|' + top + '|' + JSON.stringify(drape)), () => surface(T, levels(0, top, 56).map(y => {
+        // With drape the folds fall from the girdle; the bodice above it stays smooth.
+        const bodice = drape ? smooth(0.56, 0.62, y) : 0, fall = drape ? drape.amp * (1 - bodice) + 0.25 * bodice : 1;
+        const [rx, rz, cx] = section(y, hem, slim), amp = (0.012 + 0.1 * smooth(0.6, 0.04, y) * smooth(0, 0.03, y + 0.02)) * fall;
+        return Array.from({ length: n }, (_, j) => {
+          const a = j * TAU / n, front = wrap(a);
+          let d = 1 + amp * folds(a, y, drape?.k1 || 3.5, drape?.k2 || 5.5, 0.6);
+          if (drape?.blouse) d += drape.blouse * (bell(y, 0.625, 0.035) + 0.5 * bell(y, 0.545, 0.03));
           d += 0.1 * bell(y, 0.27, 0.075) * bell(front, 0.42, 0.33);            // one knee forward
           if (female) d += 0.05 * bell(y, 0.715, 0.035) * (bell(front, 0.5, 0.3) + bell(front, -0.5, 0.3));
           const w = female ? 1 - 0.07 * smooth(0.7, 0.8, y) * smooth(0.85, 0.8, y) : 1;
@@ -617,7 +629,7 @@
     // its edge reads as the thickness of the cloth.
     function mantle(T, o) {
       return memo('mantle' + JSON.stringify(o), () => surface(T, levels(o.y0, o.y1, 44).map(y => {
-        const [rx, rz, cx] = section(Math.min(y, 0.83)), t = sat((o.y1 - y) / (o.y1 - o.y0));
+        const [rx, rz, cx] = section(Math.min(y, 0.83), o.hem, o.slim), t = sat((o.y1 - y) / (o.y1 - o.y0));
         const fade = o.taper ? smooth(0, o.taper, t) : 1; // a short veil thins out into the cloak below it
         const amp = (0.02 + 0.085 * t) * fade, off = ((o.base || 0.012) + (o.flow || 0.02) * t) * fade, open = o.open0 + (o.open1 - o.open0) * Math.sqrt(t);
         return Array.from({ length: 96 }, (_, j) => {
@@ -635,7 +647,7 @@
     function mantleEdging(k, o, at) {
       for (const sign of [-1, 1]) {
         const points = levels(o.y0 + .02, o.y1 - .025, 24).map(y => {
-          const [rx, rz, cx] = section(Math.min(y, .83)), t = sat((o.y1 - y) / (o.y1 - o.y0));
+          const [rx, rz, cx] = section(Math.min(y, .83), o.hem, o.slim), t = sat((o.y1 - y) / (o.y1 - o.y0));
           const a = sign * (o.open0 + (o.open1 - o.open0) * Math.sqrt(t) + .042);
           const amp = .02 + .085 * t, off = (o.base || .012) + (o.flow || .02) * t;
           const d = 1 + amp * folds(a, y, 3, 4.5, 1.3);
@@ -654,15 +666,17 @@
         + 0.075 * bell(y, -0.4, 0.035) * bell(z, 0, 0.2) + 0.065 * bell(y, -0.5, 0.04) * bell(z, 0, 0.17) - 0.035 * bell(y, -0.45, 0.013) * bell(z, 0, 0.21)
         + 0.1 * bell(y, -0.76, 0.13) * bell(z, 0, 0.27);
     };
-    const skull = (y, a) => {
-      const r = Math.sqrt(Math.max(0, 1 - y * y)), jaw = 1 - 0.36 * sat(-y) ** 1.5, x = r * Math.cos(a), z = r * Math.sin(a) * jaw;
-      return [x * (1 - 0.1 * sat(-y) * sat(-x)) + smooth(0.1, 0.7, x) * faceRelief(y, z), y, z];
+    // soft: a woman's face for the façade Assumption, a rounder jaw and chin and fuller cheeks.
+    const skull = (y, a, soft = false) => {
+      const r = Math.sqrt(Math.max(0, 1 - y * y)), jaw = 1 - (soft ? 0.4 : 0.36) * sat(-y) ** (soft ? 1.3 : 1.5), x = r * Math.cos(a), z = r * Math.sin(a) * jaw;
+      const cheeks = soft ? 0.04 * bell(y, -0.12, 0.17) * bell(Math.abs(z), 0.5, 0.18) : 0;
+      return [x * (1 - 0.1 * sat(-y) * sat(-x)) + smooth(0.1, 0.7, x) * (faceRelief(y, z) + cheeks), y, z];
     };
     const headLevels = [-0.995, -0.96, -0.9, ...levels(-0.84, 0.36, 44), 0.44, 0.52, 0.6, 0.68, 0.76, 0.84, 0.9, 0.95, 0.985, 0.998];
     const headAngles = Array.from({ length: 72 }, (_, j) => { const u = -PI + j * TAU / 72; return u - 0.45 * Math.sin(u); });
     const HEAD = [0.056, 0.066, 0.047]; // half depth, height, width as fractions of the figure
     const scaled = p => [p[0] * HEAD[0], p[1] * HEAD[1], p[2] * HEAD[2]];
-    function head(T) { return memo('head', () => surface(T, headLevels.map(y => headAngles.map(a => scaled(skull(y, a)))))); }
+    function head(T, soft = false) { return memo('head' + (soft ? '-soft' : ''), () => surface(T, headLevels.map(y => headAngles.map(a => scaled(skull(y, a, soft)))))); }
     function beard(T) {
       // Tapered jaw and chin instead of an overlapping ball covering the lips.
       const profile = [[-.37, .57, .19, .58], [-.55, .63, .25, .78], [-.78, .65, .28, .77], [-1.02, .56, .23, .59], [-1.24, .43, .15, .34], [-1.37, .35, .04, .025]];
@@ -674,9 +688,20 @@
     // Veil or hair: a shell round the skull, drawn inside it over the face.
     function hood(T, o) {
       return memo('hood' + JSON.stringify(o), () => surface(T, [...levels(o.bottom, -0.9, 6), ...headLevels.slice(3)].map(y => headAngles.map(a => {
-        const yy = Math.max(y, -0.96), p = skull(yy, a), hidden = p[0] > o.edge + o.rise * sat(yy - 0.3) && y < o.brow;
-        const grow = hidden ? 0.9 : o.grow * (1 + (o.wave || 0) * Math.sin(9 * a + 6 * y)), fall = y < -0.9 ? 1 + o.spread * (-0.9 - y) : 1;
+        const yy = Math.max(y, -0.96), p = skull(yy, a, !!o.soft), hidden = p[0] > o.edge + o.rise * sat(yy - 0.3) && y < o.brow;
         const q = hidden ? p : [Math.sqrt(Math.max(0.02, 1 - yy * yy)) * Math.cos(a), yy, Math.sqrt(Math.max(0.02, 1 - yy * yy)) * Math.sin(a)];
+        // part: a centre parting from the hairline over the crown; sweep: waves running back from it.
+        const parting = o.part ? 1 - o.part * bell(q[2], 0, 0.06) * sat(3 * q[0]) * sat((yy - 0.35) / 0.25) : 1;
+        const waves = o.sweep ? o.sweep * Math.sin(14 * Math.abs(q[2]) - 7 * q[0] + 5 * yy) : (o.wave || 0) * Math.sin(9 * a + 6 * y);
+        const grow = hidden ? 0.9 : o.grow * (1 + waves) * parting, fall = y < -0.9 ? 1 + o.spread * (-0.9 - y) : 1;
+        // tuck: the hidden front stays inside the head (no column under the chin), and the edge
+        // blends over a narrow band instead of stepping from vertex to vertex.
+        if (o.tuck) {
+          const lim = o.edge + o.rise * sat(yy - 0.3), front = y < -0.9 ? Math.cos(a) : p[0], brow = o.brow - (o.arch || 0) * Math.abs(p[2]), w = smooth(lim - 0.07, lim + 0.07, front) * smooth(brow + 0.05, brow - 0.05, y);
+          const sx = Math.sqrt(Math.max(0.02, 1 - yy * yy)), g = o.grow * (1 + waves) * parting;
+          const shell = [sx * Math.cos(a) * g * fall - (y < -0.9 ? 0.25 * (-0.9 - y) : 0), y, sx * Math.sin(a) * g * fall], tucked = [p[0] * 0.9, yy * 0.9, p[2] * 0.9];
+          return scaled(shell.map((v, i) => v + (tucked[i] - v) * w));
+        }
         return scaled([q[0] * grow * fall - (y < -0.9 ? 0.25 * (-0.9 - y) : 0), y * (hidden ? 0.9 : 1), q[2] * grow * fall]);
       }))));
     }
@@ -728,30 +753,61 @@
       k.tube([P(.012, .002, .02), P(.027, .01, .027), thumb], .0052 * H, mat, {}, 8, 6);
       k.sph(.0052 * H, mat, {p:thumb}, 8, 6);
     }
+    // The mantle's front edges hanging from the open forearms nearly to the hem, as on statues of
+    // Our Lady of Grace: a thin draped sheet from inside the sleeve, flaring out and folding as it falls.
+    function wing(T, arm, side, o) {
+      return memo('wing' + side + JSON.stringify(arm) + JSON.stringify(o), () => {
+        const [, elbow, wrist] = arm, m = 18, rings = [];
+        for (let i = 0; i <= 16; i++) {
+          const v = i / 16, outer = [], inner = [];
+          for (let j = 0; j <= m; j++) {
+            const u = j / m, top = [elbow[0] + (wrist[0] - elbow[0]) * u - .02, elbow[1] + (wrist[1] - elbow[1]) * u - .012, side * (Math.abs(elbow[2]) + (Math.abs(wrist[2]) - Math.abs(elbow[2])) * u - .01)];
+            const bottom = [-.11 + .23 * u, o.bottom + .03 * u, side * (o.flare + .03 * u)], e = v * v * (3 - 2 * v);
+            const fold = .022 * Math.sin(PI * (2.5 * u + .6 * v)) * v + .012 * Math.sin(PI * 5 * u + 1.3) * v;
+            const p = [top[0] + (bottom[0] - top[0]) * e, top[1] + (bottom[1] - top[1]) * v, top[2] + (bottom[2] - top[2]) * e + side * fold];
+            outer.push([p[0], p[1], p[2] + side * .006]); inner.unshift([p[0], p[1], p[2] - side * .006]);
+          }
+          rings.push([...outer, ...inner]);
+        }
+        return surface(T, rings);
+      });
+    }
     /* o: { H, y0, robe, mantle, veil, sleeve, skin, hair, beard, sash, pose, look,
      *      female, child, painted, edging, cloak: mantle shape, x, z: offset }.
      * Returns unchanged hand anchors, used by the Child, keys and sword. */
     function figure(k, o) {
       const T = k.T, H = o.H, y0 = o.y0 || 0, ox = o.x || 0, oz = o.z || 0, at = { p: [ox, y0, oz], s: H }, skin = o.skin || 'skin';
-      k.add(robe(T, !!o.female), o.robe, at);
-      const cloak = { y0: .03, y1: .842, open0: .3, open1: .78, arms: .05, ...o.cloak };
+      k.add(robe(T, !!o.female, o.hem || 1, o.slim || 1, o.neckline || 0.876, o.drape || null), o.robe, at);
+      if (o.neckline && o.edging) { // gilded neckline of the robe
+        const [rx, rz, cx] = section(o.neckline, o.hem, o.slim), ring = Array.from({ length: 25 }, (_, j) => { const a = j * TAU / 24; return [ox + (cx + rx * Math.cos(a)) * H, y0 + o.neckline * H, oz + rz * Math.sin(a) * H]; });
+        k.tube(ring, .0028 * H, 'gold', {}, 48, 5);
+      }
+      const cloak = { y0: .03, y1: .842, open0: .3, open1: .78, arms: .05, ...(o.hem ? { hem: o.hem } : {}), ...(o.slim ? { slim: o.slim } : {}), ...o.cloak };
       if (o.mantle) { k.add(mantle(T, cloak), o.mantle, at); if (o.edging) mantleEdging(k, cloak, at); }
       if (o.sash) k.add(memo('sash', () => surface(T, levels(0.572, 0.6, 3).map(y => { const [rx, rz, cx] = section(y); return Array.from({ length: 40 }, (_, j) => [cx + (rx + 0.007) * Math.cos(j * TAU / 40), y, (rz + 0.007) * Math.sin(j * TAU / 40)]); }))), o.sash, at);
       // Head and neck pivot at the base of the skull so the face can turn up.
-      const look = o.look || 0, headSize = o.child ? 1.45 : 1, F = H * headSize;
-      // A fuller infant head, with the same crown height and carrying-hand anchor.
+      const look = o.look || 0, headSize = o.child ? 1.45 : o.headScale || 1, F = H * headSize;
+      // A fuller head (infant, or the façade Assumption) keeps the same crown height and
+      // carrying-hand anchor; the neck pivot moves down instead.
       const neck = [ox - .002 * H, y0 + (.872 - .128 * (headSize - 1)) * H, oz];
       const headAt = { p: [neck[0] + Math.sin(-look) * .062 * F, neck[1] + Math.cos(look) * .062 * F, oz], r: [0, 0, look], s: F };
-      k.add(head(T), skin, headAt);
-      if (o.veil) {
-        k.add(hood(T, { bottom: -1.5, edge: o.veilEdge ?? 0.34, rise: 0.25, brow: 0.6, grow: 1.13, spread: 0.55 }), o.veil, headAt); // veilEdge: lower sets the veil back to show the hair
-        k.add(mantle(T, { y0: 0.5, y1: 0.862, open0: 0.6, open1: 1.3, base: 0.03, flow: 0.012, arms: 0.05, back: 0.1, taper: 0.3, ...o.veilDrape }), o.veil, at);
-      }
-      if (o.hair) k.add(hood(T, { bottom: o.female ? -2 : -1.35, edge: 0.3, rise: 0.4, brow: 0.56, grow: 1.08, spread: 0.3, wave: 0.03 }), o.hair, headAt);
-      const face = (y, z, lift = 0) => { // a point on the modelled face, in figure units
-        const x = Math.sqrt(Math.max(0, 1 - y * y - z * z)) + faceRelief(y, z) + lift, c = Math.cos(look), s = Math.sin(look), px = x * HEAD[0], py = y * HEAD[1];
+      // A point given in head units (±1 = half the head), placed in kit coordinates.
+      const onHead = ([x, y, z]) => {
+        const c = Math.cos(look), s = Math.sin(look), px = x * HEAD[0], py = y * HEAD[1];
         return [headAt.p[0] + (px * c - py * s) * F, headAt.p[1] + (px * s + py * c) * F, oz + z * HEAD[2] * F];
       };
+      k.add(head(T, !!o.soft), skin, headAt);
+      if (o.neck) {
+        // Bare neck rising out of the robe's neckline into the underside of the jaw.
+        const base = [ox + .002 * H, y0 + .836 * H, oz], top = onHead([-.12, -.62, 0]);
+        k.tube([base, [(base[0] + top[0]) / 2, (base[1] + top[1]) / 2, oz], top], o.neck * H, skin, {}, 10, 14);
+      }
+      if (o.veil) {
+        k.add(hood(T, { bottom: -1.5, edge: o.veilEdge ?? 0.34, rise: 0.25, brow: 0.6, grow: 1.13, spread: 0.55, soft: !!o.soft, ...o.veilShape }), o.veil, headAt); // veilEdge: lower sets the veil back to show the hair
+        if (o.veilDrape !== false) k.add(mantle(T, { y0: 0.5, y1: 0.862, open0: 0.6, open1: 1.3, base: 0.03, flow: 0.012, arms: 0.05, back: 0.1, taper: 0.3, ...(o.slim ? { slim: o.slim } : {}), ...o.veilDrape }), o.veil, at);
+      }
+      if (o.hair) k.add(hood(T, { bottom: o.female ? -2 : -1.35, edge: 0.3, rise: 0.4, brow: 0.56, grow: 1.08, spread: 0.3, wave: 0.03, soft: !!o.soft, ...o.hairShape }), o.hair, headAt);
+      const face = (y, z, lift = 0) => onHead([Math.sqrt(Math.max(0, 1 - y * y - z * z)) + faceRelief(y, z) + lift, y, z]); // a point on the modelled face
       if (o.beard) {
         k.add(beard(T), o.hair, headAt);
         for (const z of [-1, 1]) k.tube([face(-.36, z * .04, .005), face(-.38, z * .18, .005), face(-.42, z * .30, -.02)], .0025 * F, o.hair, {}, 10, 6);
@@ -767,15 +823,27 @@
           const lid = Array.from({length:9}, (_, i) => { const t = i / 8; return face(.09 + side * .052 * Math.sin(t * PI), z * (.20 + .28 * t), .006); });
           k.tube(lid, .0009 * F, skin, {}, 12, 5);
         }
-        if (o.painted) {
+        if (o.painted && o.soft) { // fine arched brows; one small mouth (drawn once, below)
+          k.tube([face(.265, z * .16, .003), face(.295, z * .32, .001), face(.255, z * .48, -.012)], .0006 * F, o.hair || 'hair', {}, 10, 5);
+        } else if (o.painted) {
           k.tube([face(.235, z * .17, .005), face(.272, z * .33, .002), face(.245, z * .51, -.015)], .0011 * F, o.hair || 'hair', {}, 10, 5);
           k.sph(1, 'statueLip', { p: face(-.45, z * .07, -.02), r: [0, 0, look], s: [.0025 * F, .0031 * F, .0085 * F] }, 10, 8);
         }
       }
+      if (o.painted && o.soft) {
+        k.sph(1, 'statueLip', { p: face(-.43, 0, -.018), r: [0, 0, look], s: [.0022 * F, .0024 * F, .0105 * F] }, 12, 8);
+        k.sph(1, 'statueLip', { p: face(-.5, 0, -.02), r: [0, 0, look], s: [.0024 * F, .0028 * F, .0095 * F] }, 12, 8);
+      }
       const hands = {};
       for (const z of [-1, 1]) {
         const pose = POSES[o.pose || 'prayer'](z), wrist = pose.arm[2];
-        k.add(limb(T, pose.arm, [0.04, 0.036, 0.033, 0.034, 0.044], (o.pose || 'prayer') + z), o.sleeve || o.robe, at);
+        if (o.wings && o.mantle) {
+          k.add(wing(T, pose.arm, z, o.wings), o.mantle, at);
+          if (o.edging) k.tube([[wrist[0] - .012, wrist[1] - .03, z * (Math.abs(wrist[2]) - .004)], [wrist[0] - .01, (wrist[1] + o.wings.bottom) / 2, z * (Math.abs(wrist[2]) + o.wings.flare + .03) / 2 + z * .01], [.12, o.wings.bottom + .03, z * (o.wings.flare + .03)]].map(p => [ox + p[0] * H, y0 + p[1] * H, oz + p[2] * H]), .0018 * H, 'gold', {}, 20, 5);
+        }
+        // Slighter shoulders (slim) bring the shoulder joint in, so the sleeve stays under the mantle.
+        const arm = o.slim ? pose.arm.map((p, i) => i === 0 ? [p[0], p[1] - .012, p[2] * o.slim] : p) : pose.arm;
+        k.add(limb(T, arm, [0.04, 0.036, 0.033, 0.034, 0.044], (o.pose || 'prayer') + z + (o.slim ? '|' + o.slim : '')), o.sleeve || o.robe, at);
         const f = new T.Vector3(...pose.dir).normalize(), start = [wrist[0] - f.x * 0.004, wrist[1] - f.y * 0.004, wrist[2] - f.z * 0.004];
         hand(k, skin, start, pose.dir, pose.palm, H, y0, ox, oz, ['open', 'raised', 'sword'].includes(o.pose));
         hands[z < 0 ? 'right' : 'left'] = [ox + (wrist[0] + f.x * 0.045) * H, y0 + (wrist[1] + f.y * 0.045) * H, oz + (wrist[2] + f.z * 0.045) * H];
@@ -784,7 +852,7 @@
       k.sph(1, o.feet || skin, { p: [ox + 0.118 * H, y0 + 0.014 * H, oz + 0.05 * H], s: [0.03 * H, 0.014 * H, 0.022 * H] }, 10, 8);
       return hands;
     }
-    return { figure, surface, bell, smooth };
+    return { figure, surface, limb, bell, smooth };
   })();
   function starHalo(k, centre, radius, tilt, mat = 'gold', size = 0.03) {
     ring(12, (i, a) => k.shape(starPoints(size, size * 0.42), 0.006, mat, { p: [centre[0] + Math.cos(a) * radius * Math.sin(tilt), centre[1] + Math.cos(a) * radius * Math.cos(tilt), centre[2] + Math.sin(a) * radius], r: [0, PI / 2, 0] }, 'halo-star' + size));
@@ -816,13 +884,36 @@
    * edge, white veil over brown hair, gold girdle, arms open). Sizes fill the drawn
    * niches; paint scheme and sizes are CONCEPT, sculptor and finish pending. */
   const PAINTED = { painted: true, edging: true, skin: 'skin' };
-  function buildAssumption(k) {
-    // Cloud plinth, then Our Lady with open arms and upturned face.
-    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-    for (let i = 0; i < 16; i++) { const a = i * 2.39996, r = 0.1 + 0.14 * rnd(); k.sph(0.11 + 0.06 * rnd(), 'statueIvory', { p: [Math.cos(a) * r * 0.55, 0.11 + 0.12 * rnd(), Math.sin(a) * r * 1.1], s: [1, 0.72, 1] }, 12, 8); }
-    const H = 2.42, y0 = 0.2;
-    SCULPT.figure(k, { ...PAINTED, H, y0, robe: 'robeWhite', sleeve: 'robeWhite', mantle: 'robeBlue', veil: 'robeWhite', hair: 'hair', sash: 'gold', feet: 'skin', pose: 'open', female: true, look: 0.42, veilEdge: 0.06,
-      cloak: { open0: 0.55, open1: 0.8, arms: 0.025, flow: 0.035, back: 0.04 }, veilDrape: { y0: 0.74, arms: 0, back: 0.03 } });
+  // Our Lady of Grace (Đức Mẹ Ban Ơn), owner 21 Nov 2026 after a painted reference statue: she
+  // stands on the globe with the serpent under her foot, arms lowered and open, looking gently
+  // down; a white veil over parted hair, a teal-blue mantle edged in gold, a gold girdle. The globe
+  // on a low octagonal plinth takes the place of the drawn niche pedestal, so the figure grows from
+  // 2.42 to 2.72 m with the halo at the same height under the arch. CONCEPT; sculptor pending.
+  const GRACE = { plinth: 0.12, globe: 0.34, sink: 0.03, feet: 0.12, H: 2.76 };
+  function buildOurLadyOfGrace(k) {
+    const { plinth, globe: R, sink, feet, H } = GRACE, c = plinth + R - sink, y0 = c + feet;
+    // Octagonal plinth with a gilded fillet, then the globe.
+    k.cyl(0.29, 0.31, plinth - 0.025, 'statueIvory', { p: [0, (plinth - 0.025) / 2, 0], r: [0, PI / 8, 0] }, 8);
+    k.cyl(0.285, 0.29, 0.01, 'gold', { p: [0, plinth - 0.02, 0], r: [0, PI / 8, 0] }, 8);
+    k.cyl(0.27, 0.285, 0.015, 'statueIvory', { p: [0, plinth - 0.0075, 0], r: [0, PI / 8, 0] }, 8);
+    k.sph(R, 'globeTeal', { p: [0, c, 0] }, 40, 28);
+    // The serpent lies along the globe under her right foot (-z), its head raised at the front.
+    const on = (t, f, lift) => [(R + lift) * Math.sin(t) * Math.cos(f), c + (R + lift) * Math.cos(t), (R + lift) * Math.sin(t) * Math.sin(f)];
+    const path = [[1.3, 2.3], [1.2, 1.75], [1.1, 1.15], [1.03, 0.55], [1.02, -0.05], [1.1, -0.55], [1.2, -0.95], [1.12, -1.25]];
+    const radii = [0.008, 0.022, 0.034, 0.04, 0.042, 0.04, 0.036, 0.03];
+    const body = path.map(([t, f], i) => on(t, f, radii[i] * 0.7));
+    const head = on(0.98, -1.42, 0.085), tip = on(0.93, -1.5, 0.1);
+    k.add(SCULPT.limb(k.T, [...body, head], [...radii, 0.024], 'grace-serpent-2'), 'serpent');
+    const dir = new k.T.Vector3(tip[0] - head[0], tip[1] - head[1], tip[2] - head[2]).normalize();
+    const q = new k.T.Quaternion().setFromUnitVectors(new k.T.Vector3(1, 0, 0), dir);
+    k.sph(1, 'serpent', { p: [head[0] + dir.x * 0.025, head[1] + dir.y * 0.025, head[2] + dir.z * 0.025], q, s: [0.06, 0.028, 0.04] }, 12, 8);
+    k.sph(1, 'robeRed', { p: [head[0] + dir.x * 0.075, head[1] + dir.y * 0.075 - 0.006, head[2] + dir.z * 0.075], q, s: [0.02, 0.007, 0.016] }, 8, 6);
+    SCULPT.figure(k, { ...PAINTED, H, y0, robe: 'robeWhite', sleeve: 'robeWhite', mantle: 'mantleGrace', veil: 'robeWhite', hair: 'hair', sash: 'gold', feet: 'skin', pose: 'open', female: true, look: -0.1, hem: 0.78, slim: 0.84, drape: { n: 96, k1: 7, k2: 11, amp: 1.6, blouse: 0.03 },
+      headScale: 1.08, soft: true, neck: 0.03,
+      hairShape: { brow: 0.62, arch: 0.4, part: 0.08, sweep: 0.025, tuck: true },
+      veilShape: { edge: 0.42, rise: 0.2, brow: 0.72, grow: 1.2, bottom: -2.0, spread: 7, tuck: true },
+      cloak: { open0: 0.6, open1: 1.25, arms: 0.035, flow: 0.06, back: 0.04 }, wings: { bottom: 0.08, flare: 0.17 },
+      neckline: 0.836, veilDrape: false });
     starHalo(k, [-0.055 * H, y0 + 0.98 * H, 0], 0.27, 0.35, 'gold', 0.042);
   }
   function buildPeter(k) {
@@ -1269,8 +1360,8 @@
     { id: 'statueMary', cat: DECOR, family: 'Statues', name: 'Statue · Our Lady (Đức Mẹ)', mounts: ['floor'], footprint: [0.7, 0.7], build: buildMary },
     { id: 'statueJoseph', cat: DECOR, family: 'Statues', name: 'Statue · Saint Joseph', mounts: ['floor'], footprint: [0.7, 0.7], build: buildJoseph },
     { id: 'statueSacredHeart', cat: DECOR, family: 'Statues', name: 'Statue · Sacred Heart', mounts: ['floor'], footprint: [0.7, 0.7], build: buildSacredHeart },
-    { id: 'statueAssumption', cat: DECOR, family: 'Statues', name: 'Statue · Assumption of Our Lady (Đức Mẹ Hồn Xác Lên Trời) · concept', mounts: ['floor'], footprint: [0.7, 1.5],
-      desc: 'Painted figure 2.42 m on a cloud plinth (white robe, blue mantle, white veil over brown hair), open arms and upturned face, for the central façade niche. Generated concept: the sculptor, size, material, weight and fixing are pending.', build: buildAssumption },
+    { id: 'statueOurLadyOfGrace', cat: DECOR, family: 'Statues', name: 'Statue · Our Lady of Grace (Đức Mẹ Ban Ơn) · on the globe · concept', mounts: ['floor'], footprint: [0.7, 1.4],
+      desc: 'Painted figure 2.72 m standing on a 0.68 m globe with the serpent under her foot, on a low octagonal plinth (white robe and veil, teal-blue mantle edged in gold, gold girdle, arms lowered and open), for the central façade niche in place of its drawn pedestal. Generated concept after the owner\'s reference: the sculptor, size, material, weight and fixing are pending.', build: buildOurLadyOfGrace },
     { id: 'statuePeter', cat: DECOR, family: 'Statues', name: 'Statue · Saint Peter (Thánh Phêrô) · niche figure · concept', mounts: ['floor'], footprint: [0.5, 0.8],
       desc: 'Painted figure 2.0 m (blue tunic, ochre mantle, grey hair) with keys and book, for a side façade niche. Generated concept: subject, sculptor, size, material, weight and fixing are pending.', build: buildPeter },
     { id: 'statuePaul', cat: DECOR, family: 'Statues', name: 'Statue · Saint Paul (Thánh Phaolô) · niche figure · concept', mounts: ['floor'], footprint: [0.5, 0.8],
@@ -1302,6 +1393,10 @@
     { id: 'carpet', cat: DECOR, family: 'Fabric', name: 'Aisle carpet runner', mounts: ['floor'], params: { length: { label: 'Length (m)', min: 4, max: 34, step: 1, value: 26 } }, build: buildCarpet }
   ];
   const byId = Object.fromEntries(types.map(t => [t.id, t]));
+  // Retired figure types and the type a saved or imported item of that type now takes, so a
+  // layout never loses the item before its migration runs (owner, 21 Nov 2026: the façade
+  // Assumption became Our Lady of Grace on the globe).
+  const retiredTypes = { statueAssumption: 'statueOurLadyOfGrace' };
 
-  window.CHURCH_SIM_CATALOG = { MATERIALS, types, byId, makeKit, bulbCount };
+  window.CHURCH_SIM_CATALOG = { MATERIALS, types, byId, retiredTypes, makeKit, bulbCount };
 })();

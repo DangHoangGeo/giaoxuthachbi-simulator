@@ -83,19 +83,27 @@
   // niche crown, face height, niche half-width, jamb mid-height, jamb light length, statue X,
   // lip X. Side niches: 1,198 mm wide, springing +12.308; central niche: 1,422 mm wide,
   // springing +18.893, on the aedicule over the upper storey.
+  // Owner, 21 Nov 2026: the central niche takes Our Lady of Grace on the globe (catalogue
+  // statueOurLadyOfGrace) in place of the Assumption, and the globe replaces the drawn pedestal, so
+  // she stands on the niche floor +15.997, 0.10 m further back; her face is at about +19.15. An
+  // optional last field gives the candles' set-back and spacing from the statue.
   const facadeNiches = [
-    ['C', 'statueAssumption', 'Assumption of Our Lady', 0, 16.683, 19.604, 18.98, 0.711, 17.79, 2.0, 4.08, 3.95],
+    ['C', 'statueOurLadyOfGrace', 'Our Lady of Grace', 0, 15.997, 19.604, 19.15, 0.711, 17.79, 2.0, 4.18, 3.95, [0.36, 0.47]],
     ['B', 'statuePeter', 'Saint Peter', -5.35, 10.391, 12.907, 12.03, 0.599, 11.35, 1.3, 4.15, 4.05],
     ['H', 'statuePaul', 'Saint Paul', 5.35, 10.391, 12.907, 12.03, 0.599, 11.35, 1.3, 4.15, 4.05]];
+  // The central niche as it stood from 24 Oct to 21 Nov 2026: the Assumption on the drawn pedestal.
+  const facadeNicheAssumption = ['C', 'statueAssumption', 'Assumption of Our Lady', 0, 16.683, 19.604, 18.98, 0.711, 17.79, 2.0, 4.08, 3.95];
   // The niches of the traced PDF facade (three gables) these replaced, for the one-time move.
   const facadeNichesBefore = [
     ['C', 'statueAssumption', 'Assumption of Our Lady', 0, 11.8, 15.63, 14.1, 0.925, 13.3, 2.0, 2.29, 2.13],
     ['B', 'statuePeter', 'Saint Peter', -5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3, 2.29, 2.13],
     ['H', 'statuePaul', 'Saint Paul', 5.48, 10.08, 12.61, 11.72, 0.525, 11.05, 1.3, 2.29, 2.13]];
   // Statue, three hidden lines and two candles per niche, as placed for a row above.
-  function nicheFittings([code, type, name, z, base, crown, face, half, mid, length, nicheX, lipX]) {
+  function nicheFittings([code, type, name, z, base, crown, face, half, mid, length, nicheX, lipX, candles]) {
     const out = [{ id: `D-FACADE-${code}`, type, name: `Façade statue · ${name}`, circuit: 'DECOR', mount: 'floor', pos: [nicheX, base, z], yaw: 180, mountYaw: 180,
-      note: `${code === 'C' ? 'USER CONFIRMED subject and place.' : 'PROPOSED subject; owner to confirm the two saints.'} Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending.` }];
+      note: type === 'statueOurLadyOfGrace'
+        ? 'USER CONFIRMED subject (owner, 21 Nov 2026: Our Lady of Grace after a reference statue) and place. Generated figure on a globe standing on the niche floor in place of the drawn pedestal. Sculptor, size, material, weight and fixing pending.'
+        : `${code === 'C' ? 'USER CONFIRMED subject and place.' : 'PROPOSED subject; owner to confirm the two saints.'} Generated figure on the drawn niche pedestal. Sculptor, size, material, weight and fixing pending.` }];
     const top = [lipX, crown + 0.01, z], down = aim(top, [nicheX - 0.09, face, z]);
     out.push({ id: `L-STATUE-${code}-ARCH`, type: 'nicheArchLine', name: `Hidden arch light · ${name}`, circuit: 'L10', mount: 'wall', pos: top, yaw: down.yaw, tilt: down.tilt, mountYaw: 180, lumens: code === 'C' ? 440 : 300, beam: 60, shadow: false, params: { length: code === 'C' ? 0.8 : 0.5 },
       note: 'CONCEPT: light line in a slot behind a matching lip under the arch; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
@@ -105,7 +113,7 @@
         note: 'CONCEPT: light line in a slot behind a matching lip at the front edge of the jamb; no lamp is seen. Slot, weatherproof product, driver place and access pending.' });
       // The central pedestal of the CAD drawing is 0.93 m wide, so its candles stand at the
       // front corners, ahead of the cloud plinth; the side candles stand beside the feet.
-      const candle = code === 'C' && nicheX > 3 ? [nicheX - 0.36, base, z + e * 0.30] : [nicheX - 0.19, base, z + e * (code === 'C' ? 0.47 : 0.31)];
+      const candle = candles ? [nicheX - candles[0], base, z + e * candles[1]] : code === 'C' && nicheX > 3 ? [nicheX - 0.36, base, z + e * 0.30] : [nicheX - 0.19, base, z + e * (code === 'C' ? 0.47 : 0.31)];
       out.push({ id: `L-STATUE-${code}-CANDLE-${e < 0 ? '1' : '2'}`, type: 'nicheCandle', name: `Statue candle light · ${name} · ${e < 0 ? 'B' : 'H'} side`, circuit: 'L10', mount: 'floor', pos: candle, yaw: 180, mountYaw: 180,
         note: 'USER CONFIRMED: two candle lights on the base of each statue. CONCEPT electric candle; product, weather protection, fixing and lamp access pending.' });
     }
@@ -658,17 +666,17 @@
         pos: [0.45, 1.3, sign * 7.85], yaw: sign * 90, mountYaw: sign * 90, on: false,
         note: 'CONCEPT: inside the tower porch on the front pier, hidden from the front view, 1.3 m above the tower floor. Own 32 A circuit at DB-2, isolated outside events. Supply and feeder size on ENGINEERING HOLD.' });
     }
-    // Façade niche statues, 9 October 2026 (owner request). The Assumption stands
-    // on the pedestal of the central niche between the towers, with Saint Peter (B)
+    // Façade niche statues, 9 October 2026 (owner request). Our Lady (since 21 Nov 2026 Our Lady
+    // of Grace on the globe, on the floor of the central niche) stands between the towers, with Saint Peter (B)
     // and Saint Paul (H) in the side niches. Owner direction the same day: no visible
     // lamps at the statues, and two candle lights on each base. Each niche is lit by
     // three concealed lines on circuit L10 at DB-2: one under the arch for the face and
     // one behind a lip on each jamb, so the niche glows and the figure stands in soft
-    // relief. The electric candles stand on the pedestal top at the feet and share L10.
+    // relief. The electric candles stand at the feet (beside the globe in the central niche) and share L10.
     // Statues (L10), towers and façade (L6) and the open front stage (L9) switch
     // separately. Since 24 October 2026 the niches are those of the church's CAD file
     // (facadeNiches above): the side niches on the upper storey at +10.391, the central
-    // one in the aedicule at +16.683. Subjects of the side figures, sizes, sculptor,
+    // one in the aedicule (pedestal top +16.683 until 21 Nov 2026, now the niche floor +15.997). Subjects of the side figures, sizes, sculptor,
     // weights, fixings, slots, lamps and drivers are proposals: CONCEPT / ENGINEERING HOLD.
     for (const row of facadeNiches) nicheFittings(row).forEach(add);
     // Parish priest, 25 Oct 2026: nave lighting by area. Each reading head goes to the circuit of
@@ -850,7 +858,8 @@
     const next = new Map(design.map(it => [it.id, it])), byName = new Map(design.map(it => [it.name, it]));
     return items.map(it => {
       const old = before.get(it.id), raw = next.get(it.id);
-      if (old && raw && it.type === raw.type && near(it.pos, old.pos, 0.005) && (it.mount === 'floor' || (Math.abs(it.yaw - old.yaw) < 0.01 && Math.abs((it.tilt ?? 0) - (old.tilt ?? 0)) < 0.01)))
+      // old.type: a pre-CAD Assumption still moves to the central niche; upgradeFacadeGrace then retypes it.
+      if (old && raw && it.type === old.type && near(it.pos, old.pos, 0.005) && (it.mount === 'floor' || (Math.abs(it.yaw - old.yaw) < 0.01 && Math.abs((it.tilt ?? 0) - (old.tilt ?? 0)) < 0.01)))
         return { ...it, pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw };
       if (/^Central crown wash · [BH]$/.test(it.name)) {
         const want = byName.get(it.name);
@@ -859,6 +868,35 @@
         if (Math.abs(it.yaw - was.yaw) < 0.01 && Math.abs(it.tilt - was.tilt) < 0.01) return { ...it, yaw: want.yaw, tilt: want.tilt };
       }
       return it;
+    });
+  }
+
+  // Owner, 21 Nov 2026: the central façade statue becomes Our Lady of Grace on the globe, which
+  // replaces the drawn pedestal (facade.js), so the statue and its two candles move down to the
+  // niche floor and the arch light re-aims at the new face height. The statue always takes the new
+  // type (the Assumption figure is retired from the catalogue); places, aims, names and notes change
+  // only where they are still the previous recommended ones, so user moves and renames are kept,
+  // a deleted fitting stays deleted, and switching, dimming and circuits are kept.
+  // Issue 1 of this revision ran after loading had already dropped the statue (its retired type was
+  // unknown), leaving the niche empty; the catalogue now maps the retired type, and a layout that
+  // took issue 1 without the statue gets it back once (`from` is the stored revision).
+  const facadeGraceRevision = '2026-11-21-facade-our-lady-of-grace-2';
+  const facadeGraceLossy = '2026-11-21-facade-our-lady-of-grace-1';
+  function upgradeFacadeGrace(items, design, from = '') {
+    const before = new Map(nicheFittings(facadeNicheAssumption).map(it => [it.id, it]));
+    const next = new Map(design.map(it => [it.id, it]));
+    if (from === facadeGraceLossy && !items.some(it => it.id === 'D-FACADE-C') && next.has('D-FACADE-C')) items = [...items, { ...next.get('D-FACADE-C') }];
+    return items.map(it => {
+      const old = before.get(it.id), raw = next.get(it.id);
+      if (!old || !raw) return it;
+      const out = { ...it };
+      if (it.id === 'D-FACADE-C' && it.type === 'statueAssumption') out.type = raw.type;
+      if (out.type !== raw.type) return it;
+      const aimed = it.mount === 'floor' || (Math.abs(it.yaw - old.yaw) < 0.01 && Math.abs((it.tilt ?? 0) - (old.tilt ?? 0)) < 0.01);
+      if (near(it.pos, old.pos, 0.005) && aimed) Object.assign(out, { pos: [...raw.pos], yaw: raw.yaw, tilt: raw.tilt, mountYaw: raw.mountYaw });
+      if (it.name === old.name) out.name = raw.name;
+      if (it.note === old.note) out.note = raw.note;
+      return out;
     });
   }
 
@@ -1583,5 +1621,5 @@
     return items.filter(it => !retired.has(it.id)).map(it => replacements.get(it.id) || it);
   }
 
-  window.CHURCH_SIM_DESIGN = { beamSectionRevision, upgradeBeamSections, BEAMS, BEAMS_BEFORE, readingPlacement, wingGableLightsRevision, upgradeWingGableLights, WING_GABLE_UPLIGHT, sanctuaryPalmsRevision, upgradeSanctuaryPalms, goldCoveRevision, goldCoveNames, goldCoveBefore, upgradeGoldCove, festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
+  window.CHURCH_SIM_DESIGN = { beamSectionRevision, upgradeBeamSections, BEAMS, BEAMS_BEFORE, readingPlacement, wingGableLightsRevision, upgradeWingGableLights, WING_GABLE_UPLIGHT, sanctuaryPalmsRevision, upgradeSanctuaryPalms, goldCoveRevision, goldCoveNames, goldCoveBefore, upgradeGoldCove, festivalStringsRevision, upgradeFestivalStrings, festivalTerraceRevision, upgradeFestivalTerrace, rearSideLightsRevision, upgradeRearSideLights, entranceInteriorRevision, upgradeEntranceInterior, centreReadingRevision, upgradeCentreReading, columnWashRevision, columnWashIds, upgradeColumnWash, wingRoofLightingRevision, wingRoofLightingBefore, upgradeWingRoofLighting, entranceFitRevision, entranceFitBefore, upgradeEntranceFit, sideVaultLightsRevision, sideVaultLightsBefore, upgradeSideVaultLights, naveWingLightingRevision, naveCentreBefore, wingChandelierBefore, naveWingLightIds, upgradeNaveWingLighting, WING_DOWNLIGHT, towerPierRevision, towerPierBefore, upgradeTowerPiers, parishMeetingRevision, parishMeetingBefore, parishMeetingAdded, upgradeParishMeeting, facadeCadRevision, upgradeFacadeCad, facadeGraceRevision, facadeGraceLossy, upgradeFacadeGrace, facadeNicheAssumption, facadeNiches, facadeNichesBefore, daisLevelRevision, upgradeDaisLevel, DAIS_Y, DAIS_BEFORE_Y, fanBeamRevision, upgradeFanBeams, finishChandelierRevision, upgradeFinishChandeliers, NAVE_CHANDELIER_BEFORE_Y, hiddenFittingsRevision, hiddenFittingsBefore, upgradeHiddenFittings, exhaustSplitRevision, upgradeExhaustSplit, facadeStatueRevision, facadeStatueIds, upgradeFacadeStatues, outletRevision, outletIds, upgradeOutlets, naveFanRevision, naveFanLegacyIds, naveFanTargets, upgradeNaveFans, wingArtRevision, wingArtTargets, upgradeWingArt, wingReviewRetiredIds, wingReviewScope, wingSoundRevision, wingSoundRetiredIds, wingSoundTargets, upgradeWingSound, wingReviewRevision, upgradeWingReview, wingReviewTargets, sanctuaryRevision, upgradeSanctuary, recommended, aim, upgradeLighting, lightingRevision, upgradeFacade, facadeRevision, upgradeEntrance, entranceRevision, version: '2026-10-16-tower-board' };
 })();

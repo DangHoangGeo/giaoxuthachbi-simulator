@@ -36,13 +36,13 @@ Calculated by the simulator's itemWatts method, including dimming, fan speed and
 
 | Usage category | All drawn route segments (m) | Ordinary route segments (m) | Full audio/mic home runs (m) | Shared home-run bundle paths (m) |
 | --- | ---: | ---: | ---: | ---: |
-| Lighting | 3,514.617 | 3,514.617 | 0.000 | 0.000 |
+| Lighting | 3,513.242 | 3,513.242 | 0.000 | 0.000 |
 | Sound | 765.922 | 0.000 | 2,362.560 | 566.077 |
 | Fans and ventilation | 978.200 | 978.200 | 0.000 | 0.000 |
 | Exit signs | 166.209 | 166.209 | 0.000 | 0.000 |
 | Decoration and furnishings | 0.000 | 0.000 | 0.000 | 0.000 |
 | Distribution and controls | 263.923 | 263.923 | 0.000 | 0.000 |
-| **Total by length basis** | **5,688.871** | **4,922.949** | **2,362.560** | **566.077** |
+| **Total by length basis** | **5,687.496** | **4,921.574** | **2,362.560** | **566.077** |
 
 Drawn route lengths sum each route once but may share physical corridors. Full home runs already include their upstream shared paths. Do not add the bundle column to full home runs or add these columns together as a purchasing total. Installed cable/conduit quantities require the approved topology and allowances. 0/425 non-bundle routes have an entered allowance; a justified explicit zero counts as entered.
 
@@ -72,8 +72,8 @@ The 25 October [door-head/sign and sconce follow-up](../engineering/doorheads-an
 The 25 October [open-porch review](../engineering/open-porch-light-sound.md) replaces 18 hanging lanterns with wall path heads, adds 36 arch floods, replaces four A2 pendants with 18 wall fills, and lowers nave/entrance speaker references to 2.5 m. Existing IDs/circuits remain and 50 named equipment/drop IDs are added. Porch light, feedback, wing clarity, weather protection, product selection, fixings, physical controls and commissioning remain held. Earlier A3 electrical drawings remain stale.
 
 
-- [Layout snapshot](equipment-layout.json), SHA-256: d833b8e5d197d2801e1e3ae9b19352a08ac6421e3e198becd171c11658c018b3.
-- [Electrical snapshot](electrical-systems.json), SHA-256: e59ab20906df2a248b9efcf88b837637e145feb6c2f52ef9eeaad857e2172df6.
+- [Layout snapshot](equipment-layout.json), SHA-256: 1550e9e89018fafebaf730611c5b3e65b1be2bdbfc7e70e336f4a1ce7b5fe90c.
+- [Electrical snapshot](electrical-systems.json), SHA-256: 9fa38718d33a71797872ea7a498d749e95df3032bc033cc63f6c8d0b0da323aa.
 - [Register workflow](register.md); usage formulas: [simulator engine](../../Thach_Bi_Viewer/simulator/engine.js).
 - [Build manifest](categories/manifest.json) records workbook fingerprints for this report. A later Excel edit requires a refresh before these totals are current.
 
