@@ -14,7 +14,7 @@
 
 <!-- Unmet targets, assumptions, things you could not verify. Write "none" if there are none. -->
 
-- [ ] This pull request targets `dev`, not `main`.
+- [ ] This pull request targets `main` (the `dev` branch is no longer used).
 - [ ] I read [CONTRIBUTING.md](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/HEAD/CONTRIBUTING.md) and the relevant parts of [AGENTS.md](https://github.com/DangHoangGeo/giaoxuthachbi-simulator/blob/HEAD/AGENTS.md).
 - [ ] No passwords, personal details or material I do not have the right to share.
 - [ ] I marked what is a concept, an estimate, a measurement or an engineer-approved value.

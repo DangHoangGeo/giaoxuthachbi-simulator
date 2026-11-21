@@ -31,14 +31,9 @@ Report security or privacy problems privately. See [SECURITY.md](SECURITY.md).
 
 ## Send a pull request
 
-Send pull requests to the **`dev`** branch. It is the default branch, so GitHub selects it for you.
+Send pull requests to the **`main`** branch. It is the reviewed version that the parish and the website rely on. It is protected: nobody pushes to it directly, the maintainer, [@DangHoangGeo](https://github.com/DangHoangGeo), reviews and merges every pull request, and each merge publishes the website.
 
-| Branch | Purpose | How changes arrive |
-| --- | --- | --- |
-| `dev` | Where contributions are collected and checked together | Your pull request, reviewed and merged by the maintainer, [@DangHoangGeo](https://github.com/DangHoangGeo) |
-| `main` | The reviewed version that the parish and the website rely on | Only the maintainer promotes verified work from `dev` |
-
-Both branches are protected. Nobody pushes to them directly, and pull requests opened against `main` will be asked to target `dev`.
+The `dev` branch is no longer used (21 November 2026). If GitHub preselects `dev` when you open a pull request, change the base to `main`.
 
 1. For anything larger than a small fix, open an issue first so the approach can be agreed.
 2. Fork the repository, bring your copy of `main` up to date with this repository's `main`, and create a branch from it. Use a short name such as `fix/plan-export-units`, `docs/sound-method` or `eng/12-topic`.
@@ -48,7 +43,7 @@ Both branches are protected. Nobody pushes to them directly, and pull requests o
    - A 3D model change and its documents, registers and exports go in the same commit.
    - Keep stable equipment, route and member IDs. Do not overwrite entered data or original drawings.
 4. Make one coherent change per commit. Say in the commit body what you checked and what remains unresolved.
-5. Run the checks that fit your change, then open the pull request against `dev` and fill in the template.
+5. Run the checks that fit your change, then open the pull request against `main` and fill in the template.
 
 The clone is large (several hundred megabytes) because review evidence is kept in the repository. `git clone --depth 1` is enough to run the viewer and the checks.
 
@@ -71,7 +66,7 @@ For visual changes, look at the real viewer on a desktop browser in day and even
 
 ### What happens to your pull request
 
-The maintainer reviews every pull request, may ask for changes, and merges it into `dev` when it is ready. Your change reaches `main` later, when the maintainer promotes a verified set of changes. This is a volunteer project, so a reply can take some days. Anything meant to be installed in the building also needs review by the responsible designers and the people building and running the church. A merged pull request is not a construction approval.
+The maintainer reviews every pull request, may ask for changes, and merges it into `main` when it is ready. The website is rebuilt from `main` after each merge. This is a volunteer project, so a reply can take some days. Anything meant to be installed in the building also needs review by the responsible designers and the people building and running the church. A merged pull request is not a construction approval.
 
 ### Using AI tools
 
