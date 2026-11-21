@@ -103,3 +103,7 @@ The nave-facing walls, entrance wall, sanctuary spandrel and sanctuary back wall
 All parts live in `Thach_Bi_Viewer/sanctuary-furnishings.js`, which loads after `interior-finish.js`. They are display finishes and ornament proxies. They do not define a stone, lacquer system, metal, fabric, weight, fixing or product. Open flames on the altar need the parish's fire safety review. The ambo fall shows green by default. The colour of the season, and whether the parish uses a fall at all, is question 3 in the programme.
 
 No simulator equipment ID, type, position, aim, load, circuit, route or control changed, so the category registers, the quantity summary and the electrical exports were not regenerated. The furnishings are bundle display parts, not simulator fixtures. The documents checked were [design excellence](design-excellence.md), [sanctuary model](sanctuary-model.md), [decoration finishes](decoration-finishes.md), the [register procedure](electrical-grid/register.md) and the [public viewer contract](web/viewer.md).
+
+## Roof hidden · 21 November 2026
+
+With the roof hidden, the roof-lining ornament (fillets, gilded beads, lacquer roundels and rosettes) floated in the air, and the 14 side beams from the columns to the wall piers disappeared. The lining ornament now belongs to the roof assembly and hides with the lining. The side beams, with their carving and truss posts, now belong to the frame and stay visible (`interior-finish.js`, `simulator/engine.js`). Nothing moved or changed shape. [Before and after](../review/roof-off-2026-11-21/README.md)
