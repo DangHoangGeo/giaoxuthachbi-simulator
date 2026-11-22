@@ -15,9 +15,9 @@ Explore: drag to orbit, scroll/pinch to zoom, right-drag to pan.
 Walk: W A S D / arrow keys to move; drag the scene to look around (it follows
 the pointer, as in Explore); touch joystick on phones.
 Esc leaves Walk mode. References opens the nine retained reference images.
-Cinematic tour (Discover menu): an 8 min 28 s film. It opens with a bird's-eye
-view of the cross-shaped roof, then flies down round the altar end and along
-the side to the twin towers and the front. The tour continues on foot and by
+Cinematic tour (Discover menu): an 8 min 28 s film. It opens high above the
+altar end, flies over the roof and out in front of the church, then glides in
+to the twin towers. The tour continues on foot and by
 air, returning to the lit church after dark. The viewer generates its organ
 music: a homeland theme outside and the Bach-Gounod Ave Maria inside.
 Space pauses, left/right arrows change scene, M switches the music, F fills

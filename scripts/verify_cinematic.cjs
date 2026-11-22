@@ -76,7 +76,7 @@ shots.slice(1).forEach((shot, i) => {
 // level horizon possible, and no jumps inside a scene.
 const GROUND = -2.08, FRAME = 1 / 30;
 function checkPath(reel, { indoorLimit }) {
-  let previous = null, fastest = 0, quickestTurn = 0;
+  let previous = null, fastest = 0, fastestAloft = 0, quickestTurn = 0;
   for (let time = 0; time < reel.length; time += FRAME) {
     const p = film.pose(time, reel), where = `${reel.id} ${time.toFixed(2)} s`;
     assert([...p.eye, ...p.look, p.lens].every(Number.isFinite), `finite pose at ${where}`);
@@ -88,7 +88,12 @@ function checkPath(reel, { indoorLimit }) {
     if (previous && previous.shot === p.shot) {
       const speed = dist(p.eye, previous.eye) / FRAME;
       const turn = Math.acos(Math.min(1, view[0] * previous.view[0] + view[1] * previous.view[1] + view[2] * previous.view[2])) * 180 / Math.PI / FRAME;
-      fastest = Math.max(fastest, speed); quickestTurn = Math.max(quickestTurn, turn);
+      // High above the roofs and wide of the towers, what is seen is the
+      // angle swept, not metres a second: the opening fly-over may go faster
+      // (owner, 22 November 2026: the first 30 s were too slow).
+      const aloft = p.eye[1] > 30 && [-10.153, 10.153].every(z => Math.hypot(p.eye[0] - 2.45, p.eye[2] - z) > 20);
+      if (aloft) fastestAloft = Math.max(fastestAloft, speed); else fastest = Math.max(fastest, speed);
+      quickestTurn = Math.max(quickestTurn, turn);
       assert(speed < 12, `${p.shot.id}: ${speed.toFixed(1)} m/s at ${where}`);
       assert(turn < 40, `${p.shot.id}: turns ${turn.toFixed(1)} °/s at ${where}`);
       // Inside the building the camera travels at an unhurried pace.
@@ -96,10 +101,11 @@ function checkPath(reel, { indoorLimit }) {
     }
     previous = { ...p, view };
   }
-  return { fastest, quickestTurn };
+  return { fastest, fastestAloft, quickestTurn };
 }
-const { fastest, quickestTurn } = checkPath(film.films.full, { indoorLimit: 1.6 });
+const { fastest, fastestAloft, quickestTurn } = checkPath(film.films.full, { indoorLimit: 1.6 });
 assert(fastest < 4.5, `unhurried flights: fastest ${fastest.toFixed(2)} m/s`);
+assert(fastestAloft < 7, `aerial flights: fastest ${fastestAloft.toFixed(2)} m/s`);
 assert(!shots.some(shot => shot.systems), 'no wiring-only scenes');
 // Walking scenes: eye 1.60 m above a modelled floor level (within the step's
 // rise and a stair between levels), at a person's pace, with the step's sway.
@@ -488,6 +494,6 @@ assert(html.includes('cinematic-tour.css'));
 assert(!/\bfetch\(|XMLHttpRequest|localStorage|sessionStorage|https?:\/\//.test(read('cinematic-tour.js')), 'no network or storage use');
 
 console.log(`Cinematic tour: ${shots.length} scenes, ${film.length} s, ${score.bars} bars, ${score.events.length} notes. ` +
-  `Fastest ${fastest.toFixed(1)} m/s, quickest turn ${quickestTurn.toFixed(1)} °/s. Path, scene and score checks passed.`);
+  `Fastest ${fastest.toFixed(1)} m/s (${fastestAloft.toFixed(1)} m/s high above the roofs), quickest turn ${quickestTurn.toFixed(1)} °/s. Path, scene and score checks passed.`);
 for (const line of tourLines) console.log(line);
 console.log(`Technical tours: ${tours.length} tours, ${Object.keys(figures).length} figures read from a stand-in model. Caption, map, wiring view, path and score checks passed.`);

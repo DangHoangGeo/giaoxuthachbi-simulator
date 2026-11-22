@@ -1,8 +1,9 @@
 /* Thạch Bi viewer · cinematic guided tour.
  *
  * A film of about eight and a half minutes of the shared model, at two paces: a
- * drone-style opening that descends from a bird's-eye view of the roof round
- * the altar end and side B to the twin towers, and a person walking at eye height, with the small sway of
+ * drone-style opening that flies from high above the altar end over the roof
+ * and out in front of the church, then glides in to the twin towers, and a
+ * person walking at eye height, with the small sway of
  * each step, up the forecourt steps, along the veranda, in through the central
  * door, up the nave and the side aisle to the sanctuary. It pauses to look up at
  * the timber roof and close at the altar, and returns after dark to walk up to
@@ -47,6 +48,8 @@
    *         1.6 s; never across a change of light or roof) · 'dip' (0.55 s
    *         through black) · 'cut'
    *   ease  [start, end] speed as a share of cruising speed (0 = from rest)
+   *   flow  carry on the curve of the scene before (joined by a plain cut
+   *         at a shared key), keeping the flight's direction across the cut
    *   pan   how much a turn of the camera counts against travel in pacing a
    *         flight (0.3 if not given); more makes a tilt or pan slower
    *   walk  a person walking: eye keys are 1.60 m above the modelled floor
@@ -68,31 +71,33 @@
   };
   const SHOTS = [
     // I · Around the church by day: towers, front, forecourt and veranda.
-    { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.45, 1.25],
+    { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.5, 0.92],
       card: { small: { en: 'Thạch Bi Parish', vi: 'Giáo xứ Thạch Bi' }, title: { en: 'Thạch Bi Church', vi: 'Nhà thờ Thạch Bi' },
         line: 'An invitation to come home', second: 'Một lời mời trở về quê nhà', until: 5.6 },
       keys: [
-        [66, 112, -22, 17, 2, 0, 48],
-        [79, 101, -32, 15, 3, 0, 48],
-        [76, 90, -40, 13, 4, 0, 48]
+        [120, 105, -35, 22, 6, 0, 48],
+        [76, 88, -20, 8, 12, 0, 48],
+        [38, 74, -32, 2.4, 20, 0, 50]
       ] },
-    { id: 'towers', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'cut', ease: [0.72, 1],
+    { id: 'towers', chapter: 'outside', flow: true, bars: 7, light: 'day', roof: true, cut: 'cut', ease: [1, 1],
       en: 'The bell towers', vi: 'Hai tháp chuông',
       note: { en: 'Beyond the long tiled roof, the twin towers rise in four stages at +8.390, +15.840, +23.140 and +29.090 m above the nave floor.', vi: 'Bên mái ngói trải dài là hai tháp chuông với bốn tầng ở cao độ +8,390, +15,840, +23,140 và +29,090 m so với nền lòng nhà thờ.' },
       keys: [
-        [76, 90, -40, 13, 4, 0, 48],
-        [66, 62, -62, 12, 11, 0, 49],
-        [42, 32, -60, 12, 15, -2, 50],
-        [16, 28, -50, 4, 21, -4, 52]
+        [38, 74, -32, 2.4, 20, 0, 50],
+        [2, 62, -48, 2.4, 20, 0, 52],
+        [-40, 52, -50, 2.4, 22, 0, 52],
+        [-72, 46, -38, 2.4, 24, 0, 50],
+        [-88, 41, -8, 2.4, 24, 0, 50],
+        [-72, 38, -1, 2.4, 25, 0, 50]
       ] },
-    { id: 'belfry', chapter: 'outside', bars: 6, light: 'day', roof: true, cut: 'cut', ease: [0.9, 0.3],
+    { id: 'belfry', chapter: 'outside', flow: true, bars: 6, light: 'day', roof: true, cut: 'cut', ease: [3.5, 0.3],
       en: 'Belfry and dome', vi: 'Lầu chuông và mái vòm',
       note: { en: 'Louvred belfry arches under each dome let the bells ring out over the village. Ornament depth is still schematic.', vi: 'Các vòm cửa chớp của lầu chuông dưới mỗi mái vòm để tiếng chuông vang khắp làng. Chiều sâu hoa văn còn là sơ phác.' },
       keys: [
-        [16, 28, -50, 4, 21, -4, 52],
-        [-12, 24, -40, 2.45, 27, -10.15, 52],
-        [-30, 22, -17, 2.45, 25.5, -3, 54],
-        [-48, 15, 0, 2.4, 19, 0, 52]
+        [-72, 38, -1, 2.4, 25, 0, 50],
+        [-52, 30, 0, 2.4, 25, 0, 52],
+        [-38, 23, 0, 2.4, 24.5, 0, 55],
+        [-24, 16, 0, 2.4, 24, 0, 58]
       ] },
     { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dissolve', ease: [0.3, 0.3],
       en: 'The tower front', vi: 'Mặt tiền hai tháp',
@@ -668,10 +673,11 @@
     }
     return out;
   }
-  function along(points, q) {
+  // `ends`: the keys just before and after this list, when the curve carries on from or into a neighbouring scene.
+  function along(points, q, ends = []) {
     const n = points.length - 1, i = Math.min(n - 1, Math.max(0, Math.floor(q))), f = Math.min(1, Math.max(0, q - i));
     const p1 = points[i], p2 = points[i + 1];
-    const p0 = points[i - 1] || p1.map((v, k) => 2 * v - p2[k]), p3 = points[i + 2] || p2.map((v, k) => 2 * v - p1[k]);
+    const p0 = points[i - 1] || ends[0] || p1.map((v, k) => 2 * v - p2[k]), p3 = points[i + 2] || ends[1] || p2.map((v, k) => 2 * v - p1[k]);
     return spline(p0, p1, p2, p3, f);
   }
 
@@ -685,6 +691,15 @@
   const STRIDE = 0.72, BOB = 0.025, SWAY = 0.015, WALKING = 0.6;
   function prepare(reel) {
     reel.length = 0;
+    // A scene marked `flow` carries on the curve of the scene before it (they
+    // share the key where they meet), so the flight keeps its direction across the cut.
+    reel.shots.forEach(shot => { shot.eyeEnds = []; shot.lookEnds = []; });
+    reel.shots.forEach((shot, index) => {
+      const before = reel.shots[index - 1];
+      if (!shot.flow || !before) return;
+      shot.eyeEnds[0] = before.keys[before.keys.length - 2].slice(0, 3); shot.lookEnds[0] = before.keys[before.keys.length - 2].slice(3, 6);
+      before.eyeEnds[1] = shot.keys[1].slice(0, 3); before.lookEnds[1] = shot.keys[1].slice(3, 6);
+    });
     reel.shots.forEach((shot, index) => {
       shot.index = index;
       shot.start = reel.length; shot.duration = shot.bars * reel.bar; reel.length += shot.duration;
@@ -700,7 +715,7 @@
       shot.travel = [0]; shot.walked = [0];
       let previousEye = shot.eye[0], previousLook = shot.look[0];
       for (let i = 1; i <= segments * STEPS; i++) {
-        const q = i / STEPS, eye = along(shot.eye, q), look = along(shot.look, q);
+        const q = i / STEPS, eye = along(shot.eye, q, shot.eyeEnds), look = along(shot.look, q, shot.lookEnds);
         // A pan with a still camera is paced by the movement of the point it
         // looks at; a walker keeps an even step while glancing about.
         shot.travel.push(shot.travel[i - 1] + dist(eye, previousEye) + (shot.walk ? 0.03 : shot.pan ?? 0.3) * dist(look, previousLook) + 1e-5);
@@ -748,7 +763,7 @@
     const local = Math.min(1, Math.max(0, (time - shot.start) / shot.duration));
     const q = placeAt(shot, local);
     const segment = Math.min(shot.keys.length - 2, Math.floor(q));
-    const eye = along(shot.eye, q), look = along(shot.look, q);
+    const eye = along(shot.eye, q, shot.eyeEnds), look = along(shot.look, q, shot.lookEnds);
     if (shot.walk) {
       // The step follows the distance walked, so it slows and stops with the walker.
       const walked = q => table(shot.walked, q / (shot.keys.length - 1));
