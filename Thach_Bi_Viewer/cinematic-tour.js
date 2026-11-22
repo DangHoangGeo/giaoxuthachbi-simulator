@@ -1,8 +1,8 @@
 /* Thạch Bi viewer · cinematic guided tour.
  *
  * A film of about eight and a half minutes of the shared model, at two paces: a
- * slow camera crane that rises up the bell towers, circles a belfry and comes
- * down the front, and a person walking at eye height, with the small sway of
+ * drone-style opening that descends from a bird's-eye view of the roof round
+ * the altar end and side B to the twin towers, and a person walking at eye height, with the small sway of
  * each step, up the forecourt steps, along the veranda, in through the central
  * door, up the nave and the side aisle to the sanctuary. It pauses to look up at
  * the timber roof and close at the altar, and returns after dark to walk up to
@@ -68,17 +68,32 @@
   };
   const SHOTS = [
     // I · Around the church by day: towers, front, forecourt and veranda.
-    { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.2, 0.5],
-      card: { small: 'Giáo xứ Thạch Bi', title: 'Nhà thờ Thạch Bi', line: 'Một lời mời trở về quê nhà · An invitation to come home', until: 5.6 },
-      keys: [[-50, 2.4, 13, 2, 15, 0, 40], [-45, 8.5, 11.5, 3, 15.5, 0, 41], [-39, 15, 9.5, 4, 15, 0, 43]] },
-    { id: 'towers', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'dissolve', ease: [0.2, 0.6],
+    { id: 'opening', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'fade', ease: [0.45, 1.25],
+      card: { small: { en: 'Thạch Bi Parish', vi: 'Giáo xứ Thạch Bi' }, title: { en: 'Thạch Bi Church', vi: 'Nhà thờ Thạch Bi' },
+        line: 'An invitation to come home', second: 'Một lời mời trở về quê nhà', until: 5.6 },
+      keys: [
+        [66, 112, -22, 17, 2, 0, 48],
+        [79, 101, -32, 15, 3, 0, 48],
+        [76, 90, -40, 13, 4, 0, 48]
+      ] },
+    { id: 'towers', chapter: 'outside', bars: 7, light: 'day', roof: true, cut: 'cut', ease: [0.72, 1],
       en: 'The bell towers', vi: 'Hai tháp chuông',
-      note: { en: 'Rising stage by stage up the tower on side H: four stages at +8.390, +15.840, +23.140 and +29.090 m above the nave floor.', vi: 'Đi lên từng tầng của tháp phía H: bốn tầng tháp ở +8,390, +15,840, +23,140 và +29,090 m so với nền lòng nhà thờ.' },
-      keys: [[-15, 4.5, 13.5, 1.5, 8.4, 10.15, 46], [-14, 11, 12.5, 1.5, 14.5, 10.15, 44], [-13.5, 18, 11.5, 1.8, 21.5, 10.15, 42], [-14, 25, 10.8, 2.2, 28, 10.15, 40], [-16, 30, 9.5, 2.45, 32, 10.15, 40]] },
-    { id: 'belfry', chapter: 'outside', bars: 6, light: 'day', roof: true, cut: 'cut', ease: [0.6, 0.3],
+      note: { en: 'Beyond the long tiled roof, the twin towers rise in four stages at +8.390, +15.840, +23.140 and +29.090 m above the nave floor.', vi: 'Bên mái ngói trải dài là hai tháp chuông với bốn tầng ở cao độ +8,390, +15,840, +23,140 và +29,090 m so với nền lòng nhà thờ.' },
+      keys: [
+        [76, 90, -40, 13, 4, 0, 48],
+        [66, 62, -62, 12, 11, 0, 49],
+        [42, 32, -60, 12, 15, -2, 50],
+        [16, 28, -50, 4, 21, -4, 52]
+      ] },
+    { id: 'belfry', chapter: 'outside', bars: 6, light: 'day', roof: true, cut: 'cut', ease: [0.9, 0.3],
       en: 'Belfry and dome', vi: 'Lầu chuông và mái vòm',
       note: { en: 'Louvred belfry arches under each dome let the bells ring out over the village. Ornament depth is still schematic.', vi: 'Các vòm cửa chớp của lầu chuông dưới mỗi mái vòm để tiếng chuông vang khắp làng. Chiều sâu hoa văn còn là sơ phác.' },
-      keys: [[-16, 30, 9.5, 2.45, 32, 10.15, 40], [-11, 30, 20.5, 2.45, 31.5, 10.15, 45], [0, 29.8, 25.8, 2.45, 31.1, 10.15, 48], [11, 30, 22.5, 2.45, 31.1, 10.15, 48], [17, 30, 13, 2.45, 31, 8, 48]] },
+      keys: [
+        [16, 28, -50, 4, 21, -4, 52],
+        [-12, 24, -40, 2.45, 27, -10.15, 52],
+        [-30, 22, -17, 2.45, 25.5, -3, 54],
+        [-48, 15, 0, 2.4, 19, 0, 52]
+      ] },
     { id: 'facade', chapter: 'outside', bars: 4, light: 'day', roof: true, cut: 'dissolve', ease: [0.3, 0.3],
       en: 'The tower front', vi: 'Mặt tiền hai tháp',
       note: { en: 'Twin bell towers frame three doors, with Our Lady of Grace between them. The cross apex is drawn at +36.920 m above the nave floor.', vi: 'Hai tháp chuông ôm lấy ba cửa chính, ở giữa là tượng Đức Mẹ Ban Ơn. Đỉnh thánh giá theo bản vẽ ở cao độ +36,920 m so với nền lòng nhà thờ.' },
@@ -211,6 +226,8 @@
   // A line written as "English · Vietnamese", or a one-language line: the chosen text, or '' when it is the other language.
   const forView = line => {
     if (!line) return '';
+    // Explicit translations can share a Vietnamese proper name in both languages.
+    if (typeof line === 'object') return line[viewVi() ? 'vi' : 'en'];
     const parts = String(line).split(' · ');
     if (parts.length === 2 && VI_MARK.test(parts[1]) && !VI_MARK.test(parts[0])) return viewVi() ? parts[1] : parts[0];
     return VI_MARK.test(line) === viewVi() ? line : '';
@@ -806,7 +823,7 @@
   const HOMELAND = [
     // Under the bells: the open fifth, then the flute's first call.
     { pad: 'celeste', solo: 'voice', level: 0.46, drone: true, folk: true, bars: [['C', ''], ['C', 'r:2 E5:.5 G5:.5 A5:1'], ['Am', 'A5:1 G5:.5 E5:.5 G5:2'], ['F G', 'A4:2 D5:2']] },
-    // Up the tower: the flute alone over the drone.
+    // Along the nave roof: the flute alone over the drone.
     { pad: 'celeste', solo: 'voice', level: 0.62, drone: true, folk: true, bars: HOME_A },
     // Belfry and front: the strings join with the chords.
     { pad: 'celeste', solo: 'voice', level: 0.62, folk: true, bars: HOME_B },
@@ -1034,8 +1051,9 @@
 
   /* ------------------------------------------------------------ ambience
    * The sounds of the place under the music of the film (the technical tours
-   * have none): a swinging bell ringing for Mass from the opening, up the
-   * tower and round the belfry, then handing over to the organ; birds and a breeze outside by day; footsteps at the walker's
+   * have none): a swinging bell ringing for Mass through the opening aerial
+   * approach, then handing over to the organ; birds and a breeze outside by
+   * day; footsteps at the walker's
    * own pace (stone outside, tiles on the veranda and inside, where the room
    * answers them); a quiet room tone inside; crickets after dark, faint
    * through the open doors once inside. Synthesised here from a fixed seed,
@@ -1058,7 +1076,7 @@
   const BELL_PARTIALS = [[0.5, 0.3, 12, 0.35], [0.5021, 0.16, 12, 0.35], [1, 0.36, 8.5, 0], [1.0034, 0.16, 8.5, 0], [1.179, 0.36, 8, 0], [1.1825, 0.14, 8, 0],
     [1.5, 0.07, 2.6, 0.3], [2.007, 0.4, 3.5, 0.75], [2.587, 0.14, 1.6, 0.5], [3.03, 0.2, 3.7, 0.5], [3.13, 0.12, 1.8, 0.5], [4.21, 0.16, 2.8, 0.5], [5.52, 0.06, 3, 0.6]];
   const BELL_RING = Math.max(...BELL_PARTIALS.map(partial => partial[2]));
-  // Where the bells ring: from the first picture up the tower and round the belfry.
+  // Where the bells ring: through the opening aerial approach.
   const BELL_SCENES = ['opening', 'towers', 'belfry'];
   function composeSounds(of) {
     let seed = 20261121;
@@ -1066,7 +1084,7 @@
     const between = (a, b) => a + (b - a) * random();
     const out = [];
     const inside = (shot, time) => INSIDE.has(shot.id) || (shot.id === 'enter' && pose(time, of).eye[0] > 1);
-    // The bell rings from the first picture, up the tower and round the belfry (owner, 21 November
+    // The bell rings through the opening aerial approach (owner, 21 November
     // 2026: keep the bell while the tower is shown; "Ding Dong Ding Dong" with "độ vang, ngân", and a
     // recording of a swinging bell as the model). Swung evenly and without a break, the clapper
     // striking the bright side and the duller side in turn, a little sooner after the bright side, as
@@ -1898,7 +1916,8 @@
     camera.up.set(...p.up);
     camera.position.set(...p.eye);
     camera.lookAt(...p.look);
-    if (Math.abs(camera.fov - p.lens) > 1e-3) { camera.fov = p.lens; camera.updateProjectionMatrix(); }
+    const near = nearPlane(p.eye, film.before.near);
+    if (Math.abs(camera.fov - p.lens) > 1e-3 || Math.abs(camera.near - near) > 1e-4) { camera.fov = p.lens; camera.near = near; camera.updateProjectionMatrix(); }
     // Kept current so that Explore continues from this exact view when the film stops.
     controls.target.set(...p.look);
     const on = showing(p.shot, film.time - p.shot.start), black = blackAt(film.time);
@@ -1928,6 +1947,17 @@
     part('.cinema-clock').textContent = `${clock(film.time)} / ${clock(reel.length)} · scene ${p.shot.index + 1} of ${reel.shots.length}`;
     if (!film.paused && performance.now() - film.lastMove > 2600) layer.classList.add('idle');
     status();
+  }
+  /* The viewer's near plane, a few centimetres for walking indoors, leaves
+   * too little depth precision 100 m up: the lawn and ground layers, 0.1–0.2 m
+   * apart, flicker through each other. High up, the film moves the near plane
+   * out to a quarter of the camera's clearance from the site (every object
+   * other than the ground and sky lies in SITE, measured 22 November 2026) and
+   * from the ground, at most 1.5 m; it never clips the model. */
+  const SITE = { min: [-60, -2.3, -28], max: [57, 39, 28] };
+  function nearPlane(eye, base) {
+    const gap = Math.hypot(...eye.map((v, i) => Math.max(SITE.min[i] - v, 0, v - SITE.max[i])));
+    return Math.max(base, Math.min(1.5, gap / 4, (eye[1] - SITE.min[1]) / 4));
   }
   function status() {
     // "Blocked" only once the browser has clearly declined to start sound.
@@ -1974,7 +2004,7 @@
     tape.save = wanted.save; tape.error = '';
     Object.assign(wanted, { film: 'full', record: false, save: true });
     const ui = church.uiState(), camera = church.orbitCamera, sim = window.CHURCH_SIMULATOR;
-    film.before = { lighting: ui.lighting, roof: ui.roof, lens: camera.fov, enabled: church.controls.enabled,
+    film.before = { lighting: ui.lighting, roof: ui.roof, lens: camera.fov, near: camera.near, enabled: church.controls.enabled,
       wiring: sim?.electrical ? { ...sim.electrical.view } : null, overlay: sim?.state.settings.overlay };
     // The film shows the building: the wiring-only view is left while it plays.
     if (film.before.wiring?.mode === 'systems') sim.electrical.setMode('building');
@@ -2031,7 +2061,7 @@
     // The analysis map returns to what it was.
     if (sim && before.overlay !== undefined && sim.state.settings.overlay !== before.overlay) sim.setOverlay(before.overlay);
     camera.up.set(0, 1, 0);
-    camera.fov = before.lens; camera.updateProjectionMatrix();
+    camera.fov = before.lens; camera.near = before.near; camera.updateProjectionMatrix();
     church.controls.enabled = before.enabled;
     window.CHURCH_REALISM?.setOpenings(byId('openingsMode')?.value || 'auto');
     if (completed) {
