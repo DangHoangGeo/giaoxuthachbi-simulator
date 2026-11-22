@@ -46,7 +46,7 @@ for (const shot of openers) {
   assert(at(2).chapter && !at(2).caption && !at(5.3).chapter && at(6.2).caption && !at(6.2).note && at(7.5).note, `${shot.id}: chapter card, then the heading, then its note`);
 }
 const plainShot = shots.find(shot => shot.id === 'facade');
-// The opening title clears early, leaving the rising picture and the bells.
+// The opening title clears early, leaving the aerial approach and the bells.
 const opening = shots.find(shot => shot.id === 'opening');
 assert(film.showing(opening, 2).card && !film.showing(opening, 6).card, 'opening title clears by 6 s');
 assert(film.showing(plainShot, 1.5).caption && !film.showing(plainShot, 1.5).note && film.showing(plainShot, 2.3).note, 'a heading first, its note a moment later');
@@ -76,7 +76,7 @@ shots.slice(1).forEach((shot, i) => {
 // level horizon possible, and no jumps inside a scene.
 const GROUND = -2.08, FRAME = 1 / 30;
 function checkPath(reel, { indoorLimit }) {
-  let previous = null, fastest = 0, quickestTurn = 0;
+  let previous = null, fastest = 0, fastestAloft = 0, quickestTurn = 0;
   for (let time = 0; time < reel.length; time += FRAME) {
     const p = film.pose(time, reel), where = `${reel.id} ${time.toFixed(2)} s`;
     assert([...p.eye, ...p.look, p.lens].every(Number.isFinite), `finite pose at ${where}`);
@@ -88,7 +88,12 @@ function checkPath(reel, { indoorLimit }) {
     if (previous && previous.shot === p.shot) {
       const speed = dist(p.eye, previous.eye) / FRAME;
       const turn = Math.acos(Math.min(1, view[0] * previous.view[0] + view[1] * previous.view[1] + view[2] * previous.view[2])) * 180 / Math.PI / FRAME;
-      fastest = Math.max(fastest, speed); quickestTurn = Math.max(quickestTurn, turn);
+      // High above the roofs and wide of the towers, what is seen is the
+      // angle swept, not metres a second: the opening fly-over may go faster
+      // (owner, 22 November 2026: the first 30 s were too slow).
+      const aloft = p.eye[1] > 30 && [-10.153, 10.153].every(z => Math.hypot(p.eye[0] - 2.45, p.eye[2] - z) > 20);
+      if (aloft) fastestAloft = Math.max(fastestAloft, speed); else fastest = Math.max(fastest, speed);
+      quickestTurn = Math.max(quickestTurn, turn);
       assert(speed < 12, `${p.shot.id}: ${speed.toFixed(1)} m/s at ${where}`);
       assert(turn < 40, `${p.shot.id}: turns ${turn.toFixed(1)} °/s at ${where}`);
       // Inside the building the camera travels at an unhurried pace.
@@ -96,10 +101,11 @@ function checkPath(reel, { indoorLimit }) {
     }
     previous = { ...p, view };
   }
-  return { fastest, quickestTurn };
+  return { fastest, fastestAloft, quickestTurn };
 }
-const { fastest, quickestTurn } = checkPath(film.films.full, { indoorLimit: 1.6 });
+const { fastest, fastestAloft, quickestTurn } = checkPath(film.films.full, { indoorLimit: 1.6 });
 assert(fastest < 4.5, `unhurried flights: fastest ${fastest.toFixed(2)} m/s`);
+assert(fastestAloft < 7, `aerial flights: fastest ${fastestAloft.toFixed(2)} m/s`);
 assert(!shots.some(shot => shot.systems), 'no wiring-only scenes');
 // Walking scenes: eye 1.60 m above a modelled floor level (within the step's
 // rise and a stair between levels), at a person's pace, with the step's sway.
@@ -124,11 +130,47 @@ for (const shot of walks) {
   assert(bob > 0.004 && bob < 0.04, `${shot.id}: a gentle step (${(bob * 1000).toFixed(0)} mm)`);
 }
 // Scenes joined by a plain cut that continue the same movement meet exactly.
-for (const [from, to] of [['towers', 'belfry'], ['roof', 'rear'], ['rear', 'side-h'], ['enter', 'nave'], ['sanctuary', 'altar']]) {
+for (const [from, to] of [['opening', 'towers'], ['towers', 'belfry'], ['roof', 'rear'], ['rear', 'side-h'], ['enter', 'nave'], ['sanctuary', 'altar']]) {
   const a = shots.find(shot => shot.id === from), b = shots.find(shot => shot.id === to);
   assert.equal(b.index, a.index + 1); assert.equal(b.cut, 'cut');
   const end = film.pose(b.start - 1e-6), begin = film.pose(b.start);
   assert(dist(end.eye, begin.eye) < 0.01 && dist(end.look, begin.look) < 0.01 && Math.abs(end.lens - begin.lens) < 0.01, `${from} → ${to} continues`);
+}
+
+// The daylight approach is one descending arc. The crosses must clear the
+// live player's 9.5% top bar as well as the taller exported picture.
+const approachEnd = shots.find(shot => shot.id === 'facade').start;
+const firstEye = film.pose(0).eye, lastEye = film.pose(approachEnd - FRAME).eye;
+const centre = [26.5, 9, 0]; // middle of the nave in plan
+const bearing = eye => Math.atan2(eye[2] - centre[2], eye[0] - centre[0]);
+assert(approachEnd >= 60 && firstEye[1] - lastEye[1] > 40 &&
+  dist(firstEye, centre) - dist(lastEye, centre) > 30 &&
+  Math.abs(bearing(lastEye) - bearing(firstEye)) > Math.PI / 2,
+  'open high and distant, then sweep from the sanctuary quarter to the forecourt');
+let previousHeight = firstEye[1];
+for (let t = 0; t < approachEnd; t += 0.25) {
+  const { eye, look, lens } = film.pose(t);
+  assert(eye[1] <= previousHeight, `descending flight at ${t} s`);
+  previousHeight = eye[1];
+  // Owner, 22 November 2026: the first minute was "too close" to the tower.
+  // The aerial take keeps 20 m or more from either tower's axis.
+  for (const z of [-10.153, 10.153]) assert(Math.hypot(eye[0] - 2.45, eye[2] - z) > 20, `wide of the towers at ${t} s`);
+  const [dx, dy, dz] = look.map((v, i) => v - eye[i]);
+  const horizontal = Math.hypot(dx, dz), pitch = Math.atan2(dy, horizontal);
+  // Tower centres from towers.js, cross apex from the model elevation.
+  for (const z of [-10.153, 10.153]) {
+    const forward = ((2.45 - eye[0]) * dx + (z - eye[2]) * dz) / horizontal;
+    const elevation = Math.atan2(36.92 - eye[1], forward) - pitch;
+    const frameY = Math.tan(elevation) / Math.tan(lens * Math.PI / 360);
+    assert(forward > 0 && Math.abs(frameY) < 0.78, `cross clear of the film bars at ${t} s`);
+  }
+}
+for (const join of ['towers', 'belfry']) {
+  const t = shots.find(shot => shot.id === join).start;
+  const a = film.pose(t - FRAME).eye, b = film.pose(t).eye, c = film.pose(t + FRAME).eye;
+  const incoming = b.map((x, i) => (x - a[i]) / FRAME);
+  const outgoing = c.map((x, i) => (x - b[i]) / FRAME);
+  assert(dist(incoming, outgoing) < 0.25, `continuous flight speed and direction into ${join}`);
 }
 
 // Score: sorted, inside the film, within the organ compass, a pedal note
@@ -183,7 +225,7 @@ assert.deepEqual(Object.keys(film.films), ['full', 'lighting', 'air', 'sound', '
 assert(!/bell|toccata/i.test(JSON.stringify(score.events.map(event => event.stops))), 'no bell strokes in the organ score');
 
 // Sounds of the place (21 November 2026), under the music of the film only:
-// bells from the opening up the tower and round the belfry, never later (owner,
+// bells during the descending aerial approach, never later (owner,
 // 9 October 2026: bells at the start, handing over to the organ; 21 November
 // 2026: keep them while the tower is shown), footsteps only where the camera
 // walks and at its pace, birds by day, crickets after dark.
@@ -452,6 +494,6 @@ assert(html.includes('cinematic-tour.css'));
 assert(!/\bfetch\(|XMLHttpRequest|localStorage|sessionStorage|https?:\/\//.test(read('cinematic-tour.js')), 'no network or storage use');
 
 console.log(`Cinematic tour: ${shots.length} scenes, ${film.length} s, ${score.bars} bars, ${score.events.length} notes. ` +
-  `Fastest ${fastest.toFixed(1)} m/s, quickest turn ${quickestTurn.toFixed(1)} °/s. Path, scene and score checks passed.`);
+  `Fastest ${fastest.toFixed(1)} m/s (${fastestAloft.toFixed(1)} m/s high above the roofs), quickest turn ${quickestTurn.toFixed(1)} °/s. Path, scene and score checks passed.`);
 for (const line of tourLines) console.log(line);
 console.log(`Technical tours: ${tours.length} tours, ${Object.keys(figures).length} figures read from a stand-in model. Caption, map, wiring view, path and score checks passed.`);
