@@ -17,7 +17,7 @@
   const DRAWN = 'TRACED CAD ELEVATION / SCHEMATIC DEPTH';
   const CARVED = 'TRACED CAD ELEVATION / ILLUSTRATIVE CARVING';
   const spec = {
-    revision: '2026-11-03-tower-traced-decoration-1',
+    revision: '2026-11-22-tower-capital-returns',
     centre: 10.153, core: 2.45, wall: 0.14, // tower centre |Z|; core half-width; half wall thickness
     top: 8.39,
     leafStroke: .018, // T12 contour tube radius: owner 2 Nov 2026 asked for bolder leaves (was 8 mm); CONCEPT relief
@@ -527,6 +527,7 @@
     let crossMaterial = mat.metal;
     const remove = [], upperFronts = [], upperOtherFaces = [], box3 = new T.Box3();
     const oldBalcony = new Set(['Balcony corbel','Balcony cornice moulding','Balcony plinth','Balustrade rail','Baluster base','Baluster belly','Baluster neck','Balustrade corner pedestal','Pedestal cap']);
+    const oldCornice = new Set(['Cornice lower band', 'Cornice frieze', 'Cornice cap', 'Schematic corbel']);
     const capNames = /^(Tower cap profile|Schematic cap rib|Cap pedestal|Continuous cap cross support|Cross — apex is source height|Cross transverse arm|Urn (foot|body|shoulder|finial)|Dome drum|Schematic rose-window infill|Schematic rosette (ring|ray))/;
     for (const tower of towers) {
       // The four stage-1 wall groups (front, sides, back); realism.js has already rebuilt the rear one.
@@ -551,8 +552,11 @@
         // The face group also owns the continuous top cornice and its corbels.
         // They are not part of the generic window/arch replacement: retain their
         // world transforms and existing light-bearing lip, especially the +29.09 ledge.
+        // Old pilaster caps also sit near the top and would cover the new relief.
         const cornice = [];
-        g.traverse(o => { if (o.isMesh && new T.Box3().setFromObject(o).min.y >= b.max.y - .75) cornice.push(o); });
+        g.traverse(o => {
+          if (o.isMesh && oldCornice.has(o.name) && box3.setFromObject(o).min.y >= b.max.y - .75) cornice.push(o);
+        });
         cornice.forEach(o => tower.attach(o));
         remove.push(g);
       }
@@ -638,7 +642,7 @@
     const lowerColumns = window.CHURCH_TOWERS.lowerColumns = [];
 
     // ---- Shared carving (also used by roofline.js) ----
-    const { fleur, pilasterCapital, meanderGeo, towerSpandrel, pinnacleCrown, flutedField, solidOutline, spandrelRelief } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
+    const { fleur, meanderGeo, towerSpandrel, pinnacleCrown, flutedField, solidOutline, spandrelRelief } = window.CHURCH_EXTERIOR_ORNAMENT.create(T, K);
     let crownGeo = null; // traced crown, built once and shared by both towers
     // Round-ended flutes through a raised field (shared E01B form), clamped to the shaft.
     const fluted = ({ half, f }, [lo, hi], matrix) => {
@@ -652,8 +656,13 @@
     // outer pier is the mirror image (E01B draws it so, within 0.1 mm; stage 4 within 24 mm), and E02
     // draws the same outline on the side faces (front pier as traced, rear pier mirrored, within 0.1 mm).
     const capitalRows = window.CHURCH_DETAIL_PROFILE_TOWERS;
-    const capitalGeo = [1, 2, 3, 4].map(n => towerSpandrel(capitalRows['pierCapital' + n], spec.capitalStroke, .003, 3));
-    const CAPITAL = 'E01B/E02 TRACED CAPITAL OUTLINE / RELIEF CONCEPT';
+    const capitalGeo = [1, 2, 3, 4].map(n => {
+      const g = towerSpandrel(capitalRows['pierCapital' + n], spec.capitalStroke, .003, 3);
+      g.computeBoundingBox();
+      return g;
+    });
+    const CAPITAL = 'E01B/E02 CAPITAL OUTLINE FITTED TO MODEL FACE / RELIEF CONCEPT';
+    const RETURN = 'DERIVED REPEAT OF E01B/E02 CAPITAL FOR EXPOSED RETURN / RELIEF CONCEPT';
     // Other traced pieces (detail-towers-profile.js), each centred on its drawn origin: roses, window-head
     // tracery, lantern panel rose, ground great-arch and blind-arch capitals (v from their springing).
     const traced = (key, stroke) => towerSpandrel(capitalRows[key], stroke, .003, 3);
@@ -672,14 +681,46 @@
     both(s => {
       const zc = s * spec.centre, C = spec.core, P = spec.pier, E = spec.entablature;
       const Z = t => zc + s * t; // t outward from the tower centre
-      // n: 0 = ground, 1..3 = stages 2..4; face = the capital band's front X or side t; the tube sits just proud of it.
-      const capitalFront = (n, side, faceX) => add('Tower pier capital foliage · traced E01B', ACCENT, capitalGeo[n],
-        place(SC(-side * s, 1, 1), RY(-Math.PI / 2), TR(faceX - spec.capitalStroke, 0, zc)), CAPITAL);
-      const capitalSide = (n, isFront, faceT) => add('Tower pier capital foliage · traced E02', ACCENT, capitalGeo[n],
-        place(SC(isFront ? s : -s, 1, 1), RY(s > 0 ? 0 : Math.PI), TR(C, 0, Z(faceT + spec.capitalStroke))), CAPITAL);
       const block = (name, material, [x0, x1], [y0, y1], [t0, t1], status) => {
         const z0 = Z(t0), z1 = Z(t1);
         add(name, material, new T.BoxGeometry(x1 - x0, y1 - y0, Math.abs(z1 - z0)), TR((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2), status);
+      };
+      // Ground cheeks stop at the face of the frieze. Upper cheeks stop at the
+      // wall envelopes retained from the original stage assemblies.
+      const wallsAtCapital = [{ x: [-spec.wall - .1, 2 * C + spec.wall], half: C + spec.wall + .15 },
+        ...spec.stages.map((stage, i) => ({
+          x: [C - stage.u / 2 - spec.wall, C + stage.u / 2 + spec.wall],
+          half: upperFronts.find(f => f.side === s && f.stage === i + 2).half + spec.wall,
+        }))];
+      const middle = ([lo, hi]) => (lo + hi) / 2;
+      const capitalBand = (n, xs, ts, [lo, hi], front, side) => {
+        block('Tower pier capital band', S, xs, [lo, hi], ts);
+        const g = capitalGeo[n], { min, max } = g.boundingBox;
+        const height = Math.min(max.y - min.y, hi - lo - .036);
+        const y = T.MathUtils.clamp((min.y + max.y) / 2, lo + .018 + height / 2, hi - .018 - height / 2);
+        const seat = spec.capitalStroke / 2;
+        const face = (kind, span, x, z, yaw, hand, basis) => {
+          const width = span[1] - span[0];
+          if (width < .24) return; // A narrow strip behind a wall junction has no carved panel.
+          const margin = Math.min(.05, width * .10);
+          add('Tower pier capital foliage · ' + kind, ACCENT, g, place(
+            TR(-(min.x + max.x) / 2, -(min.y + max.y) / 2, 0),
+            SC(hand * (width - 2 * margin) / (max.x - min.x), height / (max.y - min.y), 1),
+            RY(yaw), TR(x, y, z)
+          ), basis);
+        };
+        const [x0, x1] = xs, [t0, t1] = ts, end = front ? -1 : 1;
+        const faceX = (kind, span, dir, x, basis) =>
+          face(kind, span, x + dir * seat, Z(middle(span)), dir * Math.PI / 2, dir * side * s, basis);
+        const faceT = (kind, span, dir, t, basis) =>
+          face(kind, span, middle(span), Z(t + dir * seat), dir * s > 0 ? 0 : Math.PI, -end * dir * s, basis);
+        faceX(front ? 'front' : 'rear', ts, end, front ? x0 : x1, front ? CAPITAL : RETURN);
+        faceT(side > 0 ? 'outer side' : 'inner side', xs, side, side > 0 ? t1 : t0, side > 0 ? CAPITAL : RETURN);
+        const wall = wallsAtCapital[n];
+        const cheekX = front ? [x0, Math.min(x1, wall.x[0])] : [Math.max(x0, wall.x[1]), x1];
+        const cheekT = side > 0 ? [Math.max(t0, wall.half), t1] : [t0, Math.min(t1, -wall.half)];
+        faceX('cheek', cheekT, -end, front ? x1 : x0, RETURN);
+        faceT('cheek', cheekX, -side, side > 0 ? t0 : t1, RETURN);
       };
       // Faces: front (normal −X, u = t), outer side (normal +s·Z, u = X − 2.45), inner side
       // (normal −s·Z), back (normal +X). Local frame: x = u, y = v, z = out of the face.
@@ -811,17 +852,14 @@
         if (front) for (const tm of [side * FL.t]) {
           block('Tower pier pilaster', W, [x0 - .06, x0], [P.pedestal + .02, P.shaft], [tm - .3, tm + .3]);
           fluted(FL, [P.pedestal + .02, P.shaft], place(RY(-Math.PI / 2), TR(x0 - .06, 0, Z(tm))));
-          capitalFront(0, side, x0 - .04);
         }
         if (outer || !front) {
-          // The truncated inner rear pier (nave side) keeps its centred field and illustrative capital.
+          // The truncated inner rear pier (nave side) keeps its centred field.
           const truncated = !outer && !front, xm = truncated ? (x0 + x1) / 2 : FL.x[front ? 0 : 1], tf = outer ? t1 : t0, dir = outer ? 1 : -1;
           block('Tower pier pilaster', W, [xm - .3, xm + .3], [P.pedestal + .02, P.shaft], [tf, tf + dir * .06].sort((a, b) => a - b));
           fluted(FL, [P.pedestal + .02, P.shaft], place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf + dir * .06))));
-          if (truncated) add('Tower pier capital foliage · inner rear, illustrative', ACCENT, pilasterCapital(.7, (P.capital - P.shaft) * .9), place(RY(dir * s > 0 ? 0 : Math.PI), TR(xm, P.shaft, Z(tf + dir * .07))), CARVED);
-          else capitalSide(0, front, t1 + .04);
         }
-        block('Tower pier capital band', S, grow([x0, x1], .04), [P.shaft, P.capital], grow([t0, t1], .04));
+        capitalBand(0, grow([x0, x1], .04), grow([t0, t1], .04), [P.shaft, P.capital], front, side);
         stats.piers++;
       }
       // ---- Entablature round the base: architrave, dentils, Greek-key frieze, cornice ----
@@ -1023,14 +1061,12 @@
           const n = spec.stages.indexOf(g) + 1, FL = spec.flutes.stages[n - 1], isFront = xs === front, outer = side > 0;
           if (isFront) {
             fluted(FL, [y0 + .6, g.cap[0]], place(RY(-Math.PI / 2), TR(xs[0], 0, Z(side * FL.t))));
-            capitalFront(n, side, xs[0] - .03);
           }
           if (outer) {
             const xm = FL.x[isFront ? 0 : 1], tf = ts[1];
             fluted(FL, [y0 + .6, g.cap[0]], place(RY(s > 0 ? 0 : Math.PI), TR(xm, 0, Z(tf))));
-            capitalSide(n, isFront, tf + .03);
           }
-          block('Tower pier capital band', S, grow(xs, .03), g.cap, grow(ts, .03));
+          capitalBand(n, grow(xs, .03), grow(ts, .03), g.cap, isFront, side);
           for (const [dy, out, m] of [[[g.cap[1], g.cap[1] + .12], .06, S], [[g.cap[1] + .12, y1 - .16], .12, W], [[y1 - .16, y1], .2, S]]) block('Tower stage pier cornice', m, grow(xs, out), dy, grow(ts, out));
           stats.piers++;
         }

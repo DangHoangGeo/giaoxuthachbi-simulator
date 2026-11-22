@@ -137,6 +137,43 @@ for(const [y,front,back,outer,y0,y1] of [[12,-.575,5.475,13.178,8.39,15.84],[19,
  const sh=subset('Tower stage pier shaft',p=>p.z>11&&p.y>y0&&p.y<y1);
  near(sh.min.x,front,`E02 stage pier front face at +${y}`);near(sh.max.x,back,`E02 stage pier back face at +${y}`);near(sh.max.z,outer,`E01B stage pier outer face at +${y}`);
 }
+// Each capital band is a box. Recover the 32 individual boxes from the assembled
+// mesh and check that every carved vertex stays close to a backed face.
+{
+ for(const legacy of named('Pilaster capital')){
+  assert(!/^Tower (A–C|G–I) \/ 1–2$/.test(legacy.parent?.name),'Legacy tower capital can cover the replacement foliage');
+ }
+ const bands=[];
+ const p=new T.Vector3();
+ for(const node of named('Tower pier capital band')){
+  const {index,attributes:{position}}=node.geometry;
+  for(let i=0;i<index.count;i+=36){
+   const b=new T.Box3();
+   for(let k=i;k<i+36;k++) b.expandByPoint(p.fromBufferAttribute(position,index.getX(k)).applyMatrix4(node.matrixWorld));
+   bands.push(b);
+  }
+ }
+ assert.equal(bands.length,32,'Four capital bands per level per tower');
+ for(const [kind,count] of [['front',16],['rear',16],['outer side',16],['inner side',16],['cheek',32]]){
+  const supported=new Map();
+  for(const node of named('Tower pier capital foliage · '+kind)){
+   const {position}=node.geometry.attributes;
+   for(let i=0;i<position.count;i++){
+    p.fromBufferAttribute(position,i).applyMatrix4(node.matrixWorld);
+    const b=bands.find(b=>p.y>b.min.y&&p.y<b.max.y&&(
+     p.z>b.min.z&&p.z<b.max.z&&Math.min(Math.abs(p.x-b.min.x),Math.abs(p.x-b.max.x))<.015||
+     p.x>b.min.x&&p.x<b.max.x&&Math.min(Math.abs(p.z-b.min.z),Math.abs(p.z-b.max.z))<.015
+    ));
+    assert(b,`${kind} carving hangs past its capital band at ${p.toArray()}`);
+    if(!supported.has(b)) supported.set(b,new T.Box3());
+    supported.get(b).expandByPoint(p);
+   }
+  }
+  assert.equal(supported.size,count,`Capital foliage on every expected ${kind} face`);
+  if(kind==='front') for(const [b,carving] of supported)
+   near(carving.max.z+carving.min.z,b.max.z+b.min.z,'Centred tower front capital foliage');
+ }
+}
 console.log(JSON.stringify({status:'passed',sourceSha256:tw.sourceSha256,checkedBounds:checks.length,
   largestBoundResidualMm:Math.max(...checks.map(r=>Math.abs(r.residual_mm))),actualWallApertureChecks:12+otherWallChecks, otherTowerFaces:18,
   checks,limits:'Source-coordinate software checks. Unseen depth, held door heads, units, orientation and construction confirmation remain open.'},null,2));
